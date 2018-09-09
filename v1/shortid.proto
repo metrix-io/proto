@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+service IdGenerator {
+  rpc Generate (ShortIdRequest) returns (ShortIdResponse);
+}
+
+message ShortIdRequest {
+  int32 number = 1;
+}
+
+message ShortIdResponse {
+  string id = 1;
+}
