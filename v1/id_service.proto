@@ -5,13 +5,13 @@ service IdGenerator {
 }
 
 message IdRequest {
-  uint32 number = 1;
+  int32 number = 1;
   bool base85 = 2;
 }
 
 message IdResponse {
   message Id {
-    uint64 id = 1;
+    int64 id = 1;
     string base58 = 2;
   }
   repeated Id ids = 1;
