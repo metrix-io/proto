@@ -6,7 +6,7 @@ service IdGenerator {
 
 message IdRequest {
   int32 number = 1;
-  bool base85 = 2;
+  bool returnBase58 = 2;
 }
 
 message IdResponse {
