@@ -23,85 +23,140 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
-type ShortIdRequest struct {
-	Number               int32    `protobuf:"varint,1,opt,name=number,proto3" json:"number,omitempty"`
+type IdRequest struct {
+	Number               uint32   `protobuf:"varint,1,opt,name=number,proto3" json:"number,omitempty"`
+	Base85               bool     `protobuf:"varint,2,opt,name=base85,proto3" json:"base85,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *ShortIdRequest) Reset()         { *m = ShortIdRequest{} }
-func (m *ShortIdRequest) String() string { return proto.CompactTextString(m) }
-func (*ShortIdRequest) ProtoMessage()    {}
-func (*ShortIdRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_id_service_9c01b6fc05022ff3, []int{0}
+func (m *IdRequest) Reset()         { *m = IdRequest{} }
+func (m *IdRequest) String() string { return proto.CompactTextString(m) }
+func (*IdRequest) ProtoMessage()    {}
+func (*IdRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_id_service_9e13d38cbc32fff2, []int{0}
 }
-func (m *ShortIdRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_ShortIdRequest.Unmarshal(m, b)
+func (m *IdRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_IdRequest.Unmarshal(m, b)
 }
-func (m *ShortIdRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ShortIdRequest.Marshal(b, m, deterministic)
+func (m *IdRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_IdRequest.Marshal(b, m, deterministic)
 }
-func (dst *ShortIdRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ShortIdRequest.Merge(dst, src)
+func (dst *IdRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_IdRequest.Merge(dst, src)
 }
-func (m *ShortIdRequest) XXX_Size() int {
-	return xxx_messageInfo_ShortIdRequest.Size(m)
+func (m *IdRequest) XXX_Size() int {
+	return xxx_messageInfo_IdRequest.Size(m)
 }
-func (m *ShortIdRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_ShortIdRequest.DiscardUnknown(m)
+func (m *IdRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_IdRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_ShortIdRequest proto.InternalMessageInfo
+var xxx_messageInfo_IdRequest proto.InternalMessageInfo
 
-func (m *ShortIdRequest) GetNumber() int32 {
+func (m *IdRequest) GetNumber() uint32 {
 	if m != nil {
 		return m.Number
 	}
 	return 0
 }
 
-type ShortIdResponse struct {
-	Id                   []int64  `protobuf:"varint,1,rep,packed,name=id,proto3" json:"id,omitempty"`
+func (m *IdRequest) GetBase85() bool {
+	if m != nil {
+		return m.Base85
+	}
+	return false
+}
+
+type IdResponse struct {
+	Ids                  []*IdResponse_Id `protobuf:"bytes,1,rep,name=ids,proto3" json:"ids,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}         `json:"-"`
+	XXX_unrecognized     []byte           `json:"-"`
+	XXX_sizecache        int32            `json:"-"`
+}
+
+func (m *IdResponse) Reset()         { *m = IdResponse{} }
+func (m *IdResponse) String() string { return proto.CompactTextString(m) }
+func (*IdResponse) ProtoMessage()    {}
+func (*IdResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_id_service_9e13d38cbc32fff2, []int{1}
+}
+func (m *IdResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_IdResponse.Unmarshal(m, b)
+}
+func (m *IdResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_IdResponse.Marshal(b, m, deterministic)
+}
+func (dst *IdResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_IdResponse.Merge(dst, src)
+}
+func (m *IdResponse) XXX_Size() int {
+	return xxx_messageInfo_IdResponse.Size(m)
+}
+func (m *IdResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_IdResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_IdResponse proto.InternalMessageInfo
+
+func (m *IdResponse) GetIds() []*IdResponse_Id {
+	if m != nil {
+		return m.Ids
+	}
+	return nil
+}
+
+type IdResponse_Id struct {
+	Id                   uint64   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Base58               string   `protobuf:"bytes,2,opt,name=base58,proto3" json:"base58,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *ShortIdResponse) Reset()         { *m = ShortIdResponse{} }
-func (m *ShortIdResponse) String() string { return proto.CompactTextString(m) }
-func (*ShortIdResponse) ProtoMessage()    {}
-func (*ShortIdResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_id_service_9c01b6fc05022ff3, []int{1}
+func (m *IdResponse_Id) Reset()         { *m = IdResponse_Id{} }
+func (m *IdResponse_Id) String() string { return proto.CompactTextString(m) }
+func (*IdResponse_Id) ProtoMessage()    {}
+func (*IdResponse_Id) Descriptor() ([]byte, []int) {
+	return fileDescriptor_id_service_9e13d38cbc32fff2, []int{1, 0}
 }
-func (m *ShortIdResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_ShortIdResponse.Unmarshal(m, b)
+func (m *IdResponse_Id) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_IdResponse_Id.Unmarshal(m, b)
 }
-func (m *ShortIdResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ShortIdResponse.Marshal(b, m, deterministic)
+func (m *IdResponse_Id) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_IdResponse_Id.Marshal(b, m, deterministic)
 }
-func (dst *ShortIdResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ShortIdResponse.Merge(dst, src)
+func (dst *IdResponse_Id) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_IdResponse_Id.Merge(dst, src)
 }
-func (m *ShortIdResponse) XXX_Size() int {
-	return xxx_messageInfo_ShortIdResponse.Size(m)
+func (m *IdResponse_Id) XXX_Size() int {
+	return xxx_messageInfo_IdResponse_Id.Size(m)
 }
-func (m *ShortIdResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_ShortIdResponse.DiscardUnknown(m)
+func (m *IdResponse_Id) XXX_DiscardUnknown() {
+	xxx_messageInfo_IdResponse_Id.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_ShortIdResponse proto.InternalMessageInfo
+var xxx_messageInfo_IdResponse_Id proto.InternalMessageInfo
 
-func (m *ShortIdResponse) GetId() []int64 {
+func (m *IdResponse_Id) GetId() uint64 {
 	if m != nil {
 		return m.Id
 	}
-	return nil
+	return 0
+}
+
+func (m *IdResponse_Id) GetBase58() string {
+	if m != nil {
+		return m.Base58
+	}
+	return ""
 }
 
 func init() {
-	proto.RegisterType((*ShortIdRequest)(nil), "ShortIdRequest")
-	proto.RegisterType((*ShortIdResponse)(nil), "ShortIdResponse")
+	proto.RegisterType((*IdRequest)(nil), "IdRequest")
+	proto.RegisterType((*IdResponse)(nil), "IdResponse")
+	proto.RegisterType((*IdResponse_Id)(nil), "IdResponse.Id")
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -116,7 +171,7 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type IdGeneratorClient interface {
-	Generate(ctx context.Context, in *ShortIdRequest, opts ...grpc.CallOption) (*ShortIdResponse, error)
+	Generate(ctx context.Context, in *IdRequest, opts ...grpc.CallOption) (*IdResponse, error)
 }
 
 type idGeneratorClient struct {
@@ -127,8 +182,8 @@ func NewIdGeneratorClient(cc *grpc.ClientConn) IdGeneratorClient {
 	return &idGeneratorClient{cc}
 }
 
-func (c *idGeneratorClient) Generate(ctx context.Context, in *ShortIdRequest, opts ...grpc.CallOption) (*ShortIdResponse, error) {
-	out := new(ShortIdResponse)
+func (c *idGeneratorClient) Generate(ctx context.Context, in *IdRequest, opts ...grpc.CallOption) (*IdResponse, error) {
+	out := new(IdResponse)
 	err := c.cc.Invoke(ctx, "/IdGenerator/Generate", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -138,7 +193,7 @@ func (c *idGeneratorClient) Generate(ctx context.Context, in *ShortIdRequest, op
 
 // IdGeneratorServer is the server API for IdGenerator service.
 type IdGeneratorServer interface {
-	Generate(context.Context, *ShortIdRequest) (*ShortIdResponse, error)
+	Generate(context.Context, *IdRequest) (*IdResponse, error)
 }
 
 func RegisterIdGeneratorServer(s *grpc.Server, srv IdGeneratorServer) {
@@ -146,7 +201,7 @@ func RegisterIdGeneratorServer(s *grpc.Server, srv IdGeneratorServer) {
 }
 
 func _IdGenerator_Generate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ShortIdRequest)
+	in := new(IdRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -158,7 +213,7 @@ func _IdGenerator_Generate_Handler(srv interface{}, ctx context.Context, dec fun
 		FullMethod: "/IdGenerator/Generate",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(IdGeneratorServer).Generate(ctx, req.(*ShortIdRequest))
+		return srv.(IdGeneratorServer).Generate(ctx, req.(*IdRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -176,18 +231,21 @@ var _IdGenerator_serviceDesc = grpc.ServiceDesc{
 	Metadata: "v1/id_service.proto",
 }
 
-func init() { proto.RegisterFile("v1/id_service.proto", fileDescriptor_id_service_9c01b6fc05022ff3) }
+func init() { proto.RegisterFile("v1/id_service.proto", fileDescriptor_id_service_9e13d38cbc32fff2) }
 
-var fileDescriptor_id_service_9c01b6fc05022ff3 = []byte{
-	// 147 bytes of a gzipped FileDescriptorProto
+var fileDescriptor_id_service_9e13d38cbc32fff2 = []byte{
+	// 193 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x12, 0x2e, 0x33, 0xd4, 0xcf,
 	0x4c, 0x89, 0x2f, 0x4e, 0x2d, 0x2a, 0xcb, 0x4c, 0x4e, 0xd5, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x57,
-	0xd2, 0xe0, 0xe2, 0x0b, 0xce, 0xc8, 0x2f, 0x2a, 0xf1, 0x4c, 0x09, 0x4a, 0x2d, 0x2c, 0x4d, 0x2d,
-	0x2e, 0x11, 0x12, 0xe3, 0x62, 0xcb, 0x2b, 0xcd, 0x4d, 0x4a, 0x2d, 0x92, 0x60, 0x54, 0x60, 0xd4,
-	0x60, 0x0d, 0x82, 0xf2, 0x94, 0x14, 0xb9, 0xf8, 0xe1, 0x2a, 0x8b, 0x0b, 0xf2, 0xf3, 0x8a, 0x53,
-	0x85, 0xf8, 0xb8, 0x98, 0x32, 0x53, 0x24, 0x18, 0x15, 0x98, 0x35, 0x98, 0x83, 0x98, 0x32, 0x53,
-	0x8c, 0x6c, 0xb8, 0xb8, 0x3d, 0x53, 0xdc, 0x53, 0xf3, 0x52, 0x8b, 0x12, 0x4b, 0xf2, 0x8b, 0x84,
-	0x74, 0xb9, 0x38, 0xa0, 0x9c, 0x54, 0x21, 0x7e, 0x3d, 0x54, 0x6b, 0xa4, 0x04, 0xf4, 0xd0, 0x4c,
-	0x4b, 0x62, 0x03, 0xbb, 0xc8, 0x18, 0x10, 0x00, 0x00, 0xff, 0xff, 0x65, 0x64, 0xa5, 0x5e, 0xa8,
-	0x00, 0x00, 0x00,
+	0xb2, 0xe6, 0xe2, 0xf4, 0x4c, 0x09, 0x4a, 0x2d, 0x2c, 0x4d, 0x2d, 0x2e, 0x11, 0x12, 0xe3, 0x62,
+	0xcb, 0x2b, 0xcd, 0x4d, 0x4a, 0x2d, 0x92, 0x60, 0x54, 0x60, 0xd4, 0xe0, 0x0d, 0x82, 0xf2, 0x40,
+	0xe2, 0x49, 0x89, 0xc5, 0xa9, 0x16, 0xa6, 0x12, 0x4c, 0x0a, 0x8c, 0x1a, 0x1c, 0x41, 0x50, 0x9e,
+	0x52, 0x0c, 0x17, 0x17, 0x48, 0x73, 0x71, 0x41, 0x7e, 0x5e, 0x71, 0xaa, 0x90, 0x02, 0x17, 0x73,
+	0x66, 0x4a, 0xb1, 0x04, 0xa3, 0x02, 0xb3, 0x06, 0xb7, 0x11, 0x9f, 0x1e, 0x42, 0x06, 0xc4, 0x04,
+	0x49, 0x49, 0xe9, 0x70, 0x31, 0x79, 0xa6, 0x08, 0xf1, 0x71, 0x31, 0x65, 0xa6, 0x80, 0x6d, 0x60,
+	0x09, 0x62, 0xca, 0x4c, 0x81, 0x99, 0x6e, 0x6a, 0x01, 0x36, 0x9d, 0x33, 0x08, 0xca, 0x33, 0x32,
+	0xe2, 0xe2, 0xf6, 0x4c, 0x71, 0x4f, 0xcd, 0x4b, 0x2d, 0x4a, 0x2c, 0xc9, 0x2f, 0x12, 0x52, 0xe6,
+	0xe2, 0x80, 0x72, 0x52, 0x85, 0xb8, 0xf4, 0xe0, 0x8e, 0x96, 0xe2, 0x46, 0xb2, 0x29, 0x89, 0x0d,
+	0xec, 0x2b, 0x63, 0x40, 0x00, 0x00, 0x00, 0xff, 0xff, 0x5c, 0xa7, 0x99, 0x91, 0xec, 0x00, 0x00,
+	0x00,
 }
