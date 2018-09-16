@@ -9,5 +9,5 @@ message ShortIdRequest {
 }
 
 message ShortIdResponse {
-  string id = 1;
+  repeated int64 id = 1;
 }
