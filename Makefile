@@ -2,4 +2,4 @@
 
 # Generate proto files
 proto:
-	protoc -I. --go_out=plugins=grpc:. v1/*.proto
+	protoc -I. --go_out=plugins=grpc:. *.proto

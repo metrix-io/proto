@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+package account_service;
+
+message Account {
+  string id = 1;
+  string email = 2;
+  string password = 3;
+  string confirm_token = 4;
+  string password_reset_token = 5;
+}
+
+message GetByIdRequest {
+  string id = 1;
+}
+
+message GetByEmailRequest {
+  string email = 1;
+}
+
+message AuthenticateByEmailRequest {
+  string email = 1;
+  string password = 2;
+}
+
+message GeneratePasswordTokenRequest {
+  string email = 1;
+}
+
+message GeneratePasswordTokenResponse {
+  string token = 1;
+}
+
+message ResetPasswordRequest {
+  string token = 1;
+  string password = 2;
+}
+
+message ConfirmAccountRequest {
+  string token = 1;
+}
+
+message CreateAccountRequest {
+  Account account = 1;
+  string password = 2;
+}
+
+service AccountService {
+  rpc GetById (GetByIdRequest) returns (Account) {}
+  rpc GetByEmail (GetByEmailRequest) returns (Account) {}
+  rpc AuthenticateByEmail (AuthenticateByEmailRequest) returns (Account) {}
+  rpc GeneratePasswordToken (GeneratePasswordTokenRequest) returns (GeneratePasswordTokenResponse) {}
+  rpc ResetPassword (ResetPasswordRequest) returns (Account) {}
+  rpc ConfirmAccount (ConfirmAccountRequest) returns (Account) {}
+  rpc Create (CreateAccountRequest) returns (Account) {}
+}
