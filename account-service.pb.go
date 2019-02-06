@@ -23,10 +23,66 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
+// *
+// AccountResponse follows the OpenID connect userinfo specification:
+// https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims
+//
+// Be aware most fields are usually empty.
 type AccountResponse struct {
-	Id                   string   `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	PrimaryEmail         string   `protobuf:"bytes,2,opt,name=primary_email,json=primaryEmail,proto3" json:"primary_email,omitempty"`
-	IsVerified           bool     `protobuf:"varint,3,opt,name=is_verified,json=isVerified,proto3" json:"is_verified,omitempty"`
+	// The identifier of the user.
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	// Subject is the fully qualified identifier for the user account.
+	Sub string `protobuf:"bytes,2,opt,name=sub,proto3" json:"sub,omitempty"`
+	// End-User's full name. The maximum length is 255 characters.
+	Name string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
+	// First name(s) of the user. The maximum length is 50 characters.
+	GivenName string `protobuf:"bytes,4,opt,name=given_name,json=givenName,proto3" json:"given_name,omitempty"`
+	// Last name(s) of the user. The maximum length is 50 characters.
+	FamilyName string `protobuf:"bytes,5,opt,name=family_name,json=familyName,proto3" json:"family_name,omitempty"`
+	// Middle name(s) of the user. The maximum length is 50 characters.
+	MiddleName string `protobuf:"bytes,6,opt,name=middle_name,json=middleName,proto3" json:"middle_name,omitempty"`
+	// Casual name of the user that may or may not be the same as the given_name.
+	// The maximum length is 50 characters.
+	Nickname string `protobuf:"bytes,7,opt,name=nickname,proto3" json:"nickname,omitempty"`
+	// Shorthand name which the user should be referred to. This field is
+	// always set unlike the other name fields. It can change.
+	//
+	// When upon registration only an email address is given the preferred username
+	// is derived from the email address, e.g. "john.doe@example.com" yields "john_doe".
+	// If already in use a number is appended, e.g. "john_doe2".
+	//
+	// The preferred username may only contain alphanumeric characters and underscores.
+	// The maximum length is 15 characters.
+	PreferredUsername string `protobuf:"bytes,8,opt,name=preferred_username,json=preferredUsername,proto3" json:"preferred_username,omitempty"`
+	// URL of user profile page. The maximum length is 255 characters.
+	Profile string `protobuf:"bytes,9,opt,name=profile,proto3" json:"profile,omitempty"`
+	// URL of user picture. The maximum length is 255 characters.
+	Picture string `protobuf:"bytes,10,opt,name=picture,proto3" json:"picture,omitempty"`
+	// URL of user web page or blog.
+	Website string `protobuf:"bytes,11,opt,name=website,proto3" json:"website,omitempty"`
+	// User's preferred e-mail address.
+	Email string `protobuf:"bytes,12,opt,name=email,proto3" json:"email,omitempty"`
+	// True if the user's e-mail address has been verified; otherwise false.
+	EmailVerified bool `protobuf:"varint,13,opt,name=email_verified,json=emailVerified,proto3" json:"email_verified,omitempty"`
+	// The gender is either "male", "female", "genderqueer" or empty.
+	Gender string `protobuf:"bytes,14,opt,name=gender,proto3" json:"gender,omitempty"`
+	// User's birthday is formatted in YYYY-MM-DD format.
+	Birthdate string `protobuf:"bytes,15,opt,name=birthdate,proto3" json:"birthdate,omitempty"`
+	// String from a time zone database representing the user's time zone.
+	Zoneinfo string `protobuf:"bytes,16,opt,name=zoneinfo,proto3" json:"zoneinfo,omitempty"`
+	// User's locale, represented as a BCP47 [RFC5646] language tag.
+	Locale string `protobuf:"bytes,17,opt,name=locale,proto3" json:"locale,omitempty"`
+	// User's preferred phone number.
+	PhoneNumber string `protobuf:"bytes,18,opt,name=phone_number,json=phoneNumber,proto3" json:"phone_number,omitempty"`
+	// True if the user's phone number has been verified; otherwise false.
+	PhoneNumberVerified bool `protobuf:"varint,19,opt,name=phone_number_verified,json=phoneNumberVerified,proto3" json:"phone_number_verified,omitempty"`
+	// Unix timestamp when user account was created.
+	CreatedAt int64 `protobuf:"varint,20,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	// Unix timestamp when user information was last updated.
+	UpdatedAt int64 `protobuf:"varint,21,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	// Unix timestamp when account was cancelled. Cancelled accounts are
+	// automatically removed after two months.
+	CancelledAt          int64    `protobuf:"varint,22,opt,name=cancelled_at,json=cancelledAt,proto3" json:"cancelled_at,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -36,7 +92,7 @@ func (m *AccountResponse) Reset()         { *m = AccountResponse{} }
 func (m *AccountResponse) String() string { return proto.CompactTextString(m) }
 func (*AccountResponse) ProtoMessage()    {}
 func (*AccountResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_f9ac5b333fba7e6c, []int{0}
+	return fileDescriptor_account_service_aff4717675df9ebc, []int{0}
 }
 func (m *AccountResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AccountResponse.Unmarshal(m, b)
@@ -63,92 +119,284 @@ func (m *AccountResponse) GetId() string {
 	return ""
 }
 
-func (m *AccountResponse) GetPrimaryEmail() string {
+func (m *AccountResponse) GetSub() string {
 	if m != nil {
-		return m.PrimaryEmail
+		return m.Sub
 	}
 	return ""
 }
 
-func (m *AccountResponse) GetIsVerified() bool {
+func (m *AccountResponse) GetName() string {
 	if m != nil {
-		return m.IsVerified
+		return m.Name
+	}
+	return ""
+}
+
+func (m *AccountResponse) GetGivenName() string {
+	if m != nil {
+		return m.GivenName
+	}
+	return ""
+}
+
+func (m *AccountResponse) GetFamilyName() string {
+	if m != nil {
+		return m.FamilyName
+	}
+	return ""
+}
+
+func (m *AccountResponse) GetMiddleName() string {
+	if m != nil {
+		return m.MiddleName
+	}
+	return ""
+}
+
+func (m *AccountResponse) GetNickname() string {
+	if m != nil {
+		return m.Nickname
+	}
+	return ""
+}
+
+func (m *AccountResponse) GetPreferredUsername() string {
+	if m != nil {
+		return m.PreferredUsername
+	}
+	return ""
+}
+
+func (m *AccountResponse) GetProfile() string {
+	if m != nil {
+		return m.Profile
+	}
+	return ""
+}
+
+func (m *AccountResponse) GetPicture() string {
+	if m != nil {
+		return m.Picture
+	}
+	return ""
+}
+
+func (m *AccountResponse) GetWebsite() string {
+	if m != nil {
+		return m.Website
+	}
+	return ""
+}
+
+func (m *AccountResponse) GetEmail() string {
+	if m != nil {
+		return m.Email
+	}
+	return ""
+}
+
+func (m *AccountResponse) GetEmailVerified() bool {
+	if m != nil {
+		return m.EmailVerified
 	}
 	return false
 }
 
-type GetByIdRequest struct {
-	Id                   string   `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+func (m *AccountResponse) GetGender() string {
+	if m != nil {
+		return m.Gender
+	}
+	return ""
+}
+
+func (m *AccountResponse) GetBirthdate() string {
+	if m != nil {
+		return m.Birthdate
+	}
+	return ""
+}
+
+func (m *AccountResponse) GetZoneinfo() string {
+	if m != nil {
+		return m.Zoneinfo
+	}
+	return ""
+}
+
+func (m *AccountResponse) GetLocale() string {
+	if m != nil {
+		return m.Locale
+	}
+	return ""
+}
+
+func (m *AccountResponse) GetPhoneNumber() string {
+	if m != nil {
+		return m.PhoneNumber
+	}
+	return ""
+}
+
+func (m *AccountResponse) GetPhoneNumberVerified() bool {
+	if m != nil {
+		return m.PhoneNumberVerified
+	}
+	return false
+}
+
+func (m *AccountResponse) GetCreatedAt() int64 {
+	if m != nil {
+		return m.CreatedAt
+	}
+	return 0
+}
+
+func (m *AccountResponse) GetUpdatedAt() int64 {
+	if m != nil {
+		return m.UpdatedAt
+	}
+	return 0
+}
+
+func (m *AccountResponse) GetCancelledAt() int64 {
+	if m != nil {
+		return m.CancelledAt
+	}
+	return 0
+}
+
+// *
+// EmailResponse contains an email address. Email addresses are always unique.
+type EmailResponse struct {
+	// Unique email identifier.
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	// The account to which this email belongs. An email can only belong
+	// to 1 account.
+	AccountId string `protobuf:"bytes,2,opt,name=account_id,json=accountId,proto3" json:"account_id,omitempty"`
+	// E-mail address.
+	Email string `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
+	// True if the user's e-mail address has been verified; otherwise false.
+	IsVerified bool `protobuf:"varint,4,opt,name=is_verified,json=isVerified,proto3" json:"is_verified,omitempty"`
+	// True if this is the user's preferred email address. Only 1 email address will be
+	// primary.
+	IsPrimary bool `protobuf:"varint,5,opt,name=is_primary,json=isPrimary,proto3" json:"is_primary,omitempty"`
+	// Unix timestamp when email was created.
+	CreatedAt int64 `protobuf:"varint,6,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	// Unix timestamp when email was last updated.
+	UpdatedAt            int64    `protobuf:"varint,7,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *GetByIdRequest) Reset()         { *m = GetByIdRequest{} }
-func (m *GetByIdRequest) String() string { return proto.CompactTextString(m) }
-func (*GetByIdRequest) ProtoMessage()    {}
-func (*GetByIdRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_f9ac5b333fba7e6c, []int{1}
+func (m *EmailResponse) Reset()         { *m = EmailResponse{} }
+func (m *EmailResponse) String() string { return proto.CompactTextString(m) }
+func (*EmailResponse) ProtoMessage()    {}
+func (*EmailResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_account_service_aff4717675df9ebc, []int{1}
 }
-func (m *GetByIdRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GetByIdRequest.Unmarshal(m, b)
+func (m *EmailResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_EmailResponse.Unmarshal(m, b)
 }
-func (m *GetByIdRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GetByIdRequest.Marshal(b, m, deterministic)
+func (m *EmailResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_EmailResponse.Marshal(b, m, deterministic)
 }
-func (dst *GetByIdRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetByIdRequest.Merge(dst, src)
+func (dst *EmailResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_EmailResponse.Merge(dst, src)
 }
-func (m *GetByIdRequest) XXX_Size() int {
-	return xxx_messageInfo_GetByIdRequest.Size(m)
+func (m *EmailResponse) XXX_Size() int {
+	return xxx_messageInfo_EmailResponse.Size(m)
 }
-func (m *GetByIdRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_GetByIdRequest.DiscardUnknown(m)
+func (m *EmailResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_EmailResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_GetByIdRequest proto.InternalMessageInfo
+var xxx_messageInfo_EmailResponse proto.InternalMessageInfo
 
-func (m *GetByIdRequest) GetId() string {
+func (m *EmailResponse) GetId() string {
 	if m != nil {
 		return m.Id
 	}
 	return ""
 }
 
-type GetByEmailRequest struct {
-	Email                string   `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
+func (m *EmailResponse) GetAccountId() string {
+	if m != nil {
+		return m.AccountId
+	}
+	return ""
+}
+
+func (m *EmailResponse) GetEmail() string {
+	if m != nil {
+		return m.Email
+	}
+	return ""
+}
+
+func (m *EmailResponse) GetIsVerified() bool {
+	if m != nil {
+		return m.IsVerified
+	}
+	return false
+}
+
+func (m *EmailResponse) GetIsPrimary() bool {
+	if m != nil {
+		return m.IsPrimary
+	}
+	return false
+}
+
+func (m *EmailResponse) GetCreatedAt() int64 {
+	if m != nil {
+		return m.CreatedAt
+	}
+	return 0
+}
+
+func (m *EmailResponse) GetUpdatedAt() int64 {
+	if m != nil {
+		return m.UpdatedAt
+	}
+	return 0
+}
+
+type GetAccountByIdRequest struct {
+	AccountId            string   `protobuf:"bytes,1,opt,name=account_id,json=accountId,proto3" json:"account_id,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *GetByEmailRequest) Reset()         { *m = GetByEmailRequest{} }
-func (m *GetByEmailRequest) String() string { return proto.CompactTextString(m) }
-func (*GetByEmailRequest) ProtoMessage()    {}
-func (*GetByEmailRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_f9ac5b333fba7e6c, []int{2}
+func (m *GetAccountByIdRequest) Reset()         { *m = GetAccountByIdRequest{} }
+func (m *GetAccountByIdRequest) String() string { return proto.CompactTextString(m) }
+func (*GetAccountByIdRequest) ProtoMessage()    {}
+func (*GetAccountByIdRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_account_service_aff4717675df9ebc, []int{2}
 }
-func (m *GetByEmailRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GetByEmailRequest.Unmarshal(m, b)
+func (m *GetAccountByIdRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetAccountByIdRequest.Unmarshal(m, b)
 }
-func (m *GetByEmailRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GetByEmailRequest.Marshal(b, m, deterministic)
+func (m *GetAccountByIdRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetAccountByIdRequest.Marshal(b, m, deterministic)
 }
-func (dst *GetByEmailRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetByEmailRequest.Merge(dst, src)
+func (dst *GetAccountByIdRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetAccountByIdRequest.Merge(dst, src)
 }
-func (m *GetByEmailRequest) XXX_Size() int {
-	return xxx_messageInfo_GetByEmailRequest.Size(m)
+func (m *GetAccountByIdRequest) XXX_Size() int {
+	return xxx_messageInfo_GetAccountByIdRequest.Size(m)
 }
-func (m *GetByEmailRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_GetByEmailRequest.DiscardUnknown(m)
+func (m *GetAccountByIdRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetAccountByIdRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_GetByEmailRequest proto.InternalMessageInfo
+var xxx_messageInfo_GetAccountByIdRequest proto.InternalMessageInfo
 
-func (m *GetByEmailRequest) GetEmail() string {
+func (m *GetAccountByIdRequest) GetAccountId() string {
 	if m != nil {
-		return m.Email
+		return m.AccountId
 	}
 	return ""
 }
@@ -165,7 +413,7 @@ func (m *AuthenticateByEmailRequest) Reset()         { *m = AuthenticateByEmailR
 func (m *AuthenticateByEmailRequest) String() string { return proto.CompactTextString(m) }
 func (*AuthenticateByEmailRequest) ProtoMessage()    {}
 func (*AuthenticateByEmailRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_f9ac5b333fba7e6c, []int{3}
+	return fileDescriptor_account_service_aff4717675df9ebc, []int{3}
 }
 func (m *AuthenticateByEmailRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AuthenticateByEmailRequest.Unmarshal(m, b)
@@ -199,127 +447,260 @@ func (m *AuthenticateByEmailRequest) GetPassword() string {
 	return ""
 }
 
-type GeneratePasswordTokenRequest struct {
+// *
+// ResendVerificationRequest schedules a reset password email.
+//
+// The link expires after 3 hours.
+type ForgotPasswordRequest struct {
 	Email                string   `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *GeneratePasswordTokenRequest) Reset()         { *m = GeneratePasswordTokenRequest{} }
-func (m *GeneratePasswordTokenRequest) String() string { return proto.CompactTextString(m) }
-func (*GeneratePasswordTokenRequest) ProtoMessage()    {}
-func (*GeneratePasswordTokenRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_f9ac5b333fba7e6c, []int{4}
+func (m *ForgotPasswordRequest) Reset()         { *m = ForgotPasswordRequest{} }
+func (m *ForgotPasswordRequest) String() string { return proto.CompactTextString(m) }
+func (*ForgotPasswordRequest) ProtoMessage()    {}
+func (*ForgotPasswordRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_account_service_aff4717675df9ebc, []int{4}
 }
-func (m *GeneratePasswordTokenRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GeneratePasswordTokenRequest.Unmarshal(m, b)
+func (m *ForgotPasswordRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ForgotPasswordRequest.Unmarshal(m, b)
 }
-func (m *GeneratePasswordTokenRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GeneratePasswordTokenRequest.Marshal(b, m, deterministic)
+func (m *ForgotPasswordRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ForgotPasswordRequest.Marshal(b, m, deterministic)
 }
-func (dst *GeneratePasswordTokenRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GeneratePasswordTokenRequest.Merge(dst, src)
+func (dst *ForgotPasswordRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ForgotPasswordRequest.Merge(dst, src)
 }
-func (m *GeneratePasswordTokenRequest) XXX_Size() int {
-	return xxx_messageInfo_GeneratePasswordTokenRequest.Size(m)
+func (m *ForgotPasswordRequest) XXX_Size() int {
+	return xxx_messageInfo_ForgotPasswordRequest.Size(m)
 }
-func (m *GeneratePasswordTokenRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_GeneratePasswordTokenRequest.DiscardUnknown(m)
+func (m *ForgotPasswordRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_ForgotPasswordRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_GeneratePasswordTokenRequest proto.InternalMessageInfo
+var xxx_messageInfo_ForgotPasswordRequest proto.InternalMessageInfo
 
-func (m *GeneratePasswordTokenRequest) GetEmail() string {
+func (m *ForgotPasswordRequest) GetEmail() string {
 	if m != nil {
 		return m.Email
 	}
 	return ""
 }
 
-type GeneratePasswordTokenResponse struct {
-	Token                string   `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
+// *
+// ForgotPassword sends an empty response when a new forgot password
+// email has been scheduled. Normally an email arrives within a couple of minutes.
+//
+// Returns a NotFound error code if the email address did not match any account.
+type ForgotPasswordResponse struct {
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *GeneratePasswordTokenResponse) Reset()         { *m = GeneratePasswordTokenResponse{} }
-func (m *GeneratePasswordTokenResponse) String() string { return proto.CompactTextString(m) }
-func (*GeneratePasswordTokenResponse) ProtoMessage()    {}
-func (*GeneratePasswordTokenResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_f9ac5b333fba7e6c, []int{5}
+func (m *ForgotPasswordResponse) Reset()         { *m = ForgotPasswordResponse{} }
+func (m *ForgotPasswordResponse) String() string { return proto.CompactTextString(m) }
+func (*ForgotPasswordResponse) ProtoMessage()    {}
+func (*ForgotPasswordResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_account_service_aff4717675df9ebc, []int{5}
 }
-func (m *GeneratePasswordTokenResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GeneratePasswordTokenResponse.Unmarshal(m, b)
+func (m *ForgotPasswordResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ForgotPasswordResponse.Unmarshal(m, b)
 }
-func (m *GeneratePasswordTokenResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GeneratePasswordTokenResponse.Marshal(b, m, deterministic)
+func (m *ForgotPasswordResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ForgotPasswordResponse.Marshal(b, m, deterministic)
 }
-func (dst *GeneratePasswordTokenResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GeneratePasswordTokenResponse.Merge(dst, src)
+func (dst *ForgotPasswordResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ForgotPasswordResponse.Merge(dst, src)
 }
-func (m *GeneratePasswordTokenResponse) XXX_Size() int {
-	return xxx_messageInfo_GeneratePasswordTokenResponse.Size(m)
+func (m *ForgotPasswordResponse) XXX_Size() int {
+	return xxx_messageInfo_ForgotPasswordResponse.Size(m)
 }
-func (m *GeneratePasswordTokenResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_GeneratePasswordTokenResponse.DiscardUnknown(m)
+func (m *ForgotPasswordResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_ForgotPasswordResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_GeneratePasswordTokenResponse proto.InternalMessageInfo
+var xxx_messageInfo_ForgotPasswordResponse proto.InternalMessageInfo
 
-func (m *GeneratePasswordTokenResponse) GetToken() string {
+// *
+// ResetPassword updates an account password using a reset token as proof.
+type ResetPasswordRequest struct {
+	ResetToken           string   `protobuf:"bytes,1,opt,name=reset_token,json=resetToken,proto3" json:"reset_token,omitempty"`
+	NewPassword          string   `protobuf:"bytes,2,opt,name=new_password,json=newPassword,proto3" json:"new_password,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *ResetPasswordRequest) Reset()         { *m = ResetPasswordRequest{} }
+func (m *ResetPasswordRequest) String() string { return proto.CompactTextString(m) }
+func (*ResetPasswordRequest) ProtoMessage()    {}
+func (*ResetPasswordRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_account_service_aff4717675df9ebc, []int{6}
+}
+func (m *ResetPasswordRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ResetPasswordRequest.Unmarshal(m, b)
+}
+func (m *ResetPasswordRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ResetPasswordRequest.Marshal(b, m, deterministic)
+}
+func (dst *ResetPasswordRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ResetPasswordRequest.Merge(dst, src)
+}
+func (m *ResetPasswordRequest) XXX_Size() int {
+	return xxx_messageInfo_ResetPasswordRequest.Size(m)
+}
+func (m *ResetPasswordRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_ResetPasswordRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ResetPasswordRequest proto.InternalMessageInfo
+
+func (m *ResetPasswordRequest) GetResetToken() string {
 	if m != nil {
-		return m.Token
+		return m.ResetToken
 	}
 	return ""
 }
 
-type ChangePasswordRequest struct {
-	Token                string   `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
+func (m *ResetPasswordRequest) GetNewPassword() string {
+	if m != nil {
+		return m.NewPassword
+	}
+	return ""
+}
+
+// *
+// ResetPassword sends an empty response when the password was updated
+// successfully.
+//
+// Returns an Unauthenticated error if the reset token does not exist or
+// has expired.
+type ResetPasswordResponse struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *ResetPasswordResponse) Reset()         { *m = ResetPasswordResponse{} }
+func (m *ResetPasswordResponse) String() string { return proto.CompactTextString(m) }
+func (*ResetPasswordResponse) ProtoMessage()    {}
+func (*ResetPasswordResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_account_service_aff4717675df9ebc, []int{7}
+}
+func (m *ResetPasswordResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ResetPasswordResponse.Unmarshal(m, b)
+}
+func (m *ResetPasswordResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ResetPasswordResponse.Marshal(b, m, deterministic)
+}
+func (dst *ResetPasswordResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ResetPasswordResponse.Merge(dst, src)
+}
+func (m *ResetPasswordResponse) XXX_Size() int {
+	return xxx_messageInfo_ResetPasswordResponse.Size(m)
+}
+func (m *ResetPasswordResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_ResetPasswordResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ResetPasswordResponse proto.InternalMessageInfo
+
+// *
+// UpdatePasswordRequest changes an account password with a user password as
+// verification.
+type UpdatePasswordRequest struct {
+	AccountId            string   `protobuf:"bytes,1,opt,name=account_id,json=accountId,proto3" json:"account_id,omitempty"`
 	Password             string   `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
+	NewPassword          string   `protobuf:"bytes,3,opt,name=new_password,json=newPassword,proto3" json:"new_password,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *ChangePasswordRequest) Reset()         { *m = ChangePasswordRequest{} }
-func (m *ChangePasswordRequest) String() string { return proto.CompactTextString(m) }
-func (*ChangePasswordRequest) ProtoMessage()    {}
-func (*ChangePasswordRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_f9ac5b333fba7e6c, []int{6}
+func (m *UpdatePasswordRequest) Reset()         { *m = UpdatePasswordRequest{} }
+func (m *UpdatePasswordRequest) String() string { return proto.CompactTextString(m) }
+func (*UpdatePasswordRequest) ProtoMessage()    {}
+func (*UpdatePasswordRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_account_service_aff4717675df9ebc, []int{8}
 }
-func (m *ChangePasswordRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_ChangePasswordRequest.Unmarshal(m, b)
+func (m *UpdatePasswordRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_UpdatePasswordRequest.Unmarshal(m, b)
 }
-func (m *ChangePasswordRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ChangePasswordRequest.Marshal(b, m, deterministic)
+func (m *UpdatePasswordRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_UpdatePasswordRequest.Marshal(b, m, deterministic)
 }
-func (dst *ChangePasswordRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ChangePasswordRequest.Merge(dst, src)
+func (dst *UpdatePasswordRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_UpdatePasswordRequest.Merge(dst, src)
 }
-func (m *ChangePasswordRequest) XXX_Size() int {
-	return xxx_messageInfo_ChangePasswordRequest.Size(m)
+func (m *UpdatePasswordRequest) XXX_Size() int {
+	return xxx_messageInfo_UpdatePasswordRequest.Size(m)
 }
-func (m *ChangePasswordRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_ChangePasswordRequest.DiscardUnknown(m)
+func (m *UpdatePasswordRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_UpdatePasswordRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_ChangePasswordRequest proto.InternalMessageInfo
+var xxx_messageInfo_UpdatePasswordRequest proto.InternalMessageInfo
 
-func (m *ChangePasswordRequest) GetToken() string {
+func (m *UpdatePasswordRequest) GetAccountId() string {
 	if m != nil {
-		return m.Token
+		return m.AccountId
 	}
 	return ""
 }
 
-func (m *ChangePasswordRequest) GetPassword() string {
+func (m *UpdatePasswordRequest) GetPassword() string {
 	if m != nil {
 		return m.Password
 	}
 	return ""
 }
+
+func (m *UpdatePasswordRequest) GetNewPassword() string {
+	if m != nil {
+		return m.NewPassword
+	}
+	return ""
+}
+
+// *
+// UpdatePassword sends an empty response when the password was updated
+// successfully.
+//
+// Returns an Unauthenticated error if the password was invalid.
+//
+// Returns an NotFound error if the account could not be found.
+type UpdatePasswordResponse struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *UpdatePasswordResponse) Reset()         { *m = UpdatePasswordResponse{} }
+func (m *UpdatePasswordResponse) String() string { return proto.CompactTextString(m) }
+func (*UpdatePasswordResponse) ProtoMessage()    {}
+func (*UpdatePasswordResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_account_service_aff4717675df9ebc, []int{9}
+}
+func (m *UpdatePasswordResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_UpdatePasswordResponse.Unmarshal(m, b)
+}
+func (m *UpdatePasswordResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_UpdatePasswordResponse.Marshal(b, m, deterministic)
+}
+func (dst *UpdatePasswordResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_UpdatePasswordResponse.Merge(dst, src)
+}
+func (m *UpdatePasswordResponse) XXX_Size() int {
+	return xxx_messageInfo_UpdatePasswordResponse.Size(m)
+}
+func (m *UpdatePasswordResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_UpdatePasswordResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_UpdatePasswordResponse proto.InternalMessageInfo
 
 type VerifyEmailRequest struct {
 	Token                string   `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
@@ -332,7 +713,7 @@ func (m *VerifyEmailRequest) Reset()         { *m = VerifyEmailRequest{} }
 func (m *VerifyEmailRequest) String() string { return proto.CompactTextString(m) }
 func (*VerifyEmailRequest) ProtoMessage()    {}
 func (*VerifyEmailRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_f9ac5b333fba7e6c, []int{7}
+	return fileDescriptor_account_service_aff4717675df9ebc, []int{10}
 }
 func (m *VerifyEmailRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_VerifyEmailRequest.Unmarshal(m, b)
@@ -371,7 +752,7 @@ func (m *CreateAccountRequest) Reset()         { *m = CreateAccountRequest{} }
 func (m *CreateAccountRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateAccountRequest) ProtoMessage()    {}
 func (*CreateAccountRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_f9ac5b333fba7e6c, []int{8}
+	return fileDescriptor_account_service_aff4717675df9ebc, []int{11}
 }
 func (m *CreateAccountRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateAccountRequest.Unmarshal(m, b)
@@ -405,16 +786,182 @@ func (m *CreateAccountRequest) GetPassword() string {
 	return ""
 }
 
+// *
+// ResendVerificationRequest requests a new verification email.
+type ResendVerificationRequest struct {
+	Email                string   `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *ResendVerificationRequest) Reset()         { *m = ResendVerificationRequest{} }
+func (m *ResendVerificationRequest) String() string { return proto.CompactTextString(m) }
+func (*ResendVerificationRequest) ProtoMessage()    {}
+func (*ResendVerificationRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_account_service_aff4717675df9ebc, []int{12}
+}
+func (m *ResendVerificationRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ResendVerificationRequest.Unmarshal(m, b)
+}
+func (m *ResendVerificationRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ResendVerificationRequest.Marshal(b, m, deterministic)
+}
+func (dst *ResendVerificationRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ResendVerificationRequest.Merge(dst, src)
+}
+func (m *ResendVerificationRequest) XXX_Size() int {
+	return xxx_messageInfo_ResendVerificationRequest.Size(m)
+}
+func (m *ResendVerificationRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_ResendVerificationRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ResendVerificationRequest proto.InternalMessageInfo
+
+func (m *ResendVerificationRequest) GetEmail() string {
+	if m != nil {
+		return m.Email
+	}
+	return ""
+}
+
+// *
+// ResendVerification sends an empty response when a new verification
+// email has been scheduled. Normally an email arrives within a couple
+// of minutes.
+//
+// Returns a NotFound error code if the email address did not match
+// any account.
+//
+// Returns a FailedPrecondition error code if the specified email
+// address is already verified.
+type ResendVerificationResponse struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *ResendVerificationResponse) Reset()         { *m = ResendVerificationResponse{} }
+func (m *ResendVerificationResponse) String() string { return proto.CompactTextString(m) }
+func (*ResendVerificationResponse) ProtoMessage()    {}
+func (*ResendVerificationResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_account_service_aff4717675df9ebc, []int{13}
+}
+func (m *ResendVerificationResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ResendVerificationResponse.Unmarshal(m, b)
+}
+func (m *ResendVerificationResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ResendVerificationResponse.Marshal(b, m, deterministic)
+}
+func (dst *ResendVerificationResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ResendVerificationResponse.Merge(dst, src)
+}
+func (m *ResendVerificationResponse) XXX_Size() int {
+	return xxx_messageInfo_ResendVerificationResponse.Size(m)
+}
+func (m *ResendVerificationResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_ResendVerificationResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ResendVerificationResponse proto.InternalMessageInfo
+
+// *
+// CancelAccount disables an account and removes all auth tokens
+// associated with the user.
+//
+// Cancelled accounts are completely removed after 2 months.
+//
+// To regain access to a cancelled account before the account is
+// permanently deleted send an email to support@metrix.io
+type CancelAccountRequest struct {
+	AccountId            string   `protobuf:"bytes,1,opt,name=account_id,json=accountId,proto3" json:"account_id,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *CancelAccountRequest) Reset()         { *m = CancelAccountRequest{} }
+func (m *CancelAccountRequest) String() string { return proto.CompactTextString(m) }
+func (*CancelAccountRequest) ProtoMessage()    {}
+func (*CancelAccountRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_account_service_aff4717675df9ebc, []int{14}
+}
+func (m *CancelAccountRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CancelAccountRequest.Unmarshal(m, b)
+}
+func (m *CancelAccountRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CancelAccountRequest.Marshal(b, m, deterministic)
+}
+func (dst *CancelAccountRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CancelAccountRequest.Merge(dst, src)
+}
+func (m *CancelAccountRequest) XXX_Size() int {
+	return xxx_messageInfo_CancelAccountRequest.Size(m)
+}
+func (m *CancelAccountRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_CancelAccountRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CancelAccountRequest proto.InternalMessageInfo
+
+func (m *CancelAccountRequest) GetAccountId() string {
+	if m != nil {
+		return m.AccountId
+	}
+	return ""
+}
+
+// *
+// CancelAccount sends an empty response when the account has
+// successfully been cancelled.
+type CancelAccountResponse struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *CancelAccountResponse) Reset()         { *m = CancelAccountResponse{} }
+func (m *CancelAccountResponse) String() string { return proto.CompactTextString(m) }
+func (*CancelAccountResponse) ProtoMessage()    {}
+func (*CancelAccountResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_account_service_aff4717675df9ebc, []int{15}
+}
+func (m *CancelAccountResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CancelAccountResponse.Unmarshal(m, b)
+}
+func (m *CancelAccountResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CancelAccountResponse.Marshal(b, m, deterministic)
+}
+func (dst *CancelAccountResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CancelAccountResponse.Merge(dst, src)
+}
+func (m *CancelAccountResponse) XXX_Size() int {
+	return xxx_messageInfo_CancelAccountResponse.Size(m)
+}
+func (m *CancelAccountResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_CancelAccountResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CancelAccountResponse proto.InternalMessageInfo
+
 func init() {
 	proto.RegisterType((*AccountResponse)(nil), "proto.AccountResponse")
-	proto.RegisterType((*GetByIdRequest)(nil), "proto.GetByIdRequest")
-	proto.RegisterType((*GetByEmailRequest)(nil), "proto.GetByEmailRequest")
+	proto.RegisterType((*EmailResponse)(nil), "proto.EmailResponse")
+	proto.RegisterType((*GetAccountByIdRequest)(nil), "proto.GetAccountByIdRequest")
 	proto.RegisterType((*AuthenticateByEmailRequest)(nil), "proto.AuthenticateByEmailRequest")
-	proto.RegisterType((*GeneratePasswordTokenRequest)(nil), "proto.GeneratePasswordTokenRequest")
-	proto.RegisterType((*GeneratePasswordTokenResponse)(nil), "proto.GeneratePasswordTokenResponse")
-	proto.RegisterType((*ChangePasswordRequest)(nil), "proto.ChangePasswordRequest")
+	proto.RegisterType((*ForgotPasswordRequest)(nil), "proto.ForgotPasswordRequest")
+	proto.RegisterType((*ForgotPasswordResponse)(nil), "proto.ForgotPasswordResponse")
+	proto.RegisterType((*ResetPasswordRequest)(nil), "proto.ResetPasswordRequest")
+	proto.RegisterType((*ResetPasswordResponse)(nil), "proto.ResetPasswordResponse")
+	proto.RegisterType((*UpdatePasswordRequest)(nil), "proto.UpdatePasswordRequest")
+	proto.RegisterType((*UpdatePasswordResponse)(nil), "proto.UpdatePasswordResponse")
 	proto.RegisterType((*VerifyEmailRequest)(nil), "proto.VerifyEmailRequest")
 	proto.RegisterType((*CreateAccountRequest)(nil), "proto.CreateAccountRequest")
+	proto.RegisterType((*ResendVerificationRequest)(nil), "proto.ResendVerificationRequest")
+	proto.RegisterType((*ResendVerificationResponse)(nil), "proto.ResendVerificationResponse")
+	proto.RegisterType((*CancelAccountRequest)(nil), "proto.CancelAccountRequest")
+	proto.RegisterType((*CancelAccountResponse)(nil), "proto.CancelAccountResponse")
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -429,13 +976,15 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type AccountServiceClient interface {
-	Create(ctx context.Context, in *CreateAccountRequest, opts ...grpc.CallOption) (*AccountResponse, error)
-	GetById(ctx context.Context, in *GetByIdRequest, opts ...grpc.CallOption) (*AccountResponse, error)
-	GetByEmail(ctx context.Context, in *GetByEmailRequest, opts ...grpc.CallOption) (*AccountResponse, error)
+	CreateAccount(ctx context.Context, in *CreateAccountRequest, opts ...grpc.CallOption) (*AccountResponse, error)
+	GetAccountById(ctx context.Context, in *GetAccountByIdRequest, opts ...grpc.CallOption) (*AccountResponse, error)
 	AuthenticateByEmail(ctx context.Context, in *AuthenticateByEmailRequest, opts ...grpc.CallOption) (*AccountResponse, error)
-	GeneratePasswordToken(ctx context.Context, in *GeneratePasswordTokenRequest, opts ...grpc.CallOption) (*GeneratePasswordTokenResponse, error)
-	ChangePassword(ctx context.Context, in *ChangePasswordRequest, opts ...grpc.CallOption) (*AccountResponse, error)
-	VerifyEmail(ctx context.Context, in *VerifyEmailRequest, opts ...grpc.CallOption) (*AccountResponse, error)
+	ForgotPassword(ctx context.Context, in *ForgotPasswordRequest, opts ...grpc.CallOption) (*ForgotPasswordResponse, error)
+	ResetPassword(ctx context.Context, in *ResetPasswordRequest, opts ...grpc.CallOption) (*ResetPasswordResponse, error)
+	UpdatePassword(ctx context.Context, in *UpdatePasswordRequest, opts ...grpc.CallOption) (*UpdatePasswordResponse, error)
+	VerifyEmail(ctx context.Context, in *VerifyEmailRequest, opts ...grpc.CallOption) (*EmailResponse, error)
+	ResendVerification(ctx context.Context, in *ResendVerificationRequest, opts ...grpc.CallOption) (*ResendVerificationResponse, error)
+	CancelAccount(ctx context.Context, in *CancelAccountRequest, opts ...grpc.CallOption) (*AccountResponse, error)
 }
 
 type accountServiceClient struct {
@@ -446,27 +995,18 @@ func NewAccountServiceClient(cc *grpc.ClientConn) AccountServiceClient {
 	return &accountServiceClient{cc}
 }
 
-func (c *accountServiceClient) Create(ctx context.Context, in *CreateAccountRequest, opts ...grpc.CallOption) (*AccountResponse, error) {
+func (c *accountServiceClient) CreateAccount(ctx context.Context, in *CreateAccountRequest, opts ...grpc.CallOption) (*AccountResponse, error) {
 	out := new(AccountResponse)
-	err := c.cc.Invoke(ctx, "/proto.AccountService/Create", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/proto.AccountService/CreateAccount", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *accountServiceClient) GetById(ctx context.Context, in *GetByIdRequest, opts ...grpc.CallOption) (*AccountResponse, error) {
+func (c *accountServiceClient) GetAccountById(ctx context.Context, in *GetAccountByIdRequest, opts ...grpc.CallOption) (*AccountResponse, error) {
 	out := new(AccountResponse)
-	err := c.cc.Invoke(ctx, "/proto.AccountService/GetById", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *accountServiceClient) GetByEmail(ctx context.Context, in *GetByEmailRequest, opts ...grpc.CallOption) (*AccountResponse, error) {
-	out := new(AccountResponse)
-	err := c.cc.Invoke(ctx, "/proto.AccountService/GetByEmail", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/proto.AccountService/GetAccountById", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -482,27 +1022,54 @@ func (c *accountServiceClient) AuthenticateByEmail(ctx context.Context, in *Auth
 	return out, nil
 }
 
-func (c *accountServiceClient) GeneratePasswordToken(ctx context.Context, in *GeneratePasswordTokenRequest, opts ...grpc.CallOption) (*GeneratePasswordTokenResponse, error) {
-	out := new(GeneratePasswordTokenResponse)
-	err := c.cc.Invoke(ctx, "/proto.AccountService/GeneratePasswordToken", in, out, opts...)
+func (c *accountServiceClient) ForgotPassword(ctx context.Context, in *ForgotPasswordRequest, opts ...grpc.CallOption) (*ForgotPasswordResponse, error) {
+	out := new(ForgotPasswordResponse)
+	err := c.cc.Invoke(ctx, "/proto.AccountService/ForgotPassword", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *accountServiceClient) ChangePassword(ctx context.Context, in *ChangePasswordRequest, opts ...grpc.CallOption) (*AccountResponse, error) {
-	out := new(AccountResponse)
-	err := c.cc.Invoke(ctx, "/proto.AccountService/ChangePassword", in, out, opts...)
+func (c *accountServiceClient) ResetPassword(ctx context.Context, in *ResetPasswordRequest, opts ...grpc.CallOption) (*ResetPasswordResponse, error) {
+	out := new(ResetPasswordResponse)
+	err := c.cc.Invoke(ctx, "/proto.AccountService/ResetPassword", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *accountServiceClient) VerifyEmail(ctx context.Context, in *VerifyEmailRequest, opts ...grpc.CallOption) (*AccountResponse, error) {
-	out := new(AccountResponse)
+func (c *accountServiceClient) UpdatePassword(ctx context.Context, in *UpdatePasswordRequest, opts ...grpc.CallOption) (*UpdatePasswordResponse, error) {
+	out := new(UpdatePasswordResponse)
+	err := c.cc.Invoke(ctx, "/proto.AccountService/UpdatePassword", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *accountServiceClient) VerifyEmail(ctx context.Context, in *VerifyEmailRequest, opts ...grpc.CallOption) (*EmailResponse, error) {
+	out := new(EmailResponse)
 	err := c.cc.Invoke(ctx, "/proto.AccountService/VerifyEmail", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *accountServiceClient) ResendVerification(ctx context.Context, in *ResendVerificationRequest, opts ...grpc.CallOption) (*ResendVerificationResponse, error) {
+	out := new(ResendVerificationResponse)
+	err := c.cc.Invoke(ctx, "/proto.AccountService/ResendVerification", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *accountServiceClient) CancelAccount(ctx context.Context, in *CancelAccountRequest, opts ...grpc.CallOption) (*AccountResponse, error) {
+	out := new(AccountResponse)
+	err := c.cc.Invoke(ctx, "/proto.AccountService/CancelAccount", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -511,69 +1078,53 @@ func (c *accountServiceClient) VerifyEmail(ctx context.Context, in *VerifyEmailR
 
 // AccountServiceServer is the server API for AccountService service.
 type AccountServiceServer interface {
-	Create(context.Context, *CreateAccountRequest) (*AccountResponse, error)
-	GetById(context.Context, *GetByIdRequest) (*AccountResponse, error)
-	GetByEmail(context.Context, *GetByEmailRequest) (*AccountResponse, error)
+	CreateAccount(context.Context, *CreateAccountRequest) (*AccountResponse, error)
+	GetAccountById(context.Context, *GetAccountByIdRequest) (*AccountResponse, error)
 	AuthenticateByEmail(context.Context, *AuthenticateByEmailRequest) (*AccountResponse, error)
-	GeneratePasswordToken(context.Context, *GeneratePasswordTokenRequest) (*GeneratePasswordTokenResponse, error)
-	ChangePassword(context.Context, *ChangePasswordRequest) (*AccountResponse, error)
-	VerifyEmail(context.Context, *VerifyEmailRequest) (*AccountResponse, error)
+	ForgotPassword(context.Context, *ForgotPasswordRequest) (*ForgotPasswordResponse, error)
+	ResetPassword(context.Context, *ResetPasswordRequest) (*ResetPasswordResponse, error)
+	UpdatePassword(context.Context, *UpdatePasswordRequest) (*UpdatePasswordResponse, error)
+	VerifyEmail(context.Context, *VerifyEmailRequest) (*EmailResponse, error)
+	ResendVerification(context.Context, *ResendVerificationRequest) (*ResendVerificationResponse, error)
+	CancelAccount(context.Context, *CancelAccountRequest) (*AccountResponse, error)
 }
 
 func RegisterAccountServiceServer(s *grpc.Server, srv AccountServiceServer) {
 	s.RegisterService(&_AccountService_serviceDesc, srv)
 }
 
-func _AccountService_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _AccountService_CreateAccount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CreateAccountRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AccountServiceServer).Create(ctx, in)
+		return srv.(AccountServiceServer).CreateAccount(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/proto.AccountService/Create",
+		FullMethod: "/proto.AccountService/CreateAccount",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AccountServiceServer).Create(ctx, req.(*CreateAccountRequest))
+		return srv.(AccountServiceServer).CreateAccount(ctx, req.(*CreateAccountRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AccountService_GetById_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetByIdRequest)
+func _AccountService_GetAccountById_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAccountByIdRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AccountServiceServer).GetById(ctx, in)
+		return srv.(AccountServiceServer).GetAccountById(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/proto.AccountService/GetById",
+		FullMethod: "/proto.AccountService/GetAccountById",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AccountServiceServer).GetById(ctx, req.(*GetByIdRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AccountService_GetByEmail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetByEmailRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AccountServiceServer).GetByEmail(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/proto.AccountService/GetByEmail",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AccountServiceServer).GetByEmail(ctx, req.(*GetByEmailRequest))
+		return srv.(AccountServiceServer).GetAccountById(ctx, req.(*GetAccountByIdRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -596,38 +1147,56 @@ func _AccountService_AuthenticateByEmail_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AccountService_GeneratePasswordToken_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GeneratePasswordTokenRequest)
+func _AccountService_ForgotPassword_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ForgotPasswordRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AccountServiceServer).GeneratePasswordToken(ctx, in)
+		return srv.(AccountServiceServer).ForgotPassword(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/proto.AccountService/GeneratePasswordToken",
+		FullMethod: "/proto.AccountService/ForgotPassword",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AccountServiceServer).GeneratePasswordToken(ctx, req.(*GeneratePasswordTokenRequest))
+		return srv.(AccountServiceServer).ForgotPassword(ctx, req.(*ForgotPasswordRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AccountService_ChangePassword_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ChangePasswordRequest)
+func _AccountService_ResetPassword_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ResetPasswordRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AccountServiceServer).ChangePassword(ctx, in)
+		return srv.(AccountServiceServer).ResetPassword(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/proto.AccountService/ChangePassword",
+		FullMethod: "/proto.AccountService/ResetPassword",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AccountServiceServer).ChangePassword(ctx, req.(*ChangePasswordRequest))
+		return srv.(AccountServiceServer).ResetPassword(ctx, req.(*ResetPasswordRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AccountService_UpdatePassword_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdatePasswordRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AccountServiceServer).UpdatePassword(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/proto.AccountService/UpdatePassword",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AccountServiceServer).UpdatePassword(ctx, req.(*UpdatePasswordRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -650,37 +1219,81 @@ func _AccountService_VerifyEmail_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
+func _AccountService_ResendVerification_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ResendVerificationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AccountServiceServer).ResendVerification(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/proto.AccountService/ResendVerification",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AccountServiceServer).ResendVerification(ctx, req.(*ResendVerificationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AccountService_CancelAccount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CancelAccountRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AccountServiceServer).CancelAccount(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/proto.AccountService/CancelAccount",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AccountServiceServer).CancelAccount(ctx, req.(*CancelAccountRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _AccountService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "proto.AccountService",
 	HandlerType: (*AccountServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "Create",
-			Handler:    _AccountService_Create_Handler,
+			MethodName: "CreateAccount",
+			Handler:    _AccountService_CreateAccount_Handler,
 		},
 		{
-			MethodName: "GetById",
-			Handler:    _AccountService_GetById_Handler,
-		},
-		{
-			MethodName: "GetByEmail",
-			Handler:    _AccountService_GetByEmail_Handler,
+			MethodName: "GetAccountById",
+			Handler:    _AccountService_GetAccountById_Handler,
 		},
 		{
 			MethodName: "AuthenticateByEmail",
 			Handler:    _AccountService_AuthenticateByEmail_Handler,
 		},
 		{
-			MethodName: "GeneratePasswordToken",
-			Handler:    _AccountService_GeneratePasswordToken_Handler,
+			MethodName: "ForgotPassword",
+			Handler:    _AccountService_ForgotPassword_Handler,
 		},
 		{
-			MethodName: "ChangePassword",
-			Handler:    _AccountService_ChangePassword_Handler,
+			MethodName: "ResetPassword",
+			Handler:    _AccountService_ResetPassword_Handler,
+		},
+		{
+			MethodName: "UpdatePassword",
+			Handler:    _AccountService_UpdatePassword_Handler,
 		},
 		{
 			MethodName: "VerifyEmail",
 			Handler:    _AccountService_VerifyEmail_Handler,
+		},
+		{
+			MethodName: "ResendVerification",
+			Handler:    _AccountService_ResendVerification_Handler,
+		},
+		{
+			MethodName: "CancelAccount",
+			Handler:    _AccountService_CancelAccount_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -688,35 +1301,62 @@ var _AccountService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("account-service.proto", fileDescriptor_account_service_f9ac5b333fba7e6c)
+	proto.RegisterFile("account-service.proto", fileDescriptor_account_service_aff4717675df9ebc)
 }
 
-var fileDescriptor_account_service_f9ac5b333fba7e6c = []byte{
-	// 407 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x92, 0xcf, 0x6e, 0xda, 0x40,
-	0x10, 0xc6, 0x0b, 0x2d, 0x94, 0x0e, 0xad, 0xab, 0x6e, 0x71, 0xe5, 0xba, 0x54, 0xa5, 0xa6, 0x07,
-	0x5a, 0xa9, 0x1c, 0xf2, 0xe7, 0x92, 0x4b, 0x02, 0x28, 0x02, 0x2e, 0x51, 0xe4, 0x44, 0xb9, 0xa2,
-	0x8d, 0x3d, 0x81, 0x55, 0x82, 0xed, 0xec, 0x2e, 0x44, 0x3c, 0x49, 0x5e, 0x37, 0xc2, 0x5e, 0x3b,
-	0x06, 0x6c, 0x2b, 0xca, 0xc9, 0x9a, 0x99, 0xef, 0x9b, 0x19, 0xcf, 0xfe, 0x40, 0xa7, 0x8e, 0xe3,
-	0x2f, 0x3c, 0xf9, 0x5f, 0x20, 0x5f, 0x32, 0x07, 0xbb, 0x01, 0xf7, 0xa5, 0x4f, 0x2a, 0xe1, 0xc7,
-	0x9a, 0xc2, 0xe7, 0x5e, 0x54, 0xb7, 0x51, 0x04, 0xbe, 0x27, 0x90, 0x68, 0x50, 0x66, 0xae, 0x51,
-	0x6a, 0x95, 0x3a, 0x1f, 0xec, 0x32, 0x73, 0x49, 0x1b, 0x3e, 0x05, 0x9c, 0xcd, 0x29, 0x5f, 0x4d,
-	0x70, 0x4e, 0xd9, 0x9d, 0x51, 0x0e, 0x4b, 0x1f, 0x55, 0xf2, 0x74, 0x9d, 0x23, 0xbf, 0xa0, 0xce,
-	0xc4, 0x64, 0x89, 0x9c, 0xdd, 0x30, 0x74, 0x8d, 0xb7, 0xad, 0x52, 0xa7, 0x66, 0x03, 0x13, 0x57,
-	0x2a, 0x63, 0xb5, 0x40, 0x1b, 0xa2, 0xec, 0xaf, 0xc6, 0xae, 0x8d, 0xf7, 0x0b, 0x14, 0x72, 0x7b,
-	0x8e, 0xf5, 0x17, 0xbe, 0x84, 0x8a, 0xb0, 0x61, 0x2c, 0x6a, 0x40, 0x25, 0x1a, 0x1a, 0xe9, 0xa2,
-	0xc0, 0x3a, 0x03, 0xb3, 0xb7, 0x90, 0x33, 0xf4, 0x24, 0x73, 0xa8, 0xc4, 0x97, 0x78, 0x88, 0x09,
-	0xb5, 0x80, 0x0a, 0xf1, 0xe0, 0x73, 0x57, 0xfd, 0x41, 0x12, 0x5b, 0x07, 0xd0, 0x1c, 0xa2, 0x87,
-	0x9c, 0x4a, 0x3c, 0x57, 0xb9, 0x4b, 0xff, 0x16, 0xbd, 0xe2, 0x2d, 0x0e, 0xe1, 0x67, 0x8e, 0x4b,
-	0x5d, 0xb2, 0x01, 0x15, 0xb9, 0x4e, 0xc4, 0xb6, 0x30, 0xb0, 0xc6, 0xa0, 0x0f, 0x66, 0xd4, 0x9b,
-	0x26, 0xa6, 0xd4, 0x94, 0x5d, 0x79, 0xe1, 0xde, 0xff, 0x80, 0x84, 0x07, 0xde, 0xf9, 0xff, 0x8c,
-	0xb1, 0x23, 0x68, 0x0c, 0x38, 0x52, 0x89, 0xc9, 0x7b, 0xbf, 0xf2, 0x5a, 0x7b, 0x8f, 0xef, 0x40,
-	0x53, 0x4d, 0x2e, 0x22, 0xa6, 0xc8, 0x31, 0x54, 0xa3, 0xe6, 0xe4, 0x47, 0xc4, 0x57, 0x37, 0x6b,
-	0x96, 0xf9, 0x4d, 0x15, 0xb7, 0x90, 0xb3, 0xde, 0x90, 0x23, 0x78, 0xaf, 0xf0, 0x20, 0xba, 0x12,
-	0x6d, 0xe2, 0x52, 0xe0, 0x3d, 0x01, 0x78, 0x06, 0x87, 0x18, 0x69, 0x7b, 0xfa, 0x2e, 0x05, 0x1d,
-	0x6c, 0xf8, 0x9a, 0xc1, 0x13, 0xf9, 0x1d, 0x1b, 0x72, 0x59, 0x2b, 0xe8, 0xe9, 0x82, 0x9e, 0x49,
-	0x07, 0x69, 0x27, 0x0b, 0xe6, 0x13, 0x67, 0xfe, 0x29, 0x16, 0x25, 0x53, 0x46, 0xa0, 0x6d, 0xc2,
-	0x44, 0x9a, 0xf1, 0x03, 0x64, 0x31, 0x56, 0xb0, 0x6f, 0x1f, 0xea, 0x29, 0x96, 0xc8, 0x77, 0x25,
-	0xdc, 0xe5, 0x2b, 0xbf, 0xc7, 0x75, 0x35, 0x2c, 0xec, 0x3f, 0x05, 0x00, 0x00, 0xff, 0xff, 0xa0,
-	0xd0, 0x98, 0x30, 0x74, 0x04, 0x00, 0x00,
+var fileDescriptor_account_service_aff4717675df9ebc = []byte{
+	// 845 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x55, 0xc1, 0x6e, 0xdb, 0x46,
+	0x10, 0xb5, 0x2c, 0xcb, 0x96, 0x46, 0x91, 0x92, 0xac, 0x25, 0x65, 0xc3, 0xda, 0xb0, 0x4d, 0xa0,
+	0x80, 0x51, 0xc0, 0x01, 0x9a, 0xa2, 0x3d, 0x57, 0x09, 0x9a, 0x26, 0x40, 0xe1, 0x06, 0x6a, 0xd3,
+	0x43, 0x7b, 0x20, 0x28, 0x72, 0x64, 0x2f, 0x4c, 0x2d, 0xd9, 0xe5, 0xd2, 0x86, 0xfb, 0x35, 0xfd,
+	0xa1, 0x5e, 0xfa, 0x45, 0x05, 0x67, 0x57, 0x14, 0x45, 0x51, 0x2c, 0x90, 0x93, 0x38, 0xef, 0xbd,
+	0x1d, 0xce, 0xcc, 0xbe, 0x11, 0x61, 0xec, 0x07, 0x41, 0x9c, 0x49, 0x7d, 0x95, 0xa2, 0xba, 0x17,
+	0x01, 0xbe, 0x4a, 0x54, 0xac, 0x63, 0xd6, 0xa1, 0x1f, 0xf7, 0xef, 0x0e, 0x3c, 0x9d, 0x1a, 0xc1,
+	0x0c, 0xd3, 0x24, 0x96, 0x29, 0xb2, 0x21, 0xec, 0x8b, 0x90, 0xb7, 0xce, 0x5b, 0x97, 0xbd, 0xd9,
+	0xbe, 0x08, 0xd9, 0x33, 0x68, 0xa7, 0xd9, 0x9c, 0xef, 0x13, 0x90, 0x3f, 0x32, 0x06, 0x07, 0xd2,
+	0x5f, 0x22, 0x6f, 0x13, 0x44, 0xcf, 0xec, 0x14, 0xe0, 0x46, 0xdc, 0xa3, 0xf4, 0x88, 0x39, 0x20,
+	0xa6, 0x47, 0xc8, 0x75, 0x4e, 0x9f, 0x41, 0x7f, 0xe1, 0x2f, 0x45, 0xf4, 0x68, 0xf8, 0x0e, 0xf1,
+	0x60, 0xa0, 0x95, 0x60, 0x29, 0xc2, 0x30, 0x42, 0x23, 0x38, 0x34, 0x02, 0x03, 0x91, 0xc0, 0x81,
+	0xae, 0x14, 0xc1, 0x1d, 0xb1, 0x47, 0xc4, 0x16, 0x31, 0xbb, 0x02, 0x96, 0x28, 0x5c, 0xa0, 0x52,
+	0x18, 0x7a, 0x59, 0x8a, 0x8a, 0x54, 0x5d, 0x52, 0x3d, 0x2f, 0x98, 0x4f, 0x96, 0x60, 0x1c, 0x8e,
+	0x12, 0x15, 0x2f, 0x44, 0x84, 0xbc, 0x47, 0x9a, 0x55, 0x48, 0x8c, 0x08, 0x74, 0xa6, 0x90, 0x83,
+	0x65, 0x4c, 0x98, 0x33, 0x0f, 0x38, 0x4f, 0x85, 0x46, 0xde, 0x37, 0x8c, 0x0d, 0xd9, 0x08, 0x3a,
+	0xb8, 0xf4, 0x45, 0xc4, 0x9f, 0x10, 0x6e, 0x02, 0xf6, 0x25, 0x0c, 0xe9, 0xc1, 0xbb, 0x47, 0x25,
+	0x16, 0x02, 0x43, 0x3e, 0x38, 0x6f, 0x5d, 0x76, 0x67, 0x03, 0x42, 0x7f, 0xb3, 0x20, 0x9b, 0xc0,
+	0xe1, 0x0d, 0xca, 0x10, 0x15, 0x1f, 0xd2, 0x69, 0x1b, 0xb1, 0x13, 0xe8, 0xcd, 0x85, 0xd2, 0xb7,
+	0xa1, 0xaf, 0x91, 0x3f, 0x35, 0xd3, 0x2c, 0x80, 0x7c, 0x16, 0x7f, 0xc5, 0x12, 0x85, 0x5c, 0xc4,
+	0xfc, 0x99, 0x99, 0xc5, 0x2a, 0xce, 0x33, 0x46, 0x71, 0xe0, 0x47, 0xc8, 0x9f, 0x9b, 0x8c, 0x26,
+	0x62, 0x17, 0xf0, 0x24, 0xb9, 0x8d, 0x25, 0x7a, 0x32, 0x5b, 0xce, 0x51, 0x71, 0x46, 0x6c, 0x9f,
+	0xb0, 0x6b, 0x82, 0xd8, 0x6b, 0x18, 0x97, 0x25, 0xeb, 0xd2, 0x8f, 0xa9, 0xf4, 0xe3, 0x92, 0xb6,
+	0x68, 0xe0, 0x14, 0x20, 0x50, 0xe8, 0x6b, 0x0c, 0x3d, 0x5f, 0xf3, 0xd1, 0x79, 0xeb, 0xb2, 0x3d,
+	0xeb, 0x59, 0x64, 0xaa, 0x73, 0x3a, 0x4b, 0xc2, 0x15, 0x3d, 0x36, 0xb4, 0x45, 0xa6, 0x3a, 0x2f,
+	0x2a, 0xf0, 0x65, 0x80, 0x51, 0x64, 0x04, 0x13, 0x12, 0xf4, 0x0b, 0x6c, 0xaa, 0xdd, 0x7f, 0x5b,
+	0x30, 0xf8, 0x21, 0x9f, 0xd9, 0x4e, 0x83, 0x9e, 0x02, 0x58, 0x93, 0x7b, 0x22, 0xb4, 0x3e, 0xed,
+	0x59, 0xe4, 0x43, 0xb8, 0xbe, 0x9f, 0x76, 0xf9, 0x7e, 0xce, 0xa0, 0x2f, 0xd2, 0x75, 0x87, 0x07,
+	0xd4, 0x21, 0x88, 0xb4, 0xdc, 0x98, 0x48, 0xbd, 0x44, 0x89, 0xa5, 0xaf, 0x1e, 0xc9, 0xb0, 0xdd,
+	0x59, 0x4f, 0xa4, 0x1f, 0x0d, 0x50, 0xe9, 0xfb, 0xb0, 0xb9, 0xef, 0xa3, 0x4a, 0xdf, 0xee, 0x77,
+	0x30, 0xfe, 0x11, 0xb5, 0xdd, 0xbc, 0x37, 0x8f, 0x1f, 0xc2, 0x19, 0xfe, 0x99, 0x61, 0xaa, 0x2b,
+	0xbd, 0xb4, 0x2a, 0xbd, 0xb8, 0xd7, 0xe0, 0x4c, 0x33, 0x7d, 0x8b, 0x52, 0x8b, 0xc0, 0xd7, 0xf8,
+	0xe6, 0xd1, 0x4e, 0xc6, 0x1c, 0x2e, 0x3a, 0x6d, 0x95, 0x3b, 0x75, 0xa0, 0x9b, 0xf8, 0x69, 0xfa,
+	0x10, 0xab, 0xd5, 0x70, 0x8a, 0xd8, 0xbd, 0x82, 0xf1, 0xbb, 0x58, 0xdd, 0xc4, 0xfa, 0xa3, 0x45,
+	0x1a, 0x53, 0xb9, 0x1c, 0x26, 0x55, 0xb9, 0xb9, 0x13, 0xf7, 0x77, 0x18, 0xcd, 0x30, 0xc5, 0xad,
+	0x3c, 0x67, 0xd0, 0x57, 0x39, 0xee, 0xe9, 0xf8, 0x0e, 0xa5, 0xcd, 0x06, 0x04, 0xfd, 0x9a, 0x23,
+	0xb9, 0x03, 0x24, 0x3e, 0x78, 0x95, 0x0a, 0xfb, 0x12, 0x1f, 0x56, 0xa9, 0xdc, 0x17, 0x30, 0xae,
+	0xe4, 0xb6, 0x2f, 0xcd, 0x60, 0xfc, 0x89, 0x46, 0x5a, 0x7d, 0x6b, 0xf3, 0x14, 0x9b, 0x26, 0xb2,
+	0x55, 0x4f, 0x7b, 0xbb, 0x1e, 0x0e, 0x93, 0xea, 0x6b, 0x6d, 0x41, 0x5f, 0x01, 0x23, 0xff, 0x6c,
+	0x5d, 0x4b, 0xb9, 0x7b, 0x13, 0xb8, 0xef, 0x61, 0xf4, 0x96, 0xec, 0x52, 0xfc, 0xff, 0x7e, 0xee,
+	0x25, 0x7e, 0x0d, 0x2f, 0xf3, 0xf9, 0xc8, 0xd0, 0x78, 0x37, 0xf0, 0xb5, 0x88, 0x65, 0xf3, 0x45,
+	0x9e, 0x80, 0x53, 0x77, 0xc4, 0xb6, 0xf1, 0x2d, 0x8c, 0xde, 0xd2, 0x06, 0x56, 0x4a, 0xfb, 0x1f,
+	0x73, 0xbe, 0x80, 0x71, 0xe5, 0x98, 0xc9, 0xf7, 0xfa, 0x9f, 0x0e, 0x0c, 0x2d, 0xf6, 0x8b, 0xf9,
+	0x0a, 0xb1, 0x77, 0x30, 0xd8, 0xe8, 0x9e, 0x7d, 0x61, 0x3e, 0x4c, 0xaf, 0xea, 0x66, 0xe2, 0x4c,
+	0x2c, 0x59, 0x49, 0xec, 0xee, 0xb1, 0xf7, 0x30, 0xdc, 0x5c, 0x24, 0x76, 0x62, 0xb5, 0xb5, 0xfb,
+	0xd5, 0x90, 0x69, 0x06, 0xc7, 0x35, 0xab, 0xc5, 0x2e, 0x56, 0x07, 0x76, 0xae, 0x5d, 0x43, 0xce,
+	0x9f, 0x61, 0xb8, 0xb9, 0x2f, 0x45, 0x75, 0xb5, 0x5b, 0xe7, 0x9c, 0xee, 0x60, 0x8b, 0x84, 0x3f,
+	0xc1, 0x60, 0x63, 0x15, 0x8a, 0xb1, 0xd5, 0x2d, 0x9f, 0x73, 0x52, 0x4f, 0x96, 0xcb, 0xdb, 0x34,
+	0x72, 0x51, 0x5e, 0xed, 0x5a, 0x15, 0xe5, 0xed, 0x70, 0xff, 0x1e, 0xfb, 0x1e, 0xfa, 0x25, 0xff,
+	0xb3, 0x97, 0x56, 0xbf, 0xbd, 0x13, 0xce, 0xc8, 0x52, 0x1b, 0xff, 0xec, 0xee, 0x1e, 0xfb, 0x03,
+	0xd8, 0xb6, 0x31, 0xd9, 0x79, 0xa9, 0x91, 0x5a, 0x9b, 0x3b, 0x17, 0x0d, 0x8a, 0x22, 0x79, 0x6e,
+	0xba, 0xb2, 0x41, 0xd7, 0xa6, 0xab, 0x71, 0xfb, 0xee, 0x6b, 0x9d, 0x1f, 0x12, 0xf1, 0xcd, 0x7f,
+	0x01, 0x00, 0x00, 0xff, 0xff, 0x47, 0x59, 0x31, 0x18, 0x5c, 0x09, 0x00, 0x00,
 }
