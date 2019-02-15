@@ -1,0 +1,294 @@
+/**
+ * V0 MAY INTRODUCE BACKWARDS INCOMPATIBLE CHANGES WITHOUT NOTICE!!!
+ *
+ * DO NOT USE UNLESS YOU KNOW WHAT YOU'RE DOING.
+ */
+syntax = "proto3";
+
+package metrixio.proto.accounts.v0;
+
+option go_package = "github.com/metrix-io/proto/golang/accounts"; // Go.mod doesn't allow /v0 or /v1
+
+/**
+ * Account represents a user account.
+ *
+ * An account only contain the user's primary email address and
+ * phone number (if available). To view a secondary phone numbers
+ * or email addresses use one of the other RPC methods.
+ */
+message Account {
+  // The identifier of the user.
+  string id = 1;
+
+  // Subject is the fully qualified security identifier for this account.
+  string sub = 2;
+
+  // Username. The maximum length is 15 characters.
+  string username = 3;
+
+  // User's preferred e-mail address.
+  string email = 4;
+
+  // True if the user's e-mail address has been verified; otherwise false.
+  bool email_verified = 5;
+
+  Profile profile = 6;
+
+  // User's preferred phone number.
+  string phone_number = 7;
+
+  // True if the user's phone number has been verified; otherwise false.
+  bool phone_number_verified = 8;
+
+  // Unix timestamp when user account was created.
+  int64 created_at = 9;
+
+  // Unix timestamp when user information was last updated.
+  int64 updated_at = 10;
+
+  // Unix timestamp when account was cancelled. Cancelled accounts are
+  // automatically removed after one month.
+  int64 cancelled_at = 11;
+
+  // Unix timestamp when account was last logged in.
+  int64 last_login_at = 12;
+}
+
+/**
+ * Profile is based loosely on the OpenID Connect userinfo specification:
+ * https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims
+ *
+ * Be aware most fields are usually empty.
+ */
+message Profile {
+  // End-User's full name. The maximum length is 100 characters.
+  string name = 1;
+
+  // First name(s) of the user. The maximum length is 30 characters.
+  string first_name = 2;
+
+  // Last name(s) of the user. The maximum length is 30 characters.
+  string last_name = 3;
+
+  // Middle name(s) of the user. The maximum length is 30 characters.
+  string middle_name = 4;
+
+  // Casual name of the user that may or may not be the same as the given_name.
+  // The maximum length is 15 characters.
+  string nickname = 5;
+
+  // URL of user profile page. The maximum length is 255 characters.
+  string profile = 6;
+
+  // URL of user picture. The maximum length is 255 characters.
+  string picture = 7;
+
+  // URL of user web page or blog.
+  string website = 8;
+
+  // The gender is either "male", "female", "genderqueer" or empty.
+  string gender = 9;
+
+  // User's birthday is formatted in YYYY-MM-DD format.
+  string birthdate = 10;
+
+  // String from a time zone database representing the user's time zone.
+  string zoneinfo = 11;
+
+  // User's locale, represented as a BCP47 [RFC5646] language tag.
+  string locale = 12;
+}
+
+/**
+ * Email contains an email address. Email addresses are always unique.
+ */
+message Email {
+  // Unique email identifier.
+  string id = 1;
+
+  // The account to which this email belongs. An email can only belong
+  // to 1 account.
+  string account_id = 2;
+
+  // Email address.
+  string email = 3;
+
+  // True if this email address has been verified; otherwise false.
+  bool is_verified = 4;
+
+  // True if this is the user's preferred email address. Only 1 email address
+  // can be primary.
+  bool is_primary = 5;
+
+  // Unix timestamp when email was created.
+  int64 created_at = 6;
+
+  // Unix timestamp when email was last updated.
+  int64 updated_at = 7;
+}
+
+message GetAccountByIdRequest {
+  string account_id = 1;
+}
+
+/**
+ * AddAccountRequest creates a new account.
+ *
+ * Returns a FailedPrecondition error if the email is already in use.
+ * Returns InvalidArgument errors if any of the fields are invalid.
+ */
+message AddAccountRequest {
+  string email = 1;
+  string username = 2;
+  string password = 3;
+  Profile profile = 4;
+}
+
+/**
+ * UpdateAccountRequest allows to update user profile details.
+ */
+message UpdateAccountRequest {
+  string account_id = 1;
+  Profile profile = 3;
+}
+
+/**
+ * UpdateAccount sends an empty response when the account has
+ * successfully been updated.
+ *
+ * Returns InvalidArgument errors if any of the fields are invalid.
+ */
+message UpdateAccountResponse{}
+
+/**
+ * The login request marks a user as being logged in and returns
+ * the user account.
+ *
+ * It does not generate an authentication token; for this
+ * use the auth-service's login method.
+ */
+message LoginRequest {
+  // Login may contain either the email address or username
+  string login = 1;
+  string password = 2;
+}
+
+/**
+ * ResendVerificationRequest schedules a reset password email.
+ *
+ * The link expires after 3 hours.
+ */
+message ForgotPasswordRequest {
+  string email = 1;
+}
+
+/**
+ * ForgotPassword sends an empty response when a new forgot password
+ * email has been scheduled. Normally an email arrives within a couple of minutes.
+ *
+ * Returns a NotFound error code if the email address did not match any account.
+ */
+message ForgotPasswordResponse {}
+
+/**
+ * ResetPassword updates an account password using a reset token as proof.
+ */
+message ResetPasswordRequest {
+  string reset_token = 1;
+  string new_password = 2;
+}
+
+/**
+ * ResetPassword sends an empty response when the password was updated
+ * successfully.
+ *
+ * Returns an NotFound error if the reset token does not exist or has
+ * expired.
+ */
+message ResetPasswordResponse {}
+
+/**
+ * UpdatePasswordRequest changes an account password with a user password as
+ * verification.
+ */
+message UpdatePasswordRequest {
+  string account_id = 1;
+  string password = 2;
+  string new_password = 3;
+}
+
+/**
+ * UpdatePassword sends an empty response when the password was updated
+ * successfully.
+ *
+ * Returns an Unauthenticated error if the password was invalid.
+ * Returns a NotFound error if the account could not be found.
+ */
+message UpdatePasswordResponse {}
+
+/**
+ * VerifyEmailRequest verifies an email address.
+ *
+ * Returns an NotFound error if the token is invalid.
+ * Returns a FailedPrecondition if the email was already verified.
+ */
+message VerifyEmailRequest {
+  string token = 1;
+}
+
+/**
+ * VerifyEmail sends an empty response when the email was succesfully verified.
+ */
+message VerifyEmailResponse {}
+
+/**
+ * ResendVerificationRequest requests a new verification email.
+ * This is useful if the user forgot his or her email addresses.
+ */
+message ResendVerificationRequest {
+  string email = 1;
+}
+
+/**
+ * ResendVerification sends an empty response when a new verification
+ * email has been scheduled. Normally an email arrives within a couple
+ * of minutes.
+ *
+ * Returns a NotFound error code if the email address did not match
+ * any account.
+ *
+ * Returns a FailedPrecondition error code if the specified email
+ * address is already verified.
+ */
+message ResendVerificationResponse {}
+
+/**
+ * CancelAccount disables an account and removes all auth tokens
+ * associated with the account.
+ *
+ * Cancelled accounts are completely removed after 14 days.
+ *
+ * To regain access to a cancelled account before the account is
+ * permanently deleted send an email to support@metrix.io
+ */
+message CancelAccountRequest{
+  string account_id = 1;
+}
+
+/**
+ * CancelAccount sends an empty response when the account has
+ * successfully been cancelled.
+ */
+message CancelAccountResponse{}
+
+service AccountService {
+  rpc AddAccount (AddAccountRequest) returns (Account) {}
+  rpc GetAccountById (GetAccountByIdRequest) returns (Account) {}
+  rpc Login (LoginRequest) returns (Account) {}
+  rpc ForgotPassword (ForgotPasswordRequest) returns (ForgotPasswordResponse) {}
+  rpc ResetPassword (ResetPasswordRequest) returns (ResetPasswordResponse) {}
+  rpc UpdatePassword (UpdatePasswordRequest) returns (UpdatePasswordResponse) {}
+  rpc VerifyEmail (VerifyEmailRequest) returns (VerifyEmailResponse) {}
+  rpc ResendVerification (ResendVerificationRequest) returns (ResendVerificationResponse) {}
+  rpc CancelAccount (CancelAccountRequest) returns (CancelAccountResponse) {}
+}
