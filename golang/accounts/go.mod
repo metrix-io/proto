@@ -1,1 +1,1 @@
-module gitlab.com/metrix-io/proto/golang/accounts
+module github.com/metrix-io/proto/golang/accounts

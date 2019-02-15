@@ -1,4 +1,4 @@
-module gitlab.com/metrix-io/proto
+module github.com/metrix-io/proto
 
 require (
 	github.com/golang/protobuf v1.2.0
