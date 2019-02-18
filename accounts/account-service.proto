@@ -281,8 +281,40 @@ message CancelAccountRequest{
  */
 message CancelAccountResponse{}
 
+/**
+ * CheckUsername returns whether a specified username is still
+ * available.
+ */
+message CheckUsernameRequest{
+  string username = 1;
+}
+
+/**
+ * Returns true if username is available, otherwise false.
+ */
+message CheckUsernameResponse{
+  bool is_available = 1;
+}
+
+/**
+ * CheckEmail returns whether a specified email address is still
+ * available.
+ */
+message CheckEmailRequest{
+  string email = 1;
+}
+
+/**
+ * Returns true if email is already in use, otherwise false.
+ */
+message CheckEmailResponse{
+  bool is_available = 1;
+}
+
 service AccountService {
   rpc AddAccount (AddAccountRequest) returns (Account) {}
+  rpc CheckUsername (CheckUsernameRequest) returns (CheckUsernameResponse) {}
+  rpc CheckEmail (CheckEmailRequest) returns (CheckEmailResponse) {}
   rpc GetAccountById (GetAccountByIdRequest) returns (Account) {}
   rpc Login (LoginRequest) returns (Account) {}
   rpc ForgotPassword (ForgotPasswordRequest) returns (ForgotPasswordResponse) {}
