@@ -127,17 +127,17 @@ message Email {
   int64 updated_at = 7;
 }
 
-message GetAccountByIdRequest {
+message GetAccountByIDRequest {
   string account_id = 1;
 }
 
 /**
- * AddAccountRequest creates a new account.
+ * CreateAccountRequest creates a new account.
  *
  * Returns a FailedPrecondition error if the email is already in use.
  * Returns InvalidArgument errors if any of the fields are invalid.
  */
-message AddAccountRequest {
+message CreateAccountRequest {
   string email = 1;
   string username = 2;
   string password = 3;
@@ -312,10 +312,10 @@ message CheckEmailResponse{
 }
 
 service AccountService {
-  rpc AddAccount (AddAccountRequest) returns (Account) {}
+  rpc CreateAccount (CreateAccountRequest) returns (Account) {}
   rpc CheckUsername (CheckUsernameRequest) returns (CheckUsernameResponse) {}
   rpc CheckEmail (CheckEmailRequest) returns (CheckEmailResponse) {}
-  rpc GetAccountById (GetAccountByIdRequest) returns (Account) {}
+  rpc GetAccountByID (GetAccountByIDRequest) returns (Account) {}
   rpc Login (LoginRequest) returns (Account) {}
   rpc ForgotPassword (ForgotPasswordRequest) returns (ForgotPasswordResponse) {}
   rpc ResetPassword (ResetPasswordRequest) returns (ResetPasswordResponse) {}

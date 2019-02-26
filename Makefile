@@ -8,9 +8,10 @@ proto:
 	rm -rf ./github.com
 
 protojs:
-	protoc -I=. *.proto \
-      --js_out=import_style=commonjs:. \
-      --grpc-web_out=import_style=commonjs+dts,mode=grpcwebtext:.
+	rm -rf ./javascript/*
+	protoc -I=. accounts/*.proto \
+      --js_out=import_style=commonjs:javascript \
+      --grpc-web_out=import_style=commonjs+dts,mode=grpcwebtext:javascript
 
 docgen:
 	rm -rf ./out
