@@ -9,7 +9,9 @@
   "author": "Niels Krijger <niels@metrix.io>",
   "license": "ISC",
   "dependencies": {
-    "google-protobuf": "^3.7.0-rc.3",
+    "google-protobuf": "^3.7.0-rc.3"
+  },
+  "peerDependencies": {
     "grpc-web": "^1.0.3"
   }
 }
