@@ -63,7 +63,7 @@ func (m *Account) Reset()         { *m = Account{} }
 func (m *Account) String() string { return proto.CompactTextString(m) }
 func (*Account) ProtoMessage()    {}
 func (*Account) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_3ee612a6c008655a, []int{0}
+	return fileDescriptor_account_service_8d472ab786ec3146, []int{0}
 }
 func (m *Account) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Account.Unmarshal(m, b)
@@ -207,7 +207,7 @@ func (m *Profile) Reset()         { *m = Profile{} }
 func (m *Profile) String() string { return proto.CompactTextString(m) }
 func (*Profile) ProtoMessage()    {}
 func (*Profile) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_3ee612a6c008655a, []int{1}
+	return fileDescriptor_account_service_8d472ab786ec3146, []int{1}
 }
 func (m *Profile) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Profile.Unmarshal(m, b)
@@ -339,7 +339,7 @@ func (m *Email) Reset()         { *m = Email{} }
 func (m *Email) String() string { return proto.CompactTextString(m) }
 func (*Email) ProtoMessage()    {}
 func (*Email) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_3ee612a6c008655a, []int{2}
+	return fileDescriptor_account_service_8d472ab786ec3146, []int{2}
 }
 func (m *Email) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Email.Unmarshal(m, b)
@@ -419,7 +419,7 @@ func (m *GetAccountByIDRequest) Reset()         { *m = GetAccountByIDRequest{} }
 func (m *GetAccountByIDRequest) String() string { return proto.CompactTextString(m) }
 func (*GetAccountByIDRequest) ProtoMessage()    {}
 func (*GetAccountByIDRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_3ee612a6c008655a, []int{3}
+	return fileDescriptor_account_service_8d472ab786ec3146, []int{3}
 }
 func (m *GetAccountByIDRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetAccountByIDRequest.Unmarshal(m, b)
@@ -465,7 +465,7 @@ func (m *CreateAccountRequest) Reset()         { *m = CreateAccountRequest{} }
 func (m *CreateAccountRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateAccountRequest) ProtoMessage()    {}
 func (*CreateAccountRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_3ee612a6c008655a, []int{4}
+	return fileDescriptor_account_service_8d472ab786ec3146, []int{4}
 }
 func (m *CreateAccountRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateAccountRequest.Unmarshal(m, b)
@@ -527,7 +527,7 @@ func (m *UpdateAccountRequest) Reset()         { *m = UpdateAccountRequest{} }
 func (m *UpdateAccountRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateAccountRequest) ProtoMessage()    {}
 func (*UpdateAccountRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_3ee612a6c008655a, []int{5}
+	return fileDescriptor_account_service_8d472ab786ec3146, []int{5}
 }
 func (m *UpdateAccountRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateAccountRequest.Unmarshal(m, b)
@@ -576,7 +576,7 @@ func (m *UpdateAccountResponse) Reset()         { *m = UpdateAccountResponse{} }
 func (m *UpdateAccountResponse) String() string { return proto.CompactTextString(m) }
 func (*UpdateAccountResponse) ProtoMessage()    {}
 func (*UpdateAccountResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_3ee612a6c008655a, []int{6}
+	return fileDescriptor_account_service_8d472ab786ec3146, []int{6}
 }
 func (m *UpdateAccountResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateAccountResponse.Unmarshal(m, b)
@@ -615,7 +615,7 @@ func (m *LoginRequest) Reset()         { *m = LoginRequest{} }
 func (m *LoginRequest) String() string { return proto.CompactTextString(m) }
 func (*LoginRequest) ProtoMessage()    {}
 func (*LoginRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_3ee612a6c008655a, []int{7}
+	return fileDescriptor_account_service_8d472ab786ec3146, []int{7}
 }
 func (m *LoginRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LoginRequest.Unmarshal(m, b)
@@ -664,7 +664,7 @@ func (m *ForgotPasswordRequest) Reset()         { *m = ForgotPasswordRequest{} }
 func (m *ForgotPasswordRequest) String() string { return proto.CompactTextString(m) }
 func (*ForgotPasswordRequest) ProtoMessage()    {}
 func (*ForgotPasswordRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_3ee612a6c008655a, []int{8}
+	return fileDescriptor_account_service_8d472ab786ec3146, []int{8}
 }
 func (m *ForgotPasswordRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ForgotPasswordRequest.Unmarshal(m, b)
@@ -706,7 +706,7 @@ func (m *ForgotPasswordResponse) Reset()         { *m = ForgotPasswordResponse{}
 func (m *ForgotPasswordResponse) String() string { return proto.CompactTextString(m) }
 func (*ForgotPasswordResponse) ProtoMessage()    {}
 func (*ForgotPasswordResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_3ee612a6c008655a, []int{9}
+	return fileDescriptor_account_service_8d472ab786ec3146, []int{9}
 }
 func (m *ForgotPasswordResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ForgotPasswordResponse.Unmarshal(m, b)
@@ -740,7 +740,7 @@ func (m *ResetPasswordRequest) Reset()         { *m = ResetPasswordRequest{} }
 func (m *ResetPasswordRequest) String() string { return proto.CompactTextString(m) }
 func (*ResetPasswordRequest) ProtoMessage()    {}
 func (*ResetPasswordRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_3ee612a6c008655a, []int{10}
+	return fileDescriptor_account_service_8d472ab786ec3146, []int{10}
 }
 func (m *ResetPasswordRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResetPasswordRequest.Unmarshal(m, b)
@@ -790,7 +790,7 @@ func (m *ResetPasswordResponse) Reset()         { *m = ResetPasswordResponse{} }
 func (m *ResetPasswordResponse) String() string { return proto.CompactTextString(m) }
 func (*ResetPasswordResponse) ProtoMessage()    {}
 func (*ResetPasswordResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_3ee612a6c008655a, []int{11}
+	return fileDescriptor_account_service_8d472ab786ec3146, []int{11}
 }
 func (m *ResetPasswordResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResetPasswordResponse.Unmarshal(m, b)
@@ -826,7 +826,7 @@ func (m *UpdatePasswordRequest) Reset()         { *m = UpdatePasswordRequest{} }
 func (m *UpdatePasswordRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdatePasswordRequest) ProtoMessage()    {}
 func (*UpdatePasswordRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_3ee612a6c008655a, []int{12}
+	return fileDescriptor_account_service_8d472ab786ec3146, []int{12}
 }
 func (m *UpdatePasswordRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdatePasswordRequest.Unmarshal(m, b)
@@ -883,7 +883,7 @@ func (m *UpdatePasswordResponse) Reset()         { *m = UpdatePasswordResponse{}
 func (m *UpdatePasswordResponse) String() string { return proto.CompactTextString(m) }
 func (*UpdatePasswordResponse) ProtoMessage()    {}
 func (*UpdatePasswordResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_3ee612a6c008655a, []int{13}
+	return fileDescriptor_account_service_8d472ab786ec3146, []int{13}
 }
 func (m *UpdatePasswordResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdatePasswordResponse.Unmarshal(m, b)
@@ -919,7 +919,7 @@ func (m *VerifyEmailRequest) Reset()         { *m = VerifyEmailRequest{} }
 func (m *VerifyEmailRequest) String() string { return proto.CompactTextString(m) }
 func (*VerifyEmailRequest) ProtoMessage()    {}
 func (*VerifyEmailRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_3ee612a6c008655a, []int{14}
+	return fileDescriptor_account_service_8d472ab786ec3146, []int{14}
 }
 func (m *VerifyEmailRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_VerifyEmailRequest.Unmarshal(m, b)
@@ -958,7 +958,7 @@ func (m *VerifyEmailResponse) Reset()         { *m = VerifyEmailResponse{} }
 func (m *VerifyEmailResponse) String() string { return proto.CompactTextString(m) }
 func (*VerifyEmailResponse) ProtoMessage()    {}
 func (*VerifyEmailResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_3ee612a6c008655a, []int{15}
+	return fileDescriptor_account_service_8d472ab786ec3146, []int{15}
 }
 func (m *VerifyEmailResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_VerifyEmailResponse.Unmarshal(m, b)
@@ -992,7 +992,7 @@ func (m *ResendVerificationRequest) Reset()         { *m = ResendVerificationReq
 func (m *ResendVerificationRequest) String() string { return proto.CompactTextString(m) }
 func (*ResendVerificationRequest) ProtoMessage()    {}
 func (*ResendVerificationRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_3ee612a6c008655a, []int{16}
+	return fileDescriptor_account_service_8d472ab786ec3146, []int{16}
 }
 func (m *ResendVerificationRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResendVerificationRequest.Unmarshal(m, b)
@@ -1039,7 +1039,7 @@ func (m *ResendVerificationResponse) Reset()         { *m = ResendVerificationRe
 func (m *ResendVerificationResponse) String() string { return proto.CompactTextString(m) }
 func (*ResendVerificationResponse) ProtoMessage()    {}
 func (*ResendVerificationResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_3ee612a6c008655a, []int{17}
+	return fileDescriptor_account_service_8d472ab786ec3146, []int{17}
 }
 func (m *ResendVerificationResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResendVerificationResponse.Unmarshal(m, b)
@@ -1078,7 +1078,7 @@ func (m *CancelAccountRequest) Reset()         { *m = CancelAccountRequest{} }
 func (m *CancelAccountRequest) String() string { return proto.CompactTextString(m) }
 func (*CancelAccountRequest) ProtoMessage()    {}
 func (*CancelAccountRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_3ee612a6c008655a, []int{18}
+	return fileDescriptor_account_service_8d472ab786ec3146, []int{18}
 }
 func (m *CancelAccountRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CancelAccountRequest.Unmarshal(m, b)
@@ -1118,7 +1118,7 @@ func (m *CancelAccountResponse) Reset()         { *m = CancelAccountResponse{} }
 func (m *CancelAccountResponse) String() string { return proto.CompactTextString(m) }
 func (*CancelAccountResponse) ProtoMessage()    {}
 func (*CancelAccountResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_3ee612a6c008655a, []int{19}
+	return fileDescriptor_account_service_8d472ab786ec3146, []int{19}
 }
 func (m *CancelAccountResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CancelAccountResponse.Unmarshal(m, b)
@@ -1152,7 +1152,7 @@ func (m *CheckUsernameRequest) Reset()         { *m = CheckUsernameRequest{} }
 func (m *CheckUsernameRequest) String() string { return proto.CompactTextString(m) }
 func (*CheckUsernameRequest) ProtoMessage()    {}
 func (*CheckUsernameRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_3ee612a6c008655a, []int{20}
+	return fileDescriptor_account_service_8d472ab786ec3146, []int{20}
 }
 func (m *CheckUsernameRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CheckUsernameRequest.Unmarshal(m, b)
@@ -1192,7 +1192,7 @@ func (m *CheckUsernameResponse) Reset()         { *m = CheckUsernameResponse{} }
 func (m *CheckUsernameResponse) String() string { return proto.CompactTextString(m) }
 func (*CheckUsernameResponse) ProtoMessage()    {}
 func (*CheckUsernameResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_3ee612a6c008655a, []int{21}
+	return fileDescriptor_account_service_8d472ab786ec3146, []int{21}
 }
 func (m *CheckUsernameResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CheckUsernameResponse.Unmarshal(m, b)
@@ -1233,7 +1233,7 @@ func (m *CheckEmailRequest) Reset()         { *m = CheckEmailRequest{} }
 func (m *CheckEmailRequest) String() string { return proto.CompactTextString(m) }
 func (*CheckEmailRequest) ProtoMessage()    {}
 func (*CheckEmailRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_3ee612a6c008655a, []int{22}
+	return fileDescriptor_account_service_8d472ab786ec3146, []int{22}
 }
 func (m *CheckEmailRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CheckEmailRequest.Unmarshal(m, b)
@@ -1273,7 +1273,7 @@ func (m *CheckEmailResponse) Reset()         { *m = CheckEmailResponse{} }
 func (m *CheckEmailResponse) String() string { return proto.CompactTextString(m) }
 func (*CheckEmailResponse) ProtoMessage()    {}
 func (*CheckEmailResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_3ee612a6c008655a, []int{23}
+	return fileDescriptor_account_service_8d472ab786ec3146, []int{23}
 }
 func (m *CheckEmailResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CheckEmailResponse.Unmarshal(m, b)
@@ -1301,30 +1301,30 @@ func (m *CheckEmailResponse) GetIsAvailable() bool {
 }
 
 func init() {
-	proto.RegisterType((*Account)(nil), "metrixio.proto.accounts.v0.Account")
-	proto.RegisterType((*Profile)(nil), "metrixio.proto.accounts.v0.Profile")
-	proto.RegisterType((*Email)(nil), "metrixio.proto.accounts.v0.Email")
-	proto.RegisterType((*GetAccountByIDRequest)(nil), "metrixio.proto.accounts.v0.GetAccountByIDRequest")
-	proto.RegisterType((*CreateAccountRequest)(nil), "metrixio.proto.accounts.v0.CreateAccountRequest")
-	proto.RegisterType((*UpdateAccountRequest)(nil), "metrixio.proto.accounts.v0.UpdateAccountRequest")
-	proto.RegisterType((*UpdateAccountResponse)(nil), "metrixio.proto.accounts.v0.UpdateAccountResponse")
-	proto.RegisterType((*LoginRequest)(nil), "metrixio.proto.accounts.v0.LoginRequest")
-	proto.RegisterType((*ForgotPasswordRequest)(nil), "metrixio.proto.accounts.v0.ForgotPasswordRequest")
-	proto.RegisterType((*ForgotPasswordResponse)(nil), "metrixio.proto.accounts.v0.ForgotPasswordResponse")
-	proto.RegisterType((*ResetPasswordRequest)(nil), "metrixio.proto.accounts.v0.ResetPasswordRequest")
-	proto.RegisterType((*ResetPasswordResponse)(nil), "metrixio.proto.accounts.v0.ResetPasswordResponse")
-	proto.RegisterType((*UpdatePasswordRequest)(nil), "metrixio.proto.accounts.v0.UpdatePasswordRequest")
-	proto.RegisterType((*UpdatePasswordResponse)(nil), "metrixio.proto.accounts.v0.UpdatePasswordResponse")
-	proto.RegisterType((*VerifyEmailRequest)(nil), "metrixio.proto.accounts.v0.VerifyEmailRequest")
-	proto.RegisterType((*VerifyEmailResponse)(nil), "metrixio.proto.accounts.v0.VerifyEmailResponse")
-	proto.RegisterType((*ResendVerificationRequest)(nil), "metrixio.proto.accounts.v0.ResendVerificationRequest")
-	proto.RegisterType((*ResendVerificationResponse)(nil), "metrixio.proto.accounts.v0.ResendVerificationResponse")
-	proto.RegisterType((*CancelAccountRequest)(nil), "metrixio.proto.accounts.v0.CancelAccountRequest")
-	proto.RegisterType((*CancelAccountResponse)(nil), "metrixio.proto.accounts.v0.CancelAccountResponse")
-	proto.RegisterType((*CheckUsernameRequest)(nil), "metrixio.proto.accounts.v0.CheckUsernameRequest")
-	proto.RegisterType((*CheckUsernameResponse)(nil), "metrixio.proto.accounts.v0.CheckUsernameResponse")
-	proto.RegisterType((*CheckEmailRequest)(nil), "metrixio.proto.accounts.v0.CheckEmailRequest")
-	proto.RegisterType((*CheckEmailResponse)(nil), "metrixio.proto.accounts.v0.CheckEmailResponse")
+	proto.RegisterType((*Account)(nil), "metrixio.Account")
+	proto.RegisterType((*Profile)(nil), "metrixio.Profile")
+	proto.RegisterType((*Email)(nil), "metrixio.Email")
+	proto.RegisterType((*GetAccountByIDRequest)(nil), "metrixio.GetAccountByIDRequest")
+	proto.RegisterType((*CreateAccountRequest)(nil), "metrixio.CreateAccountRequest")
+	proto.RegisterType((*UpdateAccountRequest)(nil), "metrixio.UpdateAccountRequest")
+	proto.RegisterType((*UpdateAccountResponse)(nil), "metrixio.UpdateAccountResponse")
+	proto.RegisterType((*LoginRequest)(nil), "metrixio.LoginRequest")
+	proto.RegisterType((*ForgotPasswordRequest)(nil), "metrixio.ForgotPasswordRequest")
+	proto.RegisterType((*ForgotPasswordResponse)(nil), "metrixio.ForgotPasswordResponse")
+	proto.RegisterType((*ResetPasswordRequest)(nil), "metrixio.ResetPasswordRequest")
+	proto.RegisterType((*ResetPasswordResponse)(nil), "metrixio.ResetPasswordResponse")
+	proto.RegisterType((*UpdatePasswordRequest)(nil), "metrixio.UpdatePasswordRequest")
+	proto.RegisterType((*UpdatePasswordResponse)(nil), "metrixio.UpdatePasswordResponse")
+	proto.RegisterType((*VerifyEmailRequest)(nil), "metrixio.VerifyEmailRequest")
+	proto.RegisterType((*VerifyEmailResponse)(nil), "metrixio.VerifyEmailResponse")
+	proto.RegisterType((*ResendVerificationRequest)(nil), "metrixio.ResendVerificationRequest")
+	proto.RegisterType((*ResendVerificationResponse)(nil), "metrixio.ResendVerificationResponse")
+	proto.RegisterType((*CancelAccountRequest)(nil), "metrixio.CancelAccountRequest")
+	proto.RegisterType((*CancelAccountResponse)(nil), "metrixio.CancelAccountResponse")
+	proto.RegisterType((*CheckUsernameRequest)(nil), "metrixio.CheckUsernameRequest")
+	proto.RegisterType((*CheckUsernameResponse)(nil), "metrixio.CheckUsernameResponse")
+	proto.RegisterType((*CheckEmailRequest)(nil), "metrixio.CheckEmailRequest")
+	proto.RegisterType((*CheckEmailResponse)(nil), "metrixio.CheckEmailResponse")
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1362,7 +1362,7 @@ func NewAccountServiceClient(cc *grpc.ClientConn) AccountServiceClient {
 
 func (c *accountServiceClient) CreateAccount(ctx context.Context, in *CreateAccountRequest, opts ...grpc.CallOption) (*Account, error) {
 	out := new(Account)
-	err := c.cc.Invoke(ctx, "/metrixio.proto.accounts.v0.AccountService/CreateAccount", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/metrixio.AccountService/CreateAccount", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -1371,7 +1371,7 @@ func (c *accountServiceClient) CreateAccount(ctx context.Context, in *CreateAcco
 
 func (c *accountServiceClient) CheckUsername(ctx context.Context, in *CheckUsernameRequest, opts ...grpc.CallOption) (*CheckUsernameResponse, error) {
 	out := new(CheckUsernameResponse)
-	err := c.cc.Invoke(ctx, "/metrixio.proto.accounts.v0.AccountService/CheckUsername", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/metrixio.AccountService/CheckUsername", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -1380,7 +1380,7 @@ func (c *accountServiceClient) CheckUsername(ctx context.Context, in *CheckUsern
 
 func (c *accountServiceClient) CheckEmail(ctx context.Context, in *CheckEmailRequest, opts ...grpc.CallOption) (*CheckEmailResponse, error) {
 	out := new(CheckEmailResponse)
-	err := c.cc.Invoke(ctx, "/metrixio.proto.accounts.v0.AccountService/CheckEmail", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/metrixio.AccountService/CheckEmail", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -1389,7 +1389,7 @@ func (c *accountServiceClient) CheckEmail(ctx context.Context, in *CheckEmailReq
 
 func (c *accountServiceClient) GetAccountByID(ctx context.Context, in *GetAccountByIDRequest, opts ...grpc.CallOption) (*Account, error) {
 	out := new(Account)
-	err := c.cc.Invoke(ctx, "/metrixio.proto.accounts.v0.AccountService/GetAccountByID", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/metrixio.AccountService/GetAccountByID", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -1398,7 +1398,7 @@ func (c *accountServiceClient) GetAccountByID(ctx context.Context, in *GetAccoun
 
 func (c *accountServiceClient) Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*Account, error) {
 	out := new(Account)
-	err := c.cc.Invoke(ctx, "/metrixio.proto.accounts.v0.AccountService/Login", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/metrixio.AccountService/Login", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -1407,7 +1407,7 @@ func (c *accountServiceClient) Login(ctx context.Context, in *LoginRequest, opts
 
 func (c *accountServiceClient) ForgotPassword(ctx context.Context, in *ForgotPasswordRequest, opts ...grpc.CallOption) (*ForgotPasswordResponse, error) {
 	out := new(ForgotPasswordResponse)
-	err := c.cc.Invoke(ctx, "/metrixio.proto.accounts.v0.AccountService/ForgotPassword", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/metrixio.AccountService/ForgotPassword", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -1416,7 +1416,7 @@ func (c *accountServiceClient) ForgotPassword(ctx context.Context, in *ForgotPas
 
 func (c *accountServiceClient) ResetPassword(ctx context.Context, in *ResetPasswordRequest, opts ...grpc.CallOption) (*ResetPasswordResponse, error) {
 	out := new(ResetPasswordResponse)
-	err := c.cc.Invoke(ctx, "/metrixio.proto.accounts.v0.AccountService/ResetPassword", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/metrixio.AccountService/ResetPassword", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -1425,7 +1425,7 @@ func (c *accountServiceClient) ResetPassword(ctx context.Context, in *ResetPassw
 
 func (c *accountServiceClient) UpdatePassword(ctx context.Context, in *UpdatePasswordRequest, opts ...grpc.CallOption) (*UpdatePasswordResponse, error) {
 	out := new(UpdatePasswordResponse)
-	err := c.cc.Invoke(ctx, "/metrixio.proto.accounts.v0.AccountService/UpdatePassword", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/metrixio.AccountService/UpdatePassword", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -1434,7 +1434,7 @@ func (c *accountServiceClient) UpdatePassword(ctx context.Context, in *UpdatePas
 
 func (c *accountServiceClient) VerifyEmail(ctx context.Context, in *VerifyEmailRequest, opts ...grpc.CallOption) (*VerifyEmailResponse, error) {
 	out := new(VerifyEmailResponse)
-	err := c.cc.Invoke(ctx, "/metrixio.proto.accounts.v0.AccountService/VerifyEmail", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/metrixio.AccountService/VerifyEmail", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -1443,7 +1443,7 @@ func (c *accountServiceClient) VerifyEmail(ctx context.Context, in *VerifyEmailR
 
 func (c *accountServiceClient) ResendVerification(ctx context.Context, in *ResendVerificationRequest, opts ...grpc.CallOption) (*ResendVerificationResponse, error) {
 	out := new(ResendVerificationResponse)
-	err := c.cc.Invoke(ctx, "/metrixio.proto.accounts.v0.AccountService/ResendVerification", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/metrixio.AccountService/ResendVerification", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -1452,7 +1452,7 @@ func (c *accountServiceClient) ResendVerification(ctx context.Context, in *Resen
 
 func (c *accountServiceClient) CancelAccount(ctx context.Context, in *CancelAccountRequest, opts ...grpc.CallOption) (*CancelAccountResponse, error) {
 	out := new(CancelAccountResponse)
-	err := c.cc.Invoke(ctx, "/metrixio.proto.accounts.v0.AccountService/CancelAccount", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/metrixio.AccountService/CancelAccount", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -1488,7 +1488,7 @@ func _AccountService_CreateAccount_Handler(srv interface{}, ctx context.Context,
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/metrixio.proto.accounts.v0.AccountService/CreateAccount",
+		FullMethod: "/metrixio.AccountService/CreateAccount",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AccountServiceServer).CreateAccount(ctx, req.(*CreateAccountRequest))
@@ -1506,7 +1506,7 @@ func _AccountService_CheckUsername_Handler(srv interface{}, ctx context.Context,
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/metrixio.proto.accounts.v0.AccountService/CheckUsername",
+		FullMethod: "/metrixio.AccountService/CheckUsername",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AccountServiceServer).CheckUsername(ctx, req.(*CheckUsernameRequest))
@@ -1524,7 +1524,7 @@ func _AccountService_CheckEmail_Handler(srv interface{}, ctx context.Context, de
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/metrixio.proto.accounts.v0.AccountService/CheckEmail",
+		FullMethod: "/metrixio.AccountService/CheckEmail",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AccountServiceServer).CheckEmail(ctx, req.(*CheckEmailRequest))
@@ -1542,7 +1542,7 @@ func _AccountService_GetAccountByID_Handler(srv interface{}, ctx context.Context
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/metrixio.proto.accounts.v0.AccountService/GetAccountByID",
+		FullMethod: "/metrixio.AccountService/GetAccountByID",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AccountServiceServer).GetAccountByID(ctx, req.(*GetAccountByIDRequest))
@@ -1560,7 +1560,7 @@ func _AccountService_Login_Handler(srv interface{}, ctx context.Context, dec fun
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/metrixio.proto.accounts.v0.AccountService/Login",
+		FullMethod: "/metrixio.AccountService/Login",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AccountServiceServer).Login(ctx, req.(*LoginRequest))
@@ -1578,7 +1578,7 @@ func _AccountService_ForgotPassword_Handler(srv interface{}, ctx context.Context
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/metrixio.proto.accounts.v0.AccountService/ForgotPassword",
+		FullMethod: "/metrixio.AccountService/ForgotPassword",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AccountServiceServer).ForgotPassword(ctx, req.(*ForgotPasswordRequest))
@@ -1596,7 +1596,7 @@ func _AccountService_ResetPassword_Handler(srv interface{}, ctx context.Context,
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/metrixio.proto.accounts.v0.AccountService/ResetPassword",
+		FullMethod: "/metrixio.AccountService/ResetPassword",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AccountServiceServer).ResetPassword(ctx, req.(*ResetPasswordRequest))
@@ -1614,7 +1614,7 @@ func _AccountService_UpdatePassword_Handler(srv interface{}, ctx context.Context
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/metrixio.proto.accounts.v0.AccountService/UpdatePassword",
+		FullMethod: "/metrixio.AccountService/UpdatePassword",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AccountServiceServer).UpdatePassword(ctx, req.(*UpdatePasswordRequest))
@@ -1632,7 +1632,7 @@ func _AccountService_VerifyEmail_Handler(srv interface{}, ctx context.Context, d
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/metrixio.proto.accounts.v0.AccountService/VerifyEmail",
+		FullMethod: "/metrixio.AccountService/VerifyEmail",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AccountServiceServer).VerifyEmail(ctx, req.(*VerifyEmailRequest))
@@ -1650,7 +1650,7 @@ func _AccountService_ResendVerification_Handler(srv interface{}, ctx context.Con
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/metrixio.proto.accounts.v0.AccountService/ResendVerification",
+		FullMethod: "/metrixio.AccountService/ResendVerification",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AccountServiceServer).ResendVerification(ctx, req.(*ResendVerificationRequest))
@@ -1668,7 +1668,7 @@ func _AccountService_CancelAccount_Handler(srv interface{}, ctx context.Context,
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/metrixio.proto.accounts.v0.AccountService/CancelAccount",
+		FullMethod: "/metrixio.AccountService/CancelAccount",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AccountServiceServer).CancelAccount(ctx, req.(*CancelAccountRequest))
@@ -1677,7 +1677,7 @@ func _AccountService_CancelAccount_Handler(srv interface{}, ctx context.Context,
 }
 
 var _AccountService_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "metrixio.proto.accounts.v0.AccountService",
+	ServiceName: "metrixio.AccountService",
 	HandlerType: (*AccountServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -1730,76 +1730,75 @@ var _AccountService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("accounts/account-service.proto", fileDescriptor_account_service_3ee612a6c008655a)
+	proto.RegisterFile("accounts/account-service.proto", fileDescriptor_account_service_8d472ab786ec3146)
 }
 
-var fileDescriptor_account_service_3ee612a6c008655a = []byte{
-	// 1062 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x57, 0x5d, 0x6f, 0xe3, 0x44,
-	0x17, 0xae, 0x93, 0xa6, 0x89, 0x8f, 0x9b, 0xe8, 0x7d, 0x67, 0x93, 0x62, 0xcc, 0x2e, 0x2d, 0x46,
-	0x48, 0x61, 0x45, 0x93, 0xdd, 0xa0, 0x5d, 0x24, 0x24, 0x24, 0xb2, 0xe5, 0x43, 0x2b, 0xa1, 0x55,
-	0x65, 0x58, 0x84, 0xf6, 0xc6, 0x72, 0xec, 0x69, 0x32, 0xd4, 0xb1, 0x83, 0x67, 0x92, 0x52, 0xee,
-	0x11, 0x3f, 0x83, 0x0b, 0xfe, 0x0d, 0x17, 0xfc, 0x26, 0x34, 0x1f, 0x4e, 0x6c, 0xc7, 0xeb, 0x24,
-	0xdc, 0xf9, 0x9c, 0x39, 0x9f, 0xcf, 0x39, 0xe7, 0x49, 0x0b, 0xef, 0x7b, 0xbe, 0x1f, 0x2f, 0x23,
-	0x46, 0x87, 0xea, 0xe3, 0x92, 0xe2, 0x64, 0x45, 0x7c, 0x3c, 0x58, 0x24, 0x31, 0x8b, 0x91, 0x35,
-	0xc7, 0x2c, 0x21, 0xbf, 0x92, 0x58, 0xca, 0x83, 0xd4, 0x7c, 0xb0, 0x7a, 0x62, 0xff, 0x59, 0x87,
-	0xe6, 0x58, 0xca, 0xa8, 0x03, 0x35, 0x12, 0x98, 0xda, 0x85, 0xd6, 0xd7, 0x9d, 0x1a, 0x09, 0xd0,
-	0xff, 0xa0, 0x4e, 0x97, 0x13, 0xb3, 0x26, 0x14, 0xfc, 0x13, 0x59, 0xd0, 0x5a, 0x52, 0x9c, 0x44,
-	0xde, 0x1c, 0x9b, 0x75, 0xa1, 0x5e, 0xcb, 0xa8, 0x0b, 0x0d, 0x3c, 0xf7, 0x48, 0x68, 0x1e, 0x8b,
-	0x07, 0x29, 0xa0, 0x8f, 0xa0, 0x23, 0x3e, 0xdc, 0x15, 0x4e, 0xc8, 0x0d, 0xc1, 0x81, 0xd9, 0xb8,
-	0xd0, 0xfa, 0x2d, 0xa7, 0x2d, 0xb4, 0x3f, 0x2a, 0x25, 0xfa, 0x02, 0x9a, 0x8b, 0x24, 0xbe, 0x21,
-	0x21, 0x36, 0x4f, 0x2e, 0xb4, 0xbe, 0x31, 0xfa, 0x70, 0xf0, 0xf6, 0xa2, 0x07, 0xd7, 0xd2, 0xd4,
-	0x49, 0x7d, 0xd0, 0x07, 0x70, 0xba, 0x98, 0xc5, 0x11, 0x76, 0xa3, 0xe5, 0x7c, 0x82, 0x13, 0xb3,
-	0x29, 0x4a, 0x30, 0x84, 0xee, 0x95, 0x50, 0xa1, 0x11, 0xf4, 0xb2, 0x26, 0x9b, 0x7a, 0x5a, 0xa2,
-	0x9e, 0x07, 0x19, 0xdb, 0x75, 0x55, 0x8f, 0x00, 0xfc, 0x04, 0x7b, 0x0c, 0x07, 0xae, 0xc7, 0x4c,
-	0xfd, 0x42, 0xeb, 0xd7, 0x1d, 0x5d, 0x69, 0xc6, 0x8c, 0x3f, 0x2f, 0x17, 0x41, 0xfa, 0x0c, 0xf2,
-	0x59, 0x69, 0xc6, 0x8c, 0x17, 0xe5, 0x7b, 0x91, 0x8f, 0xc3, 0x50, 0x1a, 0x18, 0xc2, 0xc0, 0x58,
-	0xeb, 0xc6, 0x0c, 0xd9, 0xd0, 0x0e, 0x3d, 0xca, 0xdc, 0x30, 0x9e, 0x92, 0x88, 0xdb, 0x9c, 0x4a,
-	0x1b, 0xae, 0xfc, 0x8e, 0xeb, 0xc6, 0xcc, 0xfe, 0xa7, 0x06, 0x4d, 0xd5, 0x30, 0x42, 0x70, 0x2c,
-	0xb0, 0x97, 0x33, 0x12, 0xdf, 0xbc, 0x8a, 0x1b, 0x92, 0x50, 0xe6, 0x8a, 0x17, 0x39, 0x2c, 0x5d,
-	0x68, 0x5e, 0xf1, 0xe7, 0xf7, 0x40, 0x17, 0x29, 0xb2, 0x33, 0xe3, 0x0a, 0xf1, 0x78, 0x0e, 0xc6,
-	0x9c, 0x04, 0x41, 0x88, 0xe5, 0xb3, 0x9c, 0x1c, 0x48, 0x95, 0x30, 0xb0, 0xa0, 0x15, 0x11, 0xff,
-	0x56, 0xbc, 0x36, 0xa4, 0x73, 0x2a, 0x23, 0x33, 0x3f, 0x33, 0x7d, 0x33, 0x0e, 0xfe, 0x42, 0x7c,
-	0xb6, 0x4c, 0xb0, 0x9a, 0x44, 0x2a, 0xf2, 0x97, 0x3b, 0x3c, 0xa1, 0x84, 0x61, 0x81, 0xbb, 0xee,
-	0xa4, 0x22, 0x3a, 0x83, 0x93, 0x29, 0x8e, 0x02, 0x9c, 0x08, 0x9c, 0x75, 0x47, 0x49, 0xe8, 0x21,
-	0xe8, 0x13, 0x92, 0xb0, 0x19, 0x47, 0x55, 0x60, 0xac, 0x3b, 0x1b, 0x05, 0xaf, 0xef, 0xb7, 0x38,
-	0xc2, 0x24, 0xba, 0x89, 0x05, 0xbe, 0xba, 0xb3, 0x96, 0x79, 0xc4, 0x30, 0xf6, 0xbd, 0x10, 0x0b,
-	0x54, 0x75, 0x47, 0x49, 0xf6, 0xdf, 0x1a, 0x34, 0xbe, 0x16, 0xcb, 0x59, 0x5c, 0xf8, 0x47, 0x00,
-	0x6a, 0xcd, 0x5c, 0x12, 0xa4, 0x50, 0x2a, 0xcd, 0xcb, 0x60, 0xb3, 0xe1, 0xf5, 0xec, 0x86, 0x9f,
-	0x83, 0x41, 0xe8, 0x66, 0x9d, 0x8e, 0xc5, 0x3a, 0x01, 0xa1, 0xd9, 0x2d, 0x22, 0xd4, 0x5d, 0x24,
-	0x64, 0xee, 0x25, 0xf7, 0x6a, 0xfd, 0x75, 0x42, 0xaf, 0xa5, 0xa2, 0xb0, 0x64, 0x27, 0xd5, 0x4b,
-	0xd6, 0x2c, 0x2c, 0x99, 0xfd, 0x1c, 0x7a, 0xdf, 0x62, 0xa6, 0x2e, 0xf8, 0xc5, 0xfd, 0xcb, 0xaf,
-	0x1c, 0xfc, 0xcb, 0x12, 0x53, 0x56, 0xe8, 0x45, 0x2b, 0xf4, 0x62, 0xff, 0xa5, 0x41, 0xf7, 0x4a,
-	0x24, 0x51, 0xbe, 0xa9, 0xdf, 0xba, 0x49, 0x2d, 0xdb, 0x64, 0xf6, 0xf0, 0x6b, 0x85, 0xc3, 0xb7,
-	0xa0, 0xb5, 0xf0, 0x28, 0xbd, 0x8b, 0x93, 0x20, 0x5d, 0xb0, 0x54, 0xce, 0xde, 0xf5, 0xf1, 0xe1,
-	0x77, 0x6d, 0x33, 0xe8, 0xbe, 0x16, 0xad, 0x16, 0x8a, 0xac, 0x6e, 0x2e, 0x9b, 0xb5, 0xfe, 0x1f,
-	0xb2, 0xbe, 0x03, 0xbd, 0x42, 0x56, 0xba, 0x88, 0x23, 0x8a, 0xed, 0x2f, 0xe1, 0x54, 0x5c, 0x65,
-	0x06, 0x2b, 0x71, 0xb9, 0x29, 0x56, 0x42, 0xc8, 0xe1, 0x51, 0xcb, 0xe3, 0x61, 0x5f, 0x42, 0xef,
-	0x9b, 0x38, 0x99, 0xc6, 0xec, 0x5a, 0x69, 0x2a, 0x61, 0xb7, 0x4d, 0x38, 0x2b, 0x9a, 0xab, 0x52,
-	0xde, 0x40, 0xd7, 0xc1, 0x14, 0x6f, 0xc5, 0x39, 0x07, 0x23, 0xe1, 0x7a, 0x97, 0xc5, 0xb7, 0x38,
-	0x2d, 0x0c, 0x84, 0xea, 0x07, 0xae, 0xe1, 0xac, 0x14, 0xe1, 0x3b, 0xb7, 0x50, 0xa1, 0x11, 0xe1,
-	0xbb, 0x34, 0x14, 0xef, 0xbf, 0x10, 0x5b, 0x25, 0x5d, 0xa6, 0xc0, 0x14, 0xb3, 0xee, 0x98, 0x47,
-	0x05, 0x22, 0x5b, 0xf5, 0xd4, 0xb7, 0xeb, 0x31, 0xe1, 0xac, 0x98, 0x56, 0x15, 0xf4, 0x18, 0x90,
-	0x38, 0xb3, 0x7b, 0x71, 0xcf, 0x19, 0x2c, 0xb3, 0xdd, 0x4b, 0xc1, 0xee, 0xc1, 0x83, 0x9c, 0xad,
-	0x0a, 0xf1, 0x14, 0xde, 0xe5, 0xcd, 0x46, 0x81, 0xbc, 0x57, 0xdf, 0x63, 0x24, 0x8e, 0xaa, 0xa7,
-	0xf2, 0x10, 0xac, 0x32, 0x17, 0x15, 0xf0, 0x19, 0x74, 0xaf, 0x04, 0xc5, 0x1f, 0xb4, 0xb3, 0x1c,
-	0xf4, 0x82, 0x9b, 0x8a, 0x37, 0x82, 0xee, 0xd5, 0x0c, 0xfb, 0xb7, 0xaf, 0xd5, 0xbd, 0xa5, 0xf1,
-	0xb2, 0x27, 0xa9, 0xe5, 0x4f, 0xd2, 0xfe, 0x1c, 0x7a, 0x05, 0x1f, 0x19, 0x8c, 0xa3, 0x4d, 0xa8,
-	0xeb, 0xad, 0x3c, 0x12, 0x7a, 0x93, 0x50, 0x3a, 0xb6, 0x1c, 0x83, 0xd0, 0x71, 0xaa, 0xb2, 0x3f,
-	0x86, 0xff, 0x0b, 0xdf, 0x22, 0xa4, 0x25, 0x40, 0x7c, 0x06, 0x28, 0x6b, 0xba, 0x77, 0x8e, 0xd1,
-	0x1f, 0x00, 0x1d, 0xd5, 0xe7, 0xf7, 0xf2, 0x4f, 0x15, 0x34, 0x83, 0x76, 0x8e, 0x8f, 0xd0, 0x93,
-	0xaa, 0x9b, 0x2d, 0xa3, 0x2e, 0xab, 0xf2, 0xca, 0x95, 0xad, 0x7d, 0x84, 0x56, 0xd0, 0xce, 0x81,
-	0xb3, 0x23, 0x53, 0x09, 0xf6, 0xd6, 0xd3, 0x03, 0x3c, 0xd4, 0x18, 0x8f, 0xd0, 0x1c, 0x60, 0x83,
-	0x16, 0xba, 0xdc, 0x19, 0x22, 0x3b, 0x00, 0x6b, 0xb0, 0xaf, 0xf9, 0x3a, 0xdd, 0xcf, 0xd0, 0xc9,
-	0xff, 0x32, 0xa0, 0xca, 0xaa, 0x4b, 0x7f, 0x45, 0xf6, 0x85, 0xf4, 0x27, 0x68, 0x08, 0x62, 0x44,
-	0xfd, 0x2a, 0xfb, 0x2c, 0x77, 0xee, 0x1b, 0xf9, 0x1e, 0x3a, 0x79, 0x06, 0xac, 0xee, 0xa2, 0x94,
-	0x5c, 0xad, 0xd1, 0x21, 0x2e, 0x6b, 0x00, 0x57, 0xd0, 0xce, 0xd1, 0x60, 0xf5, 0x9e, 0x94, 0xb1,
-	0x71, 0xf5, 0x9e, 0x94, 0x73, 0xac, 0x68, 0x39, 0x4f, 0x77, 0xd5, 0x2d, 0x97, 0x32, 0x72, 0x75,
-	0xcb, 0x6f, 0x61, 0xd3, 0x23, 0xb4, 0x00, 0x23, 0xc3, 0x91, 0xa8, 0x72, 0xe9, 0xb6, 0x89, 0xd7,
-	0x1a, 0xee, 0x6d, 0xbf, 0xce, 0xf8, 0xbb, 0x06, 0x68, 0x9b, 0x4c, 0xd1, 0xb3, 0x5d, 0xc0, 0x95,
-	0xf2, 0xb5, 0xf5, 0xfc, 0x50, 0xb7, 0xec, 0xb0, 0x73, 0xf4, 0xbb, 0x83, 0x14, 0x4a, 0x08, 0x7e,
-	0x07, 0x29, 0x94, 0x72, 0xfb, 0xd1, 0x8b, 0x4f, 0xde, 0x3c, 0x9e, 0x12, 0x36, 0x5b, 0x4e, 0x06,
-	0x7e, 0x3c, 0x1f, 0xca, 0x00, 0x97, 0x24, 0x1e, 0x8a, 0x08, 0xc3, 0x69, 0x1c, 0x7a, 0xd1, 0x34,
-	0xfd, 0xb7, 0x8e, 0x4e, 0x4e, 0x84, 0xfa, 0xd3, 0x7f, 0x03, 0x00, 0x00, 0xff, 0xff, 0x07, 0x63,
-	0x6d, 0xcd, 0xf2, 0x0d, 0x00, 0x00,
+var fileDescriptor_account_service_8d472ab786ec3146 = []byte{
+	// 1041 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x57, 0xdd, 0x6e, 0xe3, 0x44,
+	0x14, 0xae, 0x93, 0xe6, 0xc7, 0xc7, 0x4d, 0xc4, 0xce, 0x26, 0xc5, 0x78, 0xdb, 0x6d, 0x30, 0x20,
+	0x95, 0x85, 0xb6, 0xa2, 0xfc, 0x49, 0x5c, 0x91, 0xed, 0xb2, 0xa8, 0xd2, 0x6a, 0x55, 0x19, 0xca,
+	0xc5, 0xde, 0x58, 0x8e, 0x3d, 0x4d, 0x47, 0x75, 0xec, 0xe0, 0x99, 0xb4, 0x94, 0x77, 0xe0, 0x82,
+	0xd7, 0xe2, 0x82, 0x07, 0xe2, 0x0a, 0xcd, 0xf1, 0x38, 0x19, 0x3b, 0x6e, 0x0a, 0x77, 0x9e, 0xef,
+	0x9c, 0x39, 0x3f, 0xdf, 0x9c, 0xf3, 0x29, 0x81, 0xe7, 0x41, 0x18, 0xa6, 0x8b, 0x44, 0xf0, 0x13,
+	0xf5, 0x71, 0xc4, 0x69, 0x76, 0xcb, 0x42, 0x7a, 0x3c, 0xcf, 0x52, 0x91, 0x92, 0xee, 0x8c, 0x8a,
+	0x8c, 0xfd, 0xc6, 0x52, 0xf7, 0x8f, 0x26, 0x74, 0xc6, 0xb9, 0x0f, 0xe9, 0x43, 0x83, 0x45, 0xb6,
+	0x31, 0x32, 0x0e, 0x4d, 0xaf, 0xc1, 0x22, 0xf2, 0x1e, 0x34, 0xf9, 0x62, 0x62, 0x37, 0x10, 0x90,
+	0x9f, 0xc4, 0x81, 0xee, 0x82, 0xd3, 0x2c, 0x09, 0x66, 0xd4, 0x6e, 0x22, 0xbc, 0x3c, 0x93, 0x01,
+	0xb4, 0xe8, 0x2c, 0x60, 0xb1, 0xbd, 0x8d, 0x86, 0xfc, 0x40, 0x3e, 0x81, 0x3e, 0x7e, 0xf8, 0xb7,
+	0x34, 0x63, 0x57, 0x8c, 0x46, 0x76, 0x6b, 0x64, 0x1c, 0x76, 0xbd, 0x1e, 0xa2, 0xbf, 0x28, 0x90,
+	0x7c, 0x06, 0x9d, 0x79, 0x96, 0x5e, 0xb1, 0x98, 0xda, 0xed, 0x91, 0x71, 0x68, 0x9d, 0x3e, 0x39,
+	0x2e, 0x4a, 0x3c, 0xbe, 0xc8, 0x0d, 0x5e, 0xe1, 0x41, 0x3e, 0x84, 0x9d, 0xf9, 0x75, 0x9a, 0x50,
+	0x3f, 0x59, 0xcc, 0x26, 0x34, 0xb3, 0x3b, 0x98, 0xd0, 0x42, 0xec, 0x2d, 0x42, 0xe4, 0x14, 0x86,
+	0xba, 0xcb, 0x2a, 0x7b, 0x17, 0xb3, 0x3f, 0xd5, 0x7c, 0x97, 0x35, 0xec, 0x03, 0x84, 0x19, 0x0d,
+	0x04, 0x8d, 0xfc, 0x40, 0xd8, 0xe6, 0xc8, 0x38, 0x6c, 0x7a, 0xa6, 0x42, 0xc6, 0x42, 0x9a, 0x17,
+	0xf3, 0xa8, 0x30, 0x43, 0x6e, 0x56, 0xc8, 0x58, 0xc8, 0xa2, 0xc2, 0x20, 0x09, 0x69, 0x1c, 0xe7,
+	0x0e, 0x16, 0x3a, 0x58, 0x4b, 0x6c, 0x2c, 0x88, 0x0b, 0xbd, 0x38, 0xe0, 0xc2, 0x8f, 0xd3, 0x29,
+	0x4b, 0xa4, 0xcf, 0x4e, 0xee, 0x23, 0xc1, 0x37, 0x12, 0x1b, 0x0b, 0xf7, 0xef, 0x06, 0x74, 0x54,
+	0xc3, 0x84, 0xc0, 0x36, 0x32, 0x9d, 0xbf, 0x08, 0x7e, 0xcb, 0x2a, 0xae, 0x58, 0xc6, 0x85, 0x8f,
+	0x96, 0xfc, 0x69, 0x4c, 0x44, 0xde, 0x4a, 0xf3, 0x33, 0x30, 0x31, 0x85, 0xfe, 0x42, 0x12, 0x40,
+	0xe3, 0x01, 0x58, 0x33, 0x16, 0x45, 0x31, 0xcd, 0xcd, 0xf9, 0x3b, 0x41, 0x0e, 0xa1, 0x83, 0x03,
+	0xdd, 0x84, 0x85, 0x37, 0x68, 0x6d, 0xe5, 0x97, 0x8b, 0x33, 0xb1, 0xcb, 0x2f, 0x64, 0xae, 0x9e,
+	0x43, 0x5a, 0x58, 0x28, 0x16, 0x19, 0x55, 0x2f, 0x51, 0x1c, 0xa5, 0xe5, 0x8e, 0x4e, 0x38, 0x13,
+	0x14, 0x79, 0x37, 0xbd, 0xe2, 0x48, 0x76, 0xa1, 0x3d, 0xa5, 0x49, 0x44, 0x33, 0xe4, 0xd9, 0xf4,
+	0xd4, 0x89, 0xec, 0x81, 0x39, 0x61, 0x99, 0xb8, 0x96, 0xac, 0x22, 0xc7, 0xa6, 0xb7, 0x02, 0x64,
+	0x7d, 0xbf, 0xa7, 0x09, 0x65, 0xc9, 0x55, 0x8a, 0xfc, 0x9a, 0xde, 0xf2, 0x2c, 0x23, 0xc6, 0x69,
+	0x18, 0xc4, 0x14, 0x59, 0x35, 0x3d, 0x75, 0x72, 0xff, 0x32, 0xa0, 0xf5, 0x03, 0x8e, 0x62, 0x75,
+	0xbc, 0xf7, 0x01, 0xd4, 0x76, 0xf8, 0x2c, 0x2a, 0xa8, 0x54, 0xc8, 0x79, 0xb4, 0x9a, 0xe7, 0xa6,
+	0x3e, 0xcf, 0x07, 0x60, 0x31, 0xbe, 0x1a, 0xa7, 0x6d, 0x1c, 0x27, 0x60, 0x5c, 0x9f, 0x22, 0xc6,
+	0xfd, 0x79, 0xc6, 0x66, 0x41, 0x76, 0xaf, 0x86, 0xdd, 0x64, 0xfc, 0x22, 0x07, 0x2a, 0x43, 0xd6,
+	0xde, 0x3c, 0x64, 0x9d, 0xca, 0x90, 0xb9, 0xdf, 0xc0, 0xf0, 0x47, 0x2a, 0xd4, 0xbe, 0xbe, 0xbc,
+	0x3f, 0x7f, 0xe5, 0xd1, 0x5f, 0x17, 0x94, 0x8b, 0x4a, 0x2f, 0x46, 0xa5, 0x17, 0xf7, 0x4f, 0x03,
+	0x06, 0x67, 0x98, 0x44, 0xdd, 0x2d, 0xee, 0x2d, 0x9b, 0x34, 0xf4, 0x26, 0xf5, 0x35, 0x6f, 0x54,
+	0xd6, 0xdc, 0x81, 0xee, 0x3c, 0xe0, 0xfc, 0x2e, 0xcd, 0xa2, 0x62, 0xc0, 0x8a, 0xb3, 0xbe, 0xc5,
+	0xdb, 0x8f, 0x6d, 0xb1, 0x3b, 0x81, 0xc1, 0x25, 0x36, 0x56, 0x29, 0x69, 0x73, 0x2b, 0x7a, 0x8e,
+	0xe6, 0xa3, 0x39, 0xde, 0x87, 0x61, 0x25, 0x07, 0x9f, 0xa7, 0x09, 0xa7, 0xee, 0xf7, 0xb0, 0x83,
+	0x1b, 0xa7, 0xf1, 0x80, 0x5b, 0x59, 0xf0, 0x80, 0x87, 0x52, 0xaf, 0x8d, 0x72, 0xaf, 0xee, 0x11,
+	0x0c, 0x5f, 0xa7, 0xd9, 0x34, 0x15, 0x17, 0x0a, 0xd9, 0x48, 0xa9, 0x6b, 0xc3, 0x6e, 0xd5, 0x5d,
+	0x95, 0xf2, 0x0e, 0x06, 0x1e, 0xe5, 0x74, 0x2d, 0xce, 0x01, 0x58, 0x99, 0xc4, 0x7d, 0x91, 0xde,
+	0xd0, 0xa2, 0x30, 0x40, 0xe8, 0x67, 0x89, 0x48, 0xc5, 0x49, 0xe8, 0x9d, 0x5f, 0xa9, 0xd0, 0x4a,
+	0xe8, 0x5d, 0x11, 0x4a, 0xf6, 0x5f, 0x89, 0xad, 0x92, 0x2e, 0x0a, 0x62, 0xaa, 0x59, 0x1f, 0x61,
+	0x7f, 0x03, 0x23, 0x6b, 0xf5, 0x34, 0xd7, 0xeb, 0xb1, 0x61, 0xb7, 0x9a, 0x56, 0x15, 0xf4, 0x02,
+	0x08, 0xae, 0xd0, 0x3d, 0xee, 0xaa, 0xc6, 0xa5, 0xde, 0x7d, 0x7e, 0x70, 0x87, 0xf0, 0xb4, 0xe4,
+	0xab, 0x42, 0x7c, 0x01, 0x1f, 0xc8, 0x66, 0x93, 0x28, 0xdf, 0xc5, 0x30, 0x10, 0x2c, 0x4d, 0x36,
+	0xbf, 0xca, 0x1e, 0x38, 0x75, 0x57, 0x54, 0xc0, 0xaf, 0x61, 0x70, 0x86, 0xf2, 0xfd, 0xbf, 0x26,
+	0x54, 0x92, 0x5e, 0xb9, 0xa6, 0xe2, 0x9d, 0xc2, 0xe0, 0xec, 0x9a, 0x86, 0x37, 0x97, 0x6a, 0x97,
+	0x8a, 0x78, 0xfa, 0xba, 0x19, 0xe5, 0x75, 0x73, 0xbf, 0x83, 0x61, 0xe5, 0x4e, 0x1e, 0x4c, 0xb2,
+	0xcd, 0xb8, 0x1f, 0xdc, 0x06, 0x2c, 0x0e, 0x26, 0x71, 0x7e, 0xb1, 0xeb, 0x59, 0x8c, 0x8f, 0x0b,
+	0xc8, 0xfd, 0x14, 0x9e, 0xe0, 0xdd, 0x2a, 0xa5, 0x35, 0x44, 0x7c, 0x0b, 0x44, 0x77, 0xfd, 0xcf,
+	0x39, 0x4e, 0xff, 0x69, 0x43, 0x5f, 0xf5, 0xf9, 0x53, 0xfe, 0x13, 0x83, 0xbc, 0x82, 0x5e, 0x49,
+	0x6b, 0xc8, 0xf3, 0xd5, 0x86, 0xd6, 0x89, 0x90, 0xa3, 0x6d, 0xb0, 0xb2, 0xb8, 0x5b, 0xc4, 0x83,
+	0x5e, 0xa9, 0xf1, 0x52, 0x94, 0x1a, 0x16, 0x9d, 0x83, 0x07, 0xed, 0x8a, 0xfe, 0x2d, 0x72, 0x0e,
+	0xb0, 0xea, 0x92, 0x3c, 0xab, 0x5c, 0xd0, 0x69, 0x72, 0xf6, 0xea, 0x8d, 0xcb, 0x50, 0xaf, 0xa1,
+	0x5f, 0x56, 0x62, 0xa2, 0xe5, 0xaf, 0xd5, 0xe8, 0xfa, 0x36, 0xbf, 0x82, 0x16, 0x0a, 0x11, 0xd9,
+	0x5d, 0x59, 0x75, 0x65, 0xaa, 0xbf, 0x75, 0x09, 0xfd, 0xb2, 0x9a, 0xe8, 0xd9, 0x6b, 0x65, 0xc9,
+	0x19, 0x3d, 0xec, 0xb0, 0x6c, 0xca, 0x83, 0x5e, 0x49, 0x2e, 0x74, 0xce, 0xeb, 0x34, 0x4a, 0xe7,
+	0xbc, 0x5e, 0x67, 0xb0, 0xd4, 0xf2, 0xca, 0xeb, 0xa5, 0xd6, 0x6a, 0x90, 0x5e, 0xea, 0x03, 0x6a,
+	0xb1, 0x45, 0xde, 0x80, 0xa5, 0x69, 0x00, 0xd1, 0x9e, 0x6b, 0x5d, 0x46, 0x9c, 0xfd, 0x07, 0xac,
+	0xcb, 0x68, 0x01, 0x90, 0x75, 0x1d, 0x20, 0x1f, 0x95, 0xbb, 0xab, 0x15, 0x16, 0xe7, 0xe3, 0xcd,
+	0x4e, 0x3a, 0xb7, 0x25, 0x55, 0x28, 0xcd, 0x73, 0x8d, 0xca, 0x94, 0xe6, 0xb9, 0x56, 0x4e, 0xb6,
+	0x5e, 0x7e, 0xfe, 0xee, 0xc5, 0x94, 0x89, 0xeb, 0xc5, 0xe4, 0x38, 0x4c, 0x67, 0x27, 0xb9, 0xfb,
+	0x11, 0x4b, 0x4f, 0xf0, 0x47, 0xfe, 0xc9, 0x34, 0x8d, 0x83, 0x64, 0x5a, 0xfc, 0x03, 0xe0, 0x93,
+	0x36, 0xc2, 0x5f, 0xfe, 0x1b, 0x00, 0x00, 0xff, 0xff, 0x7d, 0x88, 0xd2, 0x13, 0x1d, 0x0c, 0x00,
+	0x00,
 }

@@ -5,7 +5,7 @@
  */
 syntax = "proto3";
 
-package metrixio.proto.accounts.v0;
+package metrixio;
 
 option go_package = "github.com/metrix-io/proto/golang/accounts"; // Go.mod doesn't allow /v0 or /v1
 
