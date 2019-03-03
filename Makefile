@@ -8,7 +8,7 @@ proto:
 	rm -rf ./github.com
 
 protojs:
-	rm -rf ./javascript/*
+	rm -rf ./javascript/services/*
 	protoc -I=. services/*.proto \
       --js_out=import_style=commonjs:javascript \
       --grpc-web_out=import_style=commonjs+dts,mode=grpcwebtext:javascript

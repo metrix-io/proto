@@ -1,0 +1,15 @@
+{
+  "name": "@metrix-io/proto",
+  "version": "0.0.1",
+  "description": "Protobuf and gRPC-web definitions for metrix.io services",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Niels Krijger <niels@metrix.io>",
+  "license": "ISC",
+  "dependencies": {
+    "google-protobuf": "^3.7.0-rc.3",
+    "grpc-web": "^1.0.3"
+  }
+}

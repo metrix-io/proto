@@ -63,7 +63,7 @@ func (m *Account) Reset()         { *m = Account{} }
 func (m *Account) String() string { return proto.CompactTextString(m) }
 func (*Account) ProtoMessage()    {}
 func (*Account) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_fc3b448cdb8f5f69, []int{0}
+	return fileDescriptor_account_service_0cd0a2b0d419ae74, []int{0}
 }
 func (m *Account) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Account.Unmarshal(m, b)
@@ -207,7 +207,7 @@ func (m *Profile) Reset()         { *m = Profile{} }
 func (m *Profile) String() string { return proto.CompactTextString(m) }
 func (*Profile) ProtoMessage()    {}
 func (*Profile) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_fc3b448cdb8f5f69, []int{1}
+	return fileDescriptor_account_service_0cd0a2b0d419ae74, []int{1}
 }
 func (m *Profile) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Profile.Unmarshal(m, b)
@@ -339,7 +339,7 @@ func (m *Email) Reset()         { *m = Email{} }
 func (m *Email) String() string { return proto.CompactTextString(m) }
 func (*Email) ProtoMessage()    {}
 func (*Email) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_fc3b448cdb8f5f69, []int{2}
+	return fileDescriptor_account_service_0cd0a2b0d419ae74, []int{2}
 }
 func (m *Email) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Email.Unmarshal(m, b)
@@ -419,7 +419,7 @@ func (m *GetAccountByIDRequest) Reset()         { *m = GetAccountByIDRequest{} }
 func (m *GetAccountByIDRequest) String() string { return proto.CompactTextString(m) }
 func (*GetAccountByIDRequest) ProtoMessage()    {}
 func (*GetAccountByIDRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_fc3b448cdb8f5f69, []int{3}
+	return fileDescriptor_account_service_0cd0a2b0d419ae74, []int{3}
 }
 func (m *GetAccountByIDRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetAccountByIDRequest.Unmarshal(m, b)
@@ -465,7 +465,7 @@ func (m *CreateAccountRequest) Reset()         { *m = CreateAccountRequest{} }
 func (m *CreateAccountRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateAccountRequest) ProtoMessage()    {}
 func (*CreateAccountRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_fc3b448cdb8f5f69, []int{4}
+	return fileDescriptor_account_service_0cd0a2b0d419ae74, []int{4}
 }
 func (m *CreateAccountRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateAccountRequest.Unmarshal(m, b)
@@ -527,7 +527,7 @@ func (m *UpdateAccountRequest) Reset()         { *m = UpdateAccountRequest{} }
 func (m *UpdateAccountRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateAccountRequest) ProtoMessage()    {}
 func (*UpdateAccountRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_fc3b448cdb8f5f69, []int{5}
+	return fileDescriptor_account_service_0cd0a2b0d419ae74, []int{5}
 }
 func (m *UpdateAccountRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateAccountRequest.Unmarshal(m, b)
@@ -576,7 +576,7 @@ func (m *UpdateAccountResponse) Reset()         { *m = UpdateAccountResponse{} }
 func (m *UpdateAccountResponse) String() string { return proto.CompactTextString(m) }
 func (*UpdateAccountResponse) ProtoMessage()    {}
 func (*UpdateAccountResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_fc3b448cdb8f5f69, []int{6}
+	return fileDescriptor_account_service_0cd0a2b0d419ae74, []int{6}
 }
 func (m *UpdateAccountResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateAccountResponse.Unmarshal(m, b)
@@ -615,7 +615,7 @@ func (m *LoginRequest) Reset()         { *m = LoginRequest{} }
 func (m *LoginRequest) String() string { return proto.CompactTextString(m) }
 func (*LoginRequest) ProtoMessage()    {}
 func (*LoginRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_fc3b448cdb8f5f69, []int{7}
+	return fileDescriptor_account_service_0cd0a2b0d419ae74, []int{7}
 }
 func (m *LoginRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LoginRequest.Unmarshal(m, b)
@@ -664,7 +664,7 @@ func (m *ForgotPasswordRequest) Reset()         { *m = ForgotPasswordRequest{} }
 func (m *ForgotPasswordRequest) String() string { return proto.CompactTextString(m) }
 func (*ForgotPasswordRequest) ProtoMessage()    {}
 func (*ForgotPasswordRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_fc3b448cdb8f5f69, []int{8}
+	return fileDescriptor_account_service_0cd0a2b0d419ae74, []int{8}
 }
 func (m *ForgotPasswordRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ForgotPasswordRequest.Unmarshal(m, b)
@@ -706,7 +706,7 @@ func (m *ForgotPasswordResponse) Reset()         { *m = ForgotPasswordResponse{}
 func (m *ForgotPasswordResponse) String() string { return proto.CompactTextString(m) }
 func (*ForgotPasswordResponse) ProtoMessage()    {}
 func (*ForgotPasswordResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_fc3b448cdb8f5f69, []int{9}
+	return fileDescriptor_account_service_0cd0a2b0d419ae74, []int{9}
 }
 func (m *ForgotPasswordResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ForgotPasswordResponse.Unmarshal(m, b)
@@ -740,7 +740,7 @@ func (m *ResetPasswordRequest) Reset()         { *m = ResetPasswordRequest{} }
 func (m *ResetPasswordRequest) String() string { return proto.CompactTextString(m) }
 func (*ResetPasswordRequest) ProtoMessage()    {}
 func (*ResetPasswordRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_fc3b448cdb8f5f69, []int{10}
+	return fileDescriptor_account_service_0cd0a2b0d419ae74, []int{10}
 }
 func (m *ResetPasswordRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResetPasswordRequest.Unmarshal(m, b)
@@ -790,7 +790,7 @@ func (m *ResetPasswordResponse) Reset()         { *m = ResetPasswordResponse{} }
 func (m *ResetPasswordResponse) String() string { return proto.CompactTextString(m) }
 func (*ResetPasswordResponse) ProtoMessage()    {}
 func (*ResetPasswordResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_fc3b448cdb8f5f69, []int{11}
+	return fileDescriptor_account_service_0cd0a2b0d419ae74, []int{11}
 }
 func (m *ResetPasswordResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResetPasswordResponse.Unmarshal(m, b)
@@ -826,7 +826,7 @@ func (m *UpdatePasswordRequest) Reset()         { *m = UpdatePasswordRequest{} }
 func (m *UpdatePasswordRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdatePasswordRequest) ProtoMessage()    {}
 func (*UpdatePasswordRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_fc3b448cdb8f5f69, []int{12}
+	return fileDescriptor_account_service_0cd0a2b0d419ae74, []int{12}
 }
 func (m *UpdatePasswordRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdatePasswordRequest.Unmarshal(m, b)
@@ -883,7 +883,7 @@ func (m *UpdatePasswordResponse) Reset()         { *m = UpdatePasswordResponse{}
 func (m *UpdatePasswordResponse) String() string { return proto.CompactTextString(m) }
 func (*UpdatePasswordResponse) ProtoMessage()    {}
 func (*UpdatePasswordResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_fc3b448cdb8f5f69, []int{13}
+	return fileDescriptor_account_service_0cd0a2b0d419ae74, []int{13}
 }
 func (m *UpdatePasswordResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdatePasswordResponse.Unmarshal(m, b)
@@ -919,7 +919,7 @@ func (m *VerifyEmailRequest) Reset()         { *m = VerifyEmailRequest{} }
 func (m *VerifyEmailRequest) String() string { return proto.CompactTextString(m) }
 func (*VerifyEmailRequest) ProtoMessage()    {}
 func (*VerifyEmailRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_fc3b448cdb8f5f69, []int{14}
+	return fileDescriptor_account_service_0cd0a2b0d419ae74, []int{14}
 }
 func (m *VerifyEmailRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_VerifyEmailRequest.Unmarshal(m, b)
@@ -958,7 +958,7 @@ func (m *VerifyEmailResponse) Reset()         { *m = VerifyEmailResponse{} }
 func (m *VerifyEmailResponse) String() string { return proto.CompactTextString(m) }
 func (*VerifyEmailResponse) ProtoMessage()    {}
 func (*VerifyEmailResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_fc3b448cdb8f5f69, []int{15}
+	return fileDescriptor_account_service_0cd0a2b0d419ae74, []int{15}
 }
 func (m *VerifyEmailResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_VerifyEmailResponse.Unmarshal(m, b)
@@ -992,7 +992,7 @@ func (m *ResendVerificationRequest) Reset()         { *m = ResendVerificationReq
 func (m *ResendVerificationRequest) String() string { return proto.CompactTextString(m) }
 func (*ResendVerificationRequest) ProtoMessage()    {}
 func (*ResendVerificationRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_fc3b448cdb8f5f69, []int{16}
+	return fileDescriptor_account_service_0cd0a2b0d419ae74, []int{16}
 }
 func (m *ResendVerificationRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResendVerificationRequest.Unmarshal(m, b)
@@ -1039,7 +1039,7 @@ func (m *ResendVerificationResponse) Reset()         { *m = ResendVerificationRe
 func (m *ResendVerificationResponse) String() string { return proto.CompactTextString(m) }
 func (*ResendVerificationResponse) ProtoMessage()    {}
 func (*ResendVerificationResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_fc3b448cdb8f5f69, []int{17}
+	return fileDescriptor_account_service_0cd0a2b0d419ae74, []int{17}
 }
 func (m *ResendVerificationResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResendVerificationResponse.Unmarshal(m, b)
@@ -1078,7 +1078,7 @@ func (m *CancelAccountRequest) Reset()         { *m = CancelAccountRequest{} }
 func (m *CancelAccountRequest) String() string { return proto.CompactTextString(m) }
 func (*CancelAccountRequest) ProtoMessage()    {}
 func (*CancelAccountRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_fc3b448cdb8f5f69, []int{18}
+	return fileDescriptor_account_service_0cd0a2b0d419ae74, []int{18}
 }
 func (m *CancelAccountRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CancelAccountRequest.Unmarshal(m, b)
@@ -1118,7 +1118,7 @@ func (m *CancelAccountResponse) Reset()         { *m = CancelAccountResponse{} }
 func (m *CancelAccountResponse) String() string { return proto.CompactTextString(m) }
 func (*CancelAccountResponse) ProtoMessage()    {}
 func (*CancelAccountResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_fc3b448cdb8f5f69, []int{19}
+	return fileDescriptor_account_service_0cd0a2b0d419ae74, []int{19}
 }
 func (m *CancelAccountResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CancelAccountResponse.Unmarshal(m, b)
@@ -1152,7 +1152,7 @@ func (m *CheckUsernameRequest) Reset()         { *m = CheckUsernameRequest{} }
 func (m *CheckUsernameRequest) String() string { return proto.CompactTextString(m) }
 func (*CheckUsernameRequest) ProtoMessage()    {}
 func (*CheckUsernameRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_fc3b448cdb8f5f69, []int{20}
+	return fileDescriptor_account_service_0cd0a2b0d419ae74, []int{20}
 }
 func (m *CheckUsernameRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CheckUsernameRequest.Unmarshal(m, b)
@@ -1192,7 +1192,7 @@ func (m *CheckUsernameResponse) Reset()         { *m = CheckUsernameResponse{} }
 func (m *CheckUsernameResponse) String() string { return proto.CompactTextString(m) }
 func (*CheckUsernameResponse) ProtoMessage()    {}
 func (*CheckUsernameResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_fc3b448cdb8f5f69, []int{21}
+	return fileDescriptor_account_service_0cd0a2b0d419ae74, []int{21}
 }
 func (m *CheckUsernameResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CheckUsernameResponse.Unmarshal(m, b)
@@ -1233,7 +1233,7 @@ func (m *CheckEmailRequest) Reset()         { *m = CheckEmailRequest{} }
 func (m *CheckEmailRequest) String() string { return proto.CompactTextString(m) }
 func (*CheckEmailRequest) ProtoMessage()    {}
 func (*CheckEmailRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_fc3b448cdb8f5f69, []int{22}
+	return fileDescriptor_account_service_0cd0a2b0d419ae74, []int{22}
 }
 func (m *CheckEmailRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CheckEmailRequest.Unmarshal(m, b)
@@ -1273,7 +1273,7 @@ func (m *CheckEmailResponse) Reset()         { *m = CheckEmailResponse{} }
 func (m *CheckEmailResponse) String() string { return proto.CompactTextString(m) }
 func (*CheckEmailResponse) ProtoMessage()    {}
 func (*CheckEmailResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_fc3b448cdb8f5f69, []int{23}
+	return fileDescriptor_account_service_0cd0a2b0d419ae74, []int{23}
 }
 func (m *CheckEmailResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CheckEmailResponse.Unmarshal(m, b)
@@ -1730,10 +1730,10 @@ var _AccountService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("services/account-service.proto", fileDescriptor_account_service_fc3b448cdb8f5f69)
+	proto.RegisterFile("services/account-service.proto", fileDescriptor_account_service_0cd0a2b0d419ae74)
 }
 
-var fileDescriptor_account_service_fc3b448cdb8f5f69 = []byte{
+var fileDescriptor_account_service_0cd0a2b0d419ae74 = []byte{
 	// 1037 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x56, 0xdd, 0x6e, 0xe3, 0x44,
 	0x14, 0xae, 0x93, 0xe6, 0xc7, 0xc7, 0x4d, 0xc4, 0xce, 0x26, 0xc5, 0x78, 0xdb, 0x6d, 0xd6, 0x0b,

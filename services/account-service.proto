@@ -1,8 +1,3 @@
-/**
- * V0 MAY INTRODUCE BACKWARDS INCOMPATIBLE CHANGES WITHOUT NOTICE!!!
- *
- * DO NOT USE UNLESS YOU KNOW WHAT YOU'RE DOING.
- */
 syntax = "proto3";
 
 package metrixio;
