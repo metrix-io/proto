@@ -1,6 +1,7 @@
 {
   "name": "@metrix-io/proto",
   "version": "0.0.2",
+  "private": false,
   "description": "Protobuf and gRPC-web definitions for metrix.io services",
   "main": "index.js",
   "scripts": {
