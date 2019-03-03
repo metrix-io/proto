@@ -3,13 +3,13 @@
 # Generate proto files
 proto:
 	find ./golang -type f -name '*.go'
-	protoc -I. --go_out=plugins=grpc:. accounts/*.proto
+	protoc -I. --go_out=plugins=grpc:. services/*.proto
 	cp -r ./github.com/metrix-io/proto/golang ./
 	rm -rf ./github.com
 
 protojs:
 	rm -rf ./javascript/*
-	protoc -I=. accounts/*.proto \
+	protoc -I=. services/*.proto \
       --js_out=import_style=commonjs:javascript \
       --grpc-web_out=import_style=commonjs+dts,mode=grpcwebtext:javascript
 
