@@ -14,5 +14,8 @@
   "dependencies": {
     "google-protobuf": "^3.7.0-rc.3",
     "grpc-web": "^1.0.3"
+  },
+  "devDependencies": {
+    "typescript": "^3.3.3333"
   }
 }
