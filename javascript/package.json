@@ -3,8 +3,8 @@
   "version": "0.0.4",
   "private": false,
   "description": "Protobuf and gRPC-web definitions for metrix.io services",
-  "main": "index.ts",
-  "types": "index.d.ts",
+  "main": "index.js",
+  "typings": "index.d.ts",
   "scripts": {
     "clean": "rm -f *.js && rm -f *.d.ts",
     "build": "npm run clean && tsc"
