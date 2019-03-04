@@ -6,9 +6,8 @@
   "main": "index.ts",
   "types": "index.d.ts",
   "scripts": {
-    "clean": "rm -f *.js && rm -f *.d.ts && rm -rf ./services",
-    "build": "npm run clean && npm run proto && tsc",
-    "proto": "protoc --proto_path=../services -I=. ../services/*.proto --js_out=import_style=commonjs:javascript --grpc-web_out=import_style=commonjs+dts,mode=grpcwebtext:javascript"
+    "clean": "rm -f *.js && rm -f *.d.ts",
+    "build": "npm run clean && tsc"
   },
   "author": "Niels Krijger <niels@metrix.io>",
   "license": "ISC",
