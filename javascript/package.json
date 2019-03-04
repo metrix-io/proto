@@ -3,11 +3,15 @@
   "version": "0.0.5",
   "private": false,
   "description": "Protobuf and gRPC-web definitions for metrix.io services",
-  "main": "index.js",
-  "typings": "index.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "files": [
+    "dist"
+  ],
+  "types": "dist/index.d.ts",
   "scripts": {
-    "clean": "rm -f *.js && rm -f *.d.ts",
-    "build": "npm run clean && tsc"
+    "clean": "rm -f ./dist",
+    "build": "rollup -c"
   },
   "author": "Niels Krijger <niels@metrix.io>",
   "license": "ISC",
@@ -16,6 +20,8 @@
     "grpc-web": "^1.0.3"
   },
   "devDependencies": {
+    "rollup": "^1.4.1",
+    "rollup-plugin-typescript2": "^0.19.3",
     "typescript": "^3.3.3333"
   }
 }

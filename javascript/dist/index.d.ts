@@ -1,0 +1,28 @@
+import * as accountService from './proto/account-service_pb';
+import * as accountServiceGrpcWeb from './proto/account-service_grpc_web_pb';
+declare const proto: {
+    AccountServiceClient: typeof accountServiceGrpcWeb.AccountServiceClient;
+    AccountServicePromiseClient: typeof accountServiceGrpcWeb.AccountServicePromiseClient;
+    Account: typeof accountService.Account;
+    CancelAccountRequest: typeof accountService.CancelAccountRequest;
+    CancelAccountResponse: typeof accountService.CancelAccountResponse;
+    CheckEmailRequest: typeof accountService.CheckEmailRequest;
+    CheckEmailResponse: typeof accountService.CheckEmailResponse;
+    CheckUsernameRequest: typeof accountService.CheckUsernameRequest;
+    CheckUsernameResponse: typeof accountService.CheckUsernameResponse;
+    CreateAccountRequest: typeof accountService.CreateAccountRequest;
+    ForgotPasswordRequest: typeof accountService.ForgotPasswordRequest;
+    ForgotPasswordResponse: typeof accountService.ForgotPasswordResponse;
+    GetAccountByIDRequest: typeof accountService.GetAccountByIDRequest;
+    LoginRequest: typeof accountService.LoginRequest;
+    Profile: typeof accountService.Profile;
+    ResendVerificationRequest: typeof accountService.ResendVerificationRequest;
+    ResendVerificationResponse: typeof accountService.ResendVerificationResponse;
+    ResetPasswordRequest: typeof accountService.ResetPasswordRequest;
+    ResetPasswordResponse: typeof accountService.ResetPasswordResponse;
+    UpdatePasswordRequest: typeof accountService.UpdatePasswordRequest;
+    UpdatePasswordResponse: typeof accountService.UpdatePasswordResponse;
+    VerifyEmailRequest: typeof accountService.VerifyEmailRequest;
+    VerifyEmailResponse: typeof accountService.VerifyEmailResponse;
+};
+export default proto;
