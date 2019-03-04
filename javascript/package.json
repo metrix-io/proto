@@ -1,19 +1,19 @@
 {
   "name": "@metrix-io/proto",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "private": false,
   "description": "Protobuf and gRPC-web definitions for metrix.io services",
-  "main": "index.js",
-  "types": "./index.d.ts",
+  "main": "index.ts",
+  "types": "index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rm -f *.js && rm -f *.d.ts && rm -rf ./services",
+    "build": "npm run clean && npm run proto && tsc",
+    "proto": "protoc --proto_path=../services -I=. ../services/*.proto --js_out=import_style=commonjs:javascript --grpc-web_out=import_style=commonjs+dts,mode=grpcwebtext:javascript"
   },
   "author": "Niels Krijger <niels@metrix.io>",
   "license": "ISC",
   "dependencies": {
-    "google-protobuf": "^3.7.0-rc.3"
-  },
-  "peerDependencies": {
+    "google-protobuf": "^3.7.0-rc.3",
     "grpc-web": "^1.0.3"
   }
 }

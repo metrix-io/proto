@@ -1,0 +1,13 @@
+{
+  "include": [
+    "*.ts"
+  ],
+  "exclude": [],
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "declaration": true,
+    "outDir": ".",
+    "strict": true
+  }
+}
