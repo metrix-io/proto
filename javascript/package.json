@@ -1,17 +1,11 @@
 {
   "name": "@metrix-io/proto",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "private": false,
   "description": "Protobuf and gRPC-web definitions for metrix.io services",
-  "main": "dist/index.js",
-  "module": "dist/index.es.js",
-  "files": [
-    "dist"
-  ],
   "types": "dist/index.d.ts",
   "scripts": {
-    "clean": "rm -f ./dist",
-    "build": "rollup -c"
+    "build": "ts-node scripts/copy-and-rename.ts"
   },
   "author": "Niels Krijger <niels@metrix.io>",
   "license": "ISC",
@@ -20,8 +14,12 @@
     "grpc-web": "^1.0.3"
   },
   "devDependencies": {
-    "rollup": "^1.4.1",
-    "rollup-plugin-typescript2": "^0.19.3",
+    "@types/fs-extra": "^5.0.5",
+    "@types/klaw-sync": "^6.0.0",
+    "@types/node": "^11.10.4",
+    "fs-extra": "^7.0.1",
+    "klaw-sync": "^6.0.0",
+    "ts-node": "^8.0.2",
     "typescript": "^3.3.3333"
   }
 }
