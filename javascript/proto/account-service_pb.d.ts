@@ -73,6 +73,36 @@ export namespace CancelAccountResponse {
   }
 }
 
+export class CheckCredentialsRequest {
+  constructor ();
+  getLogin(): string;
+  setLogin(a: string): void;
+  getPassword(): string;
+  setPassword(a: string): void;
+  toObject(): CheckCredentialsRequest.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => CheckCredentialsRequest;
+}
+
+export namespace CheckCredentialsRequest {
+  export type AsObject = {
+    Login: string;
+    Password: string;
+  }
+}
+
+export class CheckCredentialsResponse {
+  constructor ();
+  toObject(): CheckCredentialsResponse.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => CheckCredentialsResponse;
+}
+
+export namespace CheckCredentialsResponse {
+  export type AsObject = {
+  }
+}
+
 export class CheckEmailRequest {
   constructor ();
   getEmail(): string;
@@ -196,24 +226,6 @@ export class GetAccountByIDRequest {
 export namespace GetAccountByIDRequest {
   export type AsObject = {
     AccountId: string;
-  }
-}
-
-export class LoginRequest {
-  constructor ();
-  getLogin(): string;
-  setLogin(a: string): void;
-  getPassword(): string;
-  setPassword(a: string): void;
-  toObject(): LoginRequest.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => LoginRequest;
-}
-
-export namespace LoginRequest {
-  export type AsObject = {
-    Login: string;
-    Password: string;
   }
 }
 

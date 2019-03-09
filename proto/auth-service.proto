@@ -1,0 +1,86 @@
+syntax = "proto3";
+
+package metrixio;
+
+option go_package = "github.com/metrix-io/proto/golang"; // Go.mod doesn't allow /v0 or /v1
+
+/**
+ * LoginRequest returns an access token if the login credentials
+ * are valid. The login field may contain either a username or email
+ * address.
+ */
+message LoginRequest {
+    string login = 1;
+    string password = 2;
+}
+
+/**
+ * LoginResponse returns an access token.
+ */
+message LoginResponse {
+    string access_token = 1;
+
+    // The lifetime in seconds of the access token.
+    string expires_in = 2;
+}
+
+/**
+ * A permission specifies which a set of actions for a given resource.
+ *
+ * A resource name starts with an "mtx:"-prefix followed by a resource identifier
+ * usually in the form of "mtx:<resource>:<id>:<subresource>:<subid>".
+ */
+message Permission {
+    string resource = 1;
+    repeated string actions = 2;
+}
+
+/**
+ * GrantPermission adds one or more permissions to a subject.
+ *
+ * A subject can either be a user account, organization, role or other and must
+ * be a valid resource name, e.g. "mtx:account:g921sdfb1lkg".
+ *
+ * If the logged in subject has insufficient
+ */
+message GrantPermissions {
+    string subject = 1;
+    repeated Permission permissions = 2;
+}
+
+/**
+ * RevokePermission removes one or more permissions for a subject.
+ */
+message RevokePermissions {
+    string subject = 1;
+    repeated Permission permissions = 2;
+}
+
+/**
+ * Returns all permissions for a subject.
+ */
+message GetPermissions {
+    string subject = 1;
+    repeated Permission permissions = 2;
+}
+
+/**
+ * Checks if the request call credentials has specified permission(s) on
+ * a given resource. If at least one permission is not
+ */
+message HasPermissionsRequest {
+    string resource = 1;
+    repeated Permission permissions = 2;
+}
+
+/**
+ * An empty response indicates the logged in account has all specified
+ * permissions. If at least one permission is missing an Unauthenticated error
+ * response status is returned instead.
+ */
+message HasPermissionsResponse {}
+
+service AuthService {
+    rpc Login (LoginRequest) returns (LoginResponse) {}
+    rpc HasPermission (HasPermissionsRequest) returns (HasPermissionsResponse) {}
+}

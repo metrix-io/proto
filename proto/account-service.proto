@@ -156,17 +156,21 @@ message UpdateAccountRequest {
 message UpdateAccountResponse{}
 
 /**
- * The login request marks a user as being logged in and returns
- * the user account.
- *
- * It does not generate an authentication token; for this
- * use the auth-service's login method.
+ * CheckCredentialsRequest verifies if a username/email + password
+ * combination is valid. The login-field may contain either a
+ * username or email address.
  */
-message LoginRequest {
-  // Login may contain either the email address or username
+message CheckCredentialsRequest {
   string login = 1;
   string password = 2;
 }
+
+/**
+ * CheckCredentialsResponse is an empty response indicating
+ * the credentials are valid. If the credentials are invalid an
+ * Unauthenticated status code is returned instead.
+ */
+message CheckCredentialsResponse {}
 
 /**
  * ResendVerificationRequest schedules a reset password email.
@@ -310,8 +314,8 @@ service AccountService {
   rpc CreateAccount (CreateAccountRequest) returns (Account) {}
   rpc CheckUsername (CheckUsernameRequest) returns (CheckUsernameResponse) {}
   rpc CheckEmail (CheckEmailRequest) returns (CheckEmailResponse) {}
+  rpc CheckCredentials (CheckCredentialsRequest) returns (CheckCredentialsResponse) {}
   rpc GetAccountByID (GetAccountByIDRequest) returns (Account) {}
-  rpc Login (LoginRequest) returns (Account) {}
   rpc ForgotPassword (ForgotPasswordRequest) returns (ForgotPasswordResponse) {}
   rpc ResetPassword (ResetPasswordRequest) returns (ResetPasswordResponse) {}
   rpc UpdatePassword (UpdatePasswordRequest) returns (UpdatePasswordResponse) {}

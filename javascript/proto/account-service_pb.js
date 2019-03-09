@@ -14,6 +14,8 @@ var global = Function('return this')();
 goog.exportSymbol('proto.metrixio.Account', null, global);
 goog.exportSymbol('proto.metrixio.CancelAccountRequest', null, global);
 goog.exportSymbol('proto.metrixio.CancelAccountResponse', null, global);
+goog.exportSymbol('proto.metrixio.CheckCredentialsRequest', null, global);
+goog.exportSymbol('proto.metrixio.CheckCredentialsResponse', null, global);
 goog.exportSymbol('proto.metrixio.CheckEmailRequest', null, global);
 goog.exportSymbol('proto.metrixio.CheckEmailResponse', null, global);
 goog.exportSymbol('proto.metrixio.CheckUsernameRequest', null, global);
@@ -23,7 +25,6 @@ goog.exportSymbol('proto.metrixio.Email', null, global);
 goog.exportSymbol('proto.metrixio.ForgotPasswordRequest', null, global);
 goog.exportSymbol('proto.metrixio.ForgotPasswordResponse', null, global);
 goog.exportSymbol('proto.metrixio.GetAccountByIDRequest', null, global);
-goog.exportSymbol('proto.metrixio.LoginRequest', null, global);
 goog.exportSymbol('proto.metrixio.Profile', null, global);
 goog.exportSymbol('proto.metrixio.ResendVerificationRequest', null, global);
 goog.exportSymbol('proto.metrixio.ResendVerificationResponse', null, global);
@@ -1937,12 +1938,12 @@ proto.metrixio.UpdateAccountResponse.serializeBinaryToWriter = function(message,
  * @extends {jspb.Message}
  * @constructor
  */
-proto.metrixio.LoginRequest = function(opt_data) {
+proto.metrixio.CheckCredentialsRequest = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.metrixio.LoginRequest, jspb.Message);
+goog.inherits(proto.metrixio.CheckCredentialsRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
-  proto.metrixio.LoginRequest.displayName = 'proto.metrixio.LoginRequest';
+  proto.metrixio.CheckCredentialsRequest.displayName = 'proto.metrixio.CheckCredentialsRequest';
 }
 
 
@@ -1957,8 +1958,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     for transitional soy proto support: http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.metrixio.LoginRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.metrixio.LoginRequest.toObject(opt_includeInstance, this);
+proto.metrixio.CheckCredentialsRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.metrixio.CheckCredentialsRequest.toObject(opt_includeInstance, this);
 };
 
 
@@ -1967,11 +1968,11 @@ proto.metrixio.LoginRequest.prototype.toObject = function(opt_includeInstance) {
  * @param {boolean|undefined} includeInstance Whether to include the JSPB
  *     instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.metrixio.LoginRequest} msg The msg instance to transform.
+ * @param {!proto.metrixio.CheckCredentialsRequest} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.metrixio.LoginRequest.toObject = function(includeInstance, msg) {
+proto.metrixio.CheckCredentialsRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     login: jspb.Message.getFieldWithDefault(msg, 1, ""),
     password: jspb.Message.getFieldWithDefault(msg, 2, "")
@@ -1988,23 +1989,23 @@ proto.metrixio.LoginRequest.toObject = function(includeInstance, msg) {
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.metrixio.LoginRequest}
+ * @return {!proto.metrixio.CheckCredentialsRequest}
  */
-proto.metrixio.LoginRequest.deserializeBinary = function(bytes) {
+proto.metrixio.CheckCredentialsRequest.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.metrixio.LoginRequest;
-  return proto.metrixio.LoginRequest.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.metrixio.CheckCredentialsRequest;
+  return proto.metrixio.CheckCredentialsRequest.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.metrixio.LoginRequest} msg The message object to deserialize into.
+ * @param {!proto.metrixio.CheckCredentialsRequest} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.metrixio.LoginRequest}
+ * @return {!proto.metrixio.CheckCredentialsRequest}
  */
-proto.metrixio.LoginRequest.deserializeBinaryFromReader = function(msg, reader) {
+proto.metrixio.CheckCredentialsRequest.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -2032,9 +2033,9 @@ proto.metrixio.LoginRequest.deserializeBinaryFromReader = function(msg, reader) 
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.metrixio.LoginRequest.prototype.serializeBinary = function() {
+proto.metrixio.CheckCredentialsRequest.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.metrixio.LoginRequest.serializeBinaryToWriter(this, writer);
+  proto.metrixio.CheckCredentialsRequest.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -2042,11 +2043,11 @@ proto.metrixio.LoginRequest.prototype.serializeBinary = function() {
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.metrixio.LoginRequest} message
+ * @param {!proto.metrixio.CheckCredentialsRequest} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.metrixio.LoginRequest.serializeBinaryToWriter = function(message, writer) {
+proto.metrixio.CheckCredentialsRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getLogin();
   if (f.length > 0) {
@@ -2069,13 +2070,13 @@ proto.metrixio.LoginRequest.serializeBinaryToWriter = function(message, writer) 
  * optional string login = 1;
  * @return {string}
  */
-proto.metrixio.LoginRequest.prototype.getLogin = function() {
+proto.metrixio.CheckCredentialsRequest.prototype.getLogin = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
 /** @param {string} value */
-proto.metrixio.LoginRequest.prototype.setLogin = function(value) {
+proto.metrixio.CheckCredentialsRequest.prototype.setLogin = function(value) {
   jspb.Message.setProto3StringField(this, 1, value);
 };
 
@@ -2084,14 +2085,130 @@ proto.metrixio.LoginRequest.prototype.setLogin = function(value) {
  * optional string password = 2;
  * @return {string}
  */
-proto.metrixio.LoginRequest.prototype.getPassword = function() {
+proto.metrixio.CheckCredentialsRequest.prototype.getPassword = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
 /** @param {string} value */
-proto.metrixio.LoginRequest.prototype.setPassword = function(value) {
+proto.metrixio.CheckCredentialsRequest.prototype.setPassword = function(value) {
   jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.metrixio.CheckCredentialsResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.metrixio.CheckCredentialsResponse, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.metrixio.CheckCredentialsResponse.displayName = 'proto.metrixio.CheckCredentialsResponse';
+}
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.metrixio.CheckCredentialsResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.metrixio.CheckCredentialsResponse.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.metrixio.CheckCredentialsResponse} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.metrixio.CheckCredentialsResponse.toObject = function(includeInstance, msg) {
+  var f, obj = {
+
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.metrixio.CheckCredentialsResponse}
+ */
+proto.metrixio.CheckCredentialsResponse.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.metrixio.CheckCredentialsResponse;
+  return proto.metrixio.CheckCredentialsResponse.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.metrixio.CheckCredentialsResponse} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.metrixio.CheckCredentialsResponse}
+ */
+proto.metrixio.CheckCredentialsResponse.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.metrixio.CheckCredentialsResponse.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.metrixio.CheckCredentialsResponse.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.metrixio.CheckCredentialsResponse} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.metrixio.CheckCredentialsResponse.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
 };
 
 

@@ -243,6 +243,62 @@ proto.metrixio.AccountServicePromiseClient.prototype.checkEmail =
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.metrixio.CheckCredentialsRequest,
+ *   !proto.metrixio.CheckCredentialsResponse>}
+ */
+const methodInfo_AccountService_CheckCredentials = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.metrixio.CheckCredentialsResponse,
+  /** @param {!proto.metrixio.CheckCredentialsRequest} request */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.metrixio.CheckCredentialsResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.metrixio.CheckCredentialsRequest} request The
+ *     request proto
+ * @param {!Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.metrixio.CheckCredentialsResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.metrixio.CheckCredentialsResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.metrixio.AccountServiceClient.prototype.checkCredentials =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/metrixio.AccountService/CheckCredentials',
+      request,
+      metadata,
+      methodInfo_AccountService_CheckCredentials,
+      callback);
+};
+
+
+/**
+ * @param {!proto.metrixio.CheckCredentialsRequest} request The
+ *     request proto
+ * @param {!Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.metrixio.CheckCredentialsResponse>}
+ *     The XHR Node Readable Stream
+ */
+proto.metrixio.AccountServicePromiseClient.prototype.checkCredentials =
+    function(request, metadata) {
+  return new Promise((resolve, reject) => {
+    this.delegateClient_.checkCredentials(
+      request, metadata, (error, response) => {
+        error ? reject(error) : resolve(response);
+      });
+  });
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
  *   !proto.metrixio.GetAccountByIDRequest,
  *   !proto.metrixio.Account>}
  */
@@ -289,62 +345,6 @@ proto.metrixio.AccountServicePromiseClient.prototype.getAccountByID =
     function(request, metadata) {
   return new Promise((resolve, reject) => {
     this.delegateClient_.getAccountByID(
-      request, metadata, (error, response) => {
-        error ? reject(error) : resolve(response);
-      });
-  });
-};
-
-
-/**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.metrixio.LoginRequest,
- *   !proto.metrixio.Account>}
- */
-const methodInfo_AccountService_Login = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.metrixio.Account,
-  /** @param {!proto.metrixio.LoginRequest} request */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.metrixio.Account.deserializeBinary
-);
-
-
-/**
- * @param {!proto.metrixio.LoginRequest} request The
- *     request proto
- * @param {!Object<string, string>} metadata User defined
- *     call metadata
- * @param {function(?grpc.web.Error, ?proto.metrixio.Account)}
- *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.metrixio.Account>|undefined}
- *     The XHR Node Readable Stream
- */
-proto.metrixio.AccountServiceClient.prototype.login =
-    function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
-      '/metrixio.AccountService/Login',
-      request,
-      metadata,
-      methodInfo_AccountService_Login,
-      callback);
-};
-
-
-/**
- * @param {!proto.metrixio.LoginRequest} request The
- *     request proto
- * @param {!Object<string, string>} metadata User defined
- *     call metadata
- * @return {!Promise<!proto.metrixio.Account>}
- *     The XHR Node Readable Stream
- */
-proto.metrixio.AccountServicePromiseClient.prototype.login =
-    function(request, metadata) {
-  return new Promise((resolve, reject) => {
-    this.delegateClient_.login(
       request, metadata, (error, response) => {
         error ? reject(error) : resolve(response);
       });
