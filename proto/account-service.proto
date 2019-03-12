@@ -126,12 +126,6 @@ message GetAccountByIDRequest {
   string account_id = 1;
 }
 
-/**
- * CreateAccountRequest creates a new account.
- *
- * Returns a FailedPrecondition error if the email is already in use.
- * Returns InvalidArgument errors if any of the fields are invalid.
- */
 message CreateAccountRequest {
   string email = 1;
   string username = 2;
@@ -141,6 +135,7 @@ message CreateAccountRequest {
 
 /**
  * UpdateAccountRequest allows to update user profile details.
+ * TODO
  */
 message UpdateAccountRequest {
   string account_id = 1;
@@ -155,171 +150,187 @@ message UpdateAccountRequest {
  */
 message UpdateAccountResponse{}
 
-/**
- * CheckCredentialsRequest verifies if a username/email + password
- * combination is valid. The login-field may contain either a
- * username or email address.
- */
 message CheckCredentialsRequest {
   string login = 1;
   string password = 2;
 }
 
-/**
- * CheckCredentialsResponse is an empty response indicating
- * the credentials are valid. If the credentials are invalid an
- * Unauthenticated status code is returned instead.
- */
 message CheckCredentialsResponse {}
 
-/**
- * ResendVerificationRequest schedules a reset password email.
- *
- * The link expires after 3 hours.
- */
 message ForgotPasswordRequest {
   string email = 1;
 }
 
-/**
- * ForgotPassword sends an empty response when a new forgot password
- * email has been scheduled. Normally an email arrives within a couple of minutes.
- *
- * Returns a NotFound error code if the email address did not match any account.
- */
 message ForgotPasswordResponse {}
 
-/**
- * ResetPassword updates an account password using a reset token as proof.
- */
 message ResetPasswordRequest {
   string reset_token = 1;
   string new_password = 2;
 }
 
-/**
- * ResetPassword sends an empty response when the password was updated
- * successfully.
- *
- * Returns an NotFound error if the reset token does not exist or has
- * expired.
- */
 message ResetPasswordResponse {}
 
-/**
- * UpdatePasswordRequest changes an account password with a user password as
- * verification.
- */
 message UpdatePasswordRequest {
   string account_id = 1;
   string password = 2;
   string new_password = 3;
 }
 
-/**
- * UpdatePassword sends an empty response when the password was updated
- * successfully.
- *
- * Returns an Unauthenticated error if the password was invalid.
- * Returns a NotFound error if the account could not be found.
- */
 message UpdatePasswordResponse {}
 
-/**
- * VerifyEmailRequest verifies an email address.
- *
- * Returns an NotFound error if the token is invalid.
- * Returns a FailedPrecondition if the email was already verified.
- */
 message VerifyEmailRequest {
   string token = 1;
 }
 
-/**
- * VerifyEmail sends an empty response when the email was succesfully verified.
- */
 message VerifyEmailResponse {}
 
-/**
- * ResendVerificationRequest requests a new verification email.
- * This is useful if the user forgot his or her email addresses.
- */
 message ResendVerificationRequest {
   string email = 1;
 }
 
-/**
- * ResendVerification sends an empty response when a new verification
- * email has been scheduled. Normally an email arrives within a couple
- * of minutes.
- *
- * Returns a NotFound error code if the email address did not match
- * any account.
- *
- * Returns a FailedPrecondition error code if the specified email
- * address is already verified.
- */
 message ResendVerificationResponse {}
 
-/**
- * CancelAccount disables an account and removes all auth tokens
- * associated with the account.
- *
- * Cancelled accounts are completely removed after 14 days.
- *
- * To regain access to a cancelled account before the account is
- * permanently deleted send an email to support@metrix.io
- */
 message CancelAccountRequest{
   string account_id = 1;
 }
 
-/**
- * CancelAccount sends an empty response when the account has
- * successfully been cancelled.
- */
 message CancelAccountResponse{}
 
-/**
- * CheckUsername returns whether a specified username is still
- * available.
- */
 message CheckUsernameRequest{
   string username = 1;
 }
 
-/**
- * Returns true if username is available, otherwise false.
- */
 message CheckUsernameResponse{
   bool is_available = 1;
 }
 
-/**
- * CheckEmail returns whether a specified email address is still
- * available.
- */
 message CheckEmailRequest{
   string email = 1;
 }
 
-/**
- * Returns true if email is already in use, otherwise false.
- */
 message CheckEmailResponse{
   bool is_available = 1;
 }
 
 service AccountService {
+  /**
+   * CreateAccountRequest creates a new account.
+   *
+   * Errors:
+   * - FAILED_PRECONDITION if the email or username is already in use.
+   * - INVALID_ARGUMENT if any of the fields are invalid.
+   */
   rpc CreateAccount (CreateAccountRequest) returns (Account) {}
+
+  /**
+   * CheckUsername returns true when a specified username is still
+   * available, otherwise false.
+   */
   rpc CheckUsername (CheckUsernameRequest) returns (CheckUsernameResponse) {}
+
+  /**
+   * CheckEmail returns true when a specified email address is still
+   * available, otherwise false.
+   */
   rpc CheckEmail (CheckEmailRequest) returns (CheckEmailResponse) {}
+
+  /**
+   * CheckCredentialsRequest verifies if a username/email + password
+   * combination is valid. The login-field may contain either a username
+   * or email address.
+   *
+   * Returns an empty response when credentials are valid.
+   *
+   * Errors:
+   * - UNAUTHENTICATED if credentials are invalid.
+   */
   rpc CheckCredentials (CheckCredentialsRequest) returns (CheckCredentialsResponse) {}
+
+  /**
+   * Returns an account and profile by it's ID.
+   *
+   * Errors:
+   * - PERMISSION_DENIED if logged in subject has insufficient privileges.
+   * - NOT_FOUND if account could not be found.
+   */
   rpc GetAccountByID (GetAccountByIDRequest) returns (Account) {}
+
+  /**
+   * ResendVerificationRequest schedules a reset password email. The reset
+   * link expires after 3 hours.
+   *
+   * Returns an empty response when a new forgot password email has successfully
+   * been scheduled. Normally an email arrives within a couple of minutes.
+   *
+   * Errors:
+   * - NOT_FOUND if the email address did not match any account.
+   */
   rpc ForgotPassword (ForgotPasswordRequest) returns (ForgotPasswordResponse) {}
+
+  /**
+   * ResetPassword updates an account password using a reset token
+   * as proof.
+   *
+   * Returns an empty response when the password was updated successfully.
+   *
+   * Errors:
+   * - NOT_FOUND if the reset token does not exist, has already been used
+   *   or has expired.
+   */
   rpc ResetPassword (ResetPasswordRequest) returns (ResetPasswordResponse) {}
+
+  /**
+   * UpdatePasswordRequest changes an account password with a user password as
+   * verification.
+   *
+   * UpdatePas`sword sends an empty response when the password was updated
+   * successfully.
+   *
+   * Errors:
+   * - UNAUTHENTICATED if the verification password was invalid.
+   * - NOT_FOUND error if the account could not be found.
+   */
   rpc UpdatePassword (UpdatePasswordRequest) returns (UpdatePasswordResponse) {}
+
+  /**
+   * VerifyEmailRequest verifies an email address.
+   *
+   * Returns an empty response when the email was successfully verified.
+   *
+   * Errors:
+   * - NOT_FOUND if token is invalid.
+   * - FAILED_PRECONDITION if the email was already verified.
+   */
   rpc VerifyEmail (VerifyEmailRequest) returns (VerifyEmailResponse) {}
+
+  /**
+   * ResendVerificationRequest requests a new verification email to
+   * a newly registered account that has not been verified yet.
+   *
+   * Returns an empty response when a new verification email was scheduled.
+   * Normally an email arrives within a couple of minutes.
+   *
+   * Errors:
+   * - NOT_FOUND if the email address did not match any account.
+   * - FAILED_PRECONDITION if the specified email address has already
+   *   been verified.
+   */
   rpc ResendVerification (ResendVerificationRequest) returns (ResendVerificationResponse) {}
+
+  /**
+   * CancelAccount disables an account and removes all auth tokens
+   * associated with the account.
+   *
+   * Cancelled accounts are completely removed after 14 days.
+   *
+   * To regain access to a cancelled account before the account is
+   * permanently deleted send an email to support@metrix.io
+   *
+   * Returns an empty response when cancellation was successful.
+   *
+   * Errors:
+   * - NOT_FOUND if the account could not be found.
+   * - PERMISSION_DENIED if logged in subject has insufficient privileges.
+   */
   rpc CancelAccount (CancelAccountRequest) returns (CancelAccountResponse) {}
 }
