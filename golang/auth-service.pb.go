@@ -23,10 +23,6 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
-// *
-// LoginRequest returns an access token if the login credentials
-// are valid. The login field may contain either a username or email
-// address.
 type LoginRequest struct {
 	Login                string   `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
 	Password             string   `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
@@ -39,7 +35,7 @@ func (m *LoginRequest) Reset()         { *m = LoginRequest{} }
 func (m *LoginRequest) String() string { return proto.CompactTextString(m) }
 func (*LoginRequest) ProtoMessage()    {}
 func (*LoginRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_auth_service_73dfeeecb5bc5765, []int{0}
+	return fileDescriptor_auth_service_d45fe3f0f2db9bb4, []int{0}
 }
 func (m *LoginRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LoginRequest.Unmarshal(m, b)
@@ -73,8 +69,6 @@ func (m *LoginRequest) GetPassword() string {
 	return ""
 }
 
-// *
-// LoginResponse returns an access token.
 type LoginResponse struct {
 	AccessToken string `protobuf:"bytes,1,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
 	// The lifetime in seconds of the access token.
@@ -88,7 +82,7 @@ func (m *LoginResponse) Reset()         { *m = LoginResponse{} }
 func (m *LoginResponse) String() string { return proto.CompactTextString(m) }
 func (*LoginResponse) ProtoMessage()    {}
 func (*LoginResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_auth_service_73dfeeecb5bc5765, []int{1}
+	return fileDescriptor_auth_service_d45fe3f0f2db9bb4, []int{1}
 }
 func (m *LoginResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LoginResponse.Unmarshal(m, b)
@@ -123,7 +117,7 @@ func (m *LoginResponse) GetExpiresIn() string {
 }
 
 // *
-// A permission specifies which a set of actions for a given resource.
+// A permission specifies a set of actions for a given resource.
 //
 // A resource name starts with an "mtx:"-prefix followed by a resource identifier
 // usually in the form of "mtx:<resource>:<id>:<subresource>:<subid>".
@@ -139,7 +133,7 @@ func (m *Permission) Reset()         { *m = Permission{} }
 func (m *Permission) String() string { return proto.CompactTextString(m) }
 func (*Permission) ProtoMessage()    {}
 func (*Permission) Descriptor() ([]byte, []int) {
-	return fileDescriptor_auth_service_73dfeeecb5bc5765, []int{2}
+	return fileDescriptor_auth_service_d45fe3f0f2db9bb4, []int{2}
 }
 func (m *Permission) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Permission.Unmarshal(m, b)
@@ -173,14 +167,7 @@ func (m *Permission) GetActions() []string {
 	return nil
 }
 
-// *
-// GrantPermission adds one or more permissions to a subject.
-//
-// A subject can either be a user account, organization, role or other and must
-// be a valid resource name, e.g. "mtx:account:g921sdfb1lkg".
-//
-// If the logged in subject has insufficient
-type GrantPermissions struct {
+type GrantPermissionsRequest struct {
 	Subject              string        `protobuf:"bytes,1,opt,name=subject,proto3" json:"subject,omitempty"`
 	Permissions          []*Permission `protobuf:"bytes,2,rep,name=permissions,proto3" json:"permissions,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
@@ -188,47 +175,75 @@ type GrantPermissions struct {
 	XXX_sizecache        int32         `json:"-"`
 }
 
-func (m *GrantPermissions) Reset()         { *m = GrantPermissions{} }
-func (m *GrantPermissions) String() string { return proto.CompactTextString(m) }
-func (*GrantPermissions) ProtoMessage()    {}
-func (*GrantPermissions) Descriptor() ([]byte, []int) {
-	return fileDescriptor_auth_service_73dfeeecb5bc5765, []int{3}
+func (m *GrantPermissionsRequest) Reset()         { *m = GrantPermissionsRequest{} }
+func (m *GrantPermissionsRequest) String() string { return proto.CompactTextString(m) }
+func (*GrantPermissionsRequest) ProtoMessage()    {}
+func (*GrantPermissionsRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_auth_service_d45fe3f0f2db9bb4, []int{3}
 }
-func (m *GrantPermissions) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GrantPermissions.Unmarshal(m, b)
+func (m *GrantPermissionsRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GrantPermissionsRequest.Unmarshal(m, b)
 }
-func (m *GrantPermissions) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GrantPermissions.Marshal(b, m, deterministic)
+func (m *GrantPermissionsRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GrantPermissionsRequest.Marshal(b, m, deterministic)
 }
-func (dst *GrantPermissions) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GrantPermissions.Merge(dst, src)
+func (dst *GrantPermissionsRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GrantPermissionsRequest.Merge(dst, src)
 }
-func (m *GrantPermissions) XXX_Size() int {
-	return xxx_messageInfo_GrantPermissions.Size(m)
+func (m *GrantPermissionsRequest) XXX_Size() int {
+	return xxx_messageInfo_GrantPermissionsRequest.Size(m)
 }
-func (m *GrantPermissions) XXX_DiscardUnknown() {
-	xxx_messageInfo_GrantPermissions.DiscardUnknown(m)
+func (m *GrantPermissionsRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_GrantPermissionsRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_GrantPermissions proto.InternalMessageInfo
+var xxx_messageInfo_GrantPermissionsRequest proto.InternalMessageInfo
 
-func (m *GrantPermissions) GetSubject() string {
+func (m *GrantPermissionsRequest) GetSubject() string {
 	if m != nil {
 		return m.Subject
 	}
 	return ""
 }
 
-func (m *GrantPermissions) GetPermissions() []*Permission {
+func (m *GrantPermissionsRequest) GetPermissions() []*Permission {
 	if m != nil {
 		return m.Permissions
 	}
 	return nil
 }
 
-// *
-// RevokePermission removes one or more permissions for a subject.
-type RevokePermissions struct {
+type GrantPermissionsResponse struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *GrantPermissionsResponse) Reset()         { *m = GrantPermissionsResponse{} }
+func (m *GrantPermissionsResponse) String() string { return proto.CompactTextString(m) }
+func (*GrantPermissionsResponse) ProtoMessage()    {}
+func (*GrantPermissionsResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_auth_service_d45fe3f0f2db9bb4, []int{4}
+}
+func (m *GrantPermissionsResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GrantPermissionsResponse.Unmarshal(m, b)
+}
+func (m *GrantPermissionsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GrantPermissionsResponse.Marshal(b, m, deterministic)
+}
+func (dst *GrantPermissionsResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GrantPermissionsResponse.Merge(dst, src)
+}
+func (m *GrantPermissionsResponse) XXX_Size() int {
+	return xxx_messageInfo_GrantPermissionsResponse.Size(m)
+}
+func (m *GrantPermissionsResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_GrantPermissionsResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GrantPermissionsResponse proto.InternalMessageInfo
+
+type RevokePermissionsRequest struct {
 	Subject              string        `protobuf:"bytes,1,opt,name=subject,proto3" json:"subject,omitempty"`
 	Permissions          []*Permission `protobuf:"bytes,2,rep,name=permissions,proto3" json:"permissions,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
@@ -236,47 +251,113 @@ type RevokePermissions struct {
 	XXX_sizecache        int32         `json:"-"`
 }
 
-func (m *RevokePermissions) Reset()         { *m = RevokePermissions{} }
-func (m *RevokePermissions) String() string { return proto.CompactTextString(m) }
-func (*RevokePermissions) ProtoMessage()    {}
-func (*RevokePermissions) Descriptor() ([]byte, []int) {
-	return fileDescriptor_auth_service_73dfeeecb5bc5765, []int{4}
+func (m *RevokePermissionsRequest) Reset()         { *m = RevokePermissionsRequest{} }
+func (m *RevokePermissionsRequest) String() string { return proto.CompactTextString(m) }
+func (*RevokePermissionsRequest) ProtoMessage()    {}
+func (*RevokePermissionsRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_auth_service_d45fe3f0f2db9bb4, []int{5}
 }
-func (m *RevokePermissions) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_RevokePermissions.Unmarshal(m, b)
+func (m *RevokePermissionsRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_RevokePermissionsRequest.Unmarshal(m, b)
 }
-func (m *RevokePermissions) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_RevokePermissions.Marshal(b, m, deterministic)
+func (m *RevokePermissionsRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_RevokePermissionsRequest.Marshal(b, m, deterministic)
 }
-func (dst *RevokePermissions) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_RevokePermissions.Merge(dst, src)
+func (dst *RevokePermissionsRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_RevokePermissionsRequest.Merge(dst, src)
 }
-func (m *RevokePermissions) XXX_Size() int {
-	return xxx_messageInfo_RevokePermissions.Size(m)
+func (m *RevokePermissionsRequest) XXX_Size() int {
+	return xxx_messageInfo_RevokePermissionsRequest.Size(m)
 }
-func (m *RevokePermissions) XXX_DiscardUnknown() {
-	xxx_messageInfo_RevokePermissions.DiscardUnknown(m)
+func (m *RevokePermissionsRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_RevokePermissionsRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_RevokePermissions proto.InternalMessageInfo
+var xxx_messageInfo_RevokePermissionsRequest proto.InternalMessageInfo
 
-func (m *RevokePermissions) GetSubject() string {
+func (m *RevokePermissionsRequest) GetSubject() string {
 	if m != nil {
 		return m.Subject
 	}
 	return ""
 }
 
-func (m *RevokePermissions) GetPermissions() []*Permission {
+func (m *RevokePermissionsRequest) GetPermissions() []*Permission {
 	if m != nil {
 		return m.Permissions
 	}
 	return nil
 }
 
-// *
-// Returns all permissions for a subject.
-type GetPermissions struct {
+type RevokePermissionsResponse struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *RevokePermissionsResponse) Reset()         { *m = RevokePermissionsResponse{} }
+func (m *RevokePermissionsResponse) String() string { return proto.CompactTextString(m) }
+func (*RevokePermissionsResponse) ProtoMessage()    {}
+func (*RevokePermissionsResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_auth_service_d45fe3f0f2db9bb4, []int{6}
+}
+func (m *RevokePermissionsResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_RevokePermissionsResponse.Unmarshal(m, b)
+}
+func (m *RevokePermissionsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_RevokePermissionsResponse.Marshal(b, m, deterministic)
+}
+func (dst *RevokePermissionsResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_RevokePermissionsResponse.Merge(dst, src)
+}
+func (m *RevokePermissionsResponse) XXX_Size() int {
+	return xxx_messageInfo_RevokePermissionsResponse.Size(m)
+}
+func (m *RevokePermissionsResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_RevokePermissionsResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_RevokePermissionsResponse proto.InternalMessageInfo
+
+type GetPermissionsRequest struct {
+	Subject              string   `protobuf:"bytes,1,opt,name=subject,proto3" json:"subject,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *GetPermissionsRequest) Reset()         { *m = GetPermissionsRequest{} }
+func (m *GetPermissionsRequest) String() string { return proto.CompactTextString(m) }
+func (*GetPermissionsRequest) ProtoMessage()    {}
+func (*GetPermissionsRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_auth_service_d45fe3f0f2db9bb4, []int{7}
+}
+func (m *GetPermissionsRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetPermissionsRequest.Unmarshal(m, b)
+}
+func (m *GetPermissionsRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetPermissionsRequest.Marshal(b, m, deterministic)
+}
+func (dst *GetPermissionsRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetPermissionsRequest.Merge(dst, src)
+}
+func (m *GetPermissionsRequest) XXX_Size() int {
+	return xxx_messageInfo_GetPermissionsRequest.Size(m)
+}
+func (m *GetPermissionsRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetPermissionsRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetPermissionsRequest proto.InternalMessageInfo
+
+func (m *GetPermissionsRequest) GetSubject() string {
+	if m != nil {
+		return m.Subject
+	}
+	return ""
+}
+
+type GetPermissionsResponse struct {
 	Subject              string        `protobuf:"bytes,1,opt,name=subject,proto3" json:"subject,omitempty"`
 	Permissions          []*Permission `protobuf:"bytes,2,rep,name=permissions,proto3" json:"permissions,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
@@ -284,49 +365,46 @@ type GetPermissions struct {
 	XXX_sizecache        int32         `json:"-"`
 }
 
-func (m *GetPermissions) Reset()         { *m = GetPermissions{} }
-func (m *GetPermissions) String() string { return proto.CompactTextString(m) }
-func (*GetPermissions) ProtoMessage()    {}
-func (*GetPermissions) Descriptor() ([]byte, []int) {
-	return fileDescriptor_auth_service_73dfeeecb5bc5765, []int{5}
+func (m *GetPermissionsResponse) Reset()         { *m = GetPermissionsResponse{} }
+func (m *GetPermissionsResponse) String() string { return proto.CompactTextString(m) }
+func (*GetPermissionsResponse) ProtoMessage()    {}
+func (*GetPermissionsResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_auth_service_d45fe3f0f2db9bb4, []int{8}
 }
-func (m *GetPermissions) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GetPermissions.Unmarshal(m, b)
+func (m *GetPermissionsResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetPermissionsResponse.Unmarshal(m, b)
 }
-func (m *GetPermissions) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GetPermissions.Marshal(b, m, deterministic)
+func (m *GetPermissionsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetPermissionsResponse.Marshal(b, m, deterministic)
 }
-func (dst *GetPermissions) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetPermissions.Merge(dst, src)
+func (dst *GetPermissionsResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetPermissionsResponse.Merge(dst, src)
 }
-func (m *GetPermissions) XXX_Size() int {
-	return xxx_messageInfo_GetPermissions.Size(m)
+func (m *GetPermissionsResponse) XXX_Size() int {
+	return xxx_messageInfo_GetPermissionsResponse.Size(m)
 }
-func (m *GetPermissions) XXX_DiscardUnknown() {
-	xxx_messageInfo_GetPermissions.DiscardUnknown(m)
+func (m *GetPermissionsResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetPermissionsResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_GetPermissions proto.InternalMessageInfo
+var xxx_messageInfo_GetPermissionsResponse proto.InternalMessageInfo
 
-func (m *GetPermissions) GetSubject() string {
+func (m *GetPermissionsResponse) GetSubject() string {
 	if m != nil {
 		return m.Subject
 	}
 	return ""
 }
 
-func (m *GetPermissions) GetPermissions() []*Permission {
+func (m *GetPermissionsResponse) GetPermissions() []*Permission {
 	if m != nil {
 		return m.Permissions
 	}
 	return nil
 }
 
-// *
-// Checks if the request call credentials has specified permission(s) on
-// a given resource. If at least one permission is not
 type HasPermissionsRequest struct {
-	Resource             string        `protobuf:"bytes,1,opt,name=resource,proto3" json:"resource,omitempty"`
+	Subject              string        `protobuf:"bytes,1,opt,name=subject,proto3" json:"subject,omitempty"`
 	Permissions          []*Permission `protobuf:"bytes,2,rep,name=permissions,proto3" json:"permissions,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
 	XXX_unrecognized     []byte        `json:"-"`
@@ -337,7 +415,7 @@ func (m *HasPermissionsRequest) Reset()         { *m = HasPermissionsRequest{} }
 func (m *HasPermissionsRequest) String() string { return proto.CompactTextString(m) }
 func (*HasPermissionsRequest) ProtoMessage()    {}
 func (*HasPermissionsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_auth_service_73dfeeecb5bc5765, []int{6}
+	return fileDescriptor_auth_service_d45fe3f0f2db9bb4, []int{9}
 }
 func (m *HasPermissionsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_HasPermissionsRequest.Unmarshal(m, b)
@@ -357,9 +435,9 @@ func (m *HasPermissionsRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_HasPermissionsRequest proto.InternalMessageInfo
 
-func (m *HasPermissionsRequest) GetResource() string {
+func (m *HasPermissionsRequest) GetSubject() string {
 	if m != nil {
-		return m.Resource
+		return m.Subject
 	}
 	return ""
 }
@@ -371,21 +449,19 @@ func (m *HasPermissionsRequest) GetPermissions() []*Permission {
 	return nil
 }
 
-// *
-// An empty response indicates the logged in account has all specified
-// permissions. If at least one permission is missing an Unauthenticated error
-// response status is returned instead.
 type HasPermissionsResponse struct {
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	HasPermissions       bool          `protobuf:"varint,1,opt,name=has_permissions,json=hasPermissions,proto3" json:"has_permissions,omitempty"`
+	MissingPermissions   []*Permission `protobuf:"bytes,2,rep,name=missing_permissions,json=missingPermissions,proto3" json:"missing_permissions,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
+	XXX_unrecognized     []byte        `json:"-"`
+	XXX_sizecache        int32         `json:"-"`
 }
 
 func (m *HasPermissionsResponse) Reset()         { *m = HasPermissionsResponse{} }
 func (m *HasPermissionsResponse) String() string { return proto.CompactTextString(m) }
 func (*HasPermissionsResponse) ProtoMessage()    {}
 func (*HasPermissionsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_auth_service_73dfeeecb5bc5765, []int{7}
+	return fileDescriptor_auth_service_d45fe3f0f2db9bb4, []int{10}
 }
 func (m *HasPermissionsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_HasPermissionsResponse.Unmarshal(m, b)
@@ -405,15 +481,258 @@ func (m *HasPermissionsResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_HasPermissionsResponse proto.InternalMessageInfo
 
+func (m *HasPermissionsResponse) GetHasPermissions() bool {
+	if m != nil {
+		return m.HasPermissions
+	}
+	return false
+}
+
+func (m *HasPermissionsResponse) GetMissingPermissions() []*Permission {
+	if m != nil {
+		return m.MissingPermissions
+	}
+	return nil
+}
+
+type InheritPermissionsRequest struct {
+	Subject              string   `protobuf:"bytes,1,opt,name=subject,proto3" json:"subject,omitempty"`
+	ParentSubject        string   `protobuf:"bytes,2,opt,name=parent_subject,json=parentSubject,proto3" json:"parent_subject,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *InheritPermissionsRequest) Reset()         { *m = InheritPermissionsRequest{} }
+func (m *InheritPermissionsRequest) String() string { return proto.CompactTextString(m) }
+func (*InheritPermissionsRequest) ProtoMessage()    {}
+func (*InheritPermissionsRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_auth_service_d45fe3f0f2db9bb4, []int{11}
+}
+func (m *InheritPermissionsRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_InheritPermissionsRequest.Unmarshal(m, b)
+}
+func (m *InheritPermissionsRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_InheritPermissionsRequest.Marshal(b, m, deterministic)
+}
+func (dst *InheritPermissionsRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_InheritPermissionsRequest.Merge(dst, src)
+}
+func (m *InheritPermissionsRequest) XXX_Size() int {
+	return xxx_messageInfo_InheritPermissionsRequest.Size(m)
+}
+func (m *InheritPermissionsRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_InheritPermissionsRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_InheritPermissionsRequest proto.InternalMessageInfo
+
+func (m *InheritPermissionsRequest) GetSubject() string {
+	if m != nil {
+		return m.Subject
+	}
+	return ""
+}
+
+func (m *InheritPermissionsRequest) GetParentSubject() string {
+	if m != nil {
+		return m.ParentSubject
+	}
+	return ""
+}
+
+type InheritPermissionsResponse struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *InheritPermissionsResponse) Reset()         { *m = InheritPermissionsResponse{} }
+func (m *InheritPermissionsResponse) String() string { return proto.CompactTextString(m) }
+func (*InheritPermissionsResponse) ProtoMessage()    {}
+func (*InheritPermissionsResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_auth_service_d45fe3f0f2db9bb4, []int{12}
+}
+func (m *InheritPermissionsResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_InheritPermissionsResponse.Unmarshal(m, b)
+}
+func (m *InheritPermissionsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_InheritPermissionsResponse.Marshal(b, m, deterministic)
+}
+func (dst *InheritPermissionsResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_InheritPermissionsResponse.Merge(dst, src)
+}
+func (m *InheritPermissionsResponse) XXX_Size() int {
+	return xxx_messageInfo_InheritPermissionsResponse.Size(m)
+}
+func (m *InheritPermissionsResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_InheritPermissionsResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_InheritPermissionsResponse proto.InternalMessageInfo
+
+type RemoveInheritPermissionsRequest struct {
+	Subject              string   `protobuf:"bytes,1,opt,name=subject,proto3" json:"subject,omitempty"`
+	ParentSubject        string   `protobuf:"bytes,2,opt,name=parent_subject,json=parentSubject,proto3" json:"parent_subject,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *RemoveInheritPermissionsRequest) Reset()         { *m = RemoveInheritPermissionsRequest{} }
+func (m *RemoveInheritPermissionsRequest) String() string { return proto.CompactTextString(m) }
+func (*RemoveInheritPermissionsRequest) ProtoMessage()    {}
+func (*RemoveInheritPermissionsRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_auth_service_d45fe3f0f2db9bb4, []int{13}
+}
+func (m *RemoveInheritPermissionsRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_RemoveInheritPermissionsRequest.Unmarshal(m, b)
+}
+func (m *RemoveInheritPermissionsRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_RemoveInheritPermissionsRequest.Marshal(b, m, deterministic)
+}
+func (dst *RemoveInheritPermissionsRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_RemoveInheritPermissionsRequest.Merge(dst, src)
+}
+func (m *RemoveInheritPermissionsRequest) XXX_Size() int {
+	return xxx_messageInfo_RemoveInheritPermissionsRequest.Size(m)
+}
+func (m *RemoveInheritPermissionsRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_RemoveInheritPermissionsRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_RemoveInheritPermissionsRequest proto.InternalMessageInfo
+
+func (m *RemoveInheritPermissionsRequest) GetSubject() string {
+	if m != nil {
+		return m.Subject
+	}
+	return ""
+}
+
+func (m *RemoveInheritPermissionsRequest) GetParentSubject() string {
+	if m != nil {
+		return m.ParentSubject
+	}
+	return ""
+}
+
+type RemoveInheritPermissionsResponse struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *RemoveInheritPermissionsResponse) Reset()         { *m = RemoveInheritPermissionsResponse{} }
+func (m *RemoveInheritPermissionsResponse) String() string { return proto.CompactTextString(m) }
+func (*RemoveInheritPermissionsResponse) ProtoMessage()    {}
+func (*RemoveInheritPermissionsResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_auth_service_d45fe3f0f2db9bb4, []int{14}
+}
+func (m *RemoveInheritPermissionsResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_RemoveInheritPermissionsResponse.Unmarshal(m, b)
+}
+func (m *RemoveInheritPermissionsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_RemoveInheritPermissionsResponse.Marshal(b, m, deterministic)
+}
+func (dst *RemoveInheritPermissionsResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_RemoveInheritPermissionsResponse.Merge(dst, src)
+}
+func (m *RemoveInheritPermissionsResponse) XXX_Size() int {
+	return xxx_messageInfo_RemoveInheritPermissionsResponse.Size(m)
+}
+func (m *RemoveInheritPermissionsResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_RemoveInheritPermissionsResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_RemoveInheritPermissionsResponse proto.InternalMessageInfo
+
+type DeleteSubjectRequest struct {
+	Subject              string   `protobuf:"bytes,1,opt,name=subject,proto3" json:"subject,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *DeleteSubjectRequest) Reset()         { *m = DeleteSubjectRequest{} }
+func (m *DeleteSubjectRequest) String() string { return proto.CompactTextString(m) }
+func (*DeleteSubjectRequest) ProtoMessage()    {}
+func (*DeleteSubjectRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_auth_service_d45fe3f0f2db9bb4, []int{15}
+}
+func (m *DeleteSubjectRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_DeleteSubjectRequest.Unmarshal(m, b)
+}
+func (m *DeleteSubjectRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_DeleteSubjectRequest.Marshal(b, m, deterministic)
+}
+func (dst *DeleteSubjectRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DeleteSubjectRequest.Merge(dst, src)
+}
+func (m *DeleteSubjectRequest) XXX_Size() int {
+	return xxx_messageInfo_DeleteSubjectRequest.Size(m)
+}
+func (m *DeleteSubjectRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_DeleteSubjectRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DeleteSubjectRequest proto.InternalMessageInfo
+
+func (m *DeleteSubjectRequest) GetSubject() string {
+	if m != nil {
+		return m.Subject
+	}
+	return ""
+}
+
+type DeleteSubjectResponse struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *DeleteSubjectResponse) Reset()         { *m = DeleteSubjectResponse{} }
+func (m *DeleteSubjectResponse) String() string { return proto.CompactTextString(m) }
+func (*DeleteSubjectResponse) ProtoMessage()    {}
+func (*DeleteSubjectResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_auth_service_d45fe3f0f2db9bb4, []int{16}
+}
+func (m *DeleteSubjectResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_DeleteSubjectResponse.Unmarshal(m, b)
+}
+func (m *DeleteSubjectResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_DeleteSubjectResponse.Marshal(b, m, deterministic)
+}
+func (dst *DeleteSubjectResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DeleteSubjectResponse.Merge(dst, src)
+}
+func (m *DeleteSubjectResponse) XXX_Size() int {
+	return xxx_messageInfo_DeleteSubjectResponse.Size(m)
+}
+func (m *DeleteSubjectResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_DeleteSubjectResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DeleteSubjectResponse proto.InternalMessageInfo
+
 func init() {
 	proto.RegisterType((*LoginRequest)(nil), "metrixio.LoginRequest")
 	proto.RegisterType((*LoginResponse)(nil), "metrixio.LoginResponse")
 	proto.RegisterType((*Permission)(nil), "metrixio.Permission")
-	proto.RegisterType((*GrantPermissions)(nil), "metrixio.GrantPermissions")
-	proto.RegisterType((*RevokePermissions)(nil), "metrixio.RevokePermissions")
-	proto.RegisterType((*GetPermissions)(nil), "metrixio.GetPermissions")
+	proto.RegisterType((*GrantPermissionsRequest)(nil), "metrixio.GrantPermissionsRequest")
+	proto.RegisterType((*GrantPermissionsResponse)(nil), "metrixio.GrantPermissionsResponse")
+	proto.RegisterType((*RevokePermissionsRequest)(nil), "metrixio.RevokePermissionsRequest")
+	proto.RegisterType((*RevokePermissionsResponse)(nil), "metrixio.RevokePermissionsResponse")
+	proto.RegisterType((*GetPermissionsRequest)(nil), "metrixio.GetPermissionsRequest")
+	proto.RegisterType((*GetPermissionsResponse)(nil), "metrixio.GetPermissionsResponse")
 	proto.RegisterType((*HasPermissionsRequest)(nil), "metrixio.HasPermissionsRequest")
 	proto.RegisterType((*HasPermissionsResponse)(nil), "metrixio.HasPermissionsResponse")
+	proto.RegisterType((*InheritPermissionsRequest)(nil), "metrixio.InheritPermissionsRequest")
+	proto.RegisterType((*InheritPermissionsResponse)(nil), "metrixio.InheritPermissionsResponse")
+	proto.RegisterType((*RemoveInheritPermissionsRequest)(nil), "metrixio.RemoveInheritPermissionsRequest")
+	proto.RegisterType((*RemoveInheritPermissionsResponse)(nil), "metrixio.RemoveInheritPermissionsResponse")
+	proto.RegisterType((*DeleteSubjectRequest)(nil), "metrixio.DeleteSubjectRequest")
+	proto.RegisterType((*DeleteSubjectResponse)(nil), "metrixio.DeleteSubjectResponse")
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -428,8 +747,78 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type AuthServiceClient interface {
+	// *
+	// LoginRequest returns an access token if the login credentials
+	// are valid. The login field may contain either a username or email
+	// address.
+	//
+	// Errors:
+	// - UNAUTHENTICATED if the credentials are invalid.
 	Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error)
-	HasPermission(ctx context.Context, in *HasPermissionsRequest, opts ...grpc.CallOption) (*HasPermissionsResponse, error)
+	// *
+	// GrantPermission adds one or more permissions to a subject.
+	//
+	// A subject can either be a user account, organization, role or other and must
+	// be a valid resource name, e.g. "mtx:account:g921sdfb1lkg".
+	//
+	// Errors:
+	// - PERMISSION_DENIED if the logged in subject has insufficient privileges
+	//   to read subject's permissions.
+	GrantPermissions(ctx context.Context, in *GrantPermissionsRequest, opts ...grpc.CallOption) (*GrantPermissionsResponse, error)
+	// *
+	// Returns all permissions for the specified subject.
+	//
+	// Errors:
+	// - PERMISSION_DENIED if the logged in subject has insufficient privileges
+	//   to read subject's permissions.
+	GetPermissions(ctx context.Context, in *GetPermissionsRequest, opts ...grpc.CallOption) (*GetPermissionsResponse, error)
+	// *
+	// Checks if the subjects has specified permission(s). Returns a list of
+	// all permissions that subject is missing.
+	//
+	// Errors:
+	// - PERMISSION_DENIED if the logged in subject has insufficient privileges
+	//   to read subject's permissions.
+	HasPermissions(ctx context.Context, in *HasPermissionsRequest, opts ...grpc.CallOption) (*HasPermissionsResponse, error)
+	// *
+	// RevokePermissionsRequest removes one or more permissions from a subject.
+	//
+	// Errors:
+	// - PERMISSION_DENIED if the logged in subject has insufficient privileges to
+	//   revoke subject's permissions.
+	RevokePermissions(ctx context.Context, in *RevokePermissionsRequest, opts ...grpc.CallOption) (*RevokePermissionsRequest, error)
+	// *
+	// DeleteSubject removes any permissions associated with the subject.
+	//
+	// It also removes any permission inheritance relationships, including those
+	// which inherit from the subject being deleted.
+	//
+	// If the subject being deleted does not have any registered permissions the
+	// action will still be deemed successful.
+	//
+	// Errors:
+	// - PERMISSION_DENIED if the logged in subject has insufficient privileges to
+	//   delete this subject.
+	DeleteSubject(ctx context.Context, in *DeleteSubjectRequest, opts ...grpc.CallOption) (*DeleteSubjectResponse, error)
+	// *
+	// InheritPermissions establishes a permission inheritance relationship
+	// between two subjects. A common example is a user account being part of
+	// a group.
+	//
+	// Errors:
+	// - PERMISSION_DENIED if the logged in subject does not have permission to grant
+	//   permissions to the parent subject.
+	// - NOT_FOUND if no inheritance relationship exists between specified subjects.
+	InheritPermissions(ctx context.Context, in *InheritPermissionsRequest, opts ...grpc.CallOption) (*InheritPermissionsResponse, error)
+	// *
+	// RemoveInheritPermissions removes any inheritance relationship between two
+	// subjects.
+	//
+	// Errors:
+	// - PERMISSION_DENIED if the logged in subject does not have permission to revoke
+	//   permissions of the parent subject.
+	// - NOT_FOUND if no inheritance relationship exists between specified subjects.
+	RemoveInheritPermissions(ctx context.Context, in *RemoveInheritPermissionsRequest, opts ...grpc.CallOption) (*RemoveInheritPermissionsResponse, error)
 }
 
 type authServiceClient struct {
@@ -449,9 +838,63 @@ func (c *authServiceClient) Login(ctx context.Context, in *LoginRequest, opts ..
 	return out, nil
 }
 
-func (c *authServiceClient) HasPermission(ctx context.Context, in *HasPermissionsRequest, opts ...grpc.CallOption) (*HasPermissionsResponse, error) {
+func (c *authServiceClient) GrantPermissions(ctx context.Context, in *GrantPermissionsRequest, opts ...grpc.CallOption) (*GrantPermissionsResponse, error) {
+	out := new(GrantPermissionsResponse)
+	err := c.cc.Invoke(ctx, "/metrixio.AuthService/GrantPermissions", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authServiceClient) GetPermissions(ctx context.Context, in *GetPermissionsRequest, opts ...grpc.CallOption) (*GetPermissionsResponse, error) {
+	out := new(GetPermissionsResponse)
+	err := c.cc.Invoke(ctx, "/metrixio.AuthService/GetPermissions", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authServiceClient) HasPermissions(ctx context.Context, in *HasPermissionsRequest, opts ...grpc.CallOption) (*HasPermissionsResponse, error) {
 	out := new(HasPermissionsResponse)
-	err := c.cc.Invoke(ctx, "/metrixio.AuthService/HasPermission", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/metrixio.AuthService/HasPermissions", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authServiceClient) RevokePermissions(ctx context.Context, in *RevokePermissionsRequest, opts ...grpc.CallOption) (*RevokePermissionsRequest, error) {
+	out := new(RevokePermissionsRequest)
+	err := c.cc.Invoke(ctx, "/metrixio.AuthService/RevokePermissions", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authServiceClient) DeleteSubject(ctx context.Context, in *DeleteSubjectRequest, opts ...grpc.CallOption) (*DeleteSubjectResponse, error) {
+	out := new(DeleteSubjectResponse)
+	err := c.cc.Invoke(ctx, "/metrixio.AuthService/DeleteSubject", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authServiceClient) InheritPermissions(ctx context.Context, in *InheritPermissionsRequest, opts ...grpc.CallOption) (*InheritPermissionsResponse, error) {
+	out := new(InheritPermissionsResponse)
+	err := c.cc.Invoke(ctx, "/metrixio.AuthService/InheritPermissions", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authServiceClient) RemoveInheritPermissions(ctx context.Context, in *RemoveInheritPermissionsRequest, opts ...grpc.CallOption) (*RemoveInheritPermissionsResponse, error) {
+	out := new(RemoveInheritPermissionsResponse)
+	err := c.cc.Invoke(ctx, "/metrixio.AuthService/RemoveInheritPermissions", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -460,8 +903,78 @@ func (c *authServiceClient) HasPermission(ctx context.Context, in *HasPermission
 
 // AuthServiceServer is the server API for AuthService service.
 type AuthServiceServer interface {
+	// *
+	// LoginRequest returns an access token if the login credentials
+	// are valid. The login field may contain either a username or email
+	// address.
+	//
+	// Errors:
+	// - UNAUTHENTICATED if the credentials are invalid.
 	Login(context.Context, *LoginRequest) (*LoginResponse, error)
-	HasPermission(context.Context, *HasPermissionsRequest) (*HasPermissionsResponse, error)
+	// *
+	// GrantPermission adds one or more permissions to a subject.
+	//
+	// A subject can either be a user account, organization, role or other and must
+	// be a valid resource name, e.g. "mtx:account:g921sdfb1lkg".
+	//
+	// Errors:
+	// - PERMISSION_DENIED if the logged in subject has insufficient privileges
+	//   to read subject's permissions.
+	GrantPermissions(context.Context, *GrantPermissionsRequest) (*GrantPermissionsResponse, error)
+	// *
+	// Returns all permissions for the specified subject.
+	//
+	// Errors:
+	// - PERMISSION_DENIED if the logged in subject has insufficient privileges
+	//   to read subject's permissions.
+	GetPermissions(context.Context, *GetPermissionsRequest) (*GetPermissionsResponse, error)
+	// *
+	// Checks if the subjects has specified permission(s). Returns a list of
+	// all permissions that subject is missing.
+	//
+	// Errors:
+	// - PERMISSION_DENIED if the logged in subject has insufficient privileges
+	//   to read subject's permissions.
+	HasPermissions(context.Context, *HasPermissionsRequest) (*HasPermissionsResponse, error)
+	// *
+	// RevokePermissionsRequest removes one or more permissions from a subject.
+	//
+	// Errors:
+	// - PERMISSION_DENIED if the logged in subject has insufficient privileges to
+	//   revoke subject's permissions.
+	RevokePermissions(context.Context, *RevokePermissionsRequest) (*RevokePermissionsRequest, error)
+	// *
+	// DeleteSubject removes any permissions associated with the subject.
+	//
+	// It also removes any permission inheritance relationships, including those
+	// which inherit from the subject being deleted.
+	//
+	// If the subject being deleted does not have any registered permissions the
+	// action will still be deemed successful.
+	//
+	// Errors:
+	// - PERMISSION_DENIED if the logged in subject has insufficient privileges to
+	//   delete this subject.
+	DeleteSubject(context.Context, *DeleteSubjectRequest) (*DeleteSubjectResponse, error)
+	// *
+	// InheritPermissions establishes a permission inheritance relationship
+	// between two subjects. A common example is a user account being part of
+	// a group.
+	//
+	// Errors:
+	// - PERMISSION_DENIED if the logged in subject does not have permission to grant
+	//   permissions to the parent subject.
+	// - NOT_FOUND if no inheritance relationship exists between specified subjects.
+	InheritPermissions(context.Context, *InheritPermissionsRequest) (*InheritPermissionsResponse, error)
+	// *
+	// RemoveInheritPermissions removes any inheritance relationship between two
+	// subjects.
+	//
+	// Errors:
+	// - PERMISSION_DENIED if the logged in subject does not have permission to revoke
+	//   permissions of the parent subject.
+	// - NOT_FOUND if no inheritance relationship exists between specified subjects.
+	RemoveInheritPermissions(context.Context, *RemoveInheritPermissionsRequest) (*RemoveInheritPermissionsResponse, error)
 }
 
 func RegisterAuthServiceServer(s *grpc.Server, srv AuthServiceServer) {
@@ -486,20 +999,128 @@ func _AuthService_Login_Handler(srv interface{}, ctx context.Context, dec func(i
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AuthService_HasPermission_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _AuthService_GrantPermissions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GrantPermissionsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).GrantPermissions(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/metrixio.AuthService/GrantPermissions",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).GrantPermissions(ctx, req.(*GrantPermissionsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthService_GetPermissions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetPermissionsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).GetPermissions(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/metrixio.AuthService/GetPermissions",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).GetPermissions(ctx, req.(*GetPermissionsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthService_HasPermissions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(HasPermissionsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AuthServiceServer).HasPermission(ctx, in)
+		return srv.(AuthServiceServer).HasPermissions(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/metrixio.AuthService/HasPermission",
+		FullMethod: "/metrixio.AuthService/HasPermissions",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthServiceServer).HasPermission(ctx, req.(*HasPermissionsRequest))
+		return srv.(AuthServiceServer).HasPermissions(ctx, req.(*HasPermissionsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthService_RevokePermissions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RevokePermissionsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).RevokePermissions(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/metrixio.AuthService/RevokePermissions",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).RevokePermissions(ctx, req.(*RevokePermissionsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthService_DeleteSubject_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteSubjectRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).DeleteSubject(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/metrixio.AuthService/DeleteSubject",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).DeleteSubject(ctx, req.(*DeleteSubjectRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthService_InheritPermissions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(InheritPermissionsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).InheritPermissions(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/metrixio.AuthService/InheritPermissions",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).InheritPermissions(ctx, req.(*InheritPermissionsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthService_RemoveInheritPermissions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RemoveInheritPermissionsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).RemoveInheritPermissions(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/metrixio.AuthService/RemoveInheritPermissions",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).RemoveInheritPermissions(ctx, req.(*RemoveInheritPermissionsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -513,8 +1134,32 @@ var _AuthService_serviceDesc = grpc.ServiceDesc{
 			Handler:    _AuthService_Login_Handler,
 		},
 		{
-			MethodName: "HasPermission",
-			Handler:    _AuthService_HasPermission_Handler,
+			MethodName: "GrantPermissions",
+			Handler:    _AuthService_GrantPermissions_Handler,
+		},
+		{
+			MethodName: "GetPermissions",
+			Handler:    _AuthService_GetPermissions_Handler,
+		},
+		{
+			MethodName: "HasPermissions",
+			Handler:    _AuthService_HasPermissions_Handler,
+		},
+		{
+			MethodName: "RevokePermissions",
+			Handler:    _AuthService_RevokePermissions_Handler,
+		},
+		{
+			MethodName: "DeleteSubject",
+			Handler:    _AuthService_DeleteSubject_Handler,
+		},
+		{
+			MethodName: "InheritPermissions",
+			Handler:    _AuthService_InheritPermissions_Handler,
+		},
+		{
+			MethodName: "RemoveInheritPermissions",
+			Handler:    _AuthService_RemoveInheritPermissions_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -522,32 +1167,47 @@ var _AuthService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("proto/auth-service.proto", fileDescriptor_auth_service_73dfeeecb5bc5765)
+	proto.RegisterFile("proto/auth-service.proto", fileDescriptor_auth_service_d45fe3f0f2db9bb4)
 }
 
-var fileDescriptor_auth_service_73dfeeecb5bc5765 = []byte{
-	// 363 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xb4, 0x93, 0x4f, 0x4f, 0xea, 0x40,
-	0x14, 0xc5, 0x1f, 0xbc, 0xf0, 0x1e, 0xdc, 0x82, 0xd1, 0x09, 0x62, 0x43, 0x62, 0x84, 0xba, 0x61,
-	0x43, 0x49, 0x30, 0x71, 0xe1, 0x4a, 0xd9, 0xa0, 0x89, 0x0b, 0xad, 0xac, 0xdc, 0x90, 0xb6, 0xdc,
-	0x94, 0x11, 0xe8, 0xd4, 0xb9, 0x53, 0xe4, 0xdb, 0xf8, 0x55, 0x0d, 0x9d, 0x96, 0xe2, 0xdf, 0x85,
-	0x09, 0xcb, 0x73, 0x7a, 0xf2, 0x3b, 0x99, 0x9b, 0x53, 0x30, 0x23, 0x29, 0x94, 0xe8, 0xb9, 0xb1,
-	0x9a, 0x76, 0x09, 0xe5, 0x92, 0xfb, 0x68, 0x27, 0x16, 0x2b, 0x2f, 0x50, 0x49, 0xbe, 0xe2, 0xc2,
-	0xba, 0x84, 0xea, 0xad, 0x08, 0x78, 0xe8, 0xe0, 0x73, 0x8c, 0xa4, 0x58, 0x1d, 0x4a, 0xf3, 0xb5,
-	0x36, 0x0b, 0xad, 0x42, 0xa7, 0xe2, 0x68, 0xc1, 0x9a, 0x50, 0x8e, 0x5c, 0xa2, 0x17, 0x21, 0x27,
-	0x66, 0x31, 0xf9, 0xb0, 0xd1, 0xd6, 0x3d, 0xd4, 0x52, 0x02, 0x45, 0x22, 0x24, 0x64, 0x6d, 0xa8,
-	0xba, 0xbe, 0x8f, 0x44, 0x63, 0x25, 0x66, 0x98, 0x91, 0x0c, 0xed, 0x8d, 0xd6, 0x16, 0x3b, 0x06,
-	0xc0, 0x55, 0xc4, 0x25, 0xd2, 0x98, 0x87, 0x29, 0xb1, 0x92, 0x3a, 0x37, 0xa1, 0x35, 0x00, 0xb8,
-	0x43, 0xb9, 0xe0, 0x44, 0x5c, 0x24, 0xe5, 0x12, 0x49, 0xc4, 0xd2, 0xc7, 0x94, 0xb5, 0xd1, 0xcc,
-	0x84, 0xff, 0xae, 0xaf, 0xb8, 0x08, 0xc9, 0x2c, 0xb6, 0xfe, 0x76, 0x2a, 0x4e, 0x26, 0xad, 0x09,
-	0xec, 0x0f, 0xa5, 0x1b, 0xaa, 0x1c, 0x44, 0xeb, 0x34, 0xc5, 0xde, 0x13, 0xfa, 0x2a, 0x05, 0x65,
-	0x92, 0x9d, 0x83, 0x11, 0xe5, 0xc1, 0x84, 0x65, 0xf4, 0xeb, 0x76, 0x76, 0x26, 0x3b, 0xa7, 0x38,
-	0xdb, 0x41, 0x0b, 0xe1, 0xc0, 0xc1, 0xa5, 0x98, 0xe1, 0x6e, 0x6b, 0x3c, 0xd8, 0x1b, 0xe2, 0x8e,
-	0x9f, 0x32, 0x83, 0xc3, 0x6b, 0x97, 0xb6, 0x3a, 0xb2, 0x49, 0xfc, 0x74, 0xff, 0xdf, 0x96, 0x99,
-	0xd0, 0xf8, 0x58, 0xa6, 0xd7, 0xd3, 0x7f, 0x2d, 0x80, 0x71, 0x15, 0xab, 0xe9, 0x83, 0x1e, 0x2c,
-	0xbb, 0x80, 0x52, 0x32, 0x2f, 0xd6, 0xc8, 0xa9, 0xdb, 0x8b, 0x6d, 0x1e, 0x7d, 0xf2, 0x35, 0xc9,
-	0xfa, 0xc3, 0x46, 0x50, 0x7b, 0xd7, 0xc2, 0x4e, 0xf2, 0xec, 0x97, 0x6f, 0x6d, 0xb6, 0xbe, 0x0f,
-	0x64, 0xd4, 0xc1, 0xe9, 0x63, 0x3b, 0xe0, 0x6a, 0x1a, 0x7b, 0xb6, 0x2f, 0x16, 0x3d, 0x9d, 0xef,
-	0x72, 0xd1, 0xd3, 0x7f, 0x5b, 0x20, 0xe6, 0x6e, 0x18, 0x78, 0xff, 0x12, 0x75, 0xf6, 0x16, 0x00,
-	0x00, 0xff, 0xff, 0xbb, 0x17, 0x06, 0x3e, 0x84, 0x03, 0x00, 0x00,
+var fileDescriptor_auth_service_d45fe3f0f2db9bb4 = []byte{
+	// 594 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xbc, 0x55, 0x5d, 0x73, 0xd2, 0x40,
+	0x14, 0x85, 0x3a, 0x58, 0xb8, 0x14, 0xd4, 0x95, 0x8f, 0x34, 0x7e, 0x00, 0x5b, 0x1d, 0xab, 0x33,
+	0x05, 0xad, 0x33, 0x3e, 0xf8, 0xa4, 0x1d, 0x9d, 0xda, 0x19, 0x1f, 0x34, 0xd5, 0x17, 0x3f, 0x86,
+	0x09, 0xf1, 0x0e, 0xd9, 0x02, 0xd9, 0x98, 0xdd, 0x60, 0x7f, 0x82, 0xff, 0xd2, 0xbf, 0xe2, 0x90,
+	0x6c, 0x48, 0x80, 0x04, 0xe9, 0x8c, 0xed, 0x1b, 0xf7, 0xe6, 0x9c, 0x73, 0xef, 0xee, 0x9e, 0x7b,
+	0x01, 0xcd, 0xf5, 0xb8, 0xe4, 0x3d, 0xd3, 0x97, 0xf6, 0x81, 0x40, 0x6f, 0xca, 0x2c, 0xec, 0x06,
+	0x29, 0x52, 0x9c, 0xa0, 0xf4, 0xd8, 0x39, 0xe3, 0xf4, 0x15, 0xec, 0xbc, 0xe7, 0x43, 0xe6, 0x18,
+	0xf8, 0xd3, 0x47, 0x21, 0x49, 0x0d, 0x0a, 0xe3, 0x59, 0xac, 0xe5, 0xdb, 0xf9, 0xfd, 0x92, 0x11,
+	0x06, 0x44, 0x87, 0xa2, 0x6b, 0x0a, 0xf1, 0x8b, 0x7b, 0x3f, 0xb4, 0xad, 0xe0, 0xc3, 0x3c, 0xa6,
+	0x1f, 0xa1, 0xa2, 0x14, 0x84, 0xcb, 0x1d, 0x81, 0xa4, 0x03, 0x3b, 0xa6, 0x65, 0xa1, 0x10, 0x7d,
+	0xc9, 0x47, 0x18, 0x29, 0x95, 0xc3, 0xdc, 0xa7, 0x59, 0x8a, 0xdc, 0x03, 0xc0, 0x73, 0x97, 0x79,
+	0x28, 0xfa, 0xcc, 0x51, 0x8a, 0x25, 0x95, 0x39, 0x71, 0xe8, 0x11, 0xc0, 0x07, 0xf4, 0x26, 0x4c,
+	0x08, 0xc6, 0x83, 0xe2, 0x1e, 0x0a, 0xee, 0x7b, 0x16, 0x2a, 0xad, 0x79, 0x4c, 0x34, 0xd8, 0x36,
+	0x2d, 0xc9, 0xb8, 0x23, 0xb4, 0xad, 0xf6, 0xb5, 0xfd, 0x92, 0x11, 0x85, 0x74, 0x04, 0xcd, 0x63,
+	0xcf, 0x74, 0x64, 0x2c, 0x24, 0xa2, 0x33, 0x6a, 0xb0, 0x2d, 0xfc, 0xc1, 0x19, 0x5a, 0x52, 0xe9,
+	0x45, 0x21, 0x79, 0x01, 0x65, 0x37, 0xc6, 0x07, 0x92, 0xe5, 0xc3, 0x5a, 0x37, 0xba, 0xad, 0x6e,
+	0x2c, 0x66, 0x24, 0x81, 0x54, 0x07, 0x6d, 0xb5, 0x58, 0x78, 0x1d, 0x74, 0x0c, 0x9a, 0x81, 0x53,
+	0x3e, 0xc2, 0x2b, 0xe9, 0xe4, 0x0e, 0xec, 0xa6, 0x54, 0x53, 0xad, 0x3c, 0x83, 0xfa, 0x31, 0x5e,
+	0xe8, 0x46, 0xe8, 0x19, 0x34, 0x96, 0x29, 0xea, 0x99, 0xff, 0x7f, 0xef, 0x0c, 0xea, 0xef, 0x4c,
+	0x71, 0x25, 0xd7, 0xf4, 0x3b, 0x0f, 0x8d, 0xe5, 0x5a, 0xea, 0x5c, 0x8f, 0xe0, 0x86, 0x6d, 0x8a,
+	0x7e, 0x52, 0x76, 0x56, 0xb4, 0x68, 0x54, 0xed, 0x05, 0x02, 0x79, 0x0b, 0xb7, 0x83, 0xdf, 0xce,
+	0xb0, 0xbf, 0x69, 0x0f, 0x44, 0x11, 0x12, 0x32, 0xf4, 0x1b, 0xec, 0x9e, 0x38, 0x36, 0x7a, 0xec,
+	0x62, 0x56, 0x7d, 0x08, 0x55, 0xd7, 0xf4, 0xd0, 0x91, 0xfd, 0x08, 0x10, 0x8e, 0x51, 0x25, 0xcc,
+	0x9e, 0xaa, 0xf7, 0xbb, 0x0b, 0x7a, 0x9a, 0xba, 0x32, 0xc4, 0x00, 0x5a, 0x06, 0x4e, 0xf8, 0x14,
+	0x2f, 0xb1, 0x03, 0x0a, 0xed, 0xec, 0x1a, 0xaa, 0x8f, 0xa7, 0x50, 0x7b, 0x83, 0x63, 0x94, 0xa8,
+	0x48, 0xff, 0xf6, 0x65, 0x13, 0xea, 0x4b, 0x8c, 0x50, 0xea, 0xf0, 0x4f, 0x01, 0xca, 0xaf, 0x7d,
+	0x69, 0x9f, 0x86, 0x0b, 0x8f, 0xbc, 0x84, 0x42, 0xb0, 0x9e, 0x48, 0x23, 0x7e, 0x91, 0xe4, 0xc6,
+	0xd3, 0x9b, 0x2b, 0x79, 0xd5, 0x54, 0x8e, 0x7c, 0x85, 0x9b, 0xcb, 0x63, 0x4d, 0x3a, 0x31, 0x3c,
+	0x63, 0xbf, 0xe8, 0x74, 0x1d, 0x64, 0x2e, 0xfe, 0x19, 0xaa, 0x8b, 0x93, 0x45, 0x5a, 0x09, 0x5e,
+	0xda, 0x98, 0xea, 0xed, 0x6c, 0x40, 0x52, 0x76, 0xd1, 0xd8, 0x49, 0xd9, 0xd4, 0xf1, 0x4a, 0xca,
+	0xa6, 0xcf, 0x04, 0xcd, 0x91, 0xef, 0x70, 0x6b, 0x65, 0xaf, 0x90, 0xc4, 0x41, 0xb3, 0x56, 0x9c,
+	0xbe, 0x01, 0x86, 0xe6, 0x88, 0x01, 0x95, 0x85, 0xe7, 0x24, 0xf7, 0x63, 0x5a, 0x9a, 0x33, 0xf4,
+	0x56, 0xe6, 0xf7, 0x79, 0xcb, 0x26, 0x90, 0x55, 0xcb, 0x91, 0xbd, 0x98, 0x98, 0x69, 0x7a, 0xfd,
+	0xc1, 0x7a, 0xd0, 0xbc, 0x84, 0x98, 0xed, 0xf6, 0x74, 0x6f, 0x93, 0xc7, 0xc9, 0x83, 0xaf, 0x9d,
+	0x31, 0xfd, 0xc9, 0x26, 0xd0, 0xa8, 0xe8, 0xd1, 0xde, 0x97, 0xce, 0x90, 0x49, 0xdb, 0x1f, 0x74,
+	0x2d, 0x3e, 0xe9, 0x85, 0xcc, 0x03, 0xc6, 0x7b, 0xe1, 0xbf, 0xfd, 0x90, 0x8f, 0x4d, 0x67, 0x38,
+	0xb8, 0x1e, 0x44, 0xcf, 0xff, 0x06, 0x00, 0x00, 0xff, 0xff, 0x4e, 0x8b, 0xe8, 0x07, 0x04, 0x08,
+	0x00, 0x00,
 }

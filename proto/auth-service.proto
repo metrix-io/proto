@@ -4,19 +4,11 @@ package metrixio;
 
 option go_package = "github.com/metrix-io/proto/golang"; // Go.mod doesn't allow /v0 or /v1
 
-/**
- * LoginRequest returns an access token if the login credentials
- * are valid. The login field may contain either a username or email
- * address.
- */
 message LoginRequest {
     string login = 1;
     string password = 2;
 }
 
-/**
- * LoginResponse returns an access token.
- */
 message LoginResponse {
     string access_token = 1;
 
@@ -25,7 +17,7 @@ message LoginResponse {
 }
 
 /**
- * A permission specifies which a set of actions for a given resource.
+ * A permission specifies a set of actions for a given resource.
  *
  * A resource name starts with an "mtx:"-prefix followed by a resource identifier
  * usually in the form of "mtx:<resource>:<id>:<subresource>:<subid>".
@@ -35,52 +27,145 @@ message Permission {
     repeated string actions = 2;
 }
 
-/**
- * GrantPermission adds one or more permissions to a subject.
- *
- * A subject can either be a user account, organization, role or other and must
- * be a valid resource name, e.g. "mtx:account:g921sdfb1lkg".
- *
- * If the logged in subject has insufficient
- */
-message GrantPermissions {
+message GrantPermissionsRequest {
     string subject = 1;
     repeated Permission permissions = 2;
 }
 
-/**
- * RevokePermission removes one or more permissions for a subject.
- */
-message RevokePermissions {
+message GrantPermissionsResponse {}
+
+message RevokePermissionsRequest {
     string subject = 1;
     repeated Permission permissions = 2;
 }
 
-/**
- * Returns all permissions for a subject.
- */
-message GetPermissions {
+message RevokePermissionsResponse {}
+
+message GetPermissionsRequest {
+    string subject = 1;
+}
+
+message GetPermissionsResponse {
     string subject = 1;
     repeated Permission permissions = 2;
 }
 
-/**
- * Checks if the request call credentials has specified permission(s) on
- * a given resource. If at least one permission is not
- */
 message HasPermissionsRequest {
-    string resource = 1;
+    string subject = 1;
     repeated Permission permissions = 2;
 }
 
-/**
- * An empty response indicates the logged in account has all specified
- * permissions. If at least one permission is missing an Unauthenticated error
- * response status is returned instead.
- */
-message HasPermissionsResponse {}
+message HasPermissionsResponse {
+    bool has_permissions = 1;
+    repeated Permission missing_permissions = 2;
+}
+
+message InheritPermissionsRequest {
+    string subject = 1;
+    string parent_subject = 2;
+}
+
+message InheritPermissionsResponse {}
+
+message RemoveInheritPermissionsRequest {
+    string subject = 1;
+    string parent_subject = 2;
+}
+
+message RemoveInheritPermissionsResponse {}
+
+message DeleteSubjectRequest {
+    string subject = 1;
+}
+
+message DeleteSubjectResponse {}
 
 service AuthService {
+    /**
+     * LoginRequest returns an access token if the login credentials
+     * are valid. The login field may contain either a username or email
+     * address.
+     *
+     * Errors:
+     * - UNAUTHENTICATED if the credentials are invalid.
+     */
     rpc Login (LoginRequest) returns (LoginResponse) {}
-    rpc HasPermission (HasPermissionsRequest) returns (HasPermissionsResponse) {}
+
+    /**
+     * GrantPermission adds one or more permissions to a subject.
+     *
+     * A subject can either be a user account, organization, role or other and must
+     * be a valid resource name, e.g. "mtx:account:g921sdfb1lkg".
+     *
+     * Errors:
+     * - PERMISSION_DENIED if the logged in subject has insufficient privileges
+     *   to read subject's permissions.
+     */
+    rpc GrantPermissions (GrantPermissionsRequest) returns (GrantPermissionsResponse) {}
+
+    /**
+     * Returns all permissions for the specified subject.
+     *
+     * Errors:
+     * - PERMISSION_DENIED if the logged in subject has insufficient privileges
+     *   to read subject's permissions.
+     */
+    rpc GetPermissions (GetPermissionsRequest) returns (GetPermissionsResponse) {}
+
+    /**
+     * Checks if the subjects has specified permission(s). Returns a list of
+     * all permissions that subject is missing.
+     *
+     * Errors:
+     * - PERMISSION_DENIED if the logged in subject has insufficient privileges
+     *   to read subject's permissions.
+     */
+    rpc HasPermissions (HasPermissionsRequest) returns (HasPermissionsResponse) {}
+
+    /**
+     * RevokePermissionsRequest removes one or more permissions from a subject.
+     *
+     * Errors:
+     * - PERMISSION_DENIED if the logged in subject has insufficient privileges to
+     *   revoke subject's permissions.
+     */
+    rpc RevokePermissions (RevokePermissionsRequest) returns (RevokePermissionsRequest) {}
+
+    /**
+     * DeleteSubject removes any permissions associated with the subject.
+     *
+     * It also removes any permission inheritance relationships, including those
+     * which inherit from the subject being deleted.
+     *
+     * If the subject being deleted does not have any registered permissions the
+     * action will still be deemed successful.
+     *
+     * Errors:
+     * - PERMISSION_DENIED if the logged in subject has insufficient privileges to
+     *   delete this subject.
+     */
+    rpc DeleteSubject (DeleteSubjectRequest) returns (DeleteSubjectResponse) {}
+
+    /**
+     * InheritPermissions establishes a permission inheritance relationship
+     * between two subjects. A common example is a user account being part of
+     * a group.
+     *
+     * Errors:
+     * - PERMISSION_DENIED if the logged in subject does not have permission to grant
+     *   permissions to the parent subject.
+     * - NOT_FOUND if no inheritance relationship exists between specified subjects.
+     */
+    rpc InheritPermissions (InheritPermissionsRequest) returns (InheritPermissionsResponse) {}
+
+    /**
+     * RemoveInheritPermissions removes any inheritance relationship between two
+     * subjects.
+     *
+     * Errors:
+     * - PERMISSION_DENIED if the logged in subject does not have permission to revoke
+     *   permissions of the parent subject.
+     * - NOT_FOUND if no inheritance relationship exists between specified subjects.
+     */
+    rpc RemoveInheritPermissions (RemoveInheritPermissionsRequest) returns (RemoveInheritPermissionsResponse) {}
 }

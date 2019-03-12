@@ -1,10 +1,21 @@
 import * as grpcWeb from 'grpc-web';
 import {
+  DeleteSubjectRequest,
+  DeleteSubjectResponse,
+  GetPermissionsRequest,
+  GetPermissionsResponse,
+  GrantPermissionsRequest,
+  GrantPermissionsResponse,
   HasPermissionsRequest,
   HasPermissionsResponse,
+  InheritPermissionsRequest,
+  InheritPermissionsResponse,
   LoginRequest,
   LoginResponse,
-  Permission} from './auth-service_pb';
+  Permission,
+  RemoveInheritPermissionsRequest,
+  RemoveInheritPermissionsResponse,
+  RevokePermissionsRequest} from './auth-service_pb';
 
 export class AuthServiceClient {
   constructor (hostname: string,
@@ -18,12 +29,54 @@ export class AuthServiceClient {
                response: LoginResponse) => void
   ): grpcWeb.ClientReadableStream<LoginResponse>;
 
-  hasPermission(
+  grantPermissions(
+    request: GrantPermissionsRequest,
+    metadata: grpcWeb.Metadata,
+    callback: (err: grpcWeb.Error,
+               response: GrantPermissionsResponse) => void
+  ): grpcWeb.ClientReadableStream<GrantPermissionsResponse>;
+
+  getPermissions(
+    request: GetPermissionsRequest,
+    metadata: grpcWeb.Metadata,
+    callback: (err: grpcWeb.Error,
+               response: GetPermissionsResponse) => void
+  ): grpcWeb.ClientReadableStream<GetPermissionsResponse>;
+
+  hasPermissions(
     request: HasPermissionsRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
                response: HasPermissionsResponse) => void
   ): grpcWeb.ClientReadableStream<HasPermissionsResponse>;
+
+  revokePermissions(
+    request: RevokePermissionsRequest,
+    metadata: grpcWeb.Metadata,
+    callback: (err: grpcWeb.Error,
+               response: RevokePermissionsRequest) => void
+  ): grpcWeb.ClientReadableStream<RevokePermissionsRequest>;
+
+  deleteSubject(
+    request: DeleteSubjectRequest,
+    metadata: grpcWeb.Metadata,
+    callback: (err: grpcWeb.Error,
+               response: DeleteSubjectResponse) => void
+  ): grpcWeb.ClientReadableStream<DeleteSubjectResponse>;
+
+  inheritPermissions(
+    request: InheritPermissionsRequest,
+    metadata: grpcWeb.Metadata,
+    callback: (err: grpcWeb.Error,
+               response: InheritPermissionsResponse) => void
+  ): grpcWeb.ClientReadableStream<InheritPermissionsResponse>;
+
+  removeInheritPermissions(
+    request: RemoveInheritPermissionsRequest,
+    metadata: grpcWeb.Metadata,
+    callback: (err: grpcWeb.Error,
+               response: RemoveInheritPermissionsResponse) => void
+  ): grpcWeb.ClientReadableStream<RemoveInheritPermissionsResponse>;
 
 }
 
@@ -37,10 +90,40 @@ export class AuthServicePromiseClient {
     metadata: grpcWeb.Metadata
   ): Promise<LoginResponse>;
 
-  hasPermission(
+  grantPermissions(
+    request: GrantPermissionsRequest,
+    metadata: grpcWeb.Metadata
+  ): Promise<GrantPermissionsResponse>;
+
+  getPermissions(
+    request: GetPermissionsRequest,
+    metadata: grpcWeb.Metadata
+  ): Promise<GetPermissionsResponse>;
+
+  hasPermissions(
     request: HasPermissionsRequest,
     metadata: grpcWeb.Metadata
   ): Promise<HasPermissionsResponse>;
+
+  revokePermissions(
+    request: RevokePermissionsRequest,
+    metadata: grpcWeb.Metadata
+  ): Promise<RevokePermissionsRequest>;
+
+  deleteSubject(
+    request: DeleteSubjectRequest,
+    metadata: grpcWeb.Metadata
+  ): Promise<DeleteSubjectResponse>;
+
+  inheritPermissions(
+    request: InheritPermissionsRequest,
+    metadata: grpcWeb.Metadata
+  ): Promise<InheritPermissionsResponse>;
+
+  removeInheritPermissions(
+    request: RemoveInheritPermissionsRequest,
+    metadata: grpcWeb.Metadata
+  ): Promise<RemoveInheritPermissionsResponse>;
 
 }
 

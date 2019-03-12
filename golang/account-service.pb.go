@@ -63,7 +63,7 @@ func (m *Account) Reset()         { *m = Account{} }
 func (m *Account) String() string { return proto.CompactTextString(m) }
 func (*Account) ProtoMessage()    {}
 func (*Account) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_c58e525af6a3ba68, []int{0}
+	return fileDescriptor_account_service_5cf5200b2ba49dab, []int{0}
 }
 func (m *Account) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Account.Unmarshal(m, b)
@@ -207,7 +207,7 @@ func (m *Profile) Reset()         { *m = Profile{} }
 func (m *Profile) String() string { return proto.CompactTextString(m) }
 func (*Profile) ProtoMessage()    {}
 func (*Profile) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_c58e525af6a3ba68, []int{1}
+	return fileDescriptor_account_service_5cf5200b2ba49dab, []int{1}
 }
 func (m *Profile) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Profile.Unmarshal(m, b)
@@ -339,7 +339,7 @@ func (m *Email) Reset()         { *m = Email{} }
 func (m *Email) String() string { return proto.CompactTextString(m) }
 func (*Email) ProtoMessage()    {}
 func (*Email) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_c58e525af6a3ba68, []int{2}
+	return fileDescriptor_account_service_5cf5200b2ba49dab, []int{2}
 }
 func (m *Email) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Email.Unmarshal(m, b)
@@ -419,7 +419,7 @@ func (m *GetAccountByIDRequest) Reset()         { *m = GetAccountByIDRequest{} }
 func (m *GetAccountByIDRequest) String() string { return proto.CompactTextString(m) }
 func (*GetAccountByIDRequest) ProtoMessage()    {}
 func (*GetAccountByIDRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_c58e525af6a3ba68, []int{3}
+	return fileDescriptor_account_service_5cf5200b2ba49dab, []int{3}
 }
 func (m *GetAccountByIDRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetAccountByIDRequest.Unmarshal(m, b)
@@ -446,11 +446,6 @@ func (m *GetAccountByIDRequest) GetAccountId() string {
 	return ""
 }
 
-// *
-// CreateAccountRequest creates a new account.
-//
-// Returns a FailedPrecondition error if the email is already in use.
-// Returns InvalidArgument errors if any of the fields are invalid.
 type CreateAccountRequest struct {
 	Email                string   `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
 	Username             string   `protobuf:"bytes,2,opt,name=username,proto3" json:"username,omitempty"`
@@ -465,7 +460,7 @@ func (m *CreateAccountRequest) Reset()         { *m = CreateAccountRequest{} }
 func (m *CreateAccountRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateAccountRequest) ProtoMessage()    {}
 func (*CreateAccountRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_c58e525af6a3ba68, []int{4}
+	return fileDescriptor_account_service_5cf5200b2ba49dab, []int{4}
 }
 func (m *CreateAccountRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateAccountRequest.Unmarshal(m, b)
@@ -515,6 +510,7 @@ func (m *CreateAccountRequest) GetProfile() *Profile {
 
 // *
 // UpdateAccountRequest allows to update user profile details.
+// TODO
 type UpdateAccountRequest struct {
 	AccountId            string   `protobuf:"bytes,1,opt,name=account_id,json=accountId,proto3" json:"account_id,omitempty"`
 	Profile              *Profile `protobuf:"bytes,3,opt,name=profile,proto3" json:"profile,omitempty"`
@@ -527,7 +523,7 @@ func (m *UpdateAccountRequest) Reset()         { *m = UpdateAccountRequest{} }
 func (m *UpdateAccountRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateAccountRequest) ProtoMessage()    {}
 func (*UpdateAccountRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_c58e525af6a3ba68, []int{5}
+	return fileDescriptor_account_service_5cf5200b2ba49dab, []int{5}
 }
 func (m *UpdateAccountRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateAccountRequest.Unmarshal(m, b)
@@ -576,7 +572,7 @@ func (m *UpdateAccountResponse) Reset()         { *m = UpdateAccountResponse{} }
 func (m *UpdateAccountResponse) String() string { return proto.CompactTextString(m) }
 func (*UpdateAccountResponse) ProtoMessage()    {}
 func (*UpdateAccountResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_c58e525af6a3ba68, []int{6}
+	return fileDescriptor_account_service_5cf5200b2ba49dab, []int{6}
 }
 func (m *UpdateAccountResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateAccountResponse.Unmarshal(m, b)
@@ -596,10 +592,6 @@ func (m *UpdateAccountResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_UpdateAccountResponse proto.InternalMessageInfo
 
-// *
-// CheckCredentialsRequest verifies if a username/email + password
-// combination is valid. The login-field may contain either a
-// username or email address.
 type CheckCredentialsRequest struct {
 	Login                string   `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
 	Password             string   `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
@@ -612,7 +604,7 @@ func (m *CheckCredentialsRequest) Reset()         { *m = CheckCredentialsRequest
 func (m *CheckCredentialsRequest) String() string { return proto.CompactTextString(m) }
 func (*CheckCredentialsRequest) ProtoMessage()    {}
 func (*CheckCredentialsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_c58e525af6a3ba68, []int{7}
+	return fileDescriptor_account_service_5cf5200b2ba49dab, []int{7}
 }
 func (m *CheckCredentialsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CheckCredentialsRequest.Unmarshal(m, b)
@@ -646,10 +638,6 @@ func (m *CheckCredentialsRequest) GetPassword() string {
 	return ""
 }
 
-// *
-// CheckCredentialsResponse is an empty response indicating
-// the credentials are valid. If the credentials are invalid an
-// Unauthenticated status code is returned instead.
 type CheckCredentialsResponse struct {
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -660,7 +648,7 @@ func (m *CheckCredentialsResponse) Reset()         { *m = CheckCredentialsRespon
 func (m *CheckCredentialsResponse) String() string { return proto.CompactTextString(m) }
 func (*CheckCredentialsResponse) ProtoMessage()    {}
 func (*CheckCredentialsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_c58e525af6a3ba68, []int{8}
+	return fileDescriptor_account_service_5cf5200b2ba49dab, []int{8}
 }
 func (m *CheckCredentialsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CheckCredentialsResponse.Unmarshal(m, b)
@@ -680,10 +668,6 @@ func (m *CheckCredentialsResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CheckCredentialsResponse proto.InternalMessageInfo
 
-// *
-// ResendVerificationRequest schedules a reset password email.
-//
-// The link expires after 3 hours.
 type ForgotPasswordRequest struct {
 	Email                string   `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -695,7 +679,7 @@ func (m *ForgotPasswordRequest) Reset()         { *m = ForgotPasswordRequest{} }
 func (m *ForgotPasswordRequest) String() string { return proto.CompactTextString(m) }
 func (*ForgotPasswordRequest) ProtoMessage()    {}
 func (*ForgotPasswordRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_c58e525af6a3ba68, []int{9}
+	return fileDescriptor_account_service_5cf5200b2ba49dab, []int{9}
 }
 func (m *ForgotPasswordRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ForgotPasswordRequest.Unmarshal(m, b)
@@ -722,11 +706,6 @@ func (m *ForgotPasswordRequest) GetEmail() string {
 	return ""
 }
 
-// *
-// ForgotPassword sends an empty response when a new forgot password
-// email has been scheduled. Normally an email arrives within a couple of minutes.
-//
-// Returns a NotFound error code if the email address did not match any account.
 type ForgotPasswordResponse struct {
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -737,7 +716,7 @@ func (m *ForgotPasswordResponse) Reset()         { *m = ForgotPasswordResponse{}
 func (m *ForgotPasswordResponse) String() string { return proto.CompactTextString(m) }
 func (*ForgotPasswordResponse) ProtoMessage()    {}
 func (*ForgotPasswordResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_c58e525af6a3ba68, []int{10}
+	return fileDescriptor_account_service_5cf5200b2ba49dab, []int{10}
 }
 func (m *ForgotPasswordResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ForgotPasswordResponse.Unmarshal(m, b)
@@ -757,8 +736,6 @@ func (m *ForgotPasswordResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ForgotPasswordResponse proto.InternalMessageInfo
 
-// *
-// ResetPassword updates an account password using a reset token as proof.
 type ResetPasswordRequest struct {
 	ResetToken           string   `protobuf:"bytes,1,opt,name=reset_token,json=resetToken,proto3" json:"reset_token,omitempty"`
 	NewPassword          string   `protobuf:"bytes,2,opt,name=new_password,json=newPassword,proto3" json:"new_password,omitempty"`
@@ -771,7 +748,7 @@ func (m *ResetPasswordRequest) Reset()         { *m = ResetPasswordRequest{} }
 func (m *ResetPasswordRequest) String() string { return proto.CompactTextString(m) }
 func (*ResetPasswordRequest) ProtoMessage()    {}
 func (*ResetPasswordRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_c58e525af6a3ba68, []int{11}
+	return fileDescriptor_account_service_5cf5200b2ba49dab, []int{11}
 }
 func (m *ResetPasswordRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResetPasswordRequest.Unmarshal(m, b)
@@ -805,12 +782,6 @@ func (m *ResetPasswordRequest) GetNewPassword() string {
 	return ""
 }
 
-// *
-// ResetPassword sends an empty response when the password was updated
-// successfully.
-//
-// Returns an NotFound error if the reset token does not exist or has
-// expired.
 type ResetPasswordResponse struct {
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -821,7 +792,7 @@ func (m *ResetPasswordResponse) Reset()         { *m = ResetPasswordResponse{} }
 func (m *ResetPasswordResponse) String() string { return proto.CompactTextString(m) }
 func (*ResetPasswordResponse) ProtoMessage()    {}
 func (*ResetPasswordResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_c58e525af6a3ba68, []int{12}
+	return fileDescriptor_account_service_5cf5200b2ba49dab, []int{12}
 }
 func (m *ResetPasswordResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResetPasswordResponse.Unmarshal(m, b)
@@ -841,9 +812,6 @@ func (m *ResetPasswordResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ResetPasswordResponse proto.InternalMessageInfo
 
-// *
-// UpdatePasswordRequest changes an account password with a user password as
-// verification.
 type UpdatePasswordRequest struct {
 	AccountId            string   `protobuf:"bytes,1,opt,name=account_id,json=accountId,proto3" json:"account_id,omitempty"`
 	Password             string   `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
@@ -857,7 +825,7 @@ func (m *UpdatePasswordRequest) Reset()         { *m = UpdatePasswordRequest{} }
 func (m *UpdatePasswordRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdatePasswordRequest) ProtoMessage()    {}
 func (*UpdatePasswordRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_c58e525af6a3ba68, []int{13}
+	return fileDescriptor_account_service_5cf5200b2ba49dab, []int{13}
 }
 func (m *UpdatePasswordRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdatePasswordRequest.Unmarshal(m, b)
@@ -898,12 +866,6 @@ func (m *UpdatePasswordRequest) GetNewPassword() string {
 	return ""
 }
 
-// *
-// UpdatePassword sends an empty response when the password was updated
-// successfully.
-//
-// Returns an Unauthenticated error if the password was invalid.
-// Returns a NotFound error if the account could not be found.
 type UpdatePasswordResponse struct {
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -914,7 +876,7 @@ func (m *UpdatePasswordResponse) Reset()         { *m = UpdatePasswordResponse{}
 func (m *UpdatePasswordResponse) String() string { return proto.CompactTextString(m) }
 func (*UpdatePasswordResponse) ProtoMessage()    {}
 func (*UpdatePasswordResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_c58e525af6a3ba68, []int{14}
+	return fileDescriptor_account_service_5cf5200b2ba49dab, []int{14}
 }
 func (m *UpdatePasswordResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdatePasswordResponse.Unmarshal(m, b)
@@ -934,11 +896,6 @@ func (m *UpdatePasswordResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_UpdatePasswordResponse proto.InternalMessageInfo
 
-// *
-// VerifyEmailRequest verifies an email address.
-//
-// Returns an NotFound error if the token is invalid.
-// Returns a FailedPrecondition if the email was already verified.
 type VerifyEmailRequest struct {
 	Token                string   `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -950,7 +907,7 @@ func (m *VerifyEmailRequest) Reset()         { *m = VerifyEmailRequest{} }
 func (m *VerifyEmailRequest) String() string { return proto.CompactTextString(m) }
 func (*VerifyEmailRequest) ProtoMessage()    {}
 func (*VerifyEmailRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_c58e525af6a3ba68, []int{15}
+	return fileDescriptor_account_service_5cf5200b2ba49dab, []int{15}
 }
 func (m *VerifyEmailRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_VerifyEmailRequest.Unmarshal(m, b)
@@ -977,8 +934,6 @@ func (m *VerifyEmailRequest) GetToken() string {
 	return ""
 }
 
-// *
-// VerifyEmail sends an empty response when the email was succesfully verified.
 type VerifyEmailResponse struct {
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -989,7 +944,7 @@ func (m *VerifyEmailResponse) Reset()         { *m = VerifyEmailResponse{} }
 func (m *VerifyEmailResponse) String() string { return proto.CompactTextString(m) }
 func (*VerifyEmailResponse) ProtoMessage()    {}
 func (*VerifyEmailResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_c58e525af6a3ba68, []int{16}
+	return fileDescriptor_account_service_5cf5200b2ba49dab, []int{16}
 }
 func (m *VerifyEmailResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_VerifyEmailResponse.Unmarshal(m, b)
@@ -1009,9 +964,6 @@ func (m *VerifyEmailResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_VerifyEmailResponse proto.InternalMessageInfo
 
-// *
-// ResendVerificationRequest requests a new verification email.
-// This is useful if the user forgot his or her email addresses.
 type ResendVerificationRequest struct {
 	Email                string   `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -1023,7 +975,7 @@ func (m *ResendVerificationRequest) Reset()         { *m = ResendVerificationReq
 func (m *ResendVerificationRequest) String() string { return proto.CompactTextString(m) }
 func (*ResendVerificationRequest) ProtoMessage()    {}
 func (*ResendVerificationRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_c58e525af6a3ba68, []int{17}
+	return fileDescriptor_account_service_5cf5200b2ba49dab, []int{17}
 }
 func (m *ResendVerificationRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResendVerificationRequest.Unmarshal(m, b)
@@ -1050,16 +1002,6 @@ func (m *ResendVerificationRequest) GetEmail() string {
 	return ""
 }
 
-// *
-// ResendVerification sends an empty response when a new verification
-// email has been scheduled. Normally an email arrives within a couple
-// of minutes.
-//
-// Returns a NotFound error code if the email address did not match
-// any account.
-//
-// Returns a FailedPrecondition error code if the specified email
-// address is already verified.
 type ResendVerificationResponse struct {
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -1070,7 +1012,7 @@ func (m *ResendVerificationResponse) Reset()         { *m = ResendVerificationRe
 func (m *ResendVerificationResponse) String() string { return proto.CompactTextString(m) }
 func (*ResendVerificationResponse) ProtoMessage()    {}
 func (*ResendVerificationResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_c58e525af6a3ba68, []int{18}
+	return fileDescriptor_account_service_5cf5200b2ba49dab, []int{18}
 }
 func (m *ResendVerificationResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResendVerificationResponse.Unmarshal(m, b)
@@ -1090,14 +1032,6 @@ func (m *ResendVerificationResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ResendVerificationResponse proto.InternalMessageInfo
 
-// *
-// CancelAccount disables an account and removes all auth tokens
-// associated with the account.
-//
-// Cancelled accounts are completely removed after 14 days.
-//
-// To regain access to a cancelled account before the account is
-// permanently deleted send an email to support@metrix.io
 type CancelAccountRequest struct {
 	AccountId            string   `protobuf:"bytes,1,opt,name=account_id,json=accountId,proto3" json:"account_id,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -1109,7 +1043,7 @@ func (m *CancelAccountRequest) Reset()         { *m = CancelAccountRequest{} }
 func (m *CancelAccountRequest) String() string { return proto.CompactTextString(m) }
 func (*CancelAccountRequest) ProtoMessage()    {}
 func (*CancelAccountRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_c58e525af6a3ba68, []int{19}
+	return fileDescriptor_account_service_5cf5200b2ba49dab, []int{19}
 }
 func (m *CancelAccountRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CancelAccountRequest.Unmarshal(m, b)
@@ -1136,9 +1070,6 @@ func (m *CancelAccountRequest) GetAccountId() string {
 	return ""
 }
 
-// *
-// CancelAccount sends an empty response when the account has
-// successfully been cancelled.
 type CancelAccountResponse struct {
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -1149,7 +1080,7 @@ func (m *CancelAccountResponse) Reset()         { *m = CancelAccountResponse{} }
 func (m *CancelAccountResponse) String() string { return proto.CompactTextString(m) }
 func (*CancelAccountResponse) ProtoMessage()    {}
 func (*CancelAccountResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_c58e525af6a3ba68, []int{20}
+	return fileDescriptor_account_service_5cf5200b2ba49dab, []int{20}
 }
 func (m *CancelAccountResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CancelAccountResponse.Unmarshal(m, b)
@@ -1169,9 +1100,6 @@ func (m *CancelAccountResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CancelAccountResponse proto.InternalMessageInfo
 
-// *
-// CheckUsername returns whether a specified username is still
-// available.
 type CheckUsernameRequest struct {
 	Username             string   `protobuf:"bytes,1,opt,name=username,proto3" json:"username,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -1183,7 +1111,7 @@ func (m *CheckUsernameRequest) Reset()         { *m = CheckUsernameRequest{} }
 func (m *CheckUsernameRequest) String() string { return proto.CompactTextString(m) }
 func (*CheckUsernameRequest) ProtoMessage()    {}
 func (*CheckUsernameRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_c58e525af6a3ba68, []int{21}
+	return fileDescriptor_account_service_5cf5200b2ba49dab, []int{21}
 }
 func (m *CheckUsernameRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CheckUsernameRequest.Unmarshal(m, b)
@@ -1210,8 +1138,6 @@ func (m *CheckUsernameRequest) GetUsername() string {
 	return ""
 }
 
-// *
-// Returns true if username is available, otherwise false.
 type CheckUsernameResponse struct {
 	IsAvailable          bool     `protobuf:"varint,1,opt,name=is_available,json=isAvailable,proto3" json:"is_available,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -1223,7 +1149,7 @@ func (m *CheckUsernameResponse) Reset()         { *m = CheckUsernameResponse{} }
 func (m *CheckUsernameResponse) String() string { return proto.CompactTextString(m) }
 func (*CheckUsernameResponse) ProtoMessage()    {}
 func (*CheckUsernameResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_c58e525af6a3ba68, []int{22}
+	return fileDescriptor_account_service_5cf5200b2ba49dab, []int{22}
 }
 func (m *CheckUsernameResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CheckUsernameResponse.Unmarshal(m, b)
@@ -1250,9 +1176,6 @@ func (m *CheckUsernameResponse) GetIsAvailable() bool {
 	return false
 }
 
-// *
-// CheckEmail returns whether a specified email address is still
-// available.
 type CheckEmailRequest struct {
 	Email                string   `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -1264,7 +1187,7 @@ func (m *CheckEmailRequest) Reset()         { *m = CheckEmailRequest{} }
 func (m *CheckEmailRequest) String() string { return proto.CompactTextString(m) }
 func (*CheckEmailRequest) ProtoMessage()    {}
 func (*CheckEmailRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_c58e525af6a3ba68, []int{23}
+	return fileDescriptor_account_service_5cf5200b2ba49dab, []int{23}
 }
 func (m *CheckEmailRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CheckEmailRequest.Unmarshal(m, b)
@@ -1291,8 +1214,6 @@ func (m *CheckEmailRequest) GetEmail() string {
 	return ""
 }
 
-// *
-// Returns true if email is already in use, otherwise false.
 type CheckEmailResponse struct {
 	IsAvailable          bool     `protobuf:"varint,1,opt,name=is_available,json=isAvailable,proto3" json:"is_available,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -1304,7 +1225,7 @@ func (m *CheckEmailResponse) Reset()         { *m = CheckEmailResponse{} }
 func (m *CheckEmailResponse) String() string { return proto.CompactTextString(m) }
 func (*CheckEmailResponse) ProtoMessage()    {}
 func (*CheckEmailResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_service_c58e525af6a3ba68, []int{24}
+	return fileDescriptor_account_service_5cf5200b2ba49dab, []int{24}
 }
 func (m *CheckEmailResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CheckEmailResponse.Unmarshal(m, b)
@@ -1371,16 +1292,104 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type AccountServiceClient interface {
+	// *
+	// CreateAccountRequest creates a new account.
+	//
+	// Errors:
+	// - FAILED_PRECONDITION if the email or username is already in use.
+	// - INVALID_ARGUMENT if any of the fields are invalid.
 	CreateAccount(ctx context.Context, in *CreateAccountRequest, opts ...grpc.CallOption) (*Account, error)
+	// *
+	// CheckUsername returns true when a specified username is still
+	// available, otherwise false.
 	CheckUsername(ctx context.Context, in *CheckUsernameRequest, opts ...grpc.CallOption) (*CheckUsernameResponse, error)
+	// *
+	// CheckEmail returns true when a specified email address is still
+	// available, otherwise false.
 	CheckEmail(ctx context.Context, in *CheckEmailRequest, opts ...grpc.CallOption) (*CheckEmailResponse, error)
+	// *
+	// CheckCredentialsRequest verifies if a username/email + password
+	// combination is valid. The login-field may contain either a username
+	// or email address.
+	//
+	// Returns an empty response when credentials are valid.
+	//
+	// Errors:
+	// - UNAUTHENTICATED if credentials are invalid.
 	CheckCredentials(ctx context.Context, in *CheckCredentialsRequest, opts ...grpc.CallOption) (*CheckCredentialsResponse, error)
+	// *
+	// Returns an account and profile by it's ID.
+	//
+	// Errors:
+	// - PERMISSION_DENIED if logged in subject has insufficient privileges.
+	// - NOT_FOUND if account could not be found.
 	GetAccountByID(ctx context.Context, in *GetAccountByIDRequest, opts ...grpc.CallOption) (*Account, error)
+	// *
+	// ResendVerificationRequest schedules a reset password email. The reset
+	// link expires after 3 hours.
+	//
+	// Returns an empty response when a new forgot password email has successfully
+	// been scheduled. Normally an email arrives within a couple of minutes.
+	//
+	// Errors:
+	// - NOT_FOUND if the email address did not match any account.
 	ForgotPassword(ctx context.Context, in *ForgotPasswordRequest, opts ...grpc.CallOption) (*ForgotPasswordResponse, error)
+	// *
+	// ResetPassword updates an account password using a reset token
+	// as proof.
+	//
+	// Returns an empty response when the password was updated successfully.
+	//
+	// Errors:
+	// - NOT_FOUND if the reset token does not exist, has already been used
+	//   or has expired.
 	ResetPassword(ctx context.Context, in *ResetPasswordRequest, opts ...grpc.CallOption) (*ResetPasswordResponse, error)
+	// *
+	// UpdatePasswordRequest changes an account password with a user password as
+	// verification.
+	//
+	// UpdatePas`sword sends an empty response when the password was updated
+	// successfully.
+	//
+	// Errors:
+	// - UNAUTHENTICATED if the verification password was invalid.
+	// - NOT_FOUND error if the account could not be found.
 	UpdatePassword(ctx context.Context, in *UpdatePasswordRequest, opts ...grpc.CallOption) (*UpdatePasswordResponse, error)
+	// *
+	// VerifyEmailRequest verifies an email address.
+	//
+	// Returns an empty response when the email was successfully verified.
+	//
+	// Errors:
+	// - NOT_FOUND if token is invalid.
+	// - FAILED_PRECONDITION if the email was already verified.
 	VerifyEmail(ctx context.Context, in *VerifyEmailRequest, opts ...grpc.CallOption) (*VerifyEmailResponse, error)
+	// *
+	// ResendVerificationRequest requests a new verification email to
+	// a newly registered account that has not been verified yet.
+	//
+	// Returns an empty response when a new verification email was scheduled.
+	// Normally an email arrives within a couple of minutes.
+	//
+	// Errors:
+	// - NOT_FOUND if the email address did not match any account.
+	// - FAILED_PRECONDITION if the specified email address has already
+	//   been verified.
 	ResendVerification(ctx context.Context, in *ResendVerificationRequest, opts ...grpc.CallOption) (*ResendVerificationResponse, error)
+	// *
+	// CancelAccount disables an account and removes all auth tokens
+	// associated with the account.
+	//
+	// Cancelled accounts are completely removed after 14 days.
+	//
+	// To regain access to a cancelled account before the account is
+	// permanently deleted send an email to support@metrix.io
+	//
+	// Returns an empty response when cancellation was successful.
+	//
+	// Errors:
+	// - NOT_FOUND if the account could not be found.
+	// - PERMISSION_DENIED if logged in subject has insufficient privileges.
 	CancelAccount(ctx context.Context, in *CancelAccountRequest, opts ...grpc.CallOption) (*CancelAccountResponse, error)
 }
 
@@ -1493,16 +1502,104 @@ func (c *accountServiceClient) CancelAccount(ctx context.Context, in *CancelAcco
 
 // AccountServiceServer is the server API for AccountService service.
 type AccountServiceServer interface {
+	// *
+	// CreateAccountRequest creates a new account.
+	//
+	// Errors:
+	// - FAILED_PRECONDITION if the email or username is already in use.
+	// - INVALID_ARGUMENT if any of the fields are invalid.
 	CreateAccount(context.Context, *CreateAccountRequest) (*Account, error)
+	// *
+	// CheckUsername returns true when a specified username is still
+	// available, otherwise false.
 	CheckUsername(context.Context, *CheckUsernameRequest) (*CheckUsernameResponse, error)
+	// *
+	// CheckEmail returns true when a specified email address is still
+	// available, otherwise false.
 	CheckEmail(context.Context, *CheckEmailRequest) (*CheckEmailResponse, error)
+	// *
+	// CheckCredentialsRequest verifies if a username/email + password
+	// combination is valid. The login-field may contain either a username
+	// or email address.
+	//
+	// Returns an empty response when credentials are valid.
+	//
+	// Errors:
+	// - UNAUTHENTICATED if credentials are invalid.
 	CheckCredentials(context.Context, *CheckCredentialsRequest) (*CheckCredentialsResponse, error)
+	// *
+	// Returns an account and profile by it's ID.
+	//
+	// Errors:
+	// - PERMISSION_DENIED if logged in subject has insufficient privileges.
+	// - NOT_FOUND if account could not be found.
 	GetAccountByID(context.Context, *GetAccountByIDRequest) (*Account, error)
+	// *
+	// ResendVerificationRequest schedules a reset password email. The reset
+	// link expires after 3 hours.
+	//
+	// Returns an empty response when a new forgot password email has successfully
+	// been scheduled. Normally an email arrives within a couple of minutes.
+	//
+	// Errors:
+	// - NOT_FOUND if the email address did not match any account.
 	ForgotPassword(context.Context, *ForgotPasswordRequest) (*ForgotPasswordResponse, error)
+	// *
+	// ResetPassword updates an account password using a reset token
+	// as proof.
+	//
+	// Returns an empty response when the password was updated successfully.
+	//
+	// Errors:
+	// - NOT_FOUND if the reset token does not exist, has already been used
+	//   or has expired.
 	ResetPassword(context.Context, *ResetPasswordRequest) (*ResetPasswordResponse, error)
+	// *
+	// UpdatePasswordRequest changes an account password with a user password as
+	// verification.
+	//
+	// UpdatePas`sword sends an empty response when the password was updated
+	// successfully.
+	//
+	// Errors:
+	// - UNAUTHENTICATED if the verification password was invalid.
+	// - NOT_FOUND error if the account could not be found.
 	UpdatePassword(context.Context, *UpdatePasswordRequest) (*UpdatePasswordResponse, error)
+	// *
+	// VerifyEmailRequest verifies an email address.
+	//
+	// Returns an empty response when the email was successfully verified.
+	//
+	// Errors:
+	// - NOT_FOUND if token is invalid.
+	// - FAILED_PRECONDITION if the email was already verified.
 	VerifyEmail(context.Context, *VerifyEmailRequest) (*VerifyEmailResponse, error)
+	// *
+	// ResendVerificationRequest requests a new verification email to
+	// a newly registered account that has not been verified yet.
+	//
+	// Returns an empty response when a new verification email was scheduled.
+	// Normally an email arrives within a couple of minutes.
+	//
+	// Errors:
+	// - NOT_FOUND if the email address did not match any account.
+	// - FAILED_PRECONDITION if the specified email address has already
+	//   been verified.
 	ResendVerification(context.Context, *ResendVerificationRequest) (*ResendVerificationResponse, error)
+	// *
+	// CancelAccount disables an account and removes all auth tokens
+	// associated with the account.
+	//
+	// Cancelled accounts are completely removed after 14 days.
+	//
+	// To regain access to a cancelled account before the account is
+	// permanently deleted send an email to support@metrix.io
+	//
+	// Returns an empty response when cancellation was successful.
+	//
+	// Errors:
+	// - NOT_FOUND if the account could not be found.
+	// - PERMISSION_DENIED if logged in subject has insufficient privileges.
 	CancelAccount(context.Context, *CancelAccountRequest) (*CancelAccountResponse, error)
 }
 
@@ -1762,10 +1859,10 @@ var _AccountService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("proto/account-service.proto", fileDescriptor_account_service_c58e525af6a3ba68)
+	proto.RegisterFile("proto/account-service.proto", fileDescriptor_account_service_5cf5200b2ba49dab)
 }
 
-var fileDescriptor_account_service_c58e525af6a3ba68 = []byte{
+var fileDescriptor_account_service_5cf5200b2ba49dab = []byte{
 	// 1057 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x57, 0xdd, 0x4e, 0xe3, 0x46,
 	0x14, 0xc6, 0x09, 0x90, 0xf8, 0x78, 0x41, 0xbb, 0xb3, 0x09, 0xeb, 0x1a, 0x28, 0xe0, 0x6d, 0x25,
