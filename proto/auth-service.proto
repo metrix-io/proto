@@ -9,22 +9,30 @@ message LoginRequest {
     string password = 2;
 }
 
-message LoginResponse {
+message AccessToken {
     string access_token = 1;
 
-    // The lifetime in seconds of the access token.
+    // The lifetime of the access token in seconds.
     string expires_in = 2;
+
+    // Unix timestamp when token expires.
+    int64 expires_at = 3;
 }
 
 /**
- * A permission specifies a set of actions for a given resource.
+ * A permission specifies a set of operations for a given resource.
  *
  * A resource name starts with an "mtx:"-prefix followed by a resource identifier
  * usually in the form of "mtx:<resource>:<id>:<subresource>:<subid>".
  */
 message Permission {
     string resource = 1;
-    repeated string actions = 2;
+    repeated string operations = 2;
+}
+
+message PermissionAssignments {
+    string subject = 1;
+    repeated Permission permissions = 2;
 }
 
 message GrantPermissionsRequest {
@@ -43,11 +51,6 @@ message RevokePermissionsResponse {}
 
 message GetPermissionsRequest {
     string subject = 1;
-}
-
-message GetPermissionsResponse {
-    string subject = 1;
-    repeated Permission permissions = 2;
 }
 
 message HasPermissionsRequest {
@@ -89,7 +92,7 @@ service AuthService {
      * Errors:
      * - UNAUTHENTICATED if the credentials are invalid.
      */
-    rpc Login (LoginRequest) returns (LoginResponse) {}
+    rpc Login (LoginRequest) returns (AccessToken) {}
 
     /**
      * GrantPermission adds one or more permissions to a subject.
@@ -101,7 +104,7 @@ service AuthService {
      * - PERMISSION_DENIED if the logged in subject has insufficient privileges
      *   to read subject's permissions.
      */
-    rpc GrantPermissions (GrantPermissionsRequest) returns (GrantPermissionsResponse) {}
+    rpc GrantPermissions (GrantPermissionsRequest) returns (PermissionAssignments) {}
 
     /**
      * Returns all permissions for the specified subject.
@@ -110,7 +113,7 @@ service AuthService {
      * - PERMISSION_DENIED if the logged in subject has insufficient privileges
      *   to read subject's permissions.
      */
-    rpc GetPermissions (GetPermissionsRequest) returns (GetPermissionsResponse) {}
+    rpc GetPermissions (GetPermissionsRequest) returns (PermissionAssignments) {}
 
     /**
      * Checks if the subjects has specified permission(s). Returns a list of
@@ -138,7 +141,7 @@ service AuthService {
      * which inherit from the subject being deleted.
      *
      * If the subject being deleted does not have any registered permissions the
-     * action will still be deemed successful.
+     * request will still be deemed successful.
      *
      * Errors:
      * - PERMISSION_DENIED if the logged in subject has insufficient privileges to

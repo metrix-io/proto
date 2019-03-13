@@ -1,3 +1,24 @@
+export class AccessToken {
+  constructor ();
+  getAccessToken(): string;
+  setAccessToken(a: string): void;
+  getExpiresIn(): string;
+  setExpiresIn(a: string): void;
+  getExpiresAt(): number;
+  setExpiresAt(a: number): void;
+  toObject(): AccessToken.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => AccessToken;
+}
+
+export namespace AccessToken {
+  export type AsObject = {
+    AccessToken: string;
+    ExpiresIn: string;
+    ExpiresAt: number;
+  }
+}
+
 export class DeleteSubjectRequest {
   constructor ();
   getSubject(): string;
@@ -40,24 +61,6 @@ export namespace GetPermissionsRequest {
   }
 }
 
-export class GetPermissionsResponse {
-  constructor ();
-  getSubject(): string;
-  setSubject(a: string): void;
-  getPermissionsList(): Permission[];
-  setPermissionsList(a: Permission[]): void;
-  toObject(): GetPermissionsResponse.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => GetPermissionsResponse;
-}
-
-export namespace GetPermissionsResponse {
-  export type AsObject = {
-    Subject: string;
-    PermissionsList: Permission[];
-  }
-}
-
 export class GrantPermissionsRequest {
   constructor ();
   getSubject(): string;
@@ -73,18 +76,6 @@ export namespace GrantPermissionsRequest {
   export type AsObject = {
     Subject: string;
     PermissionsList: Permission[];
-  }
-}
-
-export class GrantPermissionsResponse {
-  constructor ();
-  toObject(): GrantPermissionsResponse.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => GrantPermissionsResponse;
-}
-
-export namespace GrantPermissionsResponse {
-  export type AsObject = {
   }
 }
 
@@ -172,30 +163,12 @@ export namespace LoginRequest {
   }
 }
 
-export class LoginResponse {
-  constructor ();
-  getAccessToken(): string;
-  setAccessToken(a: string): void;
-  getExpiresIn(): string;
-  setExpiresIn(a: string): void;
-  toObject(): LoginResponse.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => LoginResponse;
-}
-
-export namespace LoginResponse {
-  export type AsObject = {
-    AccessToken: string;
-    ExpiresIn: string;
-  }
-}
-
 export class Permission {
   constructor ();
   getResource(): string;
   setResource(a: string): void;
-  getActionsList(): string[];
-  setActionsList(a: string[]): void;
+  getOperationsList(): string[];
+  setOperationsList(a: string[]): void;
   toObject(): Permission.AsObject;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => Permission;
@@ -204,7 +177,25 @@ export class Permission {
 export namespace Permission {
   export type AsObject = {
     Resource: string;
-    ActionsList: string[];
+    OperationsList: string[];
+  }
+}
+
+export class PermissionAssignments {
+  constructor ();
+  getSubject(): string;
+  setSubject(a: string): void;
+  getPermissionsList(): Permission[];
+  setPermissionsList(a: Permission[]): void;
+  toObject(): PermissionAssignments.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => PermissionAssignments;
+}
+
+export namespace PermissionAssignments {
+  export type AsObject = {
+    Subject: string;
+    PermissionsList: Permission[];
   }
 }
 

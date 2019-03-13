@@ -76,15 +76,15 @@ proto.metrixio.AuthServicePromiseClient =
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
  *   !proto.metrixio.LoginRequest,
- *   !proto.metrixio.LoginResponse>}
+ *   !proto.metrixio.AccessToken>}
  */
 const methodInfo_AuthService_Login = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.metrixio.LoginResponse,
+  proto.metrixio.AccessToken,
   /** @param {!proto.metrixio.LoginRequest} request */
   function(request) {
     return request.serializeBinary();
   },
-  proto.metrixio.LoginResponse.deserializeBinary
+  proto.metrixio.AccessToken.deserializeBinary
 );
 
 
@@ -93,9 +93,9 @@ const methodInfo_AuthService_Login = new grpc.web.AbstractClientBase.MethodInfo(
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.metrixio.LoginResponse)}
+ * @param {function(?grpc.web.Error, ?proto.metrixio.AccessToken)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.metrixio.LoginResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.metrixio.AccessToken>|undefined}
  *     The XHR Node Readable Stream
  */
 proto.metrixio.AuthServiceClient.prototype.login =
@@ -114,7 +114,7 @@ proto.metrixio.AuthServiceClient.prototype.login =
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.metrixio.LoginResponse>}
+ * @return {!Promise<!proto.metrixio.AccessToken>}
  *     The XHR Node Readable Stream
  */
 proto.metrixio.AuthServicePromiseClient.prototype.login =
@@ -132,15 +132,15 @@ proto.metrixio.AuthServicePromiseClient.prototype.login =
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
  *   !proto.metrixio.GrantPermissionsRequest,
- *   !proto.metrixio.GrantPermissionsResponse>}
+ *   !proto.metrixio.PermissionAssignments>}
  */
 const methodInfo_AuthService_GrantPermissions = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.metrixio.GrantPermissionsResponse,
+  proto.metrixio.PermissionAssignments,
   /** @param {!proto.metrixio.GrantPermissionsRequest} request */
   function(request) {
     return request.serializeBinary();
   },
-  proto.metrixio.GrantPermissionsResponse.deserializeBinary
+  proto.metrixio.PermissionAssignments.deserializeBinary
 );
 
 
@@ -149,9 +149,9 @@ const methodInfo_AuthService_GrantPermissions = new grpc.web.AbstractClientBase.
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.metrixio.GrantPermissionsResponse)}
+ * @param {function(?grpc.web.Error, ?proto.metrixio.PermissionAssignments)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.metrixio.GrantPermissionsResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.metrixio.PermissionAssignments>|undefined}
  *     The XHR Node Readable Stream
  */
 proto.metrixio.AuthServiceClient.prototype.grantPermissions =
@@ -170,7 +170,7 @@ proto.metrixio.AuthServiceClient.prototype.grantPermissions =
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.metrixio.GrantPermissionsResponse>}
+ * @return {!Promise<!proto.metrixio.PermissionAssignments>}
  *     The XHR Node Readable Stream
  */
 proto.metrixio.AuthServicePromiseClient.prototype.grantPermissions =
@@ -188,15 +188,15 @@ proto.metrixio.AuthServicePromiseClient.prototype.grantPermissions =
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
  *   !proto.metrixio.GetPermissionsRequest,
- *   !proto.metrixio.GetPermissionsResponse>}
+ *   !proto.metrixio.PermissionAssignments>}
  */
 const methodInfo_AuthService_GetPermissions = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.metrixio.GetPermissionsResponse,
+  proto.metrixio.PermissionAssignments,
   /** @param {!proto.metrixio.GetPermissionsRequest} request */
   function(request) {
     return request.serializeBinary();
   },
-  proto.metrixio.GetPermissionsResponse.deserializeBinary
+  proto.metrixio.PermissionAssignments.deserializeBinary
 );
 
 
@@ -205,9 +205,9 @@ const methodInfo_AuthService_GetPermissions = new grpc.web.AbstractClientBase.Me
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.metrixio.GetPermissionsResponse)}
+ * @param {function(?grpc.web.Error, ?proto.metrixio.PermissionAssignments)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.metrixio.GetPermissionsResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.metrixio.PermissionAssignments>|undefined}
  *     The XHR Node Readable Stream
  */
 proto.metrixio.AuthServiceClient.prototype.getPermissions =
@@ -226,7 +226,7 @@ proto.metrixio.AuthServiceClient.prototype.getPermissions =
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.metrixio.GetPermissionsResponse>}
+ * @return {!Promise<!proto.metrixio.PermissionAssignments>}
  *     The XHR Node Readable Stream
  */
 proto.metrixio.AuthServicePromiseClient.prototype.getPermissions =

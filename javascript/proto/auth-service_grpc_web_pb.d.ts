@@ -1,18 +1,17 @@
 import * as grpcWeb from 'grpc-web';
 import {
+  AccessToken,
   DeleteSubjectRequest,
   DeleteSubjectResponse,
   GetPermissionsRequest,
-  GetPermissionsResponse,
   GrantPermissionsRequest,
-  GrantPermissionsResponse,
   HasPermissionsRequest,
   HasPermissionsResponse,
   InheritPermissionsRequest,
   InheritPermissionsResponse,
   LoginRequest,
-  LoginResponse,
   Permission,
+  PermissionAssignments,
   RemoveInheritPermissionsRequest,
   RemoveInheritPermissionsResponse,
   RevokePermissionsRequest} from './auth-service_pb';
@@ -26,22 +25,22 @@ export class AuthServiceClient {
     request: LoginRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
-               response: LoginResponse) => void
-  ): grpcWeb.ClientReadableStream<LoginResponse>;
+               response: AccessToken) => void
+  ): grpcWeb.ClientReadableStream<AccessToken>;
 
   grantPermissions(
     request: GrantPermissionsRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
-               response: GrantPermissionsResponse) => void
-  ): grpcWeb.ClientReadableStream<GrantPermissionsResponse>;
+               response: PermissionAssignments) => void
+  ): grpcWeb.ClientReadableStream<PermissionAssignments>;
 
   getPermissions(
     request: GetPermissionsRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
-               response: GetPermissionsResponse) => void
-  ): grpcWeb.ClientReadableStream<GetPermissionsResponse>;
+               response: PermissionAssignments) => void
+  ): grpcWeb.ClientReadableStream<PermissionAssignments>;
 
   hasPermissions(
     request: HasPermissionsRequest,
@@ -88,17 +87,17 @@ export class AuthServicePromiseClient {
   login(
     request: LoginRequest,
     metadata: grpcWeb.Metadata
-  ): Promise<LoginResponse>;
+  ): Promise<AccessToken>;
 
   grantPermissions(
     request: GrantPermissionsRequest,
     metadata: grpcWeb.Metadata
-  ): Promise<GrantPermissionsResponse>;
+  ): Promise<PermissionAssignments>;
 
   getPermissions(
     request: GetPermissionsRequest,
     metadata: grpcWeb.Metadata
-  ): Promise<GetPermissionsResponse>;
+  ): Promise<PermissionAssignments>;
 
   hasPermissions(
     request: HasPermissionsRequest,
