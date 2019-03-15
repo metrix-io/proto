@@ -244,15 +244,15 @@ proto.metrixio.AccountServicePromiseClient.prototype.checkEmail =
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
  *   !proto.metrixio.CheckCredentialsRequest,
- *   !proto.metrixio.CheckCredentialsResponse>}
+ *   !proto.metrixio.Account>}
  */
 const methodInfo_AccountService_CheckCredentials = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.metrixio.CheckCredentialsResponse,
+  proto.metrixio.Account,
   /** @param {!proto.metrixio.CheckCredentialsRequest} request */
   function(request) {
     return request.serializeBinary();
   },
-  proto.metrixio.CheckCredentialsResponse.deserializeBinary
+  proto.metrixio.Account.deserializeBinary
 );
 
 
@@ -261,9 +261,9 @@ const methodInfo_AccountService_CheckCredentials = new grpc.web.AbstractClientBa
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.metrixio.CheckCredentialsResponse)}
+ * @param {function(?grpc.web.Error, ?proto.metrixio.Account)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.metrixio.CheckCredentialsResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.metrixio.Account>|undefined}
  *     The XHR Node Readable Stream
  */
 proto.metrixio.AccountServiceClient.prototype.checkCredentials =
@@ -282,7 +282,7 @@ proto.metrixio.AccountServiceClient.prototype.checkCredentials =
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.metrixio.CheckCredentialsResponse>}
+ * @return {!Promise<!proto.metrixio.Account>}
  *     The XHR Node Readable Stream
  */
 proto.metrixio.AccountServicePromiseClient.prototype.checkCredentials =

@@ -16,7 +16,7 @@ message Account {
   string id = 1;
 
   // Subject is the fully qualified security identifier for this account.
-  string sub = 2;
+  string subject = 2;
 
   // Username. The maximum length is 15 characters.
   string username = 3;
@@ -155,8 +155,6 @@ message CheckCredentialsRequest {
   string password = 2;
 }
 
-message CheckCredentialsResponse {}
-
 message ForgotPasswordRequest {
   string email = 1;
 }
@@ -239,12 +237,12 @@ service AccountService {
    * combination is valid. The login-field may contain either a username
    * or email address.
    *
-   * Returns an empty response when credentials are valid.
+   * Returns the user's account on success.
    *
    * Errors:
    * - UNAUTHENTICATED if credentials are invalid.
    */
-  rpc CheckCredentials (CheckCredentialsRequest) returns (CheckCredentialsResponse) {}
+  rpc CheckCredentials (CheckCredentialsRequest) returns (Account) {}
 
   /**
    * Returns an account and profile by it's ID.

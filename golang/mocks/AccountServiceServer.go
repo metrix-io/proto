@@ -35,15 +35,15 @@ func (_m *AccountServiceServer) CancelAccount(_a0 context.Context, _a1 *golang.C
 }
 
 // CheckCredentials provides a mock function with given fields: _a0, _a1
-func (_m *AccountServiceServer) CheckCredentials(_a0 context.Context, _a1 *golang.CheckCredentialsRequest) (*golang.CheckCredentialsResponse, error) {
+func (_m *AccountServiceServer) CheckCredentials(_a0 context.Context, _a1 *golang.CheckCredentialsRequest) (*golang.Account, error) {
 	ret := _m.Called(_a0, _a1)
 
-	var r0 *golang.CheckCredentialsResponse
-	if rf, ok := ret.Get(0).(func(context.Context, *golang.CheckCredentialsRequest) *golang.CheckCredentialsResponse); ok {
+	var r0 *golang.Account
+	if rf, ok := ret.Get(0).(func(context.Context, *golang.CheckCredentialsRequest) *golang.Account); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*golang.CheckCredentialsResponse)
+			r0 = ret.Get(0).(*golang.Account)
 		}
 	}
 

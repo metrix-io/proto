@@ -2,8 +2,8 @@ export class Account {
   constructor ();
   getId(): string;
   setId(a: string): void;
-  getSub(): string;
-  setSub(a: string): void;
+  getSubject(): string;
+  setSubject(a: string): void;
   getUsername(): string;
   setUsername(a: string): void;
   getEmail(): string;
@@ -32,7 +32,7 @@ export class Account {
 export namespace Account {
   export type AsObject = {
     Id: string;
-    Sub: string;
+    Subject: string;
     Username: string;
     Email: string;
     EmailVerified: boolean;
@@ -88,18 +88,6 @@ export namespace CheckCredentialsRequest {
   export type AsObject = {
     Login: string;
     Password: string;
-  }
-}
-
-export class CheckCredentialsResponse {
-  constructor ();
-  toObject(): CheckCredentialsResponse.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => CheckCredentialsResponse;
-}
-
-export namespace CheckCredentialsResponse {
-  export type AsObject = {
   }
 }
 

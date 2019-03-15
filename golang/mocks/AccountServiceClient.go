@@ -43,7 +43,7 @@ func (_m *AccountServiceClient) CancelAccount(ctx context.Context, in *golang.Ca
 }
 
 // CheckCredentials provides a mock function with given fields: ctx, in, opts
-func (_m *AccountServiceClient) CheckCredentials(ctx context.Context, in *golang.CheckCredentialsRequest, opts ...grpc.CallOption) (*golang.CheckCredentialsResponse, error) {
+func (_m *AccountServiceClient) CheckCredentials(ctx context.Context, in *golang.CheckCredentialsRequest, opts ...grpc.CallOption) (*golang.Account, error) {
 	_va := make([]interface{}, len(opts))
 	for _i := range opts {
 		_va[_i] = opts[_i]
@@ -53,12 +53,12 @@ func (_m *AccountServiceClient) CheckCredentials(ctx context.Context, in *golang
 	_ca = append(_ca, _va...)
 	ret := _m.Called(_ca...)
 
-	var r0 *golang.CheckCredentialsResponse
-	if rf, ok := ret.Get(0).(func(context.Context, *golang.CheckCredentialsRequest, ...grpc.CallOption) *golang.CheckCredentialsResponse); ok {
+	var r0 *golang.Account
+	if rf, ok := ret.Get(0).(func(context.Context, *golang.CheckCredentialsRequest, ...grpc.CallOption) *golang.Account); ok {
 		r0 = rf(ctx, in, opts...)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*golang.CheckCredentialsResponse)
+			r0 = ret.Get(0).(*golang.Account)
 		}
 	}
 

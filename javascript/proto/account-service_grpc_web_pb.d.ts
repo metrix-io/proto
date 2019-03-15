@@ -4,7 +4,6 @@ import {
   CancelAccountRequest,
   CancelAccountResponse,
   CheckCredentialsRequest,
-  CheckCredentialsResponse,
   CheckEmailRequest,
   CheckEmailResponse,
   CheckUsernameRequest,
@@ -53,8 +52,8 @@ export class AccountServiceClient {
     request: CheckCredentialsRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
-               response: CheckCredentialsResponse) => void
-  ): grpcWeb.ClientReadableStream<CheckCredentialsResponse>;
+               response: Account) => void
+  ): grpcWeb.ClientReadableStream<Account>;
 
   getAccountByID(
     request: GetAccountByIDRequest,
@@ -130,7 +129,7 @@ export class AccountServicePromiseClient {
   checkCredentials(
     request: CheckCredentialsRequest,
     metadata: grpcWeb.Metadata
-  ): Promise<CheckCredentialsResponse>;
+  ): Promise<Account>;
 
   getAccountByID(
     request: GetAccountByIDRequest,
