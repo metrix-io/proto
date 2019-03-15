@@ -18,3 +18,7 @@ proto: protogo protojs
 docgen:
 	rm -rf ./out
 	docker run --rm -v $(shell pwd)/docs:/out -v $(shell pwd):/protos pseudomuto/protoc-gen-doc --doc_opt=markdown,docs.md
+
+mockgen: # Generate new mocks for all interfaces within this package
+	go get github.com/vektra/mockery
+	mockery -output="./test/mocks" -all
