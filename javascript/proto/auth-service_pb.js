@@ -245,8 +245,9 @@ proto.metrixio.AccessToken.prototype.toObject = function(opt_includeInstance) {
 proto.metrixio.AccessToken.toObject = function(includeInstance, msg) {
   var f, obj = {
     accessToken: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    expiresIn: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    expiresAt: jspb.Message.getFieldWithDefault(msg, 3, 0)
+    subject: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    expiresIn: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    expiresAt: jspb.Message.getFieldWithDefault(msg, 4, 0)
   };
 
   if (includeInstance) {
@@ -289,9 +290,13 @@ proto.metrixio.AccessToken.deserializeBinaryFromReader = function(msg, reader) {
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
-      msg.setExpiresIn(value);
+      msg.setSubject(value);
       break;
     case 3:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setExpiresIn(value);
+      break;
+    case 4:
       var value = /** @type {number} */ (reader.readInt64());
       msg.setExpiresAt(value);
       break;
@@ -331,17 +336,24 @@ proto.metrixio.AccessToken.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
-  f = message.getExpiresIn();
+  f = message.getSubject();
   if (f.length > 0) {
     writer.writeString(
       2,
       f
     );
   }
+  f = message.getExpiresIn();
+  if (f !== 0) {
+    writer.writeInt32(
+      3,
+      f
+    );
+  }
   f = message.getExpiresAt();
   if (f !== 0) {
     writer.writeInt64(
-      3,
+      4,
       f
     );
   }
@@ -364,32 +376,47 @@ proto.metrixio.AccessToken.prototype.setAccessToken = function(value) {
 
 
 /**
- * optional string expires_in = 2;
+ * optional string subject = 2;
  * @return {string}
  */
-proto.metrixio.AccessToken.prototype.getExpiresIn = function() {
+proto.metrixio.AccessToken.prototype.getSubject = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
 /** @param {string} value */
-proto.metrixio.AccessToken.prototype.setExpiresIn = function(value) {
+proto.metrixio.AccessToken.prototype.setSubject = function(value) {
   jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
 /**
- * optional int64 expires_at = 3;
+ * optional int32 expires_in = 3;
  * @return {number}
  */
-proto.metrixio.AccessToken.prototype.getExpiresAt = function() {
+proto.metrixio.AccessToken.prototype.getExpiresIn = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
 };
 
 
 /** @param {number} value */
-proto.metrixio.AccessToken.prototype.setExpiresAt = function(value) {
+proto.metrixio.AccessToken.prototype.setExpiresIn = function(value) {
   jspb.Message.setProto3IntField(this, 3, value);
+};
+
+
+/**
+ * optional int64 expires_at = 4;
+ * @return {number}
+ */
+proto.metrixio.AccessToken.prototype.getExpiresAt = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+};
+
+
+/** @param {number} value */
+proto.metrixio.AccessToken.prototype.setExpiresAt = function(value) {
+  jspb.Message.setProto3IntField(this, 4, value);
 };
 
 

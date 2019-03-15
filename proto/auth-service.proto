@@ -12,11 +12,13 @@ message LoginRequest {
 message AccessToken {
     string access_token = 1;
 
+    string subject = 2;
+
     // The lifetime of the access token in seconds.
-    string expires_in = 2;
+    int32 expires_in = 3;
 
     // Unix timestamp when token expires.
-    int64 expires_at = 3;
+    int64 expires_at = 4;
 }
 
 /**

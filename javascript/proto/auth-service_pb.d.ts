@@ -2,8 +2,10 @@ export class AccessToken {
   constructor ();
   getAccessToken(): string;
   setAccessToken(a: string): void;
-  getExpiresIn(): string;
-  setExpiresIn(a: string): void;
+  getSubject(): string;
+  setSubject(a: string): void;
+  getExpiresIn(): number;
+  setExpiresIn(a: number): void;
   getExpiresAt(): number;
   setExpiresAt(a: number): void;
   toObject(): AccessToken.AsObject;
@@ -14,7 +16,8 @@ export class AccessToken {
 export namespace AccessToken {
   export type AsObject = {
     AccessToken: string;
-    ExpiresIn: string;
+    Subject: string;
+    ExpiresIn: number;
     ExpiresAt: number;
   }
 }
