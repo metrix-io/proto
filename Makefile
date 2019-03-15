@@ -21,4 +21,4 @@ docgen:
 
 mockgen: # Generate new mocks for all interfaces within this package
 	go get github.com/vektra/mockery
-	mockery -output="./test/mocks" -all
+	mockery -output="./golang/mocks" -all
