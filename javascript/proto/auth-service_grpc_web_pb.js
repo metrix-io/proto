@@ -467,52 +467,52 @@ proto.metrixio.AuthServicePromiseClient.prototype.inheritPermissions =
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.metrixio.RemoveInheritPermissionsRequest,
- *   !proto.metrixio.RemoveInheritPermissionsResponse>}
+ *   !proto.metrixio.RevokeInheritPermissionsRequest,
+ *   !proto.metrixio.RevokeInheritPermissionsResponse>}
  */
-const methodInfo_AuthService_RemoveInheritPermissions = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.metrixio.RemoveInheritPermissionsResponse,
-  /** @param {!proto.metrixio.RemoveInheritPermissionsRequest} request */
+const methodInfo_AuthService_RevokeInheritPermissions = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.metrixio.RevokeInheritPermissionsResponse,
+  /** @param {!proto.metrixio.RevokeInheritPermissionsRequest} request */
   function(request) {
     return request.serializeBinary();
   },
-  proto.metrixio.RemoveInheritPermissionsResponse.deserializeBinary
+  proto.metrixio.RevokeInheritPermissionsResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.metrixio.RemoveInheritPermissionsRequest} request The
+ * @param {!proto.metrixio.RevokeInheritPermissionsRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.metrixio.RemoveInheritPermissionsResponse)}
+ * @param {function(?grpc.web.Error, ?proto.metrixio.RevokeInheritPermissionsResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.metrixio.RemoveInheritPermissionsResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.metrixio.RevokeInheritPermissionsResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.metrixio.AuthServiceClient.prototype.removeInheritPermissions =
+proto.metrixio.AuthServiceClient.prototype.revokeInheritPermissions =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/metrixio.AuthService/RemoveInheritPermissions',
+      '/metrixio.AuthService/RevokeInheritPermissions',
       request,
       metadata,
-      methodInfo_AuthService_RemoveInheritPermissions,
+      methodInfo_AuthService_RevokeInheritPermissions,
       callback);
 };
 
 
 /**
- * @param {!proto.metrixio.RemoveInheritPermissionsRequest} request The
+ * @param {!proto.metrixio.RevokeInheritPermissionsRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.metrixio.RemoveInheritPermissionsResponse>}
+ * @return {!Promise<!proto.metrixio.RevokeInheritPermissionsResponse>}
  *     The XHR Node Readable Stream
  */
-proto.metrixio.AuthServicePromiseClient.prototype.removeInheritPermissions =
+proto.metrixio.AuthServicePromiseClient.prototype.revokeInheritPermissions =
     function(request, metadata) {
   return new Promise((resolve, reject) => {
-    this.delegateClient_.removeInheritPermissions(
+    this.delegateClient_.revokeInheritPermissions(
       request, metadata, (error, response) => {
         error ? reject(error) : resolve(response);
       });

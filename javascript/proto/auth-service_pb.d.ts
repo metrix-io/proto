@@ -199,32 +199,32 @@ export namespace PermissionAssignments {
   }
 }
 
-export class RemoveInheritPermissionsRequest {
+export class RevokeInheritPermissionsRequest {
   constructor ();
   getSubject(): string;
   setSubject(a: string): void;
   getParentSubject(): string;
   setParentSubject(a: string): void;
-  toObject(): RemoveInheritPermissionsRequest.AsObject;
+  toObject(): RevokeInheritPermissionsRequest.AsObject;
   serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => RemoveInheritPermissionsRequest;
+  static deserializeBinary: (bytes: {}) => RevokeInheritPermissionsRequest;
 }
 
-export namespace RemoveInheritPermissionsRequest {
+export namespace RevokeInheritPermissionsRequest {
   export type AsObject = {
     Subject: string;
     ParentSubject: string;
   }
 }
 
-export class RemoveInheritPermissionsResponse {
+export class RevokeInheritPermissionsResponse {
   constructor ();
-  toObject(): RemoveInheritPermissionsResponse.AsObject;
+  toObject(): RevokeInheritPermissionsResponse.AsObject;
   serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => RemoveInheritPermissionsResponse;
+  static deserializeBinary: (bytes: {}) => RevokeInheritPermissionsResponse;
 }
 
-export namespace RemoveInheritPermissionsResponse {
+export namespace RevokeInheritPermissionsResponse {
   export type AsObject = {
   }
 }

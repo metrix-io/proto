@@ -70,12 +70,12 @@ message InheritPermissionsRequest {
 
 message InheritPermissionsResponse {}
 
-message RemoveInheritPermissionsRequest {
+message RevokeInheritPermissionsRequest {
     string subject = 1;
     string parent_subject = 2;
 }
 
-message RemoveInheritPermissionsResponse {}
+message RevokeInheritPermissionsResponse {}
 
 message DeleteSubjectRequest {
     string subject = 1;
@@ -162,7 +162,7 @@ service AuthService {
     rpc InheritPermissions (InheritPermissionsRequest) returns (InheritPermissionsResponse) {}
 
     /**
-     * RemoveInheritPermissions removes any inheritance relationship between two
+     * RevokeInheritPermissions removes any inheritance relationship between two
      * subjects.
      *
      * Errors:
@@ -170,5 +170,5 @@ service AuthService {
      *   permissions of the parent subject.
      * - NOT_FOUND if no inheritance relationship exists between specified subjects.
      */
-    rpc RemoveInheritPermissions (RemoveInheritPermissionsRequest) returns (RemoveInheritPermissionsResponse) {}
+    rpc RevokeInheritPermissions (RevokeInheritPermissionsRequest) returns (RevokeInheritPermissionsResponse) {}
 }

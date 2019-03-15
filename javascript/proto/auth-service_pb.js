@@ -24,8 +24,8 @@ goog.exportSymbol('proto.metrixio.InheritPermissionsResponse', null, global);
 goog.exportSymbol('proto.metrixio.LoginRequest', null, global);
 goog.exportSymbol('proto.metrixio.Permission', null, global);
 goog.exportSymbol('proto.metrixio.PermissionAssignments', null, global);
-goog.exportSymbol('proto.metrixio.RemoveInheritPermissionsRequest', null, global);
-goog.exportSymbol('proto.metrixio.RemoveInheritPermissionsResponse', null, global);
+goog.exportSymbol('proto.metrixio.RevokeInheritPermissionsRequest', null, global);
+goog.exportSymbol('proto.metrixio.RevokeInheritPermissionsResponse', null, global);
 goog.exportSymbol('proto.metrixio.RevokePermissionsRequest', null, global);
 goog.exportSymbol('proto.metrixio.RevokePermissionsResponse', null, global);
 
@@ -2230,12 +2230,12 @@ proto.metrixio.InheritPermissionsResponse.serializeBinaryToWriter = function(mes
  * @extends {jspb.Message}
  * @constructor
  */
-proto.metrixio.RemoveInheritPermissionsRequest = function(opt_data) {
+proto.metrixio.RevokeInheritPermissionsRequest = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.metrixio.RemoveInheritPermissionsRequest, jspb.Message);
+goog.inherits(proto.metrixio.RevokeInheritPermissionsRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
-  proto.metrixio.RemoveInheritPermissionsRequest.displayName = 'proto.metrixio.RemoveInheritPermissionsRequest';
+  proto.metrixio.RevokeInheritPermissionsRequest.displayName = 'proto.metrixio.RevokeInheritPermissionsRequest';
 }
 
 
@@ -2250,8 +2250,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     for transitional soy proto support: http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.metrixio.RemoveInheritPermissionsRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.metrixio.RemoveInheritPermissionsRequest.toObject(opt_includeInstance, this);
+proto.metrixio.RevokeInheritPermissionsRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.metrixio.RevokeInheritPermissionsRequest.toObject(opt_includeInstance, this);
 };
 
 
@@ -2260,11 +2260,11 @@ proto.metrixio.RemoveInheritPermissionsRequest.prototype.toObject = function(opt
  * @param {boolean|undefined} includeInstance Whether to include the JSPB
  *     instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.metrixio.RemoveInheritPermissionsRequest} msg The msg instance to transform.
+ * @param {!proto.metrixio.RevokeInheritPermissionsRequest} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.metrixio.RemoveInheritPermissionsRequest.toObject = function(includeInstance, msg) {
+proto.metrixio.RevokeInheritPermissionsRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     subject: jspb.Message.getFieldWithDefault(msg, 1, ""),
     parentSubject: jspb.Message.getFieldWithDefault(msg, 2, "")
@@ -2281,23 +2281,23 @@ proto.metrixio.RemoveInheritPermissionsRequest.toObject = function(includeInstan
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.metrixio.RemoveInheritPermissionsRequest}
+ * @return {!proto.metrixio.RevokeInheritPermissionsRequest}
  */
-proto.metrixio.RemoveInheritPermissionsRequest.deserializeBinary = function(bytes) {
+proto.metrixio.RevokeInheritPermissionsRequest.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.metrixio.RemoveInheritPermissionsRequest;
-  return proto.metrixio.RemoveInheritPermissionsRequest.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.metrixio.RevokeInheritPermissionsRequest;
+  return proto.metrixio.RevokeInheritPermissionsRequest.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.metrixio.RemoveInheritPermissionsRequest} msg The message object to deserialize into.
+ * @param {!proto.metrixio.RevokeInheritPermissionsRequest} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.metrixio.RemoveInheritPermissionsRequest}
+ * @return {!proto.metrixio.RevokeInheritPermissionsRequest}
  */
-proto.metrixio.RemoveInheritPermissionsRequest.deserializeBinaryFromReader = function(msg, reader) {
+proto.metrixio.RevokeInheritPermissionsRequest.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -2325,9 +2325,9 @@ proto.metrixio.RemoveInheritPermissionsRequest.deserializeBinaryFromReader = fun
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.metrixio.RemoveInheritPermissionsRequest.prototype.serializeBinary = function() {
+proto.metrixio.RevokeInheritPermissionsRequest.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.metrixio.RemoveInheritPermissionsRequest.serializeBinaryToWriter(this, writer);
+  proto.metrixio.RevokeInheritPermissionsRequest.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -2335,11 +2335,11 @@ proto.metrixio.RemoveInheritPermissionsRequest.prototype.serializeBinary = funct
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.metrixio.RemoveInheritPermissionsRequest} message
+ * @param {!proto.metrixio.RevokeInheritPermissionsRequest} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.metrixio.RemoveInheritPermissionsRequest.serializeBinaryToWriter = function(message, writer) {
+proto.metrixio.RevokeInheritPermissionsRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getSubject();
   if (f.length > 0) {
@@ -2362,13 +2362,13 @@ proto.metrixio.RemoveInheritPermissionsRequest.serializeBinaryToWriter = functio
  * optional string subject = 1;
  * @return {string}
  */
-proto.metrixio.RemoveInheritPermissionsRequest.prototype.getSubject = function() {
+proto.metrixio.RevokeInheritPermissionsRequest.prototype.getSubject = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
 /** @param {string} value */
-proto.metrixio.RemoveInheritPermissionsRequest.prototype.setSubject = function(value) {
+proto.metrixio.RevokeInheritPermissionsRequest.prototype.setSubject = function(value) {
   jspb.Message.setProto3StringField(this, 1, value);
 };
 
@@ -2377,13 +2377,13 @@ proto.metrixio.RemoveInheritPermissionsRequest.prototype.setSubject = function(v
  * optional string parent_subject = 2;
  * @return {string}
  */
-proto.metrixio.RemoveInheritPermissionsRequest.prototype.getParentSubject = function() {
+proto.metrixio.RevokeInheritPermissionsRequest.prototype.getParentSubject = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
 /** @param {string} value */
-proto.metrixio.RemoveInheritPermissionsRequest.prototype.setParentSubject = function(value) {
+proto.metrixio.RevokeInheritPermissionsRequest.prototype.setParentSubject = function(value) {
   jspb.Message.setProto3StringField(this, 2, value);
 };
 
@@ -2399,12 +2399,12 @@ proto.metrixio.RemoveInheritPermissionsRequest.prototype.setParentSubject = func
  * @extends {jspb.Message}
  * @constructor
  */
-proto.metrixio.RemoveInheritPermissionsResponse = function(opt_data) {
+proto.metrixio.RevokeInheritPermissionsResponse = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.metrixio.RemoveInheritPermissionsResponse, jspb.Message);
+goog.inherits(proto.metrixio.RevokeInheritPermissionsResponse, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
-  proto.metrixio.RemoveInheritPermissionsResponse.displayName = 'proto.metrixio.RemoveInheritPermissionsResponse';
+  proto.metrixio.RevokeInheritPermissionsResponse.displayName = 'proto.metrixio.RevokeInheritPermissionsResponse';
 }
 
 
@@ -2419,8 +2419,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     for transitional soy proto support: http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.metrixio.RemoveInheritPermissionsResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.metrixio.RemoveInheritPermissionsResponse.toObject(opt_includeInstance, this);
+proto.metrixio.RevokeInheritPermissionsResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.metrixio.RevokeInheritPermissionsResponse.toObject(opt_includeInstance, this);
 };
 
 
@@ -2429,11 +2429,11 @@ proto.metrixio.RemoveInheritPermissionsResponse.prototype.toObject = function(op
  * @param {boolean|undefined} includeInstance Whether to include the JSPB
  *     instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.metrixio.RemoveInheritPermissionsResponse} msg The msg instance to transform.
+ * @param {!proto.metrixio.RevokeInheritPermissionsResponse} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.metrixio.RemoveInheritPermissionsResponse.toObject = function(includeInstance, msg) {
+proto.metrixio.RevokeInheritPermissionsResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
 
   };
@@ -2449,23 +2449,23 @@ proto.metrixio.RemoveInheritPermissionsResponse.toObject = function(includeInsta
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.metrixio.RemoveInheritPermissionsResponse}
+ * @return {!proto.metrixio.RevokeInheritPermissionsResponse}
  */
-proto.metrixio.RemoveInheritPermissionsResponse.deserializeBinary = function(bytes) {
+proto.metrixio.RevokeInheritPermissionsResponse.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.metrixio.RemoveInheritPermissionsResponse;
-  return proto.metrixio.RemoveInheritPermissionsResponse.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.metrixio.RevokeInheritPermissionsResponse;
+  return proto.metrixio.RevokeInheritPermissionsResponse.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.metrixio.RemoveInheritPermissionsResponse} msg The message object to deserialize into.
+ * @param {!proto.metrixio.RevokeInheritPermissionsResponse} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.metrixio.RemoveInheritPermissionsResponse}
+ * @return {!proto.metrixio.RevokeInheritPermissionsResponse}
  */
-proto.metrixio.RemoveInheritPermissionsResponse.deserializeBinaryFromReader = function(msg, reader) {
+proto.metrixio.RevokeInheritPermissionsResponse.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -2485,9 +2485,9 @@ proto.metrixio.RemoveInheritPermissionsResponse.deserializeBinaryFromReader = fu
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.metrixio.RemoveInheritPermissionsResponse.prototype.serializeBinary = function() {
+proto.metrixio.RevokeInheritPermissionsResponse.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.metrixio.RemoveInheritPermissionsResponse.serializeBinaryToWriter(this, writer);
+  proto.metrixio.RevokeInheritPermissionsResponse.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -2495,11 +2495,11 @@ proto.metrixio.RemoveInheritPermissionsResponse.prototype.serializeBinary = func
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.metrixio.RemoveInheritPermissionsResponse} message
+ * @param {!proto.metrixio.RevokeInheritPermissionsResponse} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.metrixio.RemoveInheritPermissionsResponse.serializeBinaryToWriter = function(message, writer) {
+proto.metrixio.RevokeInheritPermissionsResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
 };
 

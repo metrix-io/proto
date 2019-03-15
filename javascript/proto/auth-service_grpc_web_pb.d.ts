@@ -12,8 +12,8 @@ import {
   LoginRequest,
   Permission,
   PermissionAssignments,
-  RemoveInheritPermissionsRequest,
-  RemoveInheritPermissionsResponse,
+  RevokeInheritPermissionsRequest,
+  RevokeInheritPermissionsResponse,
   RevokePermissionsRequest} from './auth-service_pb';
 
 export class AuthServiceClient {
@@ -70,12 +70,12 @@ export class AuthServiceClient {
                response: InheritPermissionsResponse) => void
   ): grpcWeb.ClientReadableStream<InheritPermissionsResponse>;
 
-  removeInheritPermissions(
-    request: RemoveInheritPermissionsRequest,
+  revokeInheritPermissions(
+    request: RevokeInheritPermissionsRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
-               response: RemoveInheritPermissionsResponse) => void
-  ): grpcWeb.ClientReadableStream<RemoveInheritPermissionsResponse>;
+               response: RevokeInheritPermissionsResponse) => void
+  ): grpcWeb.ClientReadableStream<RevokeInheritPermissionsResponse>;
 
 }
 
@@ -119,10 +119,10 @@ export class AuthServicePromiseClient {
     metadata: grpcWeb.Metadata
   ): Promise<InheritPermissionsResponse>;
 
-  removeInheritPermissions(
-    request: RemoveInheritPermissionsRequest,
+  revokeInheritPermissions(
+    request: RevokeInheritPermissionsRequest,
     metadata: grpcWeb.Metadata
-  ): Promise<RemoveInheritPermissionsResponse>;
+  ): Promise<RevokeInheritPermissionsResponse>;
 
 }
 
