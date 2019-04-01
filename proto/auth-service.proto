@@ -37,19 +37,19 @@ message PermissionAssignments {
     repeated Permission permissions = 2;
 }
 
-message GrantPermissionsRequest {
+message CreatePermissionsRequest {
     string subject = 1;
     repeated Permission permissions = 2;
 }
 
-message GrantPermissionsResponse {}
+message CreatePermissionsResponse {}
 
-message RevokePermissionsRequest {
+message DeletePermissionsRequest {
     string subject = 1;
     repeated Permission permissions = 2;
 }
 
-message RevokePermissionsResponse {}
+message DeletePermissionsResponse {}
 
 message GetPermissionsRequest {
     string subject = 1;
@@ -65,19 +65,19 @@ message HasPermissionsResponse {
     repeated Permission missing_permissions = 2;
 }
 
-message InheritPermissionsRequest {
+message CreatePermissionInheritanceRequest {
     string subject = 1;
     string parent_subject = 2;
 }
 
-message InheritPermissionsResponse {}
+message CreatePermissionInheritanceResponse {}
 
-message RevokeInheritPermissionsRequest {
+message DeletePermissionInheritanceRequest {
     string subject = 1;
     string parent_subject = 2;
 }
 
-message RevokeInheritPermissionsResponse {}
+message DeletePermissionInheritanceResponse {}
 
 message DeleteSubjectRequest {
     string subject = 1;
@@ -97,7 +97,7 @@ service AuthService {
     rpc Login (LoginRequest) returns (AccessToken) {}
 
     /**
-     * GrantPermission adds one or more permissions to a subject.
+     * CreatePermission adds one or more permissions to a subject.
      *
      * A subject can either be a user account, organization, role or other and must
      * be a valid resource name, e.g. "mtx:account:g921sdfb1lkg".
@@ -106,7 +106,7 @@ service AuthService {
      * - PERMISSION_DENIED if the logged in subject has insufficient privileges
      *   to read subject's permissions.
      */
-    rpc GrantPermissions (GrantPermissionsRequest) returns (PermissionAssignments) {}
+    rpc CreatePermissions (CreatePermissionsRequest) returns (PermissionAssignments) {}
 
     /**
      * Returns all permissions for the specified subject.
@@ -128,13 +128,13 @@ service AuthService {
     rpc HasPermissions (HasPermissionsRequest) returns (HasPermissionsResponse) {}
 
     /**
-     * RevokePermissionsRequest removes one or more permissions from a subject.
+     * DeletePermissionsRequest removes one or more permissions from a subject.
      *
      * Errors:
      * - PERMISSION_DENIED if the logged in subject has insufficient privileges to
      *   revoke subject's permissions.
      */
-    rpc RevokePermissions (RevokePermissionsRequest) returns (RevokePermissionsRequest) {}
+    rpc DeletePermissions (DeletePermissionsRequest) returns (DeletePermissionsRequest) {}
 
     /**
      * DeleteSubject removes any permissions associated with the subject.
@@ -152,7 +152,7 @@ service AuthService {
     rpc DeleteSubject (DeleteSubjectRequest) returns (DeleteSubjectResponse) {}
 
     /**
-     * InheritPermissions establishes a permission inheritance relationship
+     * CreatePermissionInheritance establishes a permission inheritance relationship
      * between two subjects. A common example is a user account being part of
      * a group.
      *
@@ -161,10 +161,10 @@ service AuthService {
      *   permissions to the parent subject.
      * - NOT_FOUND if no inheritance relationship exists between specified subjects.
      */
-    rpc InheritPermissions (InheritPermissionsRequest) returns (InheritPermissionsResponse) {}
+    rpc CreatePermissionInheritance (CreatePermissionInheritanceRequest) returns (CreatePermissionInheritanceResponse) {}
 
     /**
-     * RevokeInheritPermissions removes any inheritance relationship between two
+     * DeletePermissionInheritance removes any inheritance relationship between two
      * subjects.
      *
      * Errors:
@@ -172,5 +172,5 @@ service AuthService {
      *   permissions of the parent subject.
      * - NOT_FOUND if no inheritance relationship exists between specified subjects.
      */
-    rpc RevokeInheritPermissions (RevokeInheritPermissionsRequest) returns (RevokeInheritPermissionsResponse) {}
+    rpc DeletePermissionInheritance (DeletePermissionInheritanceRequest) returns (DeletePermissionInheritanceResponse) {}
 }
