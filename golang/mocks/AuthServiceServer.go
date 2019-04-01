@@ -11,6 +11,98 @@ type AuthServiceServer struct {
 	mock.Mock
 }
 
+// CreatePermissionInheritance provides a mock function with given fields: _a0, _a1
+func (_m *AuthServiceServer) CreatePermissionInheritance(_a0 context.Context, _a1 *golang.CreatePermissionInheritanceRequest) (*golang.CreatePermissionInheritanceResponse, error) {
+	ret := _m.Called(_a0, _a1)
+
+	var r0 *golang.CreatePermissionInheritanceResponse
+	if rf, ok := ret.Get(0).(func(context.Context, *golang.CreatePermissionInheritanceRequest) *golang.CreatePermissionInheritanceResponse); ok {
+		r0 = rf(_a0, _a1)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*golang.CreatePermissionInheritanceResponse)
+		}
+	}
+
+	var r1 error
+	if rf, ok := ret.Get(1).(func(context.Context, *golang.CreatePermissionInheritanceRequest) error); ok {
+		r1 = rf(_a0, _a1)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// CreatePermissions provides a mock function with given fields: _a0, _a1
+func (_m *AuthServiceServer) CreatePermissions(_a0 context.Context, _a1 *golang.CreatePermissionsRequest) (*golang.PermissionAssignments, error) {
+	ret := _m.Called(_a0, _a1)
+
+	var r0 *golang.PermissionAssignments
+	if rf, ok := ret.Get(0).(func(context.Context, *golang.CreatePermissionsRequest) *golang.PermissionAssignments); ok {
+		r0 = rf(_a0, _a1)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*golang.PermissionAssignments)
+		}
+	}
+
+	var r1 error
+	if rf, ok := ret.Get(1).(func(context.Context, *golang.CreatePermissionsRequest) error); ok {
+		r1 = rf(_a0, _a1)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// DeletePermissionInheritance provides a mock function with given fields: _a0, _a1
+func (_m *AuthServiceServer) DeletePermissionInheritance(_a0 context.Context, _a1 *golang.DeletePermissionInheritanceRequest) (*golang.DeletePermissionInheritanceResponse, error) {
+	ret := _m.Called(_a0, _a1)
+
+	var r0 *golang.DeletePermissionInheritanceResponse
+	if rf, ok := ret.Get(0).(func(context.Context, *golang.DeletePermissionInheritanceRequest) *golang.DeletePermissionInheritanceResponse); ok {
+		r0 = rf(_a0, _a1)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*golang.DeletePermissionInheritanceResponse)
+		}
+	}
+
+	var r1 error
+	if rf, ok := ret.Get(1).(func(context.Context, *golang.DeletePermissionInheritanceRequest) error); ok {
+		r1 = rf(_a0, _a1)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// DeletePermissions provides a mock function with given fields: _a0, _a1
+func (_m *AuthServiceServer) DeletePermissions(_a0 context.Context, _a1 *golang.DeletePermissionsRequest) (*golang.DeletePermissionsRequest, error) {
+	ret := _m.Called(_a0, _a1)
+
+	var r0 *golang.DeletePermissionsRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *golang.DeletePermissionsRequest) *golang.DeletePermissionsRequest); ok {
+		r0 = rf(_a0, _a1)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*golang.DeletePermissionsRequest)
+		}
+	}
+
+	var r1 error
+	if rf, ok := ret.Get(1).(func(context.Context, *golang.DeletePermissionsRequest) error); ok {
+		r1 = rf(_a0, _a1)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
 // DeleteSubject provides a mock function with given fields: _a0, _a1
 func (_m *AuthServiceServer) DeleteSubject(_a0 context.Context, _a1 *golang.DeleteSubjectRequest) (*golang.DeleteSubjectResponse, error) {
 	ret := _m.Called(_a0, _a1)
@@ -57,29 +149,6 @@ func (_m *AuthServiceServer) GetPermissions(_a0 context.Context, _a1 *golang.Get
 	return r0, r1
 }
 
-// GrantPermissions provides a mock function with given fields: _a0, _a1
-func (_m *AuthServiceServer) GrantPermissions(_a0 context.Context, _a1 *golang.GrantPermissionsRequest) (*golang.PermissionAssignments, error) {
-	ret := _m.Called(_a0, _a1)
-
-	var r0 *golang.PermissionAssignments
-	if rf, ok := ret.Get(0).(func(context.Context, *golang.GrantPermissionsRequest) *golang.PermissionAssignments); ok {
-		r0 = rf(_a0, _a1)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*golang.PermissionAssignments)
-		}
-	}
-
-	var r1 error
-	if rf, ok := ret.Get(1).(func(context.Context, *golang.GrantPermissionsRequest) error); ok {
-		r1 = rf(_a0, _a1)
-	} else {
-		r1 = ret.Error(1)
-	}
-
-	return r0, r1
-}
-
 // HasPermissions provides a mock function with given fields: _a0, _a1
 func (_m *AuthServiceServer) HasPermissions(_a0 context.Context, _a1 *golang.HasPermissionsRequest) (*golang.HasPermissionsResponse, error) {
 	ret := _m.Called(_a0, _a1)
@@ -103,29 +172,6 @@ func (_m *AuthServiceServer) HasPermissions(_a0 context.Context, _a1 *golang.Has
 	return r0, r1
 }
 
-// InheritPermissions provides a mock function with given fields: _a0, _a1
-func (_m *AuthServiceServer) InheritPermissions(_a0 context.Context, _a1 *golang.InheritPermissionsRequest) (*golang.InheritPermissionsResponse, error) {
-	ret := _m.Called(_a0, _a1)
-
-	var r0 *golang.InheritPermissionsResponse
-	if rf, ok := ret.Get(0).(func(context.Context, *golang.InheritPermissionsRequest) *golang.InheritPermissionsResponse); ok {
-		r0 = rf(_a0, _a1)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*golang.InheritPermissionsResponse)
-		}
-	}
-
-	var r1 error
-	if rf, ok := ret.Get(1).(func(context.Context, *golang.InheritPermissionsRequest) error); ok {
-		r1 = rf(_a0, _a1)
-	} else {
-		r1 = ret.Error(1)
-	}
-
-	return r0, r1
-}
-
 // Login provides a mock function with given fields: _a0, _a1
 func (_m *AuthServiceServer) Login(_a0 context.Context, _a1 *golang.LoginRequest) (*golang.AccessToken, error) {
 	ret := _m.Called(_a0, _a1)
@@ -141,52 +187,6 @@ func (_m *AuthServiceServer) Login(_a0 context.Context, _a1 *golang.LoginRequest
 
 	var r1 error
 	if rf, ok := ret.Get(1).(func(context.Context, *golang.LoginRequest) error); ok {
-		r1 = rf(_a0, _a1)
-	} else {
-		r1 = ret.Error(1)
-	}
-
-	return r0, r1
-}
-
-// RevokeInheritPermissions provides a mock function with given fields: _a0, _a1
-func (_m *AuthServiceServer) RevokeInheritPermissions(_a0 context.Context, _a1 *golang.RevokeInheritPermissionsRequest) (*golang.RevokeInheritPermissionsResponse, error) {
-	ret := _m.Called(_a0, _a1)
-
-	var r0 *golang.RevokeInheritPermissionsResponse
-	if rf, ok := ret.Get(0).(func(context.Context, *golang.RevokeInheritPermissionsRequest) *golang.RevokeInheritPermissionsResponse); ok {
-		r0 = rf(_a0, _a1)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*golang.RevokeInheritPermissionsResponse)
-		}
-	}
-
-	var r1 error
-	if rf, ok := ret.Get(1).(func(context.Context, *golang.RevokeInheritPermissionsRequest) error); ok {
-		r1 = rf(_a0, _a1)
-	} else {
-		r1 = ret.Error(1)
-	}
-
-	return r0, r1
-}
-
-// RevokePermissions provides a mock function with given fields: _a0, _a1
-func (_m *AuthServiceServer) RevokePermissions(_a0 context.Context, _a1 *golang.RevokePermissionsRequest) (*golang.RevokePermissionsRequest, error) {
-	ret := _m.Called(_a0, _a1)
-
-	var r0 *golang.RevokePermissionsRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *golang.RevokePermissionsRequest) *golang.RevokePermissionsRequest); ok {
-		r0 = rf(_a0, _a1)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*golang.RevokePermissionsRequest)
-		}
-	}
-
-	var r1 error
-	if rf, ok := ret.Get(1).(func(context.Context, *golang.RevokePermissionsRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
