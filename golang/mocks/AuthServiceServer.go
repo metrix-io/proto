@@ -194,3 +194,49 @@ func (_m *AuthServiceServer) Login(_a0 context.Context, _a1 *golang.LoginRequest
 
 	return r0, r1
 }
+
+// Logout provides a mock function with given fields: _a0, _a1
+func (_m *AuthServiceServer) Logout(_a0 context.Context, _a1 *golang.LogoutRequest) (*golang.LogoutResponse, error) {
+	ret := _m.Called(_a0, _a1)
+
+	var r0 *golang.LogoutResponse
+	if rf, ok := ret.Get(0).(func(context.Context, *golang.LogoutRequest) *golang.LogoutResponse); ok {
+		r0 = rf(_a0, _a1)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*golang.LogoutResponse)
+		}
+	}
+
+	var r1 error
+	if rf, ok := ret.Get(1).(func(context.Context, *golang.LogoutRequest) error); ok {
+		r1 = rf(_a0, _a1)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// LogoutAll provides a mock function with given fields: _a0, _a1
+func (_m *AuthServiceServer) LogoutAll(_a0 context.Context, _a1 *golang.LogoutAllRequest) (*golang.LogoutAllResponse, error) {
+	ret := _m.Called(_a0, _a1)
+
+	var r0 *golang.LogoutAllResponse
+	if rf, ok := ret.Get(0).(func(context.Context, *golang.LogoutAllRequest) *golang.LogoutAllResponse); ok {
+		r0 = rf(_a0, _a1)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*golang.LogoutAllResponse)
+		}
+	}
+
+	var r1 error
+	if rf, ok := ret.Get(1).(func(context.Context, *golang.LogoutAllRequest) error); ok {
+		r1 = rf(_a0, _a1)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}

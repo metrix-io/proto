@@ -131,6 +131,118 @@ proto.metrixio.AuthServicePromiseClient.prototype.login =
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.metrixio.LogoutRequest,
+ *   !proto.metrixio.LogoutResponse>}
+ */
+const methodInfo_AuthService_Logout = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.metrixio.LogoutResponse,
+  /** @param {!proto.metrixio.LogoutRequest} request */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.metrixio.LogoutResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.metrixio.LogoutRequest} request The
+ *     request proto
+ * @param {!Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.metrixio.LogoutResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.metrixio.LogoutResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.metrixio.AuthServiceClient.prototype.logout =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/metrixio.AuthService/Logout',
+      request,
+      metadata,
+      methodInfo_AuthService_Logout,
+      callback);
+};
+
+
+/**
+ * @param {!proto.metrixio.LogoutRequest} request The
+ *     request proto
+ * @param {!Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.metrixio.LogoutResponse>}
+ *     The XHR Node Readable Stream
+ */
+proto.metrixio.AuthServicePromiseClient.prototype.logout =
+    function(request, metadata) {
+  return new Promise((resolve, reject) => {
+    this.delegateClient_.logout(
+      request, metadata, (error, response) => {
+        error ? reject(error) : resolve(response);
+      });
+  });
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.metrixio.LogoutAllRequest,
+ *   !proto.metrixio.LogoutAllResponse>}
+ */
+const methodInfo_AuthService_LogoutAll = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.metrixio.LogoutAllResponse,
+  /** @param {!proto.metrixio.LogoutAllRequest} request */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.metrixio.LogoutAllResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.metrixio.LogoutAllRequest} request The
+ *     request proto
+ * @param {!Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.metrixio.LogoutAllResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.metrixio.LogoutAllResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.metrixio.AuthServiceClient.prototype.logoutAll =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/metrixio.AuthService/LogoutAll',
+      request,
+      metadata,
+      methodInfo_AuthService_LogoutAll,
+      callback);
+};
+
+
+/**
+ * @param {!proto.metrixio.LogoutAllRequest} request The
+ *     request proto
+ * @param {!Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.metrixio.LogoutAllResponse>}
+ *     The XHR Node Readable Stream
+ */
+proto.metrixio.AuthServicePromiseClient.prototype.logoutAll =
+    function(request, metadata) {
+  return new Promise((resolve, reject) => {
+    this.delegateClient_.logoutAll(
+      request, metadata, (error, response) => {
+        error ? reject(error) : resolve(response);
+      });
+  });
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
  *   !proto.metrixio.CreatePermissionsRequest,
  *   !proto.metrixio.PermissionAssignments>}
  */

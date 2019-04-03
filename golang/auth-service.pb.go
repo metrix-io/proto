@@ -35,7 +35,7 @@ func (m *LoginRequest) Reset()         { *m = LoginRequest{} }
 func (m *LoginRequest) String() string { return proto.CompactTextString(m) }
 func (*LoginRequest) ProtoMessage()    {}
 func (*LoginRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_auth_service_6a437c92c1b5fcc5, []int{0}
+	return fileDescriptor_auth_service_b2c5279f1381d50e, []int{0}
 }
 func (m *LoginRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LoginRequest.Unmarshal(m, b)
@@ -69,6 +69,142 @@ func (m *LoginRequest) GetPassword() string {
 	return ""
 }
 
+type LogoutRequest struct {
+	AccessToken          string   `protobuf:"bytes,1,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *LogoutRequest) Reset()         { *m = LogoutRequest{} }
+func (m *LogoutRequest) String() string { return proto.CompactTextString(m) }
+func (*LogoutRequest) ProtoMessage()    {}
+func (*LogoutRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_auth_service_b2c5279f1381d50e, []int{1}
+}
+func (m *LogoutRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_LogoutRequest.Unmarshal(m, b)
+}
+func (m *LogoutRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_LogoutRequest.Marshal(b, m, deterministic)
+}
+func (dst *LogoutRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_LogoutRequest.Merge(dst, src)
+}
+func (m *LogoutRequest) XXX_Size() int {
+	return xxx_messageInfo_LogoutRequest.Size(m)
+}
+func (m *LogoutRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_LogoutRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_LogoutRequest proto.InternalMessageInfo
+
+func (m *LogoutRequest) GetAccessToken() string {
+	if m != nil {
+		return m.AccessToken
+	}
+	return ""
+}
+
+type LogoutResponse struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *LogoutResponse) Reset()         { *m = LogoutResponse{} }
+func (m *LogoutResponse) String() string { return proto.CompactTextString(m) }
+func (*LogoutResponse) ProtoMessage()    {}
+func (*LogoutResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_auth_service_b2c5279f1381d50e, []int{2}
+}
+func (m *LogoutResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_LogoutResponse.Unmarshal(m, b)
+}
+func (m *LogoutResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_LogoutResponse.Marshal(b, m, deterministic)
+}
+func (dst *LogoutResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_LogoutResponse.Merge(dst, src)
+}
+func (m *LogoutResponse) XXX_Size() int {
+	return xxx_messageInfo_LogoutResponse.Size(m)
+}
+func (m *LogoutResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_LogoutResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_LogoutResponse proto.InternalMessageInfo
+
+type LogoutAllRequest struct {
+	Subject              string   `protobuf:"bytes,1,opt,name=subject,proto3" json:"subject,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *LogoutAllRequest) Reset()         { *m = LogoutAllRequest{} }
+func (m *LogoutAllRequest) String() string { return proto.CompactTextString(m) }
+func (*LogoutAllRequest) ProtoMessage()    {}
+func (*LogoutAllRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_auth_service_b2c5279f1381d50e, []int{3}
+}
+func (m *LogoutAllRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_LogoutAllRequest.Unmarshal(m, b)
+}
+func (m *LogoutAllRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_LogoutAllRequest.Marshal(b, m, deterministic)
+}
+func (dst *LogoutAllRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_LogoutAllRequest.Merge(dst, src)
+}
+func (m *LogoutAllRequest) XXX_Size() int {
+	return xxx_messageInfo_LogoutAllRequest.Size(m)
+}
+func (m *LogoutAllRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_LogoutAllRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_LogoutAllRequest proto.InternalMessageInfo
+
+func (m *LogoutAllRequest) GetSubject() string {
+	if m != nil {
+		return m.Subject
+	}
+	return ""
+}
+
+type LogoutAllResponse struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *LogoutAllResponse) Reset()         { *m = LogoutAllResponse{} }
+func (m *LogoutAllResponse) String() string { return proto.CompactTextString(m) }
+func (*LogoutAllResponse) ProtoMessage()    {}
+func (*LogoutAllResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_auth_service_b2c5279f1381d50e, []int{4}
+}
+func (m *LogoutAllResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_LogoutAllResponse.Unmarshal(m, b)
+}
+func (m *LogoutAllResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_LogoutAllResponse.Marshal(b, m, deterministic)
+}
+func (dst *LogoutAllResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_LogoutAllResponse.Merge(dst, src)
+}
+func (m *LogoutAllResponse) XXX_Size() int {
+	return xxx_messageInfo_LogoutAllResponse.Size(m)
+}
+func (m *LogoutAllResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_LogoutAllResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_LogoutAllResponse proto.InternalMessageInfo
+
 type AccessToken struct {
 	AccessToken string `protobuf:"bytes,1,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
 	Subject     string `protobuf:"bytes,2,opt,name=subject,proto3" json:"subject,omitempty"`
@@ -85,7 +221,7 @@ func (m *AccessToken) Reset()         { *m = AccessToken{} }
 func (m *AccessToken) String() string { return proto.CompactTextString(m) }
 func (*AccessToken) ProtoMessage()    {}
 func (*AccessToken) Descriptor() ([]byte, []int) {
-	return fileDescriptor_auth_service_6a437c92c1b5fcc5, []int{1}
+	return fileDescriptor_auth_service_b2c5279f1381d50e, []int{5}
 }
 func (m *AccessToken) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AccessToken.Unmarshal(m, b)
@@ -150,7 +286,7 @@ func (m *Permission) Reset()         { *m = Permission{} }
 func (m *Permission) String() string { return proto.CompactTextString(m) }
 func (*Permission) ProtoMessage()    {}
 func (*Permission) Descriptor() ([]byte, []int) {
-	return fileDescriptor_auth_service_6a437c92c1b5fcc5, []int{2}
+	return fileDescriptor_auth_service_b2c5279f1381d50e, []int{6}
 }
 func (m *Permission) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Permission.Unmarshal(m, b)
@@ -196,7 +332,7 @@ func (m *PermissionAssignments) Reset()         { *m = PermissionAssignments{} }
 func (m *PermissionAssignments) String() string { return proto.CompactTextString(m) }
 func (*PermissionAssignments) ProtoMessage()    {}
 func (*PermissionAssignments) Descriptor() ([]byte, []int) {
-	return fileDescriptor_auth_service_6a437c92c1b5fcc5, []int{3}
+	return fileDescriptor_auth_service_b2c5279f1381d50e, []int{7}
 }
 func (m *PermissionAssignments) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PermissionAssignments.Unmarshal(m, b)
@@ -242,7 +378,7 @@ func (m *CreatePermissionsRequest) Reset()         { *m = CreatePermissionsReque
 func (m *CreatePermissionsRequest) String() string { return proto.CompactTextString(m) }
 func (*CreatePermissionsRequest) ProtoMessage()    {}
 func (*CreatePermissionsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_auth_service_6a437c92c1b5fcc5, []int{4}
+	return fileDescriptor_auth_service_b2c5279f1381d50e, []int{8}
 }
 func (m *CreatePermissionsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreatePermissionsRequest.Unmarshal(m, b)
@@ -286,7 +422,7 @@ func (m *CreatePermissionsResponse) Reset()         { *m = CreatePermissionsResp
 func (m *CreatePermissionsResponse) String() string { return proto.CompactTextString(m) }
 func (*CreatePermissionsResponse) ProtoMessage()    {}
 func (*CreatePermissionsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_auth_service_6a437c92c1b5fcc5, []int{5}
+	return fileDescriptor_auth_service_b2c5279f1381d50e, []int{9}
 }
 func (m *CreatePermissionsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreatePermissionsResponse.Unmarshal(m, b)
@@ -318,7 +454,7 @@ func (m *DeletePermissionsRequest) Reset()         { *m = DeletePermissionsReque
 func (m *DeletePermissionsRequest) String() string { return proto.CompactTextString(m) }
 func (*DeletePermissionsRequest) ProtoMessage()    {}
 func (*DeletePermissionsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_auth_service_6a437c92c1b5fcc5, []int{6}
+	return fileDescriptor_auth_service_b2c5279f1381d50e, []int{10}
 }
 func (m *DeletePermissionsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeletePermissionsRequest.Unmarshal(m, b)
@@ -362,7 +498,7 @@ func (m *DeletePermissionsResponse) Reset()         { *m = DeletePermissionsResp
 func (m *DeletePermissionsResponse) String() string { return proto.CompactTextString(m) }
 func (*DeletePermissionsResponse) ProtoMessage()    {}
 func (*DeletePermissionsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_auth_service_6a437c92c1b5fcc5, []int{7}
+	return fileDescriptor_auth_service_b2c5279f1381d50e, []int{11}
 }
 func (m *DeletePermissionsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeletePermissionsResponse.Unmarshal(m, b)
@@ -393,7 +529,7 @@ func (m *GetPermissionsRequest) Reset()         { *m = GetPermissionsRequest{} }
 func (m *GetPermissionsRequest) String() string { return proto.CompactTextString(m) }
 func (*GetPermissionsRequest) ProtoMessage()    {}
 func (*GetPermissionsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_auth_service_6a437c92c1b5fcc5, []int{8}
+	return fileDescriptor_auth_service_b2c5279f1381d50e, []int{12}
 }
 func (m *GetPermissionsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetPermissionsRequest.Unmarshal(m, b)
@@ -432,7 +568,7 @@ func (m *HasPermissionsRequest) Reset()         { *m = HasPermissionsRequest{} }
 func (m *HasPermissionsRequest) String() string { return proto.CompactTextString(m) }
 func (*HasPermissionsRequest) ProtoMessage()    {}
 func (*HasPermissionsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_auth_service_6a437c92c1b5fcc5, []int{9}
+	return fileDescriptor_auth_service_b2c5279f1381d50e, []int{13}
 }
 func (m *HasPermissionsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_HasPermissionsRequest.Unmarshal(m, b)
@@ -478,7 +614,7 @@ func (m *HasPermissionsResponse) Reset()         { *m = HasPermissionsResponse{}
 func (m *HasPermissionsResponse) String() string { return proto.CompactTextString(m) }
 func (*HasPermissionsResponse) ProtoMessage()    {}
 func (*HasPermissionsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_auth_service_6a437c92c1b5fcc5, []int{10}
+	return fileDescriptor_auth_service_b2c5279f1381d50e, []int{14}
 }
 func (m *HasPermissionsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_HasPermissionsResponse.Unmarshal(m, b)
@@ -524,7 +660,7 @@ func (m *CreatePermissionInheritanceRequest) Reset()         { *m = CreatePermis
 func (m *CreatePermissionInheritanceRequest) String() string { return proto.CompactTextString(m) }
 func (*CreatePermissionInheritanceRequest) ProtoMessage()    {}
 func (*CreatePermissionInheritanceRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_auth_service_6a437c92c1b5fcc5, []int{11}
+	return fileDescriptor_auth_service_b2c5279f1381d50e, []int{15}
 }
 func (m *CreatePermissionInheritanceRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreatePermissionInheritanceRequest.Unmarshal(m, b)
@@ -568,7 +704,7 @@ func (m *CreatePermissionInheritanceResponse) Reset()         { *m = CreatePermi
 func (m *CreatePermissionInheritanceResponse) String() string { return proto.CompactTextString(m) }
 func (*CreatePermissionInheritanceResponse) ProtoMessage()    {}
 func (*CreatePermissionInheritanceResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_auth_service_6a437c92c1b5fcc5, []int{12}
+	return fileDescriptor_auth_service_b2c5279f1381d50e, []int{16}
 }
 func (m *CreatePermissionInheritanceResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreatePermissionInheritanceResponse.Unmarshal(m, b)
@@ -600,7 +736,7 @@ func (m *DeletePermissionInheritanceRequest) Reset()         { *m = DeletePermis
 func (m *DeletePermissionInheritanceRequest) String() string { return proto.CompactTextString(m) }
 func (*DeletePermissionInheritanceRequest) ProtoMessage()    {}
 func (*DeletePermissionInheritanceRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_auth_service_6a437c92c1b5fcc5, []int{13}
+	return fileDescriptor_auth_service_b2c5279f1381d50e, []int{17}
 }
 func (m *DeletePermissionInheritanceRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeletePermissionInheritanceRequest.Unmarshal(m, b)
@@ -644,7 +780,7 @@ func (m *DeletePermissionInheritanceResponse) Reset()         { *m = DeletePermi
 func (m *DeletePermissionInheritanceResponse) String() string { return proto.CompactTextString(m) }
 func (*DeletePermissionInheritanceResponse) ProtoMessage()    {}
 func (*DeletePermissionInheritanceResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_auth_service_6a437c92c1b5fcc5, []int{14}
+	return fileDescriptor_auth_service_b2c5279f1381d50e, []int{18}
 }
 func (m *DeletePermissionInheritanceResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeletePermissionInheritanceResponse.Unmarshal(m, b)
@@ -675,7 +811,7 @@ func (m *DeleteSubjectRequest) Reset()         { *m = DeleteSubjectRequest{} }
 func (m *DeleteSubjectRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteSubjectRequest) ProtoMessage()    {}
 func (*DeleteSubjectRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_auth_service_6a437c92c1b5fcc5, []int{15}
+	return fileDescriptor_auth_service_b2c5279f1381d50e, []int{19}
 }
 func (m *DeleteSubjectRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteSubjectRequest.Unmarshal(m, b)
@@ -712,7 +848,7 @@ func (m *DeleteSubjectResponse) Reset()         { *m = DeleteSubjectResponse{} }
 func (m *DeleteSubjectResponse) String() string { return proto.CompactTextString(m) }
 func (*DeleteSubjectResponse) ProtoMessage()    {}
 func (*DeleteSubjectResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_auth_service_6a437c92c1b5fcc5, []int{16}
+	return fileDescriptor_auth_service_b2c5279f1381d50e, []int{20}
 }
 func (m *DeleteSubjectResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteSubjectResponse.Unmarshal(m, b)
@@ -734,6 +870,10 @@ var xxx_messageInfo_DeleteSubjectResponse proto.InternalMessageInfo
 
 func init() {
 	proto.RegisterType((*LoginRequest)(nil), "metrixio.LoginRequest")
+	proto.RegisterType((*LogoutRequest)(nil), "metrixio.LogoutRequest")
+	proto.RegisterType((*LogoutResponse)(nil), "metrixio.LogoutResponse")
+	proto.RegisterType((*LogoutAllRequest)(nil), "metrixio.LogoutAllRequest")
+	proto.RegisterType((*LogoutAllResponse)(nil), "metrixio.LogoutAllResponse")
 	proto.RegisterType((*AccessToken)(nil), "metrixio.AccessToken")
 	proto.RegisterType((*Permission)(nil), "metrixio.Permission")
 	proto.RegisterType((*PermissionAssignments)(nil), "metrixio.PermissionAssignments")
@@ -765,13 +905,27 @@ const _ = grpc.SupportPackageIsVersion4
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type AuthServiceClient interface {
 	// *
-	// LoginRequest returns an access token if the login credentials
+	// LoginR returns an access token if the login credentials
 	// are valid. The login field may contain either a username or email
 	// address.
 	//
 	// Errors:
-	// - UNAUTHENTICATED if the credentials are invalid.
+	// - UNAUTHENTICATED if the call credentials are invalid.
 	Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*AccessToken, error)
+	// *
+	// Logout removes the specified access token.
+	//
+	// Errors:
+	// - PERMISSION_DENIED if the logged in subject has insufficient privileges
+	//   to delete specified access token.
+	Logout(ctx context.Context, in *LogoutRequest, opts ...grpc.CallOption) (*LogoutResponse, error)
+	// *
+	// LogoutAll removes all access tokens associated with a subject.
+	//
+	// Errors:
+	// - PERMISSION_DENIED if the logged in subject has insufficient privileges
+	//   to delete an access tokens for given subject.
+	LogoutAll(ctx context.Context, in *LogoutAllRequest, opts ...grpc.CallOption) (*LogoutAllResponse, error)
 	// *
 	// CreatePermission adds one or more permissions to a subject.
 	//
@@ -855,6 +1009,24 @@ func (c *authServiceClient) Login(ctx context.Context, in *LoginRequest, opts ..
 	return out, nil
 }
 
+func (c *authServiceClient) Logout(ctx context.Context, in *LogoutRequest, opts ...grpc.CallOption) (*LogoutResponse, error) {
+	out := new(LogoutResponse)
+	err := c.cc.Invoke(ctx, "/metrixio.AuthService/Logout", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authServiceClient) LogoutAll(ctx context.Context, in *LogoutAllRequest, opts ...grpc.CallOption) (*LogoutAllResponse, error) {
+	out := new(LogoutAllResponse)
+	err := c.cc.Invoke(ctx, "/metrixio.AuthService/LogoutAll", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *authServiceClient) CreatePermissions(ctx context.Context, in *CreatePermissionsRequest, opts ...grpc.CallOption) (*PermissionAssignments, error) {
 	out := new(PermissionAssignments)
 	err := c.cc.Invoke(ctx, "/metrixio.AuthService/CreatePermissions", in, out, opts...)
@@ -921,13 +1093,27 @@ func (c *authServiceClient) DeletePermissionInheritance(ctx context.Context, in 
 // AuthServiceServer is the server API for AuthService service.
 type AuthServiceServer interface {
 	// *
-	// LoginRequest returns an access token if the login credentials
+	// LoginR returns an access token if the login credentials
 	// are valid. The login field may contain either a username or email
 	// address.
 	//
 	// Errors:
-	// - UNAUTHENTICATED if the credentials are invalid.
+	// - UNAUTHENTICATED if the call credentials are invalid.
 	Login(context.Context, *LoginRequest) (*AccessToken, error)
+	// *
+	// Logout removes the specified access token.
+	//
+	// Errors:
+	// - PERMISSION_DENIED if the logged in subject has insufficient privileges
+	//   to delete specified access token.
+	Logout(context.Context, *LogoutRequest) (*LogoutResponse, error)
+	// *
+	// LogoutAll removes all access tokens associated with a subject.
+	//
+	// Errors:
+	// - PERMISSION_DENIED if the logged in subject has insufficient privileges
+	//   to delete an access tokens for given subject.
+	LogoutAll(context.Context, *LogoutAllRequest) (*LogoutAllResponse, error)
 	// *
 	// CreatePermission adds one or more permissions to a subject.
 	//
@@ -1012,6 +1198,42 @@ func _AuthService_Login_Handler(srv interface{}, ctx context.Context, dec func(i
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AuthServiceServer).Login(ctx, req.(*LoginRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthService_Logout_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(LogoutRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).Logout(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/metrixio.AuthService/Logout",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).Logout(ctx, req.(*LogoutRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthService_LogoutAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(LogoutAllRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).LogoutAll(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/metrixio.AuthService/LogoutAll",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).LogoutAll(ctx, req.(*LogoutAllRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1151,6 +1373,14 @@ var _AuthService_serviceDesc = grpc.ServiceDesc{
 			Handler:    _AuthService_Login_Handler,
 		},
 		{
+			MethodName: "Logout",
+			Handler:    _AuthService_Logout_Handler,
+		},
+		{
+			MethodName: "LogoutAll",
+			Handler:    _AuthService_LogoutAll_Handler,
+		},
+		{
 			MethodName: "CreatePermissions",
 			Handler:    _AuthService_CreatePermissions_Handler,
 		},
@@ -1184,48 +1414,52 @@ var _AuthService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("proto/auth-service.proto", fileDescriptor_auth_service_6a437c92c1b5fcc5)
+	proto.RegisterFile("proto/auth-service.proto", fileDescriptor_auth_service_b2c5279f1381d50e)
 }
 
-var fileDescriptor_auth_service_6a437c92c1b5fcc5 = []byte{
-	// 612 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xbc, 0x56, 0xdf, 0x4f, 0x13, 0x41,
-	0x10, 0xee, 0x81, 0x55, 0x98, 0x42, 0x0d, 0x2b, 0xc5, 0xf3, 0x88, 0x58, 0x96, 0x10, 0xfb, 0x20,
-	0x45, 0x31, 0x31, 0x3e, 0x5a, 0x7f, 0x44, 0x48, 0x7c, 0x30, 0x07, 0xbe, 0x90, 0x98, 0x66, 0x39,
-	0x27, 0x77, 0xab, 0xed, 0xee, 0xb9, 0xbb, 0xa7, 0x3c, 0xf8, 0x07, 0xf0, 0x5f, 0x6b, 0x7a, 0x77,
-	0xf4, 0xf6, 0xca, 0xb5, 0xd4, 0x44, 0x79, 0xeb, 0xec, 0xcd, 0x7c, 0xdf, 0x97, 0x99, 0xf9, 0x26,
-	0x05, 0x37, 0x56, 0xd2, 0xc8, 0x7d, 0x96, 0x98, 0x68, 0x4f, 0xa3, 0xfa, 0xc1, 0x03, 0xec, 0xa6,
-	0x4f, 0x64, 0x69, 0x88, 0x46, 0xf1, 0x73, 0x2e, 0xe9, 0x2b, 0x58, 0xf9, 0x20, 0x43, 0x2e, 0x7c,
-	0xfc, 0x9e, 0xa0, 0x36, 0x64, 0x1d, 0xea, 0x83, 0x51, 0xec, 0x3a, 0x6d, 0xa7, 0xb3, 0xec, 0x67,
-	0x01, 0xf1, 0x60, 0x29, 0x66, 0x5a, 0xff, 0x94, 0xea, 0x8b, 0xbb, 0x90, 0x7e, 0x18, 0xc7, 0xf4,
-	0xc2, 0x81, 0x46, 0x2f, 0x08, 0x50, 0xeb, 0x13, 0xf9, 0x0d, 0x05, 0xd9, 0x86, 0x15, 0x96, 0x86,
-	0x7d, 0x33, 0x8a, 0x73, 0xa0, 0x06, 0xb3, 0x52, 0x5c, 0xb8, 0xa3, 0x93, 0xb3, 0xaf, 0x18, 0x98,
-	0x1c, 0xed, 0x32, 0x24, 0x0f, 0x01, 0xf0, 0x3c, 0xe6, 0x0a, 0x75, 0x9f, 0x0b, 0x77, 0xb1, 0xed,
-	0x74, 0xea, 0xfe, 0x72, 0xfe, 0x72, 0x24, 0xec, 0xcf, 0xcc, 0xb8, 0xb7, 0xda, 0x4e, 0x67, 0x71,
-	0xfc, 0xb9, 0x67, 0xe8, 0x21, 0xc0, 0x47, 0x54, 0x43, 0xae, 0x35, 0x97, 0xa9, 0x68, 0x85, 0x5a,
-	0x26, 0x2a, 0xc0, 0x5c, 0xc4, 0x38, 0x26, 0x5b, 0x00, 0x32, 0x46, 0xc5, 0x0c, 0x97, 0x42, 0xbb,
-	0x0b, 0xed, 0xc5, 0xce, 0xb2, 0x6f, 0xbd, 0x50, 0x0e, 0xad, 0x02, 0xa9, 0xa7, 0x35, 0x0f, 0xc5,
-	0x10, 0x85, 0xd1, 0xb6, 0x74, 0xa7, 0x2c, 0xfd, 0x05, 0x34, 0xe2, 0x71, 0x49, 0x86, 0xd9, 0x38,
-	0x58, 0xef, 0x5e, 0x76, 0xba, 0x5b, 0xe0, 0xf9, 0x76, 0x22, 0x1d, 0x80, 0xfb, 0x46, 0x21, 0x33,
-	0x58, 0x24, 0xe8, 0xcb, 0x69, 0xfc, 0x7b, 0xb6, 0x4d, 0x78, 0x50, 0xc1, 0xa6, 0x63, 0x29, 0x34,
-	0x8e, 0xa4, 0xbc, 0xc5, 0x01, 0xde, 0x9c, 0x94, 0x0a, 0xb6, 0x5c, 0xca, 0x33, 0x68, 0xbd, 0x47,
-	0xf3, 0x37, 0x3a, 0x46, 0x33, 0x3b, 0x64, 0xfa, 0x46, 0xa4, 0x5f, 0x38, 0xb0, 0x31, 0xc9, 0x95,
-	0x09, 0x27, 0x8f, 0xe1, 0x6e, 0xc4, 0x74, 0xdf, 0x86, 0x1d, 0x91, 0x2e, 0xf9, 0xcd, 0xa8, 0x54,
-	0x40, 0xde, 0xc1, 0xbd, 0xf4, 0xb7, 0x08, 0xfb, 0xf3, 0x6a, 0x20, 0x79, 0x81, 0x05, 0x43, 0x11,
-	0xe8, 0xe4, 0x40, 0x8f, 0x44, 0x84, 0x8a, 0x1b, 0x26, 0x02, 0xbc, 0xbe, 0x05, 0xbb, 0xd0, 0x8c,
-	0x99, 0x42, 0x61, 0xfa, 0x65, 0x4b, 0xae, 0x66, 0xaf, 0xc7, 0x79, 0x73, 0x77, 0x61, 0x67, 0x26,
-	0x4d, 0x3e, 0x36, 0x04, 0x3a, 0x39, 0xd3, 0xff, 0xa4, 0x66, 0x26, 0x4d, 0xae, 0xe6, 0x29, 0xac,
-	0x67, 0x69, 0x79, 0xdd, 0xf5, 0x3b, 0x74, 0x1f, 0x5a, 0x13, 0x15, 0x19, 0xd4, 0xc1, 0xef, 0x3a,
-	0x34, 0x7a, 0x89, 0x89, 0x8e, 0xb3, 0x3b, 0x4a, 0x5e, 0x42, 0x3d, 0xbd, 0x9b, 0x64, 0xa3, 0x98,
-	0x94, 0x7d, 0x48, 0xbd, 0x56, 0xf1, 0x6e, 0x5d, 0x47, 0x5a, 0x23, 0xa7, 0xb0, 0x76, 0xc5, 0x81,
-	0x84, 0x16, 0xd9, 0xd3, 0x8e, 0x81, 0xf7, 0xa8, 0x6a, 0x27, 0xac, 0xdb, 0x44, 0x6b, 0xe4, 0x04,
-	0x9a, 0x65, 0xd7, 0x10, 0xab, 0xa8, 0xd2, 0x4f, 0xf3, 0xa0, 0x7e, 0x82, 0x66, 0x79, 0xd9, 0x6d,
-	0xd4, 0x4a, 0xcb, 0x79, 0xed, 0xe9, 0x09, 0xf9, 0x6c, 0x6a, 0xe4, 0x33, 0xac, 0x5d, 0xf1, 0xbf,
-	0xdd, 0x88, 0x69, 0xa7, 0xc8, 0x9b, 0x23, 0x87, 0xd6, 0x88, 0x0f, 0xab, 0xa5, 0x51, 0x92, 0xad,
-	0xc9, 0xb2, 0xf2, 0x56, 0xd8, 0x9d, 0xa8, 0xdc, 0x01, 0x5a, 0x23, 0xbf, 0x60, 0x73, 0x86, 0x0b,
-	0xc8, 0x93, 0xe9, 0x53, 0xbc, 0xea, 0x02, 0x6f, 0x6f, 0xce, 0x6c, 0x9b, 0x7d, 0xc6, 0xd6, 0xdb,
-	0xec, 0xd7, 0x7b, 0xd0, 0x66, 0x9f, 0xc7, 0x4a, 0xb5, 0xd7, 0x3b, 0xa7, 0xdb, 0x21, 0x37, 0x51,
-	0x72, 0xd6, 0x0d, 0xe4, 0x70, 0x3f, 0x2b, 0xde, 0xe3, 0x72, 0x3f, 0xfb, 0x93, 0x11, 0xca, 0x01,
-	0x13, 0xe1, 0xd9, 0xed, 0x34, 0x7a, 0xfe, 0x27, 0x00, 0x00, 0xff, 0xff, 0x52, 0xa7, 0x61, 0xe9,
-	0x7b, 0x08, 0x00, 0x00,
+var fileDescriptor_auth_service_b2c5279f1381d50e = []byte{
+	// 683 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xbc, 0x56, 0x4d, 0x4f, 0xdb, 0x40,
+	0x10, 0x4d, 0xa0, 0x7c, 0x64, 0x02, 0x29, 0x2c, 0x04, 0x5c, 0xa3, 0xd2, 0xb0, 0x08, 0x35, 0x07,
+	0x08, 0x2d, 0x95, 0xaa, 0x5e, 0x2a, 0x35, 0xfd, 0x04, 0x89, 0x43, 0x65, 0xe8, 0x05, 0xa9, 0x8a,
+	0x8c, 0x3b, 0x72, 0xb6, 0x75, 0xbc, 0xae, 0x77, 0xdd, 0x72, 0xe8, 0xb9, 0xe2, 0x67, 0x57, 0x89,
+	0x37, 0xf6, 0x3a, 0x71, 0x12, 0xb7, 0x52, 0xb9, 0x65, 0x67, 0xe7, 0xbd, 0x37, 0x99, 0xd9, 0x79,
+	0x32, 0x18, 0x41, 0xc8, 0x25, 0x3f, 0xb6, 0x23, 0xd9, 0x3d, 0x12, 0x18, 0xfe, 0x60, 0x0e, 0xb6,
+	0x06, 0x21, 0xb2, 0xdc, 0x43, 0x19, 0xb2, 0x1b, 0xc6, 0xe9, 0x2b, 0x58, 0x39, 0xe7, 0x2e, 0xf3,
+	0x2d, 0xfc, 0x1e, 0xa1, 0x90, 0x64, 0x13, 0x16, 0xbc, 0xfe, 0xd9, 0x28, 0x37, 0xca, 0xcd, 0x8a,
+	0x15, 0x1f, 0x88, 0x09, 0xcb, 0x81, 0x2d, 0xc4, 0x4f, 0x1e, 0x7e, 0x31, 0xe6, 0x06, 0x17, 0xc9,
+	0x99, 0x9e, 0xc0, 0xea, 0x39, 0x77, 0x79, 0x24, 0x87, 0x14, 0x7b, 0xb0, 0x62, 0x3b, 0x0e, 0x0a,
+	0xd1, 0x91, 0xfc, 0x1b, 0x0e, 0x99, 0xaa, 0x71, 0xec, 0xb2, 0x1f, 0xa2, 0x6b, 0x50, 0x1b, 0x62,
+	0x44, 0xc0, 0x7d, 0x81, 0xf4, 0x10, 0xd6, 0xe2, 0x48, 0xdb, 0xf3, 0x86, 0x44, 0x06, 0x2c, 0x89,
+	0xe8, 0xfa, 0x2b, 0x3a, 0x52, 0x71, 0x0c, 0x8f, 0x74, 0x03, 0xd6, 0xb5, 0x6c, 0x45, 0x71, 0x5b,
+	0x86, 0x6a, 0x3b, 0x15, 0x29, 0x50, 0x87, 0xae, 0x30, 0x97, 0x51, 0x20, 0x0f, 0x01, 0xf0, 0x26,
+	0x60, 0x21, 0x8a, 0x0e, 0xf3, 0x8d, 0xf9, 0x46, 0xb9, 0xb9, 0x60, 0x55, 0x54, 0xe4, 0xcc, 0xd7,
+	0xaf, 0x6d, 0x69, 0xdc, 0x6b, 0x94, 0x9b, 0xf3, 0xc9, 0x75, 0x5b, 0xd2, 0x53, 0x80, 0x8f, 0x18,
+	0xf6, 0x98, 0x10, 0x8c, 0x0f, 0xba, 0x17, 0xa2, 0xe0, 0x51, 0xe8, 0xa0, 0x2a, 0x22, 0x39, 0x93,
+	0x5d, 0x00, 0x1e, 0x60, 0x68, 0x4b, 0xc6, 0x7d, 0x61, 0xcc, 0x35, 0xe6, 0x9b, 0x15, 0x4b, 0x8b,
+	0x50, 0x06, 0xf5, 0x94, 0xa9, 0x2d, 0x04, 0x73, 0xfd, 0x1e, 0xfa, 0x52, 0x4c, 0x6e, 0x0e, 0x79,
+	0x0e, 0xd5, 0x20, 0x81, 0xc4, 0x9c, 0xd5, 0x93, 0xcd, 0xd6, 0x70, 0xe4, 0xad, 0x94, 0xcf, 0xd2,
+	0x13, 0xa9, 0x07, 0xc6, 0x9b, 0x10, 0x6d, 0x89, 0x69, 0x82, 0x98, 0x39, 0x8a, 0x7f, 0x56, 0xdb,
+	0x81, 0x07, 0x39, 0x6a, 0x6a, 0x94, 0x1e, 0x18, 0x6f, 0xd1, 0xc3, 0xbb, 0x2b, 0x25, 0x47, 0x4d,
+	0x95, 0xf2, 0x14, 0xea, 0x1f, 0x50, 0xfe, 0x4d, 0x1d, 0xfd, 0x99, 0x9d, 0xda, 0xe2, 0x4e, 0x4a,
+	0xbf, 0x2d, 0xc3, 0xd6, 0xa8, 0x56, 0x5c, 0x38, 0x79, 0x0c, 0xf7, 0xbb, 0xb6, 0xe8, 0xe8, 0xb4,
+	0x7d, 0xd1, 0x65, 0xab, 0xd6, 0xcd, 0x00, 0xc8, 0x3b, 0xd8, 0x18, 0xfc, 0xf6, 0xdd, 0x4e, 0xd1,
+	0x1a, 0x88, 0x02, 0x68, 0x34, 0x14, 0x81, 0x8e, 0x0e, 0xf4, 0xcc, 0xef, 0x62, 0xc8, 0xa4, 0xed,
+	0x3b, 0x38, 0xbb, 0x05, 0x07, 0x50, 0x0b, 0xec, 0x10, 0x7d, 0xd9, 0xc9, 0xae, 0xe4, 0x6a, 0x1c,
+	0xbd, 0x50, 0xcd, 0x3d, 0x80, 0xfd, 0xa9, 0x32, 0x6a, 0x6c, 0x08, 0x74, 0x74, 0xa6, 0xff, 0xa9,
+	0x9a, 0xa9, 0x32, 0xaa, 0x9a, 0x27, 0xb0, 0x19, 0xa7, 0x29, 0xdc, 0xec, 0x37, 0xb4, 0x0d, 0xf5,
+	0x11, 0x44, 0x4c, 0x75, 0xf2, 0x7b, 0x09, 0xaa, 0xed, 0x48, 0x76, 0x2f, 0x62, 0x43, 0x27, 0x2f,
+	0x60, 0x61, 0x60, 0xe0, 0x64, 0x2b, 0x9d, 0x94, 0xee, 0xe8, 0x66, 0x3d, 0x8d, 0x6b, 0xee, 0x48,
+	0x4b, 0xe4, 0x25, 0x2c, 0xc6, 0x26, 0x4a, 0xb6, 0x33, 0xd0, 0xd4, 0xca, 0x4d, 0x63, 0xfc, 0x42,
+	0xfd, 0xa3, 0x12, 0x79, 0x0f, 0x95, 0xc4, 0x83, 0x89, 0x39, 0x9a, 0x98, 0xda, 0xb8, 0xb9, 0x93,
+	0x7b, 0x97, 0xf0, 0x5c, 0xc1, 0xfa, 0x98, 0x11, 0x10, 0x9a, 0x62, 0x26, 0x79, 0x92, 0xf9, 0x28,
+	0xef, 0x69, 0x6a, 0x16, 0x49, 0x4b, 0xe4, 0x12, 0x6a, 0xd9, 0xe5, 0x25, 0x1a, 0x28, 0x77, 0xad,
+	0x8b, 0xb0, 0x7e, 0x82, 0x5a, 0x76, 0xe7, 0x74, 0xd6, 0xdc, 0xcd, 0x37, 0x1b, 0x93, 0x13, 0x92,
+	0x46, 0x7c, 0x86, 0xf5, 0x31, 0x1b, 0xd2, 0x1b, 0x31, 0xc9, 0x11, 0xcd, 0x02, 0x39, 0xb4, 0x44,
+	0x2c, 0x58, 0xcd, 0xbc, 0x28, 0xb2, 0x3b, 0x0a, 0xcb, 0x3e, 0x4e, 0xbd, 0x13, 0xb9, 0x4f, 0x91,
+	0x96, 0xc8, 0x2f, 0xd8, 0x99, 0xb2, 0x8c, 0xe4, 0x70, 0xf2, 0x14, 0xc7, 0x97, 0xd1, 0x3c, 0x2a,
+	0x98, 0xad, 0xab, 0x4f, 0x59, 0x3e, 0x5d, 0x7d, 0xb6, 0x15, 0xe8, 0xea, 0x45, 0x36, 0xba, 0xf4,
+	0x7a, 0xff, 0x6a, 0xcf, 0x65, 0xb2, 0x1b, 0x5d, 0xb7, 0x1c, 0xde, 0x3b, 0x8e, 0xc1, 0x47, 0x8c,
+	0x1f, 0xc7, 0x1f, 0x5d, 0x2e, 0xf7, 0x6c, 0xdf, 0xbd, 0x5e, 0x1c, 0x9c, 0x9e, 0xfd, 0x09, 0x00,
+	0x00, 0xff, 0xff, 0xfd, 0x42, 0x22, 0xc6, 0x8b, 0x09, 0x00, 0x00,
 }

@@ -9,6 +9,18 @@ message LoginRequest {
     string password = 2;
 }
 
+message LogoutRequest {
+    string access_token = 1;
+}
+
+message LogoutResponse {}
+
+message LogoutAllRequest {
+    string subject = 1;
+}
+
+message LogoutAllResponse {}
+
 message AccessToken {
     string access_token = 1;
 
@@ -87,14 +99,32 @@ message DeleteSubjectResponse {}
 
 service AuthService {
     /**
-     * LoginRequest returns an access token if the login credentials
+     * LoginR returns an access token if the login credentials
      * are valid. The login field may contain either a username or email
      * address.
      *
      * Errors:
-     * - UNAUTHENTICATED if the credentials are invalid.
+     * - UNAUTHENTICATED if the call credentials are invalid.
      */
     rpc Login (LoginRequest) returns (AccessToken) {}
+
+    /**
+     * Logout removes the specified access token.
+     *
+     * Errors:
+     * - PERMISSION_DENIED if the logged in subject has insufficient privileges
+     *   to delete specified access token.
+     */
+    rpc Logout (LogoutRequest) returns (LogoutResponse) {}
+
+    /**
+     * LogoutAll removes all access tokens associated with a subject.
+     *
+     * Errors:
+     * - PERMISSION_DENIED if the logged in subject has insufficient privileges
+     *   to delete an access tokens for given subject.
+     */
+    rpc LogoutAll (LogoutAllRequest) returns (LogoutAllResponse) {}
 
     /**
      * CreatePermission adds one or more permissions to a subject.

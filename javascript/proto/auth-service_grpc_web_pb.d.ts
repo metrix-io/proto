@@ -13,6 +13,10 @@ import {
   HasPermissionsRequest,
   HasPermissionsResponse,
   LoginRequest,
+  LogoutAllRequest,
+  LogoutAllResponse,
+  LogoutRequest,
+  LogoutResponse,
   Permission,
   PermissionAssignments} from './auth-service_pb';
 
@@ -27,6 +31,20 @@ export class AuthServiceClient {
     callback: (err: grpcWeb.Error,
                response: AccessToken) => void
   ): grpcWeb.ClientReadableStream<AccessToken>;
+
+  logout(
+    request: LogoutRequest,
+    metadata: grpcWeb.Metadata,
+    callback: (err: grpcWeb.Error,
+               response: LogoutResponse) => void
+  ): grpcWeb.ClientReadableStream<LogoutResponse>;
+
+  logoutAll(
+    request: LogoutAllRequest,
+    metadata: grpcWeb.Metadata,
+    callback: (err: grpcWeb.Error,
+               response: LogoutAllResponse) => void
+  ): grpcWeb.ClientReadableStream<LogoutAllResponse>;
 
   createPermissions(
     request: CreatePermissionsRequest,
@@ -88,6 +106,16 @@ export class AuthServicePromiseClient {
     request: LoginRequest,
     metadata: grpcWeb.Metadata
   ): Promise<AccessToken>;
+
+  logout(
+    request: LogoutRequest,
+    metadata: grpcWeb.Metadata
+  ): Promise<LogoutResponse>;
+
+  logoutAll(
+    request: LogoutAllRequest,
+    metadata: grpcWeb.Metadata
+  ): Promise<LogoutAllResponse>;
 
   createPermissions(
     request: CreatePermissionsRequest,

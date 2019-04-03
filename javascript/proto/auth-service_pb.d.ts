@@ -214,6 +214,60 @@ export namespace LoginRequest {
   }
 }
 
+export class LogoutAllRequest {
+  constructor ();
+  getSubject(): string;
+  setSubject(a: string): void;
+  toObject(): LogoutAllRequest.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => LogoutAllRequest;
+}
+
+export namespace LogoutAllRequest {
+  export type AsObject = {
+    Subject: string;
+  }
+}
+
+export class LogoutAllResponse {
+  constructor ();
+  toObject(): LogoutAllResponse.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => LogoutAllResponse;
+}
+
+export namespace LogoutAllResponse {
+  export type AsObject = {
+  }
+}
+
+export class LogoutRequest {
+  constructor ();
+  getAccessToken(): string;
+  setAccessToken(a: string): void;
+  toObject(): LogoutRequest.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => LogoutRequest;
+}
+
+export namespace LogoutRequest {
+  export type AsObject = {
+    AccessToken: string;
+  }
+}
+
+export class LogoutResponse {
+  constructor ();
+  toObject(): LogoutResponse.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => LogoutResponse;
+}
+
+export namespace LogoutResponse {
+  export type AsObject = {
+  }
+}
+
 export class Permission {
   constructor ();
   getResource(): string;

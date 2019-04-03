@@ -1,6 +1,5 @@
-.PHONY: proto docgen
+.PHONY: protojs protogo mockgen
 
-# Generate proto files
 protogo:
 	find ./golang -type f -name '*.go'
 	protoc -I. --go_out=plugins=grpc:. proto/*.proto
@@ -13,12 +12,9 @@ protojs:
       --js_out=import_style=commonjs:javascript \
       --grpc-web_out=import_style=commonjs+dts,mode=grpcwebtext:javascript
 
-proto: protogo protojs
-
-docgen:
-	rm -rf ./out
-	docker run --rm -v $(shell pwd)/docs:/out -v $(shell pwd):/protos pseudomuto/protoc-gen-doc --doc_opt=markdown,docs.md
-
 mockgen: # Generate new mocks for all interfaces within this package
 	go get github.com/vektra/mockery
 	mockery -output="./golang/mocks" -all
+
+# Create all generated artifacts
+gen: protogo protojs mockgen
