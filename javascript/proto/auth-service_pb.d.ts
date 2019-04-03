@@ -243,8 +243,6 @@ export namespace LogoutAllResponse {
 
 export class LogoutRequest {
   constructor ();
-  getAccessToken(): string;
-  setAccessToken(a: string): void;
   toObject(): LogoutRequest.AsObject;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => LogoutRequest;
@@ -252,7 +250,6 @@ export class LogoutRequest {
 
 export namespace LogoutRequest {
   export type AsObject = {
-    AccessToken: string;
   }
 }
 

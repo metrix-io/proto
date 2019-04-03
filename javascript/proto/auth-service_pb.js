@@ -248,7 +248,7 @@ proto.metrixio.LogoutRequest.prototype.toObject = function(opt_includeInstance) 
  */
 proto.metrixio.LogoutRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    accessToken: jspb.Message.getFieldWithDefault(msg, 1, "")
+
   };
 
   if (includeInstance) {
@@ -285,10 +285,6 @@ proto.metrixio.LogoutRequest.deserializeBinaryFromReader = function(msg, reader)
     }
     var field = reader.getFieldNumber();
     switch (field) {
-    case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setAccessToken(value);
-      break;
     default:
       reader.skipField();
       break;
@@ -318,28 +314,6 @@ proto.metrixio.LogoutRequest.prototype.serializeBinary = function() {
  */
 proto.metrixio.LogoutRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getAccessToken();
-  if (f.length > 0) {
-    writer.writeString(
-      1,
-      f
-    );
-  }
-};
-
-
-/**
- * optional string access_token = 1;
- * @return {string}
- */
-proto.metrixio.LogoutRequest.prototype.getAccessToken = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
-
-/** @param {string} value */
-proto.metrixio.LogoutRequest.prototype.setAccessToken = function(value) {
-  jspb.Message.setProto3StringField(this, 1, value);
 };
 
 

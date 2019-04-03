@@ -9,9 +9,7 @@ message LoginRequest {
     string password = 2;
 }
 
-message LogoutRequest {
-    string access_token = 1;
-}
+message LogoutRequest {}
 
 message LogoutResponse {}
 
@@ -109,11 +107,7 @@ service AuthService {
     rpc Login (LoginRequest) returns (AccessToken) {}
 
     /**
-     * Logout removes the specified access token.
-     *
-     * Errors:
-     * - PERMISSION_DENIED if the logged in subject has insufficient privileges
-     *   to delete specified access token.
+     * Logout removes the access token used to authenticate the request with.
      */
     rpc Logout (LogoutRequest) returns (LogoutResponse) {}
 
