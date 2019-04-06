@@ -47,19 +47,19 @@ message PermissionAssignments {
     repeated Permission permissions = 2;
 }
 
-message CreatePermissionsRequest {
+message GrantPermissionsRequest {
     string subject = 1;
     repeated Permission permissions = 2;
 }
 
-message CreatePermissionsResponse {}
+message GrantPermissionsResponse {}
 
-message DeletePermissionsRequest {
+message RevokePermissionsRequest {
     string subject = 1;
     repeated Permission permissions = 2;
 }
 
-message DeletePermissionsResponse {}
+message RevokePermissionsResponse {}
 
 message GetPermissionsRequest {
     string subject = 1;
@@ -75,19 +75,19 @@ message HasPermissionsResponse {
     repeated Permission missing_permissions = 2;
 }
 
-message CreatePermissionInheritanceRequest {
+message InheritPermissionsRequest {
     string subject = 1;
     string parent_subject = 2;
 }
 
-message CreatePermissionInheritanceResponse {}
+message InheritPermissionsResponse {}
 
-message DeletePermissionInheritanceRequest {
+message DisinheritPermissionsRequest {
     string subject = 1;
     string parent_subject = 2;
 }
 
-message DeletePermissionInheritanceResponse {}
+message DisinheritPermissionsResponse {}
 
 message DeleteSubjectRequest {
     string subject = 1;
@@ -130,7 +130,7 @@ service AuthService {
      * - PERMISSION_DENIED if the logged in subject has insufficient privileges
      *   to read subject's permissions.
      */
-    rpc CreatePermissions (CreatePermissionsRequest) returns (PermissionAssignments) {}
+    rpc GrantPermissions (GrantPermissionsRequest) returns (PermissionAssignments) {}
 
     /**
      * Returns all permissions for the specified subject.
@@ -152,13 +152,13 @@ service AuthService {
     rpc HasPermissions (HasPermissionsRequest) returns (HasPermissionsResponse) {}
 
     /**
-     * DeletePermissionsRequest removes one or more permissions from a subject.
+     * RevokePermissionsRequest removes one or more permissions from a subject.
      *
      * Errors:
      * - PERMISSION_DENIED if the logged in subject has insufficient privileges to
      *   revoke subject's permissions.
      */
-    rpc DeletePermissions (DeletePermissionsRequest) returns (DeletePermissionsRequest) {}
+    rpc RevokePermissions (RevokePermissionsRequest) returns (RevokePermissionsRequest) {}
 
     /**
      * DeleteSubject removes any permissions associated with the subject.
@@ -176,7 +176,7 @@ service AuthService {
     rpc DeleteSubject (DeleteSubjectRequest) returns (DeleteSubjectResponse) {}
 
     /**
-     * CreatePermissionInheritance establishes a permission inheritance relationship
+     * InheritPermissions establishes a permission inheritance relationship
      * between two subjects. A common example is a user account being part of
      * a group.
      *
@@ -185,10 +185,10 @@ service AuthService {
      *   permissions to the parent subject.
      * - NOT_FOUND if no inheritance relationship exists between specified subjects.
      */
-    rpc CreatePermissionInheritance (CreatePermissionInheritanceRequest) returns (CreatePermissionInheritanceResponse) {}
+    rpc InheritPermissions (InheritPermissionsRequest) returns (InheritPermissionsResponse) {}
 
     /**
-     * DeletePermissionInheritance removes any inheritance relationship between two
+     * DisinheritPermissions removes any inheritance relationship between two
      * subjects.
      *
      * Errors:
@@ -196,5 +196,5 @@ service AuthService {
      *   permissions of the parent subject.
      * - NOT_FOUND if no inheritance relationship exists between specified subjects.
      */
-    rpc DeletePermissionInheritance (DeletePermissionInheritanceRequest) returns (DeletePermissionInheritanceResponse) {}
+    rpc DisinheritPermissions (DisinheritPermissionsRequest) returns (DisinheritPermissionsResponse) {}
 }

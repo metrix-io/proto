@@ -12,126 +12,6 @@ type AuthServiceClient struct {
 	mock.Mock
 }
 
-// CreatePermissionInheritance provides a mock function with given fields: ctx, in, opts
-func (_m *AuthServiceClient) CreatePermissionInheritance(ctx context.Context, in *golang.CreatePermissionInheritanceRequest, opts ...grpc.CallOption) (*golang.CreatePermissionInheritanceResponse, error) {
-	_va := make([]interface{}, len(opts))
-	for _i := range opts {
-		_va[_i] = opts[_i]
-	}
-	var _ca []interface{}
-	_ca = append(_ca, ctx, in)
-	_ca = append(_ca, _va...)
-	ret := _m.Called(_ca...)
-
-	var r0 *golang.CreatePermissionInheritanceResponse
-	if rf, ok := ret.Get(0).(func(context.Context, *golang.CreatePermissionInheritanceRequest, ...grpc.CallOption) *golang.CreatePermissionInheritanceResponse); ok {
-		r0 = rf(ctx, in, opts...)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*golang.CreatePermissionInheritanceResponse)
-		}
-	}
-
-	var r1 error
-	if rf, ok := ret.Get(1).(func(context.Context, *golang.CreatePermissionInheritanceRequest, ...grpc.CallOption) error); ok {
-		r1 = rf(ctx, in, opts...)
-	} else {
-		r1 = ret.Error(1)
-	}
-
-	return r0, r1
-}
-
-// CreatePermissions provides a mock function with given fields: ctx, in, opts
-func (_m *AuthServiceClient) CreatePermissions(ctx context.Context, in *golang.CreatePermissionsRequest, opts ...grpc.CallOption) (*golang.PermissionAssignments, error) {
-	_va := make([]interface{}, len(opts))
-	for _i := range opts {
-		_va[_i] = opts[_i]
-	}
-	var _ca []interface{}
-	_ca = append(_ca, ctx, in)
-	_ca = append(_ca, _va...)
-	ret := _m.Called(_ca...)
-
-	var r0 *golang.PermissionAssignments
-	if rf, ok := ret.Get(0).(func(context.Context, *golang.CreatePermissionsRequest, ...grpc.CallOption) *golang.PermissionAssignments); ok {
-		r0 = rf(ctx, in, opts...)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*golang.PermissionAssignments)
-		}
-	}
-
-	var r1 error
-	if rf, ok := ret.Get(1).(func(context.Context, *golang.CreatePermissionsRequest, ...grpc.CallOption) error); ok {
-		r1 = rf(ctx, in, opts...)
-	} else {
-		r1 = ret.Error(1)
-	}
-
-	return r0, r1
-}
-
-// DeletePermissionInheritance provides a mock function with given fields: ctx, in, opts
-func (_m *AuthServiceClient) DeletePermissionInheritance(ctx context.Context, in *golang.DeletePermissionInheritanceRequest, opts ...grpc.CallOption) (*golang.DeletePermissionInheritanceResponse, error) {
-	_va := make([]interface{}, len(opts))
-	for _i := range opts {
-		_va[_i] = opts[_i]
-	}
-	var _ca []interface{}
-	_ca = append(_ca, ctx, in)
-	_ca = append(_ca, _va...)
-	ret := _m.Called(_ca...)
-
-	var r0 *golang.DeletePermissionInheritanceResponse
-	if rf, ok := ret.Get(0).(func(context.Context, *golang.DeletePermissionInheritanceRequest, ...grpc.CallOption) *golang.DeletePermissionInheritanceResponse); ok {
-		r0 = rf(ctx, in, opts...)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*golang.DeletePermissionInheritanceResponse)
-		}
-	}
-
-	var r1 error
-	if rf, ok := ret.Get(1).(func(context.Context, *golang.DeletePermissionInheritanceRequest, ...grpc.CallOption) error); ok {
-		r1 = rf(ctx, in, opts...)
-	} else {
-		r1 = ret.Error(1)
-	}
-
-	return r0, r1
-}
-
-// DeletePermissions provides a mock function with given fields: ctx, in, opts
-func (_m *AuthServiceClient) DeletePermissions(ctx context.Context, in *golang.DeletePermissionsRequest, opts ...grpc.CallOption) (*golang.DeletePermissionsRequest, error) {
-	_va := make([]interface{}, len(opts))
-	for _i := range opts {
-		_va[_i] = opts[_i]
-	}
-	var _ca []interface{}
-	_ca = append(_ca, ctx, in)
-	_ca = append(_ca, _va...)
-	ret := _m.Called(_ca...)
-
-	var r0 *golang.DeletePermissionsRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *golang.DeletePermissionsRequest, ...grpc.CallOption) *golang.DeletePermissionsRequest); ok {
-		r0 = rf(ctx, in, opts...)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*golang.DeletePermissionsRequest)
-		}
-	}
-
-	var r1 error
-	if rf, ok := ret.Get(1).(func(context.Context, *golang.DeletePermissionsRequest, ...grpc.CallOption) error); ok {
-		r1 = rf(ctx, in, opts...)
-	} else {
-		r1 = ret.Error(1)
-	}
-
-	return r0, r1
-}
-
 // DeleteSubject provides a mock function with given fields: ctx, in, opts
 func (_m *AuthServiceClient) DeleteSubject(ctx context.Context, in *golang.DeleteSubjectRequest, opts ...grpc.CallOption) (*golang.DeleteSubjectResponse, error) {
 	_va := make([]interface{}, len(opts))
@@ -154,6 +34,36 @@ func (_m *AuthServiceClient) DeleteSubject(ctx context.Context, in *golang.Delet
 
 	var r1 error
 	if rf, ok := ret.Get(1).(func(context.Context, *golang.DeleteSubjectRequest, ...grpc.CallOption) error); ok {
+		r1 = rf(ctx, in, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// DisinheritPermissions provides a mock function with given fields: ctx, in, opts
+func (_m *AuthServiceClient) DisinheritPermissions(ctx context.Context, in *golang.DisinheritPermissionsRequest, opts ...grpc.CallOption) (*golang.DisinheritPermissionsResponse, error) {
+	_va := make([]interface{}, len(opts))
+	for _i := range opts {
+		_va[_i] = opts[_i]
+	}
+	var _ca []interface{}
+	_ca = append(_ca, ctx, in)
+	_ca = append(_ca, _va...)
+	ret := _m.Called(_ca...)
+
+	var r0 *golang.DisinheritPermissionsResponse
+	if rf, ok := ret.Get(0).(func(context.Context, *golang.DisinheritPermissionsRequest, ...grpc.CallOption) *golang.DisinheritPermissionsResponse); ok {
+		r0 = rf(ctx, in, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*golang.DisinheritPermissionsResponse)
+		}
+	}
+
+	var r1 error
+	if rf, ok := ret.Get(1).(func(context.Context, *golang.DisinheritPermissionsRequest, ...grpc.CallOption) error); ok {
 		r1 = rf(ctx, in, opts...)
 	} else {
 		r1 = ret.Error(1)
@@ -192,6 +102,36 @@ func (_m *AuthServiceClient) GetPermissions(ctx context.Context, in *golang.GetP
 	return r0, r1
 }
 
+// GrantPermissions provides a mock function with given fields: ctx, in, opts
+func (_m *AuthServiceClient) GrantPermissions(ctx context.Context, in *golang.GrantPermissionsRequest, opts ...grpc.CallOption) (*golang.PermissionAssignments, error) {
+	_va := make([]interface{}, len(opts))
+	for _i := range opts {
+		_va[_i] = opts[_i]
+	}
+	var _ca []interface{}
+	_ca = append(_ca, ctx, in)
+	_ca = append(_ca, _va...)
+	ret := _m.Called(_ca...)
+
+	var r0 *golang.PermissionAssignments
+	if rf, ok := ret.Get(0).(func(context.Context, *golang.GrantPermissionsRequest, ...grpc.CallOption) *golang.PermissionAssignments); ok {
+		r0 = rf(ctx, in, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*golang.PermissionAssignments)
+		}
+	}
+
+	var r1 error
+	if rf, ok := ret.Get(1).(func(context.Context, *golang.GrantPermissionsRequest, ...grpc.CallOption) error); ok {
+		r1 = rf(ctx, in, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
 // HasPermissions provides a mock function with given fields: ctx, in, opts
 func (_m *AuthServiceClient) HasPermissions(ctx context.Context, in *golang.HasPermissionsRequest, opts ...grpc.CallOption) (*golang.HasPermissionsResponse, error) {
 	_va := make([]interface{}, len(opts))
@@ -214,6 +154,36 @@ func (_m *AuthServiceClient) HasPermissions(ctx context.Context, in *golang.HasP
 
 	var r1 error
 	if rf, ok := ret.Get(1).(func(context.Context, *golang.HasPermissionsRequest, ...grpc.CallOption) error); ok {
+		r1 = rf(ctx, in, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// InheritPermissions provides a mock function with given fields: ctx, in, opts
+func (_m *AuthServiceClient) InheritPermissions(ctx context.Context, in *golang.InheritPermissionsRequest, opts ...grpc.CallOption) (*golang.InheritPermissionsResponse, error) {
+	_va := make([]interface{}, len(opts))
+	for _i := range opts {
+		_va[_i] = opts[_i]
+	}
+	var _ca []interface{}
+	_ca = append(_ca, ctx, in)
+	_ca = append(_ca, _va...)
+	ret := _m.Called(_ca...)
+
+	var r0 *golang.InheritPermissionsResponse
+	if rf, ok := ret.Get(0).(func(context.Context, *golang.InheritPermissionsRequest, ...grpc.CallOption) *golang.InheritPermissionsResponse); ok {
+		r0 = rf(ctx, in, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*golang.InheritPermissionsResponse)
+		}
+	}
+
+	var r1 error
+	if rf, ok := ret.Get(1).(func(context.Context, *golang.InheritPermissionsRequest, ...grpc.CallOption) error); ok {
 		r1 = rf(ctx, in, opts...)
 	} else {
 		r1 = ret.Error(1)
@@ -304,6 +274,36 @@ func (_m *AuthServiceClient) LogoutAll(ctx context.Context, in *golang.LogoutAll
 
 	var r1 error
 	if rf, ok := ret.Get(1).(func(context.Context, *golang.LogoutAllRequest, ...grpc.CallOption) error); ok {
+		r1 = rf(ctx, in, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// RevokePermissions provides a mock function with given fields: ctx, in, opts
+func (_m *AuthServiceClient) RevokePermissions(ctx context.Context, in *golang.RevokePermissionsRequest, opts ...grpc.CallOption) (*golang.RevokePermissionsRequest, error) {
+	_va := make([]interface{}, len(opts))
+	for _i := range opts {
+		_va[_i] = opts[_i]
+	}
+	var _ca []interface{}
+	_ca = append(_ca, ctx, in)
+	_ca = append(_ca, _va...)
+	ret := _m.Called(_ca...)
+
+	var r0 *golang.RevokePermissionsRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *golang.RevokePermissionsRequest, ...grpc.CallOption) *golang.RevokePermissionsRequest); ok {
+		r0 = rf(ctx, in, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*golang.RevokePermissionsRequest)
+		}
+	}
+
+	var r1 error
+	if rf, ok := ret.Get(1).(func(context.Context, *golang.RevokePermissionsRequest, ...grpc.CallOption) error); ok {
 		r1 = rf(ctx, in, opts...)
 	} else {
 		r1 = ret.Error(1)

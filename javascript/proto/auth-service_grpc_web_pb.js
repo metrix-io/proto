@@ -243,12 +243,12 @@ proto.metrixio.AuthServicePromiseClient.prototype.logoutAll =
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.metrixio.CreatePermissionsRequest,
+ *   !proto.metrixio.GrantPermissionsRequest,
  *   !proto.metrixio.PermissionAssignments>}
  */
-const methodInfo_AuthService_CreatePermissions = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_AuthService_GrantPermissions = new grpc.web.AbstractClientBase.MethodInfo(
   proto.metrixio.PermissionAssignments,
-  /** @param {!proto.metrixio.CreatePermissionsRequest} request */
+  /** @param {!proto.metrixio.GrantPermissionsRequest} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -257,7 +257,7 @@ const methodInfo_AuthService_CreatePermissions = new grpc.web.AbstractClientBase
 
 
 /**
- * @param {!proto.metrixio.CreatePermissionsRequest} request The
+ * @param {!proto.metrixio.GrantPermissionsRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
@@ -266,29 +266,29 @@ const methodInfo_AuthService_CreatePermissions = new grpc.web.AbstractClientBase
  * @return {!grpc.web.ClientReadableStream<!proto.metrixio.PermissionAssignments>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.metrixio.AuthServiceClient.prototype.createPermissions =
+proto.metrixio.AuthServiceClient.prototype.grantPermissions =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/metrixio.AuthService/CreatePermissions',
+      '/metrixio.AuthService/GrantPermissions',
       request,
       metadata,
-      methodInfo_AuthService_CreatePermissions,
+      methodInfo_AuthService_GrantPermissions,
       callback);
 };
 
 
 /**
- * @param {!proto.metrixio.CreatePermissionsRequest} request The
+ * @param {!proto.metrixio.GrantPermissionsRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.metrixio.PermissionAssignments>}
  *     The XHR Node Readable Stream
  */
-proto.metrixio.AuthServicePromiseClient.prototype.createPermissions =
+proto.metrixio.AuthServicePromiseClient.prototype.grantPermissions =
     function(request, metadata) {
   return new Promise((resolve, reject) => {
-    this.delegateClient_.createPermissions(
+    this.delegateClient_.grantPermissions(
       request, metadata, (error, response) => {
         error ? reject(error) : resolve(response);
       });
@@ -411,52 +411,52 @@ proto.metrixio.AuthServicePromiseClient.prototype.hasPermissions =
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.metrixio.DeletePermissionsRequest,
- *   !proto.metrixio.DeletePermissionsRequest>}
+ *   !proto.metrixio.RevokePermissionsRequest,
+ *   !proto.metrixio.RevokePermissionsRequest>}
  */
-const methodInfo_AuthService_DeletePermissions = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.metrixio.DeletePermissionsRequest,
-  /** @param {!proto.metrixio.DeletePermissionsRequest} request */
+const methodInfo_AuthService_RevokePermissions = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.metrixio.RevokePermissionsRequest,
+  /** @param {!proto.metrixio.RevokePermissionsRequest} request */
   function(request) {
     return request.serializeBinary();
   },
-  proto.metrixio.DeletePermissionsRequest.deserializeBinary
+  proto.metrixio.RevokePermissionsRequest.deserializeBinary
 );
 
 
 /**
- * @param {!proto.metrixio.DeletePermissionsRequest} request The
+ * @param {!proto.metrixio.RevokePermissionsRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.metrixio.DeletePermissionsRequest)}
+ * @param {function(?grpc.web.Error, ?proto.metrixio.RevokePermissionsRequest)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.metrixio.DeletePermissionsRequest>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.metrixio.RevokePermissionsRequest>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.metrixio.AuthServiceClient.prototype.deletePermissions =
+proto.metrixio.AuthServiceClient.prototype.revokePermissions =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/metrixio.AuthService/DeletePermissions',
+      '/metrixio.AuthService/RevokePermissions',
       request,
       metadata,
-      methodInfo_AuthService_DeletePermissions,
+      methodInfo_AuthService_RevokePermissions,
       callback);
 };
 
 
 /**
- * @param {!proto.metrixio.DeletePermissionsRequest} request The
+ * @param {!proto.metrixio.RevokePermissionsRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.metrixio.DeletePermissionsRequest>}
+ * @return {!Promise<!proto.metrixio.RevokePermissionsRequest>}
  *     The XHR Node Readable Stream
  */
-proto.metrixio.AuthServicePromiseClient.prototype.deletePermissions =
+proto.metrixio.AuthServicePromiseClient.prototype.revokePermissions =
     function(request, metadata) {
   return new Promise((resolve, reject) => {
-    this.delegateClient_.deletePermissions(
+    this.delegateClient_.revokePermissions(
       request, metadata, (error, response) => {
         error ? reject(error) : resolve(response);
       });
@@ -523,52 +523,52 @@ proto.metrixio.AuthServicePromiseClient.prototype.deleteSubject =
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.metrixio.CreatePermissionInheritanceRequest,
- *   !proto.metrixio.CreatePermissionInheritanceResponse>}
+ *   !proto.metrixio.InheritPermissionsRequest,
+ *   !proto.metrixio.InheritPermissionsResponse>}
  */
-const methodInfo_AuthService_CreatePermissionInheritance = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.metrixio.CreatePermissionInheritanceResponse,
-  /** @param {!proto.metrixio.CreatePermissionInheritanceRequest} request */
+const methodInfo_AuthService_InheritPermissions = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.metrixio.InheritPermissionsResponse,
+  /** @param {!proto.metrixio.InheritPermissionsRequest} request */
   function(request) {
     return request.serializeBinary();
   },
-  proto.metrixio.CreatePermissionInheritanceResponse.deserializeBinary
+  proto.metrixio.InheritPermissionsResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.metrixio.CreatePermissionInheritanceRequest} request The
+ * @param {!proto.metrixio.InheritPermissionsRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.metrixio.CreatePermissionInheritanceResponse)}
+ * @param {function(?grpc.web.Error, ?proto.metrixio.InheritPermissionsResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.metrixio.CreatePermissionInheritanceResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.metrixio.InheritPermissionsResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.metrixio.AuthServiceClient.prototype.createPermissionInheritance =
+proto.metrixio.AuthServiceClient.prototype.inheritPermissions =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/metrixio.AuthService/CreatePermissionInheritance',
+      '/metrixio.AuthService/InheritPermissions',
       request,
       metadata,
-      methodInfo_AuthService_CreatePermissionInheritance,
+      methodInfo_AuthService_InheritPermissions,
       callback);
 };
 
 
 /**
- * @param {!proto.metrixio.CreatePermissionInheritanceRequest} request The
+ * @param {!proto.metrixio.InheritPermissionsRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.metrixio.CreatePermissionInheritanceResponse>}
+ * @return {!Promise<!proto.metrixio.InheritPermissionsResponse>}
  *     The XHR Node Readable Stream
  */
-proto.metrixio.AuthServicePromiseClient.prototype.createPermissionInheritance =
+proto.metrixio.AuthServicePromiseClient.prototype.inheritPermissions =
     function(request, metadata) {
   return new Promise((resolve, reject) => {
-    this.delegateClient_.createPermissionInheritance(
+    this.delegateClient_.inheritPermissions(
       request, metadata, (error, response) => {
         error ? reject(error) : resolve(response);
       });
@@ -579,52 +579,52 @@ proto.metrixio.AuthServicePromiseClient.prototype.createPermissionInheritance =
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.metrixio.DeletePermissionInheritanceRequest,
- *   !proto.metrixio.DeletePermissionInheritanceResponse>}
+ *   !proto.metrixio.DisinheritPermissionsRequest,
+ *   !proto.metrixio.DisinheritPermissionsResponse>}
  */
-const methodInfo_AuthService_DeletePermissionInheritance = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.metrixio.DeletePermissionInheritanceResponse,
-  /** @param {!proto.metrixio.DeletePermissionInheritanceRequest} request */
+const methodInfo_AuthService_DisinheritPermissions = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.metrixio.DisinheritPermissionsResponse,
+  /** @param {!proto.metrixio.DisinheritPermissionsRequest} request */
   function(request) {
     return request.serializeBinary();
   },
-  proto.metrixio.DeletePermissionInheritanceResponse.deserializeBinary
+  proto.metrixio.DisinheritPermissionsResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.metrixio.DeletePermissionInheritanceRequest} request The
+ * @param {!proto.metrixio.DisinheritPermissionsRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.metrixio.DeletePermissionInheritanceResponse)}
+ * @param {function(?grpc.web.Error, ?proto.metrixio.DisinheritPermissionsResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.metrixio.DeletePermissionInheritanceResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.metrixio.DisinheritPermissionsResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.metrixio.AuthServiceClient.prototype.deletePermissionInheritance =
+proto.metrixio.AuthServiceClient.prototype.disinheritPermissions =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/metrixio.AuthService/DeletePermissionInheritance',
+      '/metrixio.AuthService/DisinheritPermissions',
       request,
       metadata,
-      methodInfo_AuthService_DeletePermissionInheritance,
+      methodInfo_AuthService_DisinheritPermissions,
       callback);
 };
 
 
 /**
- * @param {!proto.metrixio.DeletePermissionInheritanceRequest} request The
+ * @param {!proto.metrixio.DisinheritPermissionsRequest} request The
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.metrixio.DeletePermissionInheritanceResponse>}
+ * @return {!Promise<!proto.metrixio.DisinheritPermissionsResponse>}
  *     The XHR Node Readable Stream
  */
-proto.metrixio.AuthServicePromiseClient.prototype.deletePermissionInheritance =
+proto.metrixio.AuthServicePromiseClient.prototype.disinheritPermissions =
     function(request, metadata) {
   return new Promise((resolve, reject) => {
-    this.delegateClient_.deletePermissionInheritance(
+    this.delegateClient_.disinheritPermissions(
       request, metadata, (error, response) => {
         error ? reject(error) : resolve(response);
       });

@@ -22,102 +22,6 @@ export namespace AccessToken {
   }
 }
 
-export class CreatePermissionInheritanceRequest {
-  constructor ();
-  getSubject(): string;
-  setSubject(a: string): void;
-  getParentSubject(): string;
-  setParentSubject(a: string): void;
-  toObject(): CreatePermissionInheritanceRequest.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => CreatePermissionInheritanceRequest;
-}
-
-export namespace CreatePermissionInheritanceRequest {
-  export type AsObject = {
-    Subject: string;
-    ParentSubject: string;
-  }
-}
-
-export class CreatePermissionInheritanceResponse {
-  constructor ();
-  toObject(): CreatePermissionInheritanceResponse.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => CreatePermissionInheritanceResponse;
-}
-
-export namespace CreatePermissionInheritanceResponse {
-  export type AsObject = {
-  }
-}
-
-export class CreatePermissionsRequest {
-  constructor ();
-  getSubject(): string;
-  setSubject(a: string): void;
-  getPermissionsList(): Permission[];
-  setPermissionsList(a: Permission[]): void;
-  toObject(): CreatePermissionsRequest.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => CreatePermissionsRequest;
-}
-
-export namespace CreatePermissionsRequest {
-  export type AsObject = {
-    Subject: string;
-    PermissionsList: Permission[];
-  }
-}
-
-export class DeletePermissionInheritanceRequest {
-  constructor ();
-  getSubject(): string;
-  setSubject(a: string): void;
-  getParentSubject(): string;
-  setParentSubject(a: string): void;
-  toObject(): DeletePermissionInheritanceRequest.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => DeletePermissionInheritanceRequest;
-}
-
-export namespace DeletePermissionInheritanceRequest {
-  export type AsObject = {
-    Subject: string;
-    ParentSubject: string;
-  }
-}
-
-export class DeletePermissionInheritanceResponse {
-  constructor ();
-  toObject(): DeletePermissionInheritanceResponse.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => DeletePermissionInheritanceResponse;
-}
-
-export namespace DeletePermissionInheritanceResponse {
-  export type AsObject = {
-  }
-}
-
-export class DeletePermissionsRequest {
-  constructor ();
-  getSubject(): string;
-  setSubject(a: string): void;
-  getPermissionsList(): Permission[];
-  setPermissionsList(a: Permission[]): void;
-  toObject(): DeletePermissionsRequest.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => DeletePermissionsRequest;
-}
-
-export namespace DeletePermissionsRequest {
-  export type AsObject = {
-    Subject: string;
-    PermissionsList: Permission[];
-  }
-}
-
 export class DeleteSubjectRequest {
   constructor ();
   getSubject(): string;
@@ -145,6 +49,36 @@ export namespace DeleteSubjectResponse {
   }
 }
 
+export class DisinheritPermissionsRequest {
+  constructor ();
+  getSubject(): string;
+  setSubject(a: string): void;
+  getParentSubject(): string;
+  setParentSubject(a: string): void;
+  toObject(): DisinheritPermissionsRequest.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => DisinheritPermissionsRequest;
+}
+
+export namespace DisinheritPermissionsRequest {
+  export type AsObject = {
+    Subject: string;
+    ParentSubject: string;
+  }
+}
+
+export class DisinheritPermissionsResponse {
+  constructor ();
+  toObject(): DisinheritPermissionsResponse.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => DisinheritPermissionsResponse;
+}
+
+export namespace DisinheritPermissionsResponse {
+  export type AsObject = {
+  }
+}
+
 export class GetPermissionsRequest {
   constructor ();
   getSubject(): string;
@@ -157,6 +91,24 @@ export class GetPermissionsRequest {
 export namespace GetPermissionsRequest {
   export type AsObject = {
     Subject: string;
+  }
+}
+
+export class GrantPermissionsRequest {
+  constructor ();
+  getSubject(): string;
+  setSubject(a: string): void;
+  getPermissionsList(): Permission[];
+  setPermissionsList(a: Permission[]): void;
+  toObject(): GrantPermissionsRequest.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => GrantPermissionsRequest;
+}
+
+export namespace GrantPermissionsRequest {
+  export type AsObject = {
+    Subject: string;
+    PermissionsList: Permission[];
   }
 }
 
@@ -193,6 +145,36 @@ export namespace HasPermissionsResponse {
   export type AsObject = {
     HasPermissions: boolean;
     MissingPermissionsList: Permission[];
+  }
+}
+
+export class InheritPermissionsRequest {
+  constructor ();
+  getSubject(): string;
+  setSubject(a: string): void;
+  getParentSubject(): string;
+  setParentSubject(a: string): void;
+  toObject(): InheritPermissionsRequest.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => InheritPermissionsRequest;
+}
+
+export namespace InheritPermissionsRequest {
+  export type AsObject = {
+    Subject: string;
+    ParentSubject: string;
+  }
+}
+
+export class InheritPermissionsResponse {
+  constructor ();
+  toObject(): InheritPermissionsResponse.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => InheritPermissionsResponse;
+}
+
+export namespace InheritPermissionsResponse {
+  export type AsObject = {
   }
 }
 
@@ -295,6 +277,24 @@ export class PermissionAssignments {
 }
 
 export namespace PermissionAssignments {
+  export type AsObject = {
+    Subject: string;
+    PermissionsList: Permission[];
+  }
+}
+
+export class RevokePermissionsRequest {
+  constructor ();
+  getSubject(): string;
+  setSubject(a: string): void;
+  getPermissionsList(): Permission[];
+  setPermissionsList(a: Permission[]): void;
+  toObject(): RevokePermissionsRequest.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => RevokePermissionsRequest;
+}
+
+export namespace RevokePermissionsRequest {
   export type AsObject = {
     Subject: string;
     PermissionsList: Permission[];

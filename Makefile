@@ -1,4 +1,4 @@
-.PHONY: protojs protogo mockgen
+.PHONY: gen protojs protogo mockgen
 
 protogo:
 	find ./golang -type f -name '*.go'
