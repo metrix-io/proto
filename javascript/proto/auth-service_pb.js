@@ -30,6 +30,7 @@ goog.exportSymbol('proto.metrixio.LogoutRequest', null, global);
 goog.exportSymbol('proto.metrixio.LogoutResponse', null, global);
 goog.exportSymbol('proto.metrixio.Permission', null, global);
 goog.exportSymbol('proto.metrixio.PermissionAssignments', null, global);
+goog.exportSymbol('proto.metrixio.PermissionResponse', null, global);
 goog.exportSymbol('proto.metrixio.RevokePermissionsRequest', null, global);
 goog.exportSymbol('proto.metrixio.RevokePermissionsResponse', null, global);
 
@@ -1115,6 +1116,250 @@ proto.metrixio.Permission.prototype.clearOperationsList = function() {
  * @extends {jspb.Message}
  * @constructor
  */
+proto.metrixio.PermissionResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.metrixio.PermissionResponse.repeatedFields_, null);
+};
+goog.inherits(proto.metrixio.PermissionResponse, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.metrixio.PermissionResponse.displayName = 'proto.metrixio.PermissionResponse';
+}
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.metrixio.PermissionResponse.repeatedFields_ = [2];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.metrixio.PermissionResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.metrixio.PermissionResponse.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.metrixio.PermissionResponse} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.metrixio.PermissionResponse.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    resource: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    operationsList: jspb.Message.getRepeatedField(msg, 2),
+    inheritedFrom: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    createdAt: jspb.Message.getFieldWithDefault(msg, 4, 0)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.metrixio.PermissionResponse}
+ */
+proto.metrixio.PermissionResponse.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.metrixio.PermissionResponse;
+  return proto.metrixio.PermissionResponse.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.metrixio.PermissionResponse} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.metrixio.PermissionResponse}
+ */
+proto.metrixio.PermissionResponse.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setResource(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addOperations(value);
+      break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setInheritedFrom(value);
+      break;
+    case 4:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setCreatedAt(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.metrixio.PermissionResponse.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.metrixio.PermissionResponse.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.metrixio.PermissionResponse} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.metrixio.PermissionResponse.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getResource();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getOperationsList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      2,
+      f
+    );
+  }
+  f = message.getInheritedFrom();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
+  f = message.getCreatedAt();
+  if (f !== 0) {
+    writer.writeInt64(
+      4,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional string resource = 1;
+ * @return {string}
+ */
+proto.metrixio.PermissionResponse.prototype.getResource = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/** @param {string} value */
+proto.metrixio.PermissionResponse.prototype.setResource = function(value) {
+  jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * repeated string operations = 2;
+ * @return {!Array<string>}
+ */
+proto.metrixio.PermissionResponse.prototype.getOperationsList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 2));
+};
+
+
+/** @param {!Array<string>} value */
+proto.metrixio.PermissionResponse.prototype.setOperationsList = function(value) {
+  jspb.Message.setField(this, 2, value || []);
+};
+
+
+/**
+ * @param {!string} value
+ * @param {number=} opt_index
+ */
+proto.metrixio.PermissionResponse.prototype.addOperations = function(value, opt_index) {
+  jspb.Message.addToRepeatedField(this, 2, value, opt_index);
+};
+
+
+proto.metrixio.PermissionResponse.prototype.clearOperationsList = function() {
+  this.setOperationsList([]);
+};
+
+
+/**
+ * optional string inherited_from = 3;
+ * @return {string}
+ */
+proto.metrixio.PermissionResponse.prototype.getInheritedFrom = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/** @param {string} value */
+proto.metrixio.PermissionResponse.prototype.setInheritedFrom = function(value) {
+  jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+/**
+ * optional int64 created_at = 4;
+ * @return {number}
+ */
+proto.metrixio.PermissionResponse.prototype.getCreatedAt = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+};
+
+
+/** @param {number} value */
+proto.metrixio.PermissionResponse.prototype.setCreatedAt = function(value) {
+  jspb.Message.setProto3IntField(this, 4, value);
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
 proto.metrixio.PermissionAssignments = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, proto.metrixio.PermissionAssignments.repeatedFields_, null);
 };
@@ -1160,7 +1405,7 @@ proto.metrixio.PermissionAssignments.toObject = function(includeInstance, msg) {
   var f, obj = {
     subject: jspb.Message.getFieldWithDefault(msg, 1, ""),
     permissionsList: jspb.Message.toObjectList(msg.getPermissionsList(),
-    proto.metrixio.Permission.toObject, includeInstance)
+    proto.metrixio.PermissionResponse.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -1202,8 +1447,8 @@ proto.metrixio.PermissionAssignments.deserializeBinaryFromReader = function(msg,
       msg.setSubject(value);
       break;
     case 2:
-      var value = new proto.metrixio.Permission;
-      reader.readMessage(value,proto.metrixio.Permission.deserializeBinaryFromReader);
+      var value = new proto.metrixio.PermissionResponse;
+      reader.readMessage(value,proto.metrixio.PermissionResponse.deserializeBinaryFromReader);
       msg.addPermissions(value);
       break;
     default:
@@ -1247,7 +1492,7 @@ proto.metrixio.PermissionAssignments.serializeBinaryToWriter = function(message,
     writer.writeRepeatedMessage(
       2,
       f,
-      proto.metrixio.Permission.serializeBinaryToWriter
+      proto.metrixio.PermissionResponse.serializeBinaryToWriter
     );
   }
 };
@@ -1269,28 +1514,28 @@ proto.metrixio.PermissionAssignments.prototype.setSubject = function(value) {
 
 
 /**
- * repeated Permission permissions = 2;
- * @return {!Array<!proto.metrixio.Permission>}
+ * repeated PermissionResponse permissions = 2;
+ * @return {!Array<!proto.metrixio.PermissionResponse>}
  */
 proto.metrixio.PermissionAssignments.prototype.getPermissionsList = function() {
-  return /** @type{!Array<!proto.metrixio.Permission>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.metrixio.Permission, 2));
+  return /** @type{!Array<!proto.metrixio.PermissionResponse>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.metrixio.PermissionResponse, 2));
 };
 
 
-/** @param {!Array<!proto.metrixio.Permission>} value */
+/** @param {!Array<!proto.metrixio.PermissionResponse>} value */
 proto.metrixio.PermissionAssignments.prototype.setPermissionsList = function(value) {
   jspb.Message.setRepeatedWrapperField(this, 2, value);
 };
 
 
 /**
- * @param {!proto.metrixio.Permission=} opt_value
+ * @param {!proto.metrixio.PermissionResponse=} opt_value
  * @param {number=} opt_index
- * @return {!proto.metrixio.Permission}
+ * @return {!proto.metrixio.PermissionResponse}
  */
 proto.metrixio.PermissionAssignments.prototype.addPermissions = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 2, opt_value, proto.metrixio.Permission, opt_index);
+  return jspb.Message.addToRepeatedWrapperField(this, 2, opt_value, proto.metrixio.PermissionResponse, opt_index);
 };
 
 
@@ -2502,7 +2747,7 @@ proto.metrixio.InheritPermissionsRequest.prototype.toObject = function(opt_inclu
  */
 proto.metrixio.InheritPermissionsRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    subject: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    childSubject: jspb.Message.getFieldWithDefault(msg, 1, ""),
     parentSubject: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
@@ -2542,7 +2787,7 @@ proto.metrixio.InheritPermissionsRequest.deserializeBinaryFromReader = function(
     switch (field) {
     case 1:
       var value = /** @type {string} */ (reader.readString());
-      msg.setSubject(value);
+      msg.setChildSubject(value);
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
@@ -2577,7 +2822,7 @@ proto.metrixio.InheritPermissionsRequest.prototype.serializeBinary = function() 
  */
 proto.metrixio.InheritPermissionsRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getSubject();
+  f = message.getChildSubject();
   if (f.length > 0) {
     writer.writeString(
       1,
@@ -2595,16 +2840,16 @@ proto.metrixio.InheritPermissionsRequest.serializeBinaryToWriter = function(mess
 
 
 /**
- * optional string subject = 1;
+ * optional string child_subject = 1;
  * @return {string}
  */
-proto.metrixio.InheritPermissionsRequest.prototype.getSubject = function() {
+proto.metrixio.InheritPermissionsRequest.prototype.getChildSubject = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
 /** @param {string} value */
-proto.metrixio.InheritPermissionsRequest.prototype.setSubject = function(value) {
+proto.metrixio.InheritPermissionsRequest.prototype.setChildSubject = function(value) {
   jspb.Message.setProto3StringField(this, 1, value);
 };
 
@@ -2787,7 +3032,7 @@ proto.metrixio.DisinheritPermissionsRequest.prototype.toObject = function(opt_in
  */
 proto.metrixio.DisinheritPermissionsRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    subject: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    childSubject: jspb.Message.getFieldWithDefault(msg, 1, ""),
     parentSubject: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
@@ -2827,7 +3072,7 @@ proto.metrixio.DisinheritPermissionsRequest.deserializeBinaryFromReader = functi
     switch (field) {
     case 1:
       var value = /** @type {string} */ (reader.readString());
-      msg.setSubject(value);
+      msg.setChildSubject(value);
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
@@ -2862,7 +3107,7 @@ proto.metrixio.DisinheritPermissionsRequest.prototype.serializeBinary = function
  */
 proto.metrixio.DisinheritPermissionsRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getSubject();
+  f = message.getChildSubject();
   if (f.length > 0) {
     writer.writeString(
       1,
@@ -2880,16 +3125,16 @@ proto.metrixio.DisinheritPermissionsRequest.serializeBinaryToWriter = function(m
 
 
 /**
- * optional string subject = 1;
+ * optional string child_subject = 1;
  * @return {string}
  */
-proto.metrixio.DisinheritPermissionsRequest.prototype.getSubject = function() {
+proto.metrixio.DisinheritPermissionsRequest.prototype.getChildSubject = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
 /** @param {string} value */
-proto.metrixio.DisinheritPermissionsRequest.prototype.setSubject = function(value) {
+proto.metrixio.DisinheritPermissionsRequest.prototype.setChildSubject = function(value) {
   jspb.Message.setProto3StringField(this, 1, value);
 };
 

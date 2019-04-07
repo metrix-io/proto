@@ -18,6 +18,7 @@ import {
   LogoutResponse,
   Permission,
   PermissionAssignments,
+  PermissionResponse,
   RevokePermissionsRequest} from './auth-service_pb';
 
 export class AuthServiceClient {

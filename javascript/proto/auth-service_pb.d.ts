@@ -51,8 +51,8 @@ export namespace DeleteSubjectResponse {
 
 export class DisinheritPermissionsRequest {
   constructor ();
-  getSubject(): string;
-  setSubject(a: string): void;
+  getChildSubject(): string;
+  setChildSubject(a: string): void;
   getParentSubject(): string;
   setParentSubject(a: string): void;
   toObject(): DisinheritPermissionsRequest.AsObject;
@@ -62,7 +62,7 @@ export class DisinheritPermissionsRequest {
 
 export namespace DisinheritPermissionsRequest {
   export type AsObject = {
-    Subject: string;
+    ChildSubject: string;
     ParentSubject: string;
   }
 }
@@ -150,8 +150,8 @@ export namespace HasPermissionsResponse {
 
 export class InheritPermissionsRequest {
   constructor ();
-  getSubject(): string;
-  setSubject(a: string): void;
+  getChildSubject(): string;
+  setChildSubject(a: string): void;
   getParentSubject(): string;
   setParentSubject(a: string): void;
   toObject(): InheritPermissionsRequest.AsObject;
@@ -161,7 +161,7 @@ export class InheritPermissionsRequest {
 
 export namespace InheritPermissionsRequest {
   export type AsObject = {
-    Subject: string;
+    ChildSubject: string;
     ParentSubject: string;
   }
 }
@@ -269,8 +269,8 @@ export class PermissionAssignments {
   constructor ();
   getSubject(): string;
   setSubject(a: string): void;
-  getPermissionsList(): Permission[];
-  setPermissionsList(a: Permission[]): void;
+  getPermissionsList(): PermissionResponse[];
+  setPermissionsList(a: PermissionResponse[]): void;
   toObject(): PermissionAssignments.AsObject;
   serializeBinary(): Uint8Array;
   static deserializeBinary: (bytes: {}) => PermissionAssignments;
@@ -279,7 +279,31 @@ export class PermissionAssignments {
 export namespace PermissionAssignments {
   export type AsObject = {
     Subject: string;
-    PermissionsList: Permission[];
+    PermissionsList: PermissionResponse[];
+  }
+}
+
+export class PermissionResponse {
+  constructor ();
+  getResource(): string;
+  setResource(a: string): void;
+  getOperationsList(): string[];
+  setOperationsList(a: string[]): void;
+  getInheritedFrom(): string;
+  setInheritedFrom(a: string): void;
+  getCreatedAt(): number;
+  setCreatedAt(a: number): void;
+  toObject(): PermissionResponse.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => PermissionResponse;
+}
+
+export namespace PermissionResponse {
+  export type AsObject = {
+    Resource: string;
+    OperationsList: string[];
+    InheritedFrom: string;
+    CreatedAt: number;
   }
 }
 

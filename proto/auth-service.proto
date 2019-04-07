@@ -32,7 +32,7 @@ message AccessToken {
 }
 
 /**
- * A permission specifies a set of operations for a given resource.
+ * A Permission specifies a set of operations for a given resource.
  *
  * A resource name starts with an "mtx:"-prefix followed by a resource identifier
  * usually in the form of "mtx:<resource>:<id>:<subresource>:<subid>".
@@ -42,9 +42,19 @@ message Permission {
     repeated string operations = 2;
 }
 
+/**
+ * The PermissionResponse is similar to a Permission with additional metadata.
+ */
+message PermissionResponse {
+     string resource = 1;
+     repeated string operations = 2;
+     string inherited_from = 3;
+     int64 created_at = 4;
+}
+
 message PermissionAssignments {
     string subject = 1;
-    repeated Permission permissions = 2;
+    repeated PermissionResponse permissions = 2;
 }
 
 message GrantPermissionsRequest {
@@ -76,14 +86,14 @@ message HasPermissionsResponse {
 }
 
 message InheritPermissionsRequest {
-    string subject = 1;
+    string child_subject = 1;
     string parent_subject = 2;
 }
 
 message InheritPermissionsResponse {}
 
 message DisinheritPermissionsRequest {
-    string subject = 1;
+    string child_subject = 1;
     string parent_subject = 2;
 }
 
