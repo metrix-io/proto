@@ -412,15 +412,15 @@ proto.metrixio.AuthServicePromiseClient.prototype.hasPermissions =
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
  *   !proto.metrixio.RevokePermissionsRequest,
- *   !proto.metrixio.RevokePermissionsRequest>}
+ *   !proto.metrixio.RevokePermissionsResponse>}
  */
 const methodInfo_AuthService_RevokePermissions = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.metrixio.RevokePermissionsRequest,
+  proto.metrixio.RevokePermissionsResponse,
   /** @param {!proto.metrixio.RevokePermissionsRequest} request */
   function(request) {
     return request.serializeBinary();
   },
-  proto.metrixio.RevokePermissionsRequest.deserializeBinary
+  proto.metrixio.RevokePermissionsResponse.deserializeBinary
 );
 
 
@@ -429,9 +429,9 @@ const methodInfo_AuthService_RevokePermissions = new grpc.web.AbstractClientBase
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.metrixio.RevokePermissionsRequest)}
+ * @param {function(?grpc.web.Error, ?proto.metrixio.RevokePermissionsResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.metrixio.RevokePermissionsRequest>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.metrixio.RevokePermissionsResponse>|undefined}
  *     The XHR Node Readable Stream
  */
 proto.metrixio.AuthServiceClient.prototype.revokePermissions =
@@ -450,7 +450,7 @@ proto.metrixio.AuthServiceClient.prototype.revokePermissions =
  *     request proto
  * @param {!Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.metrixio.RevokePermissionsRequest>}
+ * @return {!Promise<!proto.metrixio.RevokePermissionsResponse>}
  *     The XHR Node Readable Stream
  */
 proto.metrixio.AuthServicePromiseClient.prototype.revokePermissions =

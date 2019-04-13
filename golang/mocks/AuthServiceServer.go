@@ -219,15 +219,15 @@ func (_m *AuthServiceServer) LogoutAll(_a0 context.Context, _a1 *golang.LogoutAl
 }
 
 // RevokePermissions provides a mock function with given fields: _a0, _a1
-func (_m *AuthServiceServer) RevokePermissions(_a0 context.Context, _a1 *golang.RevokePermissionsRequest) (*golang.RevokePermissionsRequest, error) {
+func (_m *AuthServiceServer) RevokePermissions(_a0 context.Context, _a1 *golang.RevokePermissionsRequest) (*golang.RevokePermissionsResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
-	var r0 *golang.RevokePermissionsRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *golang.RevokePermissionsRequest) *golang.RevokePermissionsRequest); ok {
+	var r0 *golang.RevokePermissionsResponse
+	if rf, ok := ret.Get(0).(func(context.Context, *golang.RevokePermissionsRequest) *golang.RevokePermissionsResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*golang.RevokePermissionsRequest)
+			r0 = ret.Get(0).(*golang.RevokePermissionsResponse)
 		}
 	}
 

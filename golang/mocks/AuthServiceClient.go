@@ -283,7 +283,7 @@ func (_m *AuthServiceClient) LogoutAll(ctx context.Context, in *golang.LogoutAll
 }
 
 // RevokePermissions provides a mock function with given fields: ctx, in, opts
-func (_m *AuthServiceClient) RevokePermissions(ctx context.Context, in *golang.RevokePermissionsRequest, opts ...grpc.CallOption) (*golang.RevokePermissionsRequest, error) {
+func (_m *AuthServiceClient) RevokePermissions(ctx context.Context, in *golang.RevokePermissionsRequest, opts ...grpc.CallOption) (*golang.RevokePermissionsResponse, error) {
 	_va := make([]interface{}, len(opts))
 	for _i := range opts {
 		_va[_i] = opts[_i]
@@ -293,12 +293,12 @@ func (_m *AuthServiceClient) RevokePermissions(ctx context.Context, in *golang.R
 	_ca = append(_ca, _va...)
 	ret := _m.Called(_ca...)
 
-	var r0 *golang.RevokePermissionsRequest
-	if rf, ok := ret.Get(0).(func(context.Context, *golang.RevokePermissionsRequest, ...grpc.CallOption) *golang.RevokePermissionsRequest); ok {
+	var r0 *golang.RevokePermissionsResponse
+	if rf, ok := ret.Get(0).(func(context.Context, *golang.RevokePermissionsRequest, ...grpc.CallOption) *golang.RevokePermissionsResponse); ok {
 		r0 = rf(ctx, in, opts...)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*golang.RevokePermissionsRequest)
+			r0 = ret.Get(0).(*golang.RevokePermissionsResponse)
 		}
 	}
 

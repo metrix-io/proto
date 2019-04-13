@@ -131,14 +131,21 @@ service AuthService {
     rpc LogoutAll (LogoutAllRequest) returns (LogoutAllResponse) {}
 
     /**
-     * CreatePermission adds one or more permissions to a subject.
+     * GrantPermissions adds one or more permissions to a subject.
      *
      * A subject can either be a user account, organization, role or other and must
      * be a valid resource name, e.g. "mtx:account:g921sdfb1lkg".
      *
+     * Permissions can only be granted if the logged in subject has:
+     * - the "grant_permissions" operation on the permission's resource,
+     * - and the permissions being granted.
+     *
+     * As a result even if a user has the "grant_permissions" operation he or she
+     * may not be allowed to grant a certain permission to someone else.
+     *
      * Errors:
      * - PERMISSION_DENIED if the logged in subject has insufficient privileges
-     *   to read subject's permissions.
+     *   to grant subject's permissions.
      */
     rpc GrantPermissions (GrantPermissionsRequest) returns (PermissionAssignments) {}
 
@@ -164,11 +171,20 @@ service AuthService {
     /**
      * RevokePermissionsRequest removes one or more permissions from a subject.
      *
+     * Permissions can only be revoked if the logged in subject has:
+     * - the "revoke_permissions" operation on the permission's resource,
+     * - and the permissions being revoked.
+     *
+     * As a result even if a user has the "revoke_permissions" operation he or she
+     * may not be allowed to revoke a certain permission from someone else.
+     *
+     * Any permissions that don't exist are ignored.
+     *
      * Errors:
      * - PERMISSION_DENIED if the logged in subject has insufficient privileges to
      *   revoke subject's permissions.
      */
-    rpc RevokePermissions (RevokePermissionsRequest) returns (RevokePermissionsRequest) {}
+    rpc RevokePermissions (RevokePermissionsRequest) returns (RevokePermissionsResponse) {}
 
     /**
      * DeleteSubject removes any permissions associated with the subject.
@@ -189,6 +205,15 @@ service AuthService {
      * InheritPermissions establishes a permission inheritance relationship
      * between two subjects. A common example is a user account being part of
      * a group.
+     *
+     * A subject inherits the permissions from the parent subject but not from a
+     * grandparent. E.g. inheritance is limited to one level up or down.
+     *
+     * Creating an inheritance relationship requires the "grant_permissions"
+     * permission on the parent subject.
+     *
+     * All permissions are inherited from the parent subject including any root
+     * permissions.
      *
      * Errors:
      * - PERMISSION_DENIED if the logged in subject does not have permission to grant

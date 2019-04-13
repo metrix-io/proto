@@ -19,7 +19,8 @@ import {
   Permission,
   PermissionAssignments,
   PermissionResponse,
-  RevokePermissionsRequest} from './auth-service_pb';
+  RevokePermissionsRequest,
+  RevokePermissionsResponse} from './auth-service_pb';
 
 export class AuthServiceClient {
   constructor (hostname: string,
@@ -72,8 +73,8 @@ export class AuthServiceClient {
     request: RevokePermissionsRequest,
     metadata: grpcWeb.Metadata,
     callback: (err: grpcWeb.Error,
-               response: RevokePermissionsRequest) => void
-  ): grpcWeb.ClientReadableStream<RevokePermissionsRequest>;
+               response: RevokePermissionsResponse) => void
+  ): grpcWeb.ClientReadableStream<RevokePermissionsResponse>;
 
   deleteSubject(
     request: DeleteSubjectRequest,
@@ -136,7 +137,7 @@ export class AuthServicePromiseClient {
   revokePermissions(
     request: RevokePermissionsRequest,
     metadata: grpcWeb.Metadata
-  ): Promise<RevokePermissionsRequest>;
+  ): Promise<RevokePermissionsResponse>;
 
   deleteSubject(
     request: DeleteSubjectRequest,

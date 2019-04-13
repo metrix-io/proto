@@ -325,3 +325,15 @@ export namespace RevokePermissionsRequest {
   }
 }
 
+export class RevokePermissionsResponse {
+  constructor ();
+  toObject(): RevokePermissionsResponse.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => RevokePermissionsResponse;
+}
+
+export namespace RevokePermissionsResponse {
+  export type AsObject = {
+  }
+}
+
