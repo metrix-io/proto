@@ -299,6 +299,62 @@ proto.metrixio.AccountServicePromiseClient.prototype.checkCredentials =
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.metrixio.CheckResetTokenRequest,
+ *   !proto.metrixio.CheckResetTokenResponse>}
+ */
+const methodInfo_AccountService_CheckResetToken = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.metrixio.CheckResetTokenResponse,
+  /** @param {!proto.metrixio.CheckResetTokenRequest} request */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.metrixio.CheckResetTokenResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.metrixio.CheckResetTokenRequest} request The
+ *     request proto
+ * @param {!Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.metrixio.CheckResetTokenResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.metrixio.CheckResetTokenResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.metrixio.AccountServiceClient.prototype.checkResetToken =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/metrixio.AccountService/CheckResetToken',
+      request,
+      metadata,
+      methodInfo_AccountService_CheckResetToken,
+      callback);
+};
+
+
+/**
+ * @param {!proto.metrixio.CheckResetTokenRequest} request The
+ *     request proto
+ * @param {!Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.metrixio.CheckResetTokenResponse>}
+ *     The XHR Node Readable Stream
+ */
+proto.metrixio.AccountServicePromiseClient.prototype.checkResetToken =
+    function(request, metadata) {
+  return new Promise((resolve, reject) => {
+    this.delegateClient_.checkResetToken(
+      request, metadata, (error, response) => {
+        error ? reject(error) : resolve(response);
+      });
+  });
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
  *   !proto.metrixio.GetAccountByIDRequest,
  *   !proto.metrixio.Account>}
  */

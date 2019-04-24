@@ -121,6 +121,36 @@ export namespace CheckEmailResponse {
   }
 }
 
+export class CheckResetTokenRequest {
+  constructor ();
+  getResetToken(): string;
+  setResetToken(a: string): void;
+  toObject(): CheckResetTokenRequest.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => CheckResetTokenRequest;
+}
+
+export namespace CheckResetTokenRequest {
+  export type AsObject = {
+    ResetToken: string;
+  }
+}
+
+export class CheckResetTokenResponse {
+  constructor ();
+  getIsValid(): boolean;
+  setIsValid(a: boolean): void;
+  toObject(): CheckResetTokenResponse.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => CheckResetTokenResponse;
+}
+
+export namespace CheckResetTokenResponse {
+  export type AsObject = {
+    IsValid: boolean;
+  }
+}
+
 export class CheckUsernameRequest {
   constructor ();
   getUsername(): string;

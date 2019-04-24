@@ -161,6 +161,14 @@ message ForgotPasswordRequest {
 
 message ForgotPasswordResponse {}
 
+message CheckResetTokenRequest {
+  string reset_token = 1;
+}
+
+message CheckResetTokenResponse {
+  bool is_valid = 1;
+}
+
 message ResetPasswordRequest {
   string reset_token = 1;
   string new_password = 2;
@@ -243,6 +251,12 @@ service AccountService {
    * - UNAUTHENTICATED if credentials are invalid.
    */
   rpc CheckCredentials (CheckCredentialsRequest) returns (Account) {}
+
+  /**
+   * CheckResetToken checks whether a reset token is valid. A reset token is invalid
+   * if it does not exist, has expired or has already been used.
+   */
+  rpc CheckResetToken (CheckResetTokenRequest) returns (CheckResetTokenResponse) {}
 
   /**
    * Returns an account and profile by it's ID.

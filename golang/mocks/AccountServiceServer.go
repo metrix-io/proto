@@ -80,6 +80,29 @@ func (_m *AccountServiceServer) CheckEmail(_a0 context.Context, _a1 *golang.Chec
 	return r0, r1
 }
 
+// CheckResetToken provides a mock function with given fields: _a0, _a1
+func (_m *AccountServiceServer) CheckResetToken(_a0 context.Context, _a1 *golang.CheckResetTokenRequest) (*golang.CheckResetTokenResponse, error) {
+	ret := _m.Called(_a0, _a1)
+
+	var r0 *golang.CheckResetTokenResponse
+	if rf, ok := ret.Get(0).(func(context.Context, *golang.CheckResetTokenRequest) *golang.CheckResetTokenResponse); ok {
+		r0 = rf(_a0, _a1)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*golang.CheckResetTokenResponse)
+		}
+	}
+
+	var r1 error
+	if rf, ok := ret.Get(1).(func(context.Context, *golang.CheckResetTokenRequest) error); ok {
+		r1 = rf(_a0, _a1)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
 // CheckUsername provides a mock function with given fields: _a0, _a1
 func (_m *AccountServiceServer) CheckUsername(_a0 context.Context, _a1 *golang.CheckUsernameRequest) (*golang.CheckUsernameResponse, error) {
 	ret := _m.Called(_a0, _a1)
