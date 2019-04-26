@@ -24,6 +24,5 @@ accountService.createAccount(req, {}).then((res) => {
 ## Maintenance and design notes
 
 * Run the makefile from the root directory to generate javascript code and typescript definitions. Because typescript support is somewhat experimental only "commonjs+dts" works properly, the "typescript" method works only partially and should be avoided for now.
-* Run the `npm run build` that renames the generated files and moves them to the root dir.
-* All services are exported in the same module as naming conflicts should be resolved regardless.
-* While I've attempted to setup a npm run buildscript, it's extremely tricky to get protoc compile directories well (see [here](https://github.com/protocolbuffers/protobuf/issues/3028) for an example).
+* All services are exported in the same module. Naming conflicts should be prevented regardless.
+* After several attempts to create an npm run buildscript, it turns out it is extremely tricky to get protoc compile directories properly (see [here](https://github.com/protocolbuffers/protobuf/issues/3028) for an example). The current setup is the easiest to manage I found to manage thus far.

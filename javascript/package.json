@@ -4,9 +4,6 @@
   "private": false,
   "description": "Protobuf and gRPC-web definitions for metrix.io services",
   "types": "dist/index.d.ts",
-  "scripts": {
-    "build": "ts-node scripts/copy-and-rename.ts"
-  },
   "author": "Niels Krijger <niels@metrix.io>",
   "license": "ISC",
   "dependencies": {
