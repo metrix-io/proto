@@ -7,11 +7,11 @@
   "author": "Niels Krijger <niels@metrix.io>",
   "license": "ISC",
   "dependencies": {
-    "google-protobuf": "^3.7.0-rc.3",
-    "grpc-web": "^1.0.3"
+    "google-protobuf": "^3.8.0",
+    "grpc-web": "^1.0.4"
   },
   "devDependencies": {
-    "ts-node": "^8.0.2",
-    "typescript": "^3.3.3333"
+    "ts-node": "^8.3.0",
+    "typescript": "^3.5.2"
   }
 }
