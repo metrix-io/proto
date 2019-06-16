@@ -17,5 +17,5 @@ To publish any changes do the following:
 $ make protojs
 $ cd ./javascript
 $ npm version patch // to increment the patch version.
-$ npm release // push to npm
+$ npm publish // push to npm
 ```
