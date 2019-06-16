@@ -1,230 +1,308 @@
-export class Account {
-  constructor ();
+import * as jspb from "google-protobuf"
+
+export class Account extends jspb.Message {
   getId(): string;
-  setId(a: string): void;
+  setId(value: string): void;
+
   getSubject(): string;
-  setSubject(a: string): void;
+  setSubject(value: string): void;
+
   getUsername(): string;
-  setUsername(a: string): void;
+  setUsername(value: string): void;
+
   getEmail(): string;
-  setEmail(a: string): void;
+  setEmail(value: string): void;
+
   getEmailVerified(): boolean;
-  setEmailVerified(a: boolean): void;
-  getProfile(): Profile;
-  setProfile(a: Profile): void;
+  setEmailVerified(value: boolean): void;
+
+  getProfile(): Profile | undefined;
+  setProfile(value?: Profile): void;
+  hasProfile(): boolean;
+  clearProfile(): void;
+
   getPhoneNumber(): string;
-  setPhoneNumber(a: string): void;
+  setPhoneNumber(value: string): void;
+
   getPhoneNumberVerified(): boolean;
-  setPhoneNumberVerified(a: boolean): void;
+  setPhoneNumberVerified(value: boolean): void;
+
   getCreatedAt(): number;
-  setCreatedAt(a: number): void;
+  setCreatedAt(value: number): void;
+
   getUpdatedAt(): number;
-  setUpdatedAt(a: number): void;
+  setUpdatedAt(value: number): void;
+
   getCancelledAt(): number;
-  setCancelledAt(a: number): void;
+  setCancelledAt(value: number): void;
+
   getLastLoginAt(): number;
-  setLastLoginAt(a: number): void;
-  toObject(): Account.AsObject;
+  setLastLoginAt(value: number): void;
+
   serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => Account;
+  toObject(includeInstance?: boolean): Account.AsObject;
+  static toObject(includeInstance: boolean, msg: Account): Account.AsObject;
+  static serializeBinaryToWriter(message: Account, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Account;
+  static deserializeBinaryFromReader(message: Account, reader: jspb.BinaryReader): Account;
 }
 
 export namespace Account {
   export type AsObject = {
-    Id: string;
-    Subject: string;
-    Username: string;
-    Email: string;
-    EmailVerified: boolean;
-    Profile: Profile;
-    PhoneNumber: string;
-    PhoneNumberVerified: boolean;
-    CreatedAt: number;
-    UpdatedAt: number;
-    CancelledAt: number;
-    LastLoginAt: number;
+    id: string,
+    subject: string,
+    username: string,
+    email: string,
+    emailVerified: boolean,
+    profile?: Profile.AsObject,
+    phoneNumber: string,
+    phoneNumberVerified: boolean,
+    createdAt: number,
+    updatedAt: number,
+    cancelledAt: number,
+    lastLoginAt: number,
   }
 }
 
-export class CancelAccountRequest {
-  constructor ();
+export class Profile extends jspb.Message {
+  getName(): string;
+  setName(value: string): void;
+
+  getFirstName(): string;
+  setFirstName(value: string): void;
+
+  getLastName(): string;
+  setLastName(value: string): void;
+
+  getMiddleName(): string;
+  setMiddleName(value: string): void;
+
+  getNickname(): string;
+  setNickname(value: string): void;
+
+  getProfile(): string;
+  setProfile(value: string): void;
+
+  getPicture(): string;
+  setPicture(value: string): void;
+
+  getWebsite(): string;
+  setWebsite(value: string): void;
+
+  getGender(): string;
+  setGender(value: string): void;
+
+  getBirthdate(): string;
+  setBirthdate(value: string): void;
+
+  getZoneinfo(): string;
+  setZoneinfo(value: string): void;
+
+  getLocale(): string;
+  setLocale(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Profile.AsObject;
+  static toObject(includeInstance: boolean, msg: Profile): Profile.AsObject;
+  static serializeBinaryToWriter(message: Profile, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Profile;
+  static deserializeBinaryFromReader(message: Profile, reader: jspb.BinaryReader): Profile;
+}
+
+export namespace Profile {
+  export type AsObject = {
+    name: string,
+    firstName: string,
+    lastName: string,
+    middleName: string,
+    nickname: string,
+    profile: string,
+    picture: string,
+    website: string,
+    gender: string,
+    birthdate: string,
+    zoneinfo: string,
+    locale: string,
+  }
+}
+
+export class Email extends jspb.Message {
+  getId(): string;
+  setId(value: string): void;
+
   getAccountId(): string;
-  setAccountId(a: string): void;
-  toObject(): CancelAccountRequest.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => CancelAccountRequest;
-}
+  setAccountId(value: string): void;
 
-export namespace CancelAccountRequest {
-  export type AsObject = {
-    AccountId: string;
-  }
-}
-
-export class CancelAccountResponse {
-  constructor ();
-  toObject(): CancelAccountResponse.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => CancelAccountResponse;
-}
-
-export namespace CancelAccountResponse {
-  export type AsObject = {
-  }
-}
-
-export class CheckCredentialsRequest {
-  constructor ();
-  getLogin(): string;
-  setLogin(a: string): void;
-  getPassword(): string;
-  setPassword(a: string): void;
-  toObject(): CheckCredentialsRequest.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => CheckCredentialsRequest;
-}
-
-export namespace CheckCredentialsRequest {
-  export type AsObject = {
-    Login: string;
-    Password: string;
-  }
-}
-
-export class CheckEmailRequest {
-  constructor ();
   getEmail(): string;
-  setEmail(a: string): void;
-  toObject(): CheckEmailRequest.AsObject;
+  setEmail(value: string): void;
+
+  getIsVerified(): boolean;
+  setIsVerified(value: boolean): void;
+
+  getIsPrimary(): boolean;
+  setIsPrimary(value: boolean): void;
+
+  getCreatedAt(): number;
+  setCreatedAt(value: number): void;
+
+  getUpdatedAt(): number;
+  setUpdatedAt(value: number): void;
+
   serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => CheckEmailRequest;
+  toObject(includeInstance?: boolean): Email.AsObject;
+  static toObject(includeInstance: boolean, msg: Email): Email.AsObject;
+  static serializeBinaryToWriter(message: Email, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Email;
+  static deserializeBinaryFromReader(message: Email, reader: jspb.BinaryReader): Email;
 }
 
-export namespace CheckEmailRequest {
+export namespace Email {
   export type AsObject = {
-    Email: string;
+    id: string,
+    accountId: string,
+    email: string,
+    isVerified: boolean,
+    isPrimary: boolean,
+    createdAt: number,
+    updatedAt: number,
   }
 }
 
-export class CheckEmailResponse {
-  constructor ();
-  getIsAvailable(): boolean;
-  setIsAvailable(a: boolean): void;
-  toObject(): CheckEmailResponse.AsObject;
+export class GetAccountByIDRequest extends jspb.Message {
+  getAccountId(): string;
+  setAccountId(value: string): void;
+
   serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => CheckEmailResponse;
+  toObject(includeInstance?: boolean): GetAccountByIDRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: GetAccountByIDRequest): GetAccountByIDRequest.AsObject;
+  static serializeBinaryToWriter(message: GetAccountByIDRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetAccountByIDRequest;
+  static deserializeBinaryFromReader(message: GetAccountByIDRequest, reader: jspb.BinaryReader): GetAccountByIDRequest;
 }
 
-export namespace CheckEmailResponse {
+export namespace GetAccountByIDRequest {
   export type AsObject = {
-    IsAvailable: boolean;
+    accountId: string,
   }
 }
 
-export class CheckResetTokenRequest {
-  constructor ();
-  getResetToken(): string;
-  setResetToken(a: string): void;
-  toObject(): CheckResetTokenRequest.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => CheckResetTokenRequest;
-}
-
-export namespace CheckResetTokenRequest {
-  export type AsObject = {
-    ResetToken: string;
-  }
-}
-
-export class CheckResetTokenResponse {
-  constructor ();
-  getIsValid(): boolean;
-  setIsValid(a: boolean): void;
-  toObject(): CheckResetTokenResponse.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => CheckResetTokenResponse;
-}
-
-export namespace CheckResetTokenResponse {
-  export type AsObject = {
-    IsValid: boolean;
-  }
-}
-
-export class CheckUsernameRequest {
-  constructor ();
-  getUsername(): string;
-  setUsername(a: string): void;
-  toObject(): CheckUsernameRequest.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => CheckUsernameRequest;
-}
-
-export namespace CheckUsernameRequest {
-  export type AsObject = {
-    Username: string;
-  }
-}
-
-export class CheckUsernameResponse {
-  constructor ();
-  getIsAvailable(): boolean;
-  setIsAvailable(a: boolean): void;
-  toObject(): CheckUsernameResponse.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => CheckUsernameResponse;
-}
-
-export namespace CheckUsernameResponse {
-  export type AsObject = {
-    IsAvailable: boolean;
-  }
-}
-
-export class CreateAccountRequest {
-  constructor ();
+export class CreateAccountRequest extends jspb.Message {
   getEmail(): string;
-  setEmail(a: string): void;
+  setEmail(value: string): void;
+
   getUsername(): string;
-  setUsername(a: string): void;
+  setUsername(value: string): void;
+
   getPassword(): string;
-  setPassword(a: string): void;
-  getProfile(): Profile;
-  setProfile(a: Profile): void;
-  toObject(): CreateAccountRequest.AsObject;
+  setPassword(value: string): void;
+
+  getProfile(): Profile | undefined;
+  setProfile(value?: Profile): void;
+  hasProfile(): boolean;
+  clearProfile(): void;
+
   serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => CreateAccountRequest;
+  toObject(includeInstance?: boolean): CreateAccountRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: CreateAccountRequest): CreateAccountRequest.AsObject;
+  static serializeBinaryToWriter(message: CreateAccountRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CreateAccountRequest;
+  static deserializeBinaryFromReader(message: CreateAccountRequest, reader: jspb.BinaryReader): CreateAccountRequest;
 }
 
 export namespace CreateAccountRequest {
   export type AsObject = {
-    Email: string;
-    Username: string;
-    Password: string;
-    Profile: Profile;
+    email: string,
+    username: string,
+    password: string,
+    profile?: Profile.AsObject,
   }
 }
 
-export class ForgotPasswordRequest {
-  constructor ();
-  getEmail(): string;
-  setEmail(a: string): void;
-  toObject(): ForgotPasswordRequest.AsObject;
+export class UpdateAccountRequest extends jspb.Message {
+  getAccountId(): string;
+  setAccountId(value: string): void;
+
+  getProfile(): Profile | undefined;
+  setProfile(value?: Profile): void;
+  hasProfile(): boolean;
+  clearProfile(): void;
+
   serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => ForgotPasswordRequest;
+  toObject(includeInstance?: boolean): UpdateAccountRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: UpdateAccountRequest): UpdateAccountRequest.AsObject;
+  static serializeBinaryToWriter(message: UpdateAccountRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UpdateAccountRequest;
+  static deserializeBinaryFromReader(message: UpdateAccountRequest, reader: jspb.BinaryReader): UpdateAccountRequest;
+}
+
+export namespace UpdateAccountRequest {
+  export type AsObject = {
+    accountId: string,
+    profile?: Profile.AsObject,
+  }
+}
+
+export class UpdateAccountResponse extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): UpdateAccountResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: UpdateAccountResponse): UpdateAccountResponse.AsObject;
+  static serializeBinaryToWriter(message: UpdateAccountResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UpdateAccountResponse;
+  static deserializeBinaryFromReader(message: UpdateAccountResponse, reader: jspb.BinaryReader): UpdateAccountResponse;
+}
+
+export namespace UpdateAccountResponse {
+  export type AsObject = {
+  }
+}
+
+export class CheckCredentialsRequest extends jspb.Message {
+  getLogin(): string;
+  setLogin(value: string): void;
+
+  getPassword(): string;
+  setPassword(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): CheckCredentialsRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: CheckCredentialsRequest): CheckCredentialsRequest.AsObject;
+  static serializeBinaryToWriter(message: CheckCredentialsRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CheckCredentialsRequest;
+  static deserializeBinaryFromReader(message: CheckCredentialsRequest, reader: jspb.BinaryReader): CheckCredentialsRequest;
+}
+
+export namespace CheckCredentialsRequest {
+  export type AsObject = {
+    login: string,
+    password: string,
+  }
+}
+
+export class ForgotPasswordRequest extends jspb.Message {
+  getEmail(): string;
+  setEmail(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ForgotPasswordRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: ForgotPasswordRequest): ForgotPasswordRequest.AsObject;
+  static serializeBinaryToWriter(message: ForgotPasswordRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ForgotPasswordRequest;
+  static deserializeBinaryFromReader(message: ForgotPasswordRequest, reader: jspb.BinaryReader): ForgotPasswordRequest;
 }
 
 export namespace ForgotPasswordRequest {
   export type AsObject = {
-    Email: string;
+    email: string,
   }
 }
 
-export class ForgotPasswordResponse {
-  constructor ();
-  toObject(): ForgotPasswordResponse.AsObject;
+export class ForgotPasswordResponse extends jspb.Message {
   serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => ForgotPasswordResponse;
+  toObject(includeInstance?: boolean): ForgotPasswordResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: ForgotPasswordResponse): ForgotPasswordResponse.AsObject;
+  static serializeBinaryToWriter(message: ForgotPasswordResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ForgotPasswordResponse;
+  static deserializeBinaryFromReader(message: ForgotPasswordResponse, reader: jspb.BinaryReader): ForgotPasswordResponse;
 }
 
 export namespace ForgotPasswordResponse {
@@ -232,119 +310,71 @@ export namespace ForgotPasswordResponse {
   }
 }
 
-export class GetAccountByIDRequest {
-  constructor ();
-  getAccountId(): string;
-  setAccountId(a: string): void;
-  toObject(): GetAccountByIDRequest.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => GetAccountByIDRequest;
-}
-
-export namespace GetAccountByIDRequest {
-  export type AsObject = {
-    AccountId: string;
-  }
-}
-
-export class Profile {
-  constructor ();
-  getName(): string;
-  setName(a: string): void;
-  getFirstName(): string;
-  setFirstName(a: string): void;
-  getLastName(): string;
-  setLastName(a: string): void;
-  getMiddleName(): string;
-  setMiddleName(a: string): void;
-  getNickname(): string;
-  setNickname(a: string): void;
-  getProfile(): string;
-  setProfile(a: string): void;
-  getPicture(): string;
-  setPicture(a: string): void;
-  getWebsite(): string;
-  setWebsite(a: string): void;
-  getGender(): string;
-  setGender(a: string): void;
-  getBirthdate(): string;
-  setBirthdate(a: string): void;
-  getZoneinfo(): string;
-  setZoneinfo(a: string): void;
-  getLocale(): string;
-  setLocale(a: string): void;
-  toObject(): Profile.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => Profile;
-}
-
-export namespace Profile {
-  export type AsObject = {
-    Name: string;
-    FirstName: string;
-    LastName: string;
-    MiddleName: string;
-    Nickname: string;
-    Profile: string;
-    Picture: string;
-    Website: string;
-    Gender: string;
-    Birthdate: string;
-    Zoneinfo: string;
-    Locale: string;
-  }
-}
-
-export class ResendVerificationRequest {
-  constructor ();
-  getEmail(): string;
-  setEmail(a: string): void;
-  toObject(): ResendVerificationRequest.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => ResendVerificationRequest;
-}
-
-export namespace ResendVerificationRequest {
-  export type AsObject = {
-    Email: string;
-  }
-}
-
-export class ResendVerificationResponse {
-  constructor ();
-  toObject(): ResendVerificationResponse.AsObject;
-  serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => ResendVerificationResponse;
-}
-
-export namespace ResendVerificationResponse {
-  export type AsObject = {
-  }
-}
-
-export class ResetPasswordRequest {
-  constructor ();
+export class CheckResetTokenRequest extends jspb.Message {
   getResetToken(): string;
-  setResetToken(a: string): void;
-  getNewPassword(): string;
-  setNewPassword(a: string): void;
-  toObject(): ResetPasswordRequest.AsObject;
+  setResetToken(value: string): void;
+
   serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => ResetPasswordRequest;
+  toObject(includeInstance?: boolean): CheckResetTokenRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: CheckResetTokenRequest): CheckResetTokenRequest.AsObject;
+  static serializeBinaryToWriter(message: CheckResetTokenRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CheckResetTokenRequest;
+  static deserializeBinaryFromReader(message: CheckResetTokenRequest, reader: jspb.BinaryReader): CheckResetTokenRequest;
+}
+
+export namespace CheckResetTokenRequest {
+  export type AsObject = {
+    resetToken: string,
+  }
+}
+
+export class CheckResetTokenResponse extends jspb.Message {
+  getIsValid(): boolean;
+  setIsValid(value: boolean): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): CheckResetTokenResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: CheckResetTokenResponse): CheckResetTokenResponse.AsObject;
+  static serializeBinaryToWriter(message: CheckResetTokenResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CheckResetTokenResponse;
+  static deserializeBinaryFromReader(message: CheckResetTokenResponse, reader: jspb.BinaryReader): CheckResetTokenResponse;
+}
+
+export namespace CheckResetTokenResponse {
+  export type AsObject = {
+    isValid: boolean,
+  }
+}
+
+export class ResetPasswordRequest extends jspb.Message {
+  getResetToken(): string;
+  setResetToken(value: string): void;
+
+  getNewPassword(): string;
+  setNewPassword(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ResetPasswordRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: ResetPasswordRequest): ResetPasswordRequest.AsObject;
+  static serializeBinaryToWriter(message: ResetPasswordRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ResetPasswordRequest;
+  static deserializeBinaryFromReader(message: ResetPasswordRequest, reader: jspb.BinaryReader): ResetPasswordRequest;
 }
 
 export namespace ResetPasswordRequest {
   export type AsObject = {
-    ResetToken: string;
-    NewPassword: string;
+    resetToken: string,
+    newPassword: string,
   }
 }
 
-export class ResetPasswordResponse {
-  constructor ();
-  toObject(): ResetPasswordResponse.AsObject;
+export class ResetPasswordResponse extends jspb.Message {
   serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => ResetPasswordResponse;
+  toObject(includeInstance?: boolean): ResetPasswordResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: ResetPasswordResponse): ResetPasswordResponse.AsObject;
+  static serializeBinaryToWriter(message: ResetPasswordResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ResetPasswordResponse;
+  static deserializeBinaryFromReader(message: ResetPasswordResponse, reader: jspb.BinaryReader): ResetPasswordResponse;
 }
 
 export namespace ResetPasswordResponse {
@@ -352,32 +382,39 @@ export namespace ResetPasswordResponse {
   }
 }
 
-export class UpdatePasswordRequest {
-  constructor ();
+export class UpdatePasswordRequest extends jspb.Message {
   getAccountId(): string;
-  setAccountId(a: string): void;
+  setAccountId(value: string): void;
+
   getPassword(): string;
-  setPassword(a: string): void;
+  setPassword(value: string): void;
+
   getNewPassword(): string;
-  setNewPassword(a: string): void;
-  toObject(): UpdatePasswordRequest.AsObject;
+  setNewPassword(value: string): void;
+
   serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => UpdatePasswordRequest;
+  toObject(includeInstance?: boolean): UpdatePasswordRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: UpdatePasswordRequest): UpdatePasswordRequest.AsObject;
+  static serializeBinaryToWriter(message: UpdatePasswordRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UpdatePasswordRequest;
+  static deserializeBinaryFromReader(message: UpdatePasswordRequest, reader: jspb.BinaryReader): UpdatePasswordRequest;
 }
 
 export namespace UpdatePasswordRequest {
   export type AsObject = {
-    AccountId: string;
-    Password: string;
-    NewPassword: string;
+    accountId: string,
+    password: string,
+    newPassword: string,
   }
 }
 
-export class UpdatePasswordResponse {
-  constructor ();
-  toObject(): UpdatePasswordResponse.AsObject;
+export class UpdatePasswordResponse extends jspb.Message {
   serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => UpdatePasswordResponse;
+  toObject(includeInstance?: boolean): UpdatePasswordResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: UpdatePasswordResponse): UpdatePasswordResponse.AsObject;
+  static serializeBinaryToWriter(message: UpdatePasswordResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UpdatePasswordResponse;
+  static deserializeBinaryFromReader(message: UpdatePasswordResponse, reader: jspb.BinaryReader): UpdatePasswordResponse;
 }
 
 export namespace UpdatePasswordResponse {
@@ -385,30 +422,171 @@ export namespace UpdatePasswordResponse {
   }
 }
 
-export class VerifyEmailRequest {
-  constructor ();
+export class VerifyEmailRequest extends jspb.Message {
   getToken(): string;
-  setToken(a: string): void;
-  toObject(): VerifyEmailRequest.AsObject;
+  setToken(value: string): void;
+
   serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => VerifyEmailRequest;
+  toObject(includeInstance?: boolean): VerifyEmailRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: VerifyEmailRequest): VerifyEmailRequest.AsObject;
+  static serializeBinaryToWriter(message: VerifyEmailRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): VerifyEmailRequest;
+  static deserializeBinaryFromReader(message: VerifyEmailRequest, reader: jspb.BinaryReader): VerifyEmailRequest;
 }
 
 export namespace VerifyEmailRequest {
   export type AsObject = {
-    Token: string;
+    token: string,
   }
 }
 
-export class VerifyEmailResponse {
-  constructor ();
-  toObject(): VerifyEmailResponse.AsObject;
+export class VerifyEmailResponse extends jspb.Message {
   serializeBinary(): Uint8Array;
-  static deserializeBinary: (bytes: {}) => VerifyEmailResponse;
+  toObject(includeInstance?: boolean): VerifyEmailResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: VerifyEmailResponse): VerifyEmailResponse.AsObject;
+  static serializeBinaryToWriter(message: VerifyEmailResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): VerifyEmailResponse;
+  static deserializeBinaryFromReader(message: VerifyEmailResponse, reader: jspb.BinaryReader): VerifyEmailResponse;
 }
 
 export namespace VerifyEmailResponse {
   export type AsObject = {
+  }
+}
+
+export class ResendVerificationRequest extends jspb.Message {
+  getEmail(): string;
+  setEmail(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ResendVerificationRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: ResendVerificationRequest): ResendVerificationRequest.AsObject;
+  static serializeBinaryToWriter(message: ResendVerificationRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ResendVerificationRequest;
+  static deserializeBinaryFromReader(message: ResendVerificationRequest, reader: jspb.BinaryReader): ResendVerificationRequest;
+}
+
+export namespace ResendVerificationRequest {
+  export type AsObject = {
+    email: string,
+  }
+}
+
+export class ResendVerificationResponse extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ResendVerificationResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: ResendVerificationResponse): ResendVerificationResponse.AsObject;
+  static serializeBinaryToWriter(message: ResendVerificationResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ResendVerificationResponse;
+  static deserializeBinaryFromReader(message: ResendVerificationResponse, reader: jspb.BinaryReader): ResendVerificationResponse;
+}
+
+export namespace ResendVerificationResponse {
+  export type AsObject = {
+  }
+}
+
+export class CancelAccountRequest extends jspb.Message {
+  getAccountId(): string;
+  setAccountId(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): CancelAccountRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: CancelAccountRequest): CancelAccountRequest.AsObject;
+  static serializeBinaryToWriter(message: CancelAccountRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CancelAccountRequest;
+  static deserializeBinaryFromReader(message: CancelAccountRequest, reader: jspb.BinaryReader): CancelAccountRequest;
+}
+
+export namespace CancelAccountRequest {
+  export type AsObject = {
+    accountId: string,
+  }
+}
+
+export class CancelAccountResponse extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): CancelAccountResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: CancelAccountResponse): CancelAccountResponse.AsObject;
+  static serializeBinaryToWriter(message: CancelAccountResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CancelAccountResponse;
+  static deserializeBinaryFromReader(message: CancelAccountResponse, reader: jspb.BinaryReader): CancelAccountResponse;
+}
+
+export namespace CancelAccountResponse {
+  export type AsObject = {
+  }
+}
+
+export class CheckUsernameRequest extends jspb.Message {
+  getUsername(): string;
+  setUsername(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): CheckUsernameRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: CheckUsernameRequest): CheckUsernameRequest.AsObject;
+  static serializeBinaryToWriter(message: CheckUsernameRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CheckUsernameRequest;
+  static deserializeBinaryFromReader(message: CheckUsernameRequest, reader: jspb.BinaryReader): CheckUsernameRequest;
+}
+
+export namespace CheckUsernameRequest {
+  export type AsObject = {
+    username: string,
+  }
+}
+
+export class CheckUsernameResponse extends jspb.Message {
+  getIsAvailable(): boolean;
+  setIsAvailable(value: boolean): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): CheckUsernameResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: CheckUsernameResponse): CheckUsernameResponse.AsObject;
+  static serializeBinaryToWriter(message: CheckUsernameResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CheckUsernameResponse;
+  static deserializeBinaryFromReader(message: CheckUsernameResponse, reader: jspb.BinaryReader): CheckUsernameResponse;
+}
+
+export namespace CheckUsernameResponse {
+  export type AsObject = {
+    isAvailable: boolean,
+  }
+}
+
+export class CheckEmailRequest extends jspb.Message {
+  getEmail(): string;
+  setEmail(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): CheckEmailRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: CheckEmailRequest): CheckEmailRequest.AsObject;
+  static serializeBinaryToWriter(message: CheckEmailRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CheckEmailRequest;
+  static deserializeBinaryFromReader(message: CheckEmailRequest, reader: jspb.BinaryReader): CheckEmailRequest;
+}
+
+export namespace CheckEmailRequest {
+  export type AsObject = {
+    email: string,
+  }
+}
+
+export class CheckEmailResponse extends jspb.Message {
+  getIsAvailable(): boolean;
+  setIsAvailable(value: boolean): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): CheckEmailResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: CheckEmailResponse): CheckEmailResponse.AsObject;
+  static serializeBinaryToWriter(message: CheckEmailResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CheckEmailResponse;
+  static deserializeBinaryFromReader(message: CheckEmailResponse, reader: jspb.BinaryReader): CheckEmailResponse;
+}
+
+export namespace CheckEmailResponse {
+  export type AsObject = {
+    isAvailable: boolean,
   }
 }
 

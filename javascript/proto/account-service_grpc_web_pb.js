@@ -64,11 +64,25 @@ proto.metrixio.AccountServicePromiseClient =
   options['format'] = 'text';
 
   /**
-   * @private @const {!proto.metrixio.AccountServiceClient} The delegate callback based client
+   * @private @const {!grpc.web.GrpcWebClientBase} The client
    */
-  this.delegateClient_ = new proto.metrixio.AccountServiceClient(
-      hostname, credentials, options);
+  this.client_ = new grpc.web.GrpcWebClientBase(options);
 
+  /**
+   * @private @const {string} The hostname
+   */
+  this.hostname_ = hostname;
+
+  /**
+   * @private @const {?Object} The credentials to be used to connect
+   *    to the server
+   */
+  this.credentials_ = credentials;
+
+  /**
+   * @private @const {?Object} Options for the client
+   */
+  this.options_ = options;
 };
 
 
@@ -91,7 +105,7 @@ const methodInfo_AccountService_CreateAccount = new grpc.web.AbstractClientBase.
 /**
  * @param {!proto.metrixio.CreateAccountRequest} request The
  *     request proto
- * @param {!Object<string, string>} metadata User defined
+ * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @param {function(?grpc.web.Error, ?proto.metrixio.Account)}
  *     callback The callback function(error, response)
@@ -103,7 +117,7 @@ proto.metrixio.AccountServiceClient.prototype.createAccount =
   return this.client_.rpcCall(this.hostname_ +
       '/metrixio.AccountService/CreateAccount',
       request,
-      metadata,
+      metadata || {},
       methodInfo_AccountService_CreateAccount,
       callback);
 };
@@ -112,19 +126,18 @@ proto.metrixio.AccountServiceClient.prototype.createAccount =
 /**
  * @param {!proto.metrixio.CreateAccountRequest} request The
  *     request proto
- * @param {!Object<string, string>} metadata User defined
+ * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.metrixio.Account>}
- *     The XHR Node Readable Stream
+ *     A native promise that resolves to the response
  */
 proto.metrixio.AccountServicePromiseClient.prototype.createAccount =
     function(request, metadata) {
-  return new Promise((resolve, reject) => {
-    this.delegateClient_.createAccount(
-      request, metadata, (error, response) => {
-        error ? reject(error) : resolve(response);
-      });
-  });
+  return this.client_.unaryCall(this.hostname_ +
+      '/metrixio.AccountService/CreateAccount',
+      request,
+      metadata || {},
+      methodInfo_AccountService_CreateAccount);
 };
 
 
@@ -147,7 +160,7 @@ const methodInfo_AccountService_CheckUsername = new grpc.web.AbstractClientBase.
 /**
  * @param {!proto.metrixio.CheckUsernameRequest} request The
  *     request proto
- * @param {!Object<string, string>} metadata User defined
+ * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @param {function(?grpc.web.Error, ?proto.metrixio.CheckUsernameResponse)}
  *     callback The callback function(error, response)
@@ -159,7 +172,7 @@ proto.metrixio.AccountServiceClient.prototype.checkUsername =
   return this.client_.rpcCall(this.hostname_ +
       '/metrixio.AccountService/CheckUsername',
       request,
-      metadata,
+      metadata || {},
       methodInfo_AccountService_CheckUsername,
       callback);
 };
@@ -168,19 +181,18 @@ proto.metrixio.AccountServiceClient.prototype.checkUsername =
 /**
  * @param {!proto.metrixio.CheckUsernameRequest} request The
  *     request proto
- * @param {!Object<string, string>} metadata User defined
+ * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.metrixio.CheckUsernameResponse>}
- *     The XHR Node Readable Stream
+ *     A native promise that resolves to the response
  */
 proto.metrixio.AccountServicePromiseClient.prototype.checkUsername =
     function(request, metadata) {
-  return new Promise((resolve, reject) => {
-    this.delegateClient_.checkUsername(
-      request, metadata, (error, response) => {
-        error ? reject(error) : resolve(response);
-      });
-  });
+  return this.client_.unaryCall(this.hostname_ +
+      '/metrixio.AccountService/CheckUsername',
+      request,
+      metadata || {},
+      methodInfo_AccountService_CheckUsername);
 };
 
 
@@ -203,7 +215,7 @@ const methodInfo_AccountService_CheckEmail = new grpc.web.AbstractClientBase.Met
 /**
  * @param {!proto.metrixio.CheckEmailRequest} request The
  *     request proto
- * @param {!Object<string, string>} metadata User defined
+ * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @param {function(?grpc.web.Error, ?proto.metrixio.CheckEmailResponse)}
  *     callback The callback function(error, response)
@@ -215,7 +227,7 @@ proto.metrixio.AccountServiceClient.prototype.checkEmail =
   return this.client_.rpcCall(this.hostname_ +
       '/metrixio.AccountService/CheckEmail',
       request,
-      metadata,
+      metadata || {},
       methodInfo_AccountService_CheckEmail,
       callback);
 };
@@ -224,19 +236,18 @@ proto.metrixio.AccountServiceClient.prototype.checkEmail =
 /**
  * @param {!proto.metrixio.CheckEmailRequest} request The
  *     request proto
- * @param {!Object<string, string>} metadata User defined
+ * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.metrixio.CheckEmailResponse>}
- *     The XHR Node Readable Stream
+ *     A native promise that resolves to the response
  */
 proto.metrixio.AccountServicePromiseClient.prototype.checkEmail =
     function(request, metadata) {
-  return new Promise((resolve, reject) => {
-    this.delegateClient_.checkEmail(
-      request, metadata, (error, response) => {
-        error ? reject(error) : resolve(response);
-      });
-  });
+  return this.client_.unaryCall(this.hostname_ +
+      '/metrixio.AccountService/CheckEmail',
+      request,
+      metadata || {},
+      methodInfo_AccountService_CheckEmail);
 };
 
 
@@ -259,7 +270,7 @@ const methodInfo_AccountService_CheckCredentials = new grpc.web.AbstractClientBa
 /**
  * @param {!proto.metrixio.CheckCredentialsRequest} request The
  *     request proto
- * @param {!Object<string, string>} metadata User defined
+ * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @param {function(?grpc.web.Error, ?proto.metrixio.Account)}
  *     callback The callback function(error, response)
@@ -271,7 +282,7 @@ proto.metrixio.AccountServiceClient.prototype.checkCredentials =
   return this.client_.rpcCall(this.hostname_ +
       '/metrixio.AccountService/CheckCredentials',
       request,
-      metadata,
+      metadata || {},
       methodInfo_AccountService_CheckCredentials,
       callback);
 };
@@ -280,19 +291,18 @@ proto.metrixio.AccountServiceClient.prototype.checkCredentials =
 /**
  * @param {!proto.metrixio.CheckCredentialsRequest} request The
  *     request proto
- * @param {!Object<string, string>} metadata User defined
+ * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.metrixio.Account>}
- *     The XHR Node Readable Stream
+ *     A native promise that resolves to the response
  */
 proto.metrixio.AccountServicePromiseClient.prototype.checkCredentials =
     function(request, metadata) {
-  return new Promise((resolve, reject) => {
-    this.delegateClient_.checkCredentials(
-      request, metadata, (error, response) => {
-        error ? reject(error) : resolve(response);
-      });
-  });
+  return this.client_.unaryCall(this.hostname_ +
+      '/metrixio.AccountService/CheckCredentials',
+      request,
+      metadata || {},
+      methodInfo_AccountService_CheckCredentials);
 };
 
 
@@ -315,7 +325,7 @@ const methodInfo_AccountService_CheckResetToken = new grpc.web.AbstractClientBas
 /**
  * @param {!proto.metrixio.CheckResetTokenRequest} request The
  *     request proto
- * @param {!Object<string, string>} metadata User defined
+ * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @param {function(?grpc.web.Error, ?proto.metrixio.CheckResetTokenResponse)}
  *     callback The callback function(error, response)
@@ -327,7 +337,7 @@ proto.metrixio.AccountServiceClient.prototype.checkResetToken =
   return this.client_.rpcCall(this.hostname_ +
       '/metrixio.AccountService/CheckResetToken',
       request,
-      metadata,
+      metadata || {},
       methodInfo_AccountService_CheckResetToken,
       callback);
 };
@@ -336,19 +346,18 @@ proto.metrixio.AccountServiceClient.prototype.checkResetToken =
 /**
  * @param {!proto.metrixio.CheckResetTokenRequest} request The
  *     request proto
- * @param {!Object<string, string>} metadata User defined
+ * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.metrixio.CheckResetTokenResponse>}
- *     The XHR Node Readable Stream
+ *     A native promise that resolves to the response
  */
 proto.metrixio.AccountServicePromiseClient.prototype.checkResetToken =
     function(request, metadata) {
-  return new Promise((resolve, reject) => {
-    this.delegateClient_.checkResetToken(
-      request, metadata, (error, response) => {
-        error ? reject(error) : resolve(response);
-      });
-  });
+  return this.client_.unaryCall(this.hostname_ +
+      '/metrixio.AccountService/CheckResetToken',
+      request,
+      metadata || {},
+      methodInfo_AccountService_CheckResetToken);
 };
 
 
@@ -371,7 +380,7 @@ const methodInfo_AccountService_GetAccountByID = new grpc.web.AbstractClientBase
 /**
  * @param {!proto.metrixio.GetAccountByIDRequest} request The
  *     request proto
- * @param {!Object<string, string>} metadata User defined
+ * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @param {function(?grpc.web.Error, ?proto.metrixio.Account)}
  *     callback The callback function(error, response)
@@ -383,7 +392,7 @@ proto.metrixio.AccountServiceClient.prototype.getAccountByID =
   return this.client_.rpcCall(this.hostname_ +
       '/metrixio.AccountService/GetAccountByID',
       request,
-      metadata,
+      metadata || {},
       methodInfo_AccountService_GetAccountByID,
       callback);
 };
@@ -392,19 +401,18 @@ proto.metrixio.AccountServiceClient.prototype.getAccountByID =
 /**
  * @param {!proto.metrixio.GetAccountByIDRequest} request The
  *     request proto
- * @param {!Object<string, string>} metadata User defined
+ * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.metrixio.Account>}
- *     The XHR Node Readable Stream
+ *     A native promise that resolves to the response
  */
 proto.metrixio.AccountServicePromiseClient.prototype.getAccountByID =
     function(request, metadata) {
-  return new Promise((resolve, reject) => {
-    this.delegateClient_.getAccountByID(
-      request, metadata, (error, response) => {
-        error ? reject(error) : resolve(response);
-      });
-  });
+  return this.client_.unaryCall(this.hostname_ +
+      '/metrixio.AccountService/GetAccountByID',
+      request,
+      metadata || {},
+      methodInfo_AccountService_GetAccountByID);
 };
 
 
@@ -427,7 +435,7 @@ const methodInfo_AccountService_ForgotPassword = new grpc.web.AbstractClientBase
 /**
  * @param {!proto.metrixio.ForgotPasswordRequest} request The
  *     request proto
- * @param {!Object<string, string>} metadata User defined
+ * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @param {function(?grpc.web.Error, ?proto.metrixio.ForgotPasswordResponse)}
  *     callback The callback function(error, response)
@@ -439,7 +447,7 @@ proto.metrixio.AccountServiceClient.prototype.forgotPassword =
   return this.client_.rpcCall(this.hostname_ +
       '/metrixio.AccountService/ForgotPassword',
       request,
-      metadata,
+      metadata || {},
       methodInfo_AccountService_ForgotPassword,
       callback);
 };
@@ -448,19 +456,18 @@ proto.metrixio.AccountServiceClient.prototype.forgotPassword =
 /**
  * @param {!proto.metrixio.ForgotPasswordRequest} request The
  *     request proto
- * @param {!Object<string, string>} metadata User defined
+ * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.metrixio.ForgotPasswordResponse>}
- *     The XHR Node Readable Stream
+ *     A native promise that resolves to the response
  */
 proto.metrixio.AccountServicePromiseClient.prototype.forgotPassword =
     function(request, metadata) {
-  return new Promise((resolve, reject) => {
-    this.delegateClient_.forgotPassword(
-      request, metadata, (error, response) => {
-        error ? reject(error) : resolve(response);
-      });
-  });
+  return this.client_.unaryCall(this.hostname_ +
+      '/metrixio.AccountService/ForgotPassword',
+      request,
+      metadata || {},
+      methodInfo_AccountService_ForgotPassword);
 };
 
 
@@ -483,7 +490,7 @@ const methodInfo_AccountService_ResetPassword = new grpc.web.AbstractClientBase.
 /**
  * @param {!proto.metrixio.ResetPasswordRequest} request The
  *     request proto
- * @param {!Object<string, string>} metadata User defined
+ * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @param {function(?grpc.web.Error, ?proto.metrixio.ResetPasswordResponse)}
  *     callback The callback function(error, response)
@@ -495,7 +502,7 @@ proto.metrixio.AccountServiceClient.prototype.resetPassword =
   return this.client_.rpcCall(this.hostname_ +
       '/metrixio.AccountService/ResetPassword',
       request,
-      metadata,
+      metadata || {},
       methodInfo_AccountService_ResetPassword,
       callback);
 };
@@ -504,19 +511,18 @@ proto.metrixio.AccountServiceClient.prototype.resetPassword =
 /**
  * @param {!proto.metrixio.ResetPasswordRequest} request The
  *     request proto
- * @param {!Object<string, string>} metadata User defined
+ * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.metrixio.ResetPasswordResponse>}
- *     The XHR Node Readable Stream
+ *     A native promise that resolves to the response
  */
 proto.metrixio.AccountServicePromiseClient.prototype.resetPassword =
     function(request, metadata) {
-  return new Promise((resolve, reject) => {
-    this.delegateClient_.resetPassword(
-      request, metadata, (error, response) => {
-        error ? reject(error) : resolve(response);
-      });
-  });
+  return this.client_.unaryCall(this.hostname_ +
+      '/metrixio.AccountService/ResetPassword',
+      request,
+      metadata || {},
+      methodInfo_AccountService_ResetPassword);
 };
 
 
@@ -539,7 +545,7 @@ const methodInfo_AccountService_UpdatePassword = new grpc.web.AbstractClientBase
 /**
  * @param {!proto.metrixio.UpdatePasswordRequest} request The
  *     request proto
- * @param {!Object<string, string>} metadata User defined
+ * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @param {function(?grpc.web.Error, ?proto.metrixio.UpdatePasswordResponse)}
  *     callback The callback function(error, response)
@@ -551,7 +557,7 @@ proto.metrixio.AccountServiceClient.prototype.updatePassword =
   return this.client_.rpcCall(this.hostname_ +
       '/metrixio.AccountService/UpdatePassword',
       request,
-      metadata,
+      metadata || {},
       methodInfo_AccountService_UpdatePassword,
       callback);
 };
@@ -560,19 +566,18 @@ proto.metrixio.AccountServiceClient.prototype.updatePassword =
 /**
  * @param {!proto.metrixio.UpdatePasswordRequest} request The
  *     request proto
- * @param {!Object<string, string>} metadata User defined
+ * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.metrixio.UpdatePasswordResponse>}
- *     The XHR Node Readable Stream
+ *     A native promise that resolves to the response
  */
 proto.metrixio.AccountServicePromiseClient.prototype.updatePassword =
     function(request, metadata) {
-  return new Promise((resolve, reject) => {
-    this.delegateClient_.updatePassword(
-      request, metadata, (error, response) => {
-        error ? reject(error) : resolve(response);
-      });
-  });
+  return this.client_.unaryCall(this.hostname_ +
+      '/metrixio.AccountService/UpdatePassword',
+      request,
+      metadata || {},
+      methodInfo_AccountService_UpdatePassword);
 };
 
 
@@ -595,7 +600,7 @@ const methodInfo_AccountService_VerifyEmail = new grpc.web.AbstractClientBase.Me
 /**
  * @param {!proto.metrixio.VerifyEmailRequest} request The
  *     request proto
- * @param {!Object<string, string>} metadata User defined
+ * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @param {function(?grpc.web.Error, ?proto.metrixio.VerifyEmailResponse)}
  *     callback The callback function(error, response)
@@ -607,7 +612,7 @@ proto.metrixio.AccountServiceClient.prototype.verifyEmail =
   return this.client_.rpcCall(this.hostname_ +
       '/metrixio.AccountService/VerifyEmail',
       request,
-      metadata,
+      metadata || {},
       methodInfo_AccountService_VerifyEmail,
       callback);
 };
@@ -616,19 +621,18 @@ proto.metrixio.AccountServiceClient.prototype.verifyEmail =
 /**
  * @param {!proto.metrixio.VerifyEmailRequest} request The
  *     request proto
- * @param {!Object<string, string>} metadata User defined
+ * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.metrixio.VerifyEmailResponse>}
- *     The XHR Node Readable Stream
+ *     A native promise that resolves to the response
  */
 proto.metrixio.AccountServicePromiseClient.prototype.verifyEmail =
     function(request, metadata) {
-  return new Promise((resolve, reject) => {
-    this.delegateClient_.verifyEmail(
-      request, metadata, (error, response) => {
-        error ? reject(error) : resolve(response);
-      });
-  });
+  return this.client_.unaryCall(this.hostname_ +
+      '/metrixio.AccountService/VerifyEmail',
+      request,
+      metadata || {},
+      methodInfo_AccountService_VerifyEmail);
 };
 
 
@@ -651,7 +655,7 @@ const methodInfo_AccountService_ResendVerification = new grpc.web.AbstractClient
 /**
  * @param {!proto.metrixio.ResendVerificationRequest} request The
  *     request proto
- * @param {!Object<string, string>} metadata User defined
+ * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @param {function(?grpc.web.Error, ?proto.metrixio.ResendVerificationResponse)}
  *     callback The callback function(error, response)
@@ -663,7 +667,7 @@ proto.metrixio.AccountServiceClient.prototype.resendVerification =
   return this.client_.rpcCall(this.hostname_ +
       '/metrixio.AccountService/ResendVerification',
       request,
-      metadata,
+      metadata || {},
       methodInfo_AccountService_ResendVerification,
       callback);
 };
@@ -672,19 +676,18 @@ proto.metrixio.AccountServiceClient.prototype.resendVerification =
 /**
  * @param {!proto.metrixio.ResendVerificationRequest} request The
  *     request proto
- * @param {!Object<string, string>} metadata User defined
+ * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.metrixio.ResendVerificationResponse>}
- *     The XHR Node Readable Stream
+ *     A native promise that resolves to the response
  */
 proto.metrixio.AccountServicePromiseClient.prototype.resendVerification =
     function(request, metadata) {
-  return new Promise((resolve, reject) => {
-    this.delegateClient_.resendVerification(
-      request, metadata, (error, response) => {
-        error ? reject(error) : resolve(response);
-      });
-  });
+  return this.client_.unaryCall(this.hostname_ +
+      '/metrixio.AccountService/ResendVerification',
+      request,
+      metadata || {},
+      methodInfo_AccountService_ResendVerification);
 };
 
 
@@ -707,7 +710,7 @@ const methodInfo_AccountService_CancelAccount = new grpc.web.AbstractClientBase.
 /**
  * @param {!proto.metrixio.CancelAccountRequest} request The
  *     request proto
- * @param {!Object<string, string>} metadata User defined
+ * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @param {function(?grpc.web.Error, ?proto.metrixio.CancelAccountResponse)}
  *     callback The callback function(error, response)
@@ -719,7 +722,7 @@ proto.metrixio.AccountServiceClient.prototype.cancelAccount =
   return this.client_.rpcCall(this.hostname_ +
       '/metrixio.AccountService/CancelAccount',
       request,
-      metadata,
+      metadata || {},
       methodInfo_AccountService_CancelAccount,
       callback);
 };
@@ -728,19 +731,18 @@ proto.metrixio.AccountServiceClient.prototype.cancelAccount =
 /**
  * @param {!proto.metrixio.CancelAccountRequest} request The
  *     request proto
- * @param {!Object<string, string>} metadata User defined
+ * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.metrixio.CancelAccountResponse>}
- *     The XHR Node Readable Stream
+ *     A native promise that resolves to the response
  */
 proto.metrixio.AccountServicePromiseClient.prototype.cancelAccount =
     function(request, metadata) {
-  return new Promise((resolve, reject) => {
-    this.delegateClient_.cancelAccount(
-      request, metadata, (error, response) => {
-        error ? reject(error) : resolve(response);
-      });
-  });
+  return this.client_.unaryCall(this.hostname_ +
+      '/metrixio.AccountService/CancelAccount',
+      request,
+      metadata || {},
+      methodInfo_AccountService_CancelAccount);
 };
 
 

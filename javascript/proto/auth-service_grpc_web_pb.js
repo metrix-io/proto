@@ -64,11 +64,25 @@ proto.metrixio.AuthServicePromiseClient =
   options['format'] = 'text';
 
   /**
-   * @private @const {!proto.metrixio.AuthServiceClient} The delegate callback based client
+   * @private @const {!grpc.web.GrpcWebClientBase} The client
    */
-  this.delegateClient_ = new proto.metrixio.AuthServiceClient(
-      hostname, credentials, options);
+  this.client_ = new grpc.web.GrpcWebClientBase(options);
 
+  /**
+   * @private @const {string} The hostname
+   */
+  this.hostname_ = hostname;
+
+  /**
+   * @private @const {?Object} The credentials to be used to connect
+   *    to the server
+   */
+  this.credentials_ = credentials;
+
+  /**
+   * @private @const {?Object} Options for the client
+   */
+  this.options_ = options;
 };
 
 
@@ -91,7 +105,7 @@ const methodInfo_AuthService_Login = new grpc.web.AbstractClientBase.MethodInfo(
 /**
  * @param {!proto.metrixio.LoginRequest} request The
  *     request proto
- * @param {!Object<string, string>} metadata User defined
+ * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @param {function(?grpc.web.Error, ?proto.metrixio.AccessToken)}
  *     callback The callback function(error, response)
@@ -103,7 +117,7 @@ proto.metrixio.AuthServiceClient.prototype.login =
   return this.client_.rpcCall(this.hostname_ +
       '/metrixio.AuthService/Login',
       request,
-      metadata,
+      metadata || {},
       methodInfo_AuthService_Login,
       callback);
 };
@@ -112,19 +126,18 @@ proto.metrixio.AuthServiceClient.prototype.login =
 /**
  * @param {!proto.metrixio.LoginRequest} request The
  *     request proto
- * @param {!Object<string, string>} metadata User defined
+ * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.metrixio.AccessToken>}
- *     The XHR Node Readable Stream
+ *     A native promise that resolves to the response
  */
 proto.metrixio.AuthServicePromiseClient.prototype.login =
     function(request, metadata) {
-  return new Promise((resolve, reject) => {
-    this.delegateClient_.login(
-      request, metadata, (error, response) => {
-        error ? reject(error) : resolve(response);
-      });
-  });
+  return this.client_.unaryCall(this.hostname_ +
+      '/metrixio.AuthService/Login',
+      request,
+      metadata || {},
+      methodInfo_AuthService_Login);
 };
 
 
@@ -147,7 +160,7 @@ const methodInfo_AuthService_Logout = new grpc.web.AbstractClientBase.MethodInfo
 /**
  * @param {!proto.metrixio.LogoutRequest} request The
  *     request proto
- * @param {!Object<string, string>} metadata User defined
+ * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @param {function(?grpc.web.Error, ?proto.metrixio.LogoutResponse)}
  *     callback The callback function(error, response)
@@ -159,7 +172,7 @@ proto.metrixio.AuthServiceClient.prototype.logout =
   return this.client_.rpcCall(this.hostname_ +
       '/metrixio.AuthService/Logout',
       request,
-      metadata,
+      metadata || {},
       methodInfo_AuthService_Logout,
       callback);
 };
@@ -168,19 +181,18 @@ proto.metrixio.AuthServiceClient.prototype.logout =
 /**
  * @param {!proto.metrixio.LogoutRequest} request The
  *     request proto
- * @param {!Object<string, string>} metadata User defined
+ * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.metrixio.LogoutResponse>}
- *     The XHR Node Readable Stream
+ *     A native promise that resolves to the response
  */
 proto.metrixio.AuthServicePromiseClient.prototype.logout =
     function(request, metadata) {
-  return new Promise((resolve, reject) => {
-    this.delegateClient_.logout(
-      request, metadata, (error, response) => {
-        error ? reject(error) : resolve(response);
-      });
-  });
+  return this.client_.unaryCall(this.hostname_ +
+      '/metrixio.AuthService/Logout',
+      request,
+      metadata || {},
+      methodInfo_AuthService_Logout);
 };
 
 
@@ -203,7 +215,7 @@ const methodInfo_AuthService_LogoutAll = new grpc.web.AbstractClientBase.MethodI
 /**
  * @param {!proto.metrixio.LogoutAllRequest} request The
  *     request proto
- * @param {!Object<string, string>} metadata User defined
+ * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @param {function(?grpc.web.Error, ?proto.metrixio.LogoutAllResponse)}
  *     callback The callback function(error, response)
@@ -215,7 +227,7 @@ proto.metrixio.AuthServiceClient.prototype.logoutAll =
   return this.client_.rpcCall(this.hostname_ +
       '/metrixio.AuthService/LogoutAll',
       request,
-      metadata,
+      metadata || {},
       methodInfo_AuthService_LogoutAll,
       callback);
 };
@@ -224,19 +236,18 @@ proto.metrixio.AuthServiceClient.prototype.logoutAll =
 /**
  * @param {!proto.metrixio.LogoutAllRequest} request The
  *     request proto
- * @param {!Object<string, string>} metadata User defined
+ * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.metrixio.LogoutAllResponse>}
- *     The XHR Node Readable Stream
+ *     A native promise that resolves to the response
  */
 proto.metrixio.AuthServicePromiseClient.prototype.logoutAll =
     function(request, metadata) {
-  return new Promise((resolve, reject) => {
-    this.delegateClient_.logoutAll(
-      request, metadata, (error, response) => {
-        error ? reject(error) : resolve(response);
-      });
-  });
+  return this.client_.unaryCall(this.hostname_ +
+      '/metrixio.AuthService/LogoutAll',
+      request,
+      metadata || {},
+      methodInfo_AuthService_LogoutAll);
 };
 
 
@@ -259,7 +270,7 @@ const methodInfo_AuthService_GrantPermissions = new grpc.web.AbstractClientBase.
 /**
  * @param {!proto.metrixio.GrantPermissionsRequest} request The
  *     request proto
- * @param {!Object<string, string>} metadata User defined
+ * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @param {function(?grpc.web.Error, ?proto.metrixio.PermissionAssignments)}
  *     callback The callback function(error, response)
@@ -271,7 +282,7 @@ proto.metrixio.AuthServiceClient.prototype.grantPermissions =
   return this.client_.rpcCall(this.hostname_ +
       '/metrixio.AuthService/GrantPermissions',
       request,
-      metadata,
+      metadata || {},
       methodInfo_AuthService_GrantPermissions,
       callback);
 };
@@ -280,19 +291,18 @@ proto.metrixio.AuthServiceClient.prototype.grantPermissions =
 /**
  * @param {!proto.metrixio.GrantPermissionsRequest} request The
  *     request proto
- * @param {!Object<string, string>} metadata User defined
+ * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.metrixio.PermissionAssignments>}
- *     The XHR Node Readable Stream
+ *     A native promise that resolves to the response
  */
 proto.metrixio.AuthServicePromiseClient.prototype.grantPermissions =
     function(request, metadata) {
-  return new Promise((resolve, reject) => {
-    this.delegateClient_.grantPermissions(
-      request, metadata, (error, response) => {
-        error ? reject(error) : resolve(response);
-      });
-  });
+  return this.client_.unaryCall(this.hostname_ +
+      '/metrixio.AuthService/GrantPermissions',
+      request,
+      metadata || {},
+      methodInfo_AuthService_GrantPermissions);
 };
 
 
@@ -315,7 +325,7 @@ const methodInfo_AuthService_GetPermissions = new grpc.web.AbstractClientBase.Me
 /**
  * @param {!proto.metrixio.GetPermissionsRequest} request The
  *     request proto
- * @param {!Object<string, string>} metadata User defined
+ * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @param {function(?grpc.web.Error, ?proto.metrixio.PermissionAssignments)}
  *     callback The callback function(error, response)
@@ -327,7 +337,7 @@ proto.metrixio.AuthServiceClient.prototype.getPermissions =
   return this.client_.rpcCall(this.hostname_ +
       '/metrixio.AuthService/GetPermissions',
       request,
-      metadata,
+      metadata || {},
       methodInfo_AuthService_GetPermissions,
       callback);
 };
@@ -336,19 +346,18 @@ proto.metrixio.AuthServiceClient.prototype.getPermissions =
 /**
  * @param {!proto.metrixio.GetPermissionsRequest} request The
  *     request proto
- * @param {!Object<string, string>} metadata User defined
+ * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.metrixio.PermissionAssignments>}
- *     The XHR Node Readable Stream
+ *     A native promise that resolves to the response
  */
 proto.metrixio.AuthServicePromiseClient.prototype.getPermissions =
     function(request, metadata) {
-  return new Promise((resolve, reject) => {
-    this.delegateClient_.getPermissions(
-      request, metadata, (error, response) => {
-        error ? reject(error) : resolve(response);
-      });
-  });
+  return this.client_.unaryCall(this.hostname_ +
+      '/metrixio.AuthService/GetPermissions',
+      request,
+      metadata || {},
+      methodInfo_AuthService_GetPermissions);
 };
 
 
@@ -371,7 +380,7 @@ const methodInfo_AuthService_HasPermissions = new grpc.web.AbstractClientBase.Me
 /**
  * @param {!proto.metrixio.HasPermissionsRequest} request The
  *     request proto
- * @param {!Object<string, string>} metadata User defined
+ * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @param {function(?grpc.web.Error, ?proto.metrixio.HasPermissionsResponse)}
  *     callback The callback function(error, response)
@@ -383,7 +392,7 @@ proto.metrixio.AuthServiceClient.prototype.hasPermissions =
   return this.client_.rpcCall(this.hostname_ +
       '/metrixio.AuthService/HasPermissions',
       request,
-      metadata,
+      metadata || {},
       methodInfo_AuthService_HasPermissions,
       callback);
 };
@@ -392,19 +401,18 @@ proto.metrixio.AuthServiceClient.prototype.hasPermissions =
 /**
  * @param {!proto.metrixio.HasPermissionsRequest} request The
  *     request proto
- * @param {!Object<string, string>} metadata User defined
+ * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.metrixio.HasPermissionsResponse>}
- *     The XHR Node Readable Stream
+ *     A native promise that resolves to the response
  */
 proto.metrixio.AuthServicePromiseClient.prototype.hasPermissions =
     function(request, metadata) {
-  return new Promise((resolve, reject) => {
-    this.delegateClient_.hasPermissions(
-      request, metadata, (error, response) => {
-        error ? reject(error) : resolve(response);
-      });
-  });
+  return this.client_.unaryCall(this.hostname_ +
+      '/metrixio.AuthService/HasPermissions',
+      request,
+      metadata || {},
+      methodInfo_AuthService_HasPermissions);
 };
 
 
@@ -427,7 +435,7 @@ const methodInfo_AuthService_RevokePermissions = new grpc.web.AbstractClientBase
 /**
  * @param {!proto.metrixio.RevokePermissionsRequest} request The
  *     request proto
- * @param {!Object<string, string>} metadata User defined
+ * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @param {function(?grpc.web.Error, ?proto.metrixio.RevokePermissionsResponse)}
  *     callback The callback function(error, response)
@@ -439,7 +447,7 @@ proto.metrixio.AuthServiceClient.prototype.revokePermissions =
   return this.client_.rpcCall(this.hostname_ +
       '/metrixio.AuthService/RevokePermissions',
       request,
-      metadata,
+      metadata || {},
       methodInfo_AuthService_RevokePermissions,
       callback);
 };
@@ -448,19 +456,18 @@ proto.metrixio.AuthServiceClient.prototype.revokePermissions =
 /**
  * @param {!proto.metrixio.RevokePermissionsRequest} request The
  *     request proto
- * @param {!Object<string, string>} metadata User defined
+ * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.metrixio.RevokePermissionsResponse>}
- *     The XHR Node Readable Stream
+ *     A native promise that resolves to the response
  */
 proto.metrixio.AuthServicePromiseClient.prototype.revokePermissions =
     function(request, metadata) {
-  return new Promise((resolve, reject) => {
-    this.delegateClient_.revokePermissions(
-      request, metadata, (error, response) => {
-        error ? reject(error) : resolve(response);
-      });
-  });
+  return this.client_.unaryCall(this.hostname_ +
+      '/metrixio.AuthService/RevokePermissions',
+      request,
+      metadata || {},
+      methodInfo_AuthService_RevokePermissions);
 };
 
 
@@ -483,7 +490,7 @@ const methodInfo_AuthService_DeleteSubject = new grpc.web.AbstractClientBase.Met
 /**
  * @param {!proto.metrixio.DeleteSubjectRequest} request The
  *     request proto
- * @param {!Object<string, string>} metadata User defined
+ * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @param {function(?grpc.web.Error, ?proto.metrixio.DeleteSubjectResponse)}
  *     callback The callback function(error, response)
@@ -495,7 +502,7 @@ proto.metrixio.AuthServiceClient.prototype.deleteSubject =
   return this.client_.rpcCall(this.hostname_ +
       '/metrixio.AuthService/DeleteSubject',
       request,
-      metadata,
+      metadata || {},
       methodInfo_AuthService_DeleteSubject,
       callback);
 };
@@ -504,19 +511,18 @@ proto.metrixio.AuthServiceClient.prototype.deleteSubject =
 /**
  * @param {!proto.metrixio.DeleteSubjectRequest} request The
  *     request proto
- * @param {!Object<string, string>} metadata User defined
+ * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.metrixio.DeleteSubjectResponse>}
- *     The XHR Node Readable Stream
+ *     A native promise that resolves to the response
  */
 proto.metrixio.AuthServicePromiseClient.prototype.deleteSubject =
     function(request, metadata) {
-  return new Promise((resolve, reject) => {
-    this.delegateClient_.deleteSubject(
-      request, metadata, (error, response) => {
-        error ? reject(error) : resolve(response);
-      });
-  });
+  return this.client_.unaryCall(this.hostname_ +
+      '/metrixio.AuthService/DeleteSubject',
+      request,
+      metadata || {},
+      methodInfo_AuthService_DeleteSubject);
 };
 
 
@@ -539,7 +545,7 @@ const methodInfo_AuthService_InheritPermissions = new grpc.web.AbstractClientBas
 /**
  * @param {!proto.metrixio.InheritPermissionsRequest} request The
  *     request proto
- * @param {!Object<string, string>} metadata User defined
+ * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @param {function(?grpc.web.Error, ?proto.metrixio.InheritPermissionsResponse)}
  *     callback The callback function(error, response)
@@ -551,7 +557,7 @@ proto.metrixio.AuthServiceClient.prototype.inheritPermissions =
   return this.client_.rpcCall(this.hostname_ +
       '/metrixio.AuthService/InheritPermissions',
       request,
-      metadata,
+      metadata || {},
       methodInfo_AuthService_InheritPermissions,
       callback);
 };
@@ -560,19 +566,18 @@ proto.metrixio.AuthServiceClient.prototype.inheritPermissions =
 /**
  * @param {!proto.metrixio.InheritPermissionsRequest} request The
  *     request proto
- * @param {!Object<string, string>} metadata User defined
+ * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.metrixio.InheritPermissionsResponse>}
- *     The XHR Node Readable Stream
+ *     A native promise that resolves to the response
  */
 proto.metrixio.AuthServicePromiseClient.prototype.inheritPermissions =
     function(request, metadata) {
-  return new Promise((resolve, reject) => {
-    this.delegateClient_.inheritPermissions(
-      request, metadata, (error, response) => {
-        error ? reject(error) : resolve(response);
-      });
-  });
+  return this.client_.unaryCall(this.hostname_ +
+      '/metrixio.AuthService/InheritPermissions',
+      request,
+      metadata || {},
+      methodInfo_AuthService_InheritPermissions);
 };
 
 
@@ -595,7 +600,7 @@ const methodInfo_AuthService_DisinheritPermissions = new grpc.web.AbstractClient
 /**
  * @param {!proto.metrixio.DisinheritPermissionsRequest} request The
  *     request proto
- * @param {!Object<string, string>} metadata User defined
+ * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @param {function(?grpc.web.Error, ?proto.metrixio.DisinheritPermissionsResponse)}
  *     callback The callback function(error, response)
@@ -607,7 +612,7 @@ proto.metrixio.AuthServiceClient.prototype.disinheritPermissions =
   return this.client_.rpcCall(this.hostname_ +
       '/metrixio.AuthService/DisinheritPermissions',
       request,
-      metadata,
+      metadata || {},
       methodInfo_AuthService_DisinheritPermissions,
       callback);
 };
@@ -616,19 +621,18 @@ proto.metrixio.AuthServiceClient.prototype.disinheritPermissions =
 /**
  * @param {!proto.metrixio.DisinheritPermissionsRequest} request The
  *     request proto
- * @param {!Object<string, string>} metadata User defined
+ * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.metrixio.DisinheritPermissionsResponse>}
- *     The XHR Node Readable Stream
+ *     A native promise that resolves to the response
  */
 proto.metrixio.AuthServicePromiseClient.prototype.disinheritPermissions =
     function(request, metadata) {
-  return new Promise((resolve, reject) => {
-    this.delegateClient_.disinheritPermissions(
-      request, metadata, (error, response) => {
-        error ? reject(error) : resolve(response);
-      });
-  });
+  return this.client_.unaryCall(this.hostname_ +
+      '/metrixio.AuthService/DisinheritPermissions',
+      request,
+      metadata || {},
+      methodInfo_AuthService_DisinheritPermissions);
 };
 
 
