@@ -14,8 +14,8 @@ To publish any changes do the following:
 1. Run the following to release javascript/typescript:
  
 ```
+$ make protojs
 $ cd ./javascript
-$ npm run build // moves, renames and generates some files
 $ npm version patch // to increment the patch version.
 $ npm release // push to npm
 ```
